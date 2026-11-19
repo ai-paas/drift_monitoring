@@ -1,0 +1,12 @@
+{
+  "packId": "sprint62_supervised_error_variants",
+  "title": "Sprint 62 DDM RDDM EDDM supervised error-rate variant scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V21-ROW-CASE011-DDM-WARNING-ERR001",
+    "V21-ROW-CASE011-DDM-CLASS-ERR001",
+    "V21-ROW-CASE011-RDDM-REACTIVE-ERR002",
+    "V21-ROW-CASE011-EDDM-WARNING-ERR003",
+    "V21-ROW-CASE011-EDDM-GRADUAL-ERR003"
+  ]
+}

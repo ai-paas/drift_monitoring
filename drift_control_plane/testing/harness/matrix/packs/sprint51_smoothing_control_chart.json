@@ -1,0 +1,13 @@
+{
+  "packId": "sprint51_smoothing_control_chart",
+  "title": "Sprint 51 EWMA and GMA smoothing control scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V10-ROW-CASE010-EWMA-1S-ANNOT001",
+    "V10-ROW-CASE010-GMA-1S-ANNOT001",
+    "V10-ROW-CASE010-EWMA-CTRL002",
+    "V10-ROW-CASE010-EWMA-1S-CTRL002",
+    "V10-ROW-CASE010-GMA-CTRL002",
+    "V10-ROW-CASE010-GMA-1S-CTRL002"
+  ]
+}

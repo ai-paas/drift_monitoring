@@ -1,0 +1,95 @@
+{
+  "scenarioId": "TCASE-012-BOCD-PREDICTIVE",
+  "mode": "A",
+  "title": "CASE-012 BOCD predictive probability analysis",
+  "source": {
+    "sourceId": "case-012-bocd-predictive",
+    "title": "CASE-012 BOCD numeric mean shift",
+    "description": "Synthetic stream numeric mean shift dataset for BOCD_PREDICTIVE_PROBABILITY runtime wrapper",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case012_bocd_mean_shift.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-012"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-012-bocd-predictive",
+    "datasetCaseId": "CASE-012",
+    "csvPath": "testing/harness/data/case012_bocd_mean_shift.csv",
+    "speedFactor": 60,
+    "startTime": "2026-10-01T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-012-bocd-predictive",
+    "sourceId": "case-012-bocd-predictive",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-012 BOCD numeric stream adapter",
+    "collectionIntervalMinutes": 1,
+    "aggregateIntervalMinutes": 1,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case012-bocd-predictive",
+    "adapterId": "case-012-bocd-predictive",
+    "featureId": "metric",
+    "methodVariantId": 322,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "bocd_stream",
+    "params": {
+      "variant_id": "BOCD_PREDICTIVE_PROBABILITY",
+      "change_probability_threshold": 0.95,
+      "predictive_probability_threshold": 0.01,
+      "hazard_rate": 0.02,
+      "warmup_size": 20,
+      "run_length_truncation": 120,
+      "min_reference_size": 20,
+      "min_current_size": 20,
+      "meanShiftThreshold": 0.4,
+      "maxStatePoints": 200
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "1m",
+      "lookbackBuckets": 200
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case012-bocd-predictive",
+    "chartId": "CHART-BOCD-001",
+    "payloadAdapterKey": "auto__BOCD_PREDICTIVE_PROBABILITY__CHART-BOCD-001",
+    "chartOptions": {
+      "title": "CASE-012 BOCD predictive probability analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 160,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 160,
+    "bucketCount": 160,
+    "methodRunCount": 160,
+    "adapterCursorTime": "2026-10-01T02:40:00Z",
+    "methodStateLastBucketEnd": "2026-10-01T02:40:00Z",
+    "bucketRowCount": 1,
+    "analysisPointCount": 160,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 40,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

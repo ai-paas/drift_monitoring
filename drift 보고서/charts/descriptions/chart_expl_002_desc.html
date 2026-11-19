@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-EXPL-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-EXPL-002</p>
+    <h1>CHART-EXPL-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 tree 기반 domain classifier가 baseline/current 또는 time segment를 구분할 때 어떤 feature split을 사용하는지 설명한다.</p> <p>Tree feature 기반 감지는 drift를 설명 가능한 split 조건으로 요약할 수 있다는 장점이 있다. Feature importance, time split count, 대표 split path, segment distribution을 함께 보면 어떤 feature와 segment가 drift 판정에 기여했는지 확인할 수 있다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. domain/time 구분에 중요한 feature는 무엇인가?
+2. time split이 특정 feature에 집중되는가?
+3. 대표 split path가 current segment를 강하게 분리하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - feature importance bar
+  - time split count bar
+
+우측 상단
+  - representative split path diagram
+  - current-dominant leaf
+
+우측 하단
+  - segment별 baseline/current distribution comparison</code></pre> <p>상단 요약 영역에는 top feature, time splits, current leaf 비율을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 feature importance와 time split count를 확인한다.</p> <pre><code>importance가 낮고 split count도 낮다
+  -&gt; 해당 feature의 drift 설명력은 약하다.
+
+importance와 split count가 모두 높다
+  -&gt; drift를 구분하는 핵심 feature 후보로 본다.
+
+time split count만 높다
+  -&gt; 시간 proxy 또는 logging artifact 가능성을 확인한다.</code></pre> <p>그 다음 우측 상단 split path diagram에서 실제 tree가 어떤 조건으로 current segment를 분리하는지 확인한다.</p> <p>마지막으로 우측 하단 segment distribution에서 split leaf가 baseline/current를 얼마나 다르게 포함하는지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Tree classifier의 top feature importance가 높고, time split count가 해당 feature에 집중되며, representative split path가 current-dominant leaf를 만들고, segment distribution에서 current 비율이 크게 높으면 tree feature 기반 drift 후보로 해석한다.</p> <p>단, tree classifier는 time leakage, logging artifact, sampling bias를 쉽게 학습할 수 있다. Split 조건이 실제 의미 있는 feature 변화인지 반드시 검토해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 top feature가 <code>query_age</code>, time splits가 <code>18</code>, current leaf가 <code>82%</code>로 표시되어 있다. 좌측 패널에서 <code>query_age</code>는 feature importance와 time split count가 모두 가장 높다.</p> <p>우측 상단 split path는 <code>query_age &gt; 14d</code> 이후 <code>device = mobile</code> 조건에서 current 82% leaf를 만든다. 우측 하단 segment distribution에서도 S4 segment는 current 비중이 82%로 높다. 따라서 이 예시는 tree classifier가 특정 feature split으로 current domain을 강하게 분리한 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>Tree domain classifier 분석 결과, query_age가 가장 높은 feature importance를 보였고
+time split count도 18회로 가장 많았다.
+대표 split path는 query_age &gt; 14d 및 device = mobile 조건에서 current 82% leaf를 만들었다.
+이는 tree feature 기반 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - top split feature만으로 실제 drift 원인을 확정한다.
+
+금지 2
+  - time leakage 여부를 확인하지 않고 time split을 의미 있는 drift로 해석한다.
+
+금지 3
+  - tree classifier의 overfitting 여부를 확인하지 않는다.
+
+금지 4
+  - split path 하나만 보고 전체 population drift를 단정한다.</code></pre> <p>Tree feature 기반 감지는 설명 가능한 후보를 제공한다. 실제 원인과 영향은 segment sample review와 다른 drift chart로 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>Tree feature 기반 drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>time leakage, logging artifact, sampling policy 변경</li> <li>tree depth, min leaf size, validation AUC</li> <li>split path별 sample 수와 class/source 구성</li> <li>top feature의 원자료 분포 변화</li> <li>다른 domain classifier와 embedding drift chart의 합의 여부</li> <li>downstream performance, calibration, error rate 변화</li> <li>drift segment의 업무 이벤트와 배포 이력</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Tree Feature 기반 감지 / TIME_FEATURE_SPLIT_DETECTOR</code></li> <li><code>Tree Feature 기반 감지 / DOMAIN_CLASSIFIER_TREE</code></li> </ul>
+  </main>
+</body>
+</html>

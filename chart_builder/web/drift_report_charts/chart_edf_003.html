@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>중간값 이후 누적되는 누적분포 차이로 보는 분포 변화</title>
+  <link rel="stylesheet" href="./chart_edf_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-EDF-003">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>경험 누적분포 비교</h2>
+          <p>x≈0.07에서 기준 CDF 0.550, 현재 CDF 0.436처럼 중간 구간 이후 차이가 반복되는지 본다.</p>
+        </div>
+        <svg id="cdfChart" role="img" aria-label="기준 구간과 현재 구간의 경험 누적분포 비교"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>누적분포 제곱차 누적</h2>
+          <p>누적 면적 0.014가 어느 값 범위부터 빠르게 쌓이는지 확인한다.</p>
+        </div>
+        <svg id="cvmChart" role="img" aria-label="누적분포 제곱차 누적"></svg>
+      </article>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 CvM 통계량이 1.89, p-value가 0.018이고 누적 면적은 0.014다.
+          x≈0.07에서 기준 CDF 0.550과 현재 CDF 0.436의 차이가 크며, 중간값 이후 여러 구간에서 작은 누적분포 차이가 반복적으로 누적된다.
+          단일 최대 편차보다 전체 분포 형태의 누적 변화 후보로 해석하되, 어떤 feature/source가 원인인지는 별도 확인한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch gap"></i>누적분포 차이</span>
+        <span><i class="swatch cumulative"></i>누적 기여</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_edf_003.js"></script>
+</body>
+</html>
+

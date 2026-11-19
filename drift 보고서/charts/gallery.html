@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drift Chart Gallery</title>
+  <link rel="stylesheet" href="./gallery.css?v=20260623-method-scroll">
+</head>
+<body class="left-collapsed right-collapsed">
+  <main class="app" aria-label="Drift Chart Gallery">
+    <aside class="sidebar">
+      <button id="leftHandle" class="collapse-handle left-handle" type="button" aria-label="차트 목록 접기" aria-expanded="true">‹</button>
+      <div class="panel-content">
+        <header class="sidebar-header">
+          <div>
+            <p class="eyebrow">Drift Chart Gallery</p>
+            <h1>차트 모음</h1>
+          </div>
+          <span class="count" id="totalCount">53</span>
+        </header>
+
+        <label class="search">
+          <span>검색</span>
+          <input id="searchInput" type="search" placeholder="CHART-EDF-001, KS, error..." autocomplete="off">
+        </label>
+
+        <nav class="tree" id="chartTree" aria-label="차트 종류"></nav>
+      </div>
+    </aside>
+
+    <section class="viewer">
+      <div class="viewer-tabbar">
+        <div class="tabs main-tabs" role="tablist" aria-label="상위 표시 모드">
+          <button id="mainChartTab" class="tab active" type="button" role="tab" aria-selected="true">차트</button>
+          <button id="mainMethodTab" class="tab" type="button" role="tab" aria-selected="false">탐지 방법</button>
+        </div>
+      </div>
+
+      <header class="viewer-header">
+        <div>
+          <p class="selected-family" id="selectedFamily">EDF 계열</p>
+          <h2 id="selectedTitle">CHART-EDF-001</h2>
+        </div>
+        <button id="chartSelectorButton" class="method-button chart-selector-button" type="button">차트 추천 요청</button>
+      </header>
+
+      <div class="workspace">
+        <div id="chartWorkspace" class="workspace-pane">
+          <div class="subtab-bar">
+            <div class="tabs sub-tabs" role="tablist" aria-label="차트 표시 모드">
+              <button id="chartViewTab" class="tab active" type="button" role="tab" aria-selected="true">차트</button>
+              <button id="chartDescriptionTab" class="tab" type="button" role="tab" aria-selected="false">설명</button>
+            </div>
+            <button id="methodButton" class="method-button" type="button">탐지 방법 목록</button>
+          </div>
+          <div class="frame-shell" id="frameShell">
+            <div id="chartFrameStage" class="chart-frame-stage">
+              <iframe id="chartFrame" title="선택된 차트" src="./chart_edf_001.html?v=20260622-gen001-review"></iframe>
+            </div>
+            <article id="descriptionPanel" class="description-panel" hidden>
+              <div class="description-actions">
+                <button id="chartExplainButton" class="method-button chart-explain-inline-button" type="button">설명 질문</button>
+              </div>
+              <div id="descriptionContent" class="description-content"></div>
+            </article>
+          </div>
+        </div>
+        <div id="methodWorkspace" class="workspace-pane" hidden>
+          <div class="subtab-bar method-action-bar">
+            <button id="chartListButton" class="method-button" type="button">차트 목록</button>
+          </div>
+          <article id="methodPanel" class="description-panel method-workspace-panel"></article>
+        </div>
+      </div>
+    </section>
+    <aside class="method-sidebar">
+      <button id="rightHandle" class="collapse-handle right-handle" type="button" aria-label="탐지 방법 목록 접기" aria-expanded="true">›</button>
+      <div class="panel-content">
+        <header class="method-sidebar-header">
+          <div>
+            <p class="eyebrow">Drift Methods</p>
+            <h1>탐지 방법</h1>
+          </div>
+          <span class="count" id="methodCount">0</span>
+        </header>
+        <label class="search">
+          <span>검색</span>
+          <input id="methodSearchInput" type="search" placeholder="KS, ADWIN, MMD..." autocomplete="off">
+        </label>
+        <nav class="tree" id="methodTree" aria-label="탐지 방법 목록"></nav>
+      </div>
+    </aside>
+  </main>
+  <div id="methodDialog" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="methodDialogTitle">
+    <div class="modal-backdrop" data-close-methods></div>
+    <section class="method-modal">
+      <header class="method-modal-header">
+        <div>
+          <p id="methodDialogChart" class="method-chart-id">CHART-EDF-001</p>
+          <h2 id="methodDialogTitle">연결된 탐지 방법</h2>
+        </div>
+        <button id="methodCloseButton" class="icon-button" type="button" aria-label="닫기">×</button>
+      </header>
+      <div id="methodList" class="method-list"></div>
+    </section>
+  </div>
+  <div id="chartDialog" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="chartDialogTitle">
+    <div class="modal-backdrop" data-close-charts></div>
+    <section class="method-modal">
+      <header class="method-modal-header">
+        <div>
+          <p id="chartDialogMethod" class="method-chart-id">탐지 방법</p>
+          <h2 id="chartDialogTitle">연결된 차트</h2>
+        </div>
+        <button id="chartCloseButton" class="icon-button" type="button" aria-label="닫기">×</button>
+      </header>
+      <div id="chartList" class="method-list"></div>
+    </section>
+  </div>
+  <div id="chartSelectorDialog" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="chartSelectorTitle">
+    <div class="modal-backdrop" data-close-chart-selector></div>
+    <section class="selector-modal">
+      <header class="method-modal-header">
+        <div>
+          <p class="method-chart-id">Codex Chart Selector</p>
+          <h2 id="chartSelectorTitle">차트 추천 요청</h2>
+        </div>
+        <button id="chartSelectorCloseButton" class="icon-button" type="button" aria-label="닫기">×</button>
+      </header>
+      <div class="selector-body">
+        <label class="selector-field">
+          <span>입력 예제</span>
+          <select id="chartExampleSelect">
+            <option value="">예제를 선택하세요</option>
+            <option value="신용평가 모델에서 최근 신청자의 소득, 대출금액, 신용점수 분포가 과거 승인 기준 기간과 달라졌는지 보고 싶다.">신용평가 신청자 특성 변화</option>
+            <option value="건설현장에서 CCTV로 작업자를 모니터링하고 있는데, 최근 조명, 먼지, 장비 배치, 카메라 각도 변화 때문에 영상 모델이 예전과 다른 장면을 보고 있는지 확인하고 싶다.">건설현장 CCTV 영상 변화</option>
+            <option value="쇼핑몰에서 최근 유입 고객의 지역, 기기 종류, 유입 채널 비율이 지난달과 달라졌는지 확인하고 싶다. 어떤 항목이 가장 많이 바뀌었는지도 알고 싶다.">고객 유입 비율 변화</option>
+            <option value="운영 중인 분류 모델에서 최근 예측 실패가 늘어난 것 같다. 시간 흐름에 따라 실패가 증가했는지와 언제부터 이상 징후가 생겼는지 보고 싶다.">모델 예측 실패 증가</option>
+            <option value="문서 검색 서비스에서 최근 질문 문장이 예전보다 다른 주제로 바뀐 것 같다. 질문 의미나 주제 분포가 달라졌는지 확인하고 싶다.">질문/문서 의미 변화</option>
+            <option value="센서 데이터가 실시간으로 들어오는데 최근 값의 수준이 평소와 달라지는 순간을 빨리 감지하고 싶다.">실시간 센서 값 변화</option>
+            <option value="새로 만든 모니터링 지표가 기준선을 넘는지만 우선 보고해야 한다. 아직 어떤 통계 방법을 써야 할지는 정하지 못했다.">신규 모니터링 지표 임시 보고</option>
+          </select>
+        </label>
+        <label class="selector-field">
+          <span>요청 내용</span>
+          <textarea id="chartSelectorInput" rows="7" placeholder="원하는 drift 상황, 데이터 타입, 보고하고 싶은 지표를 입력하세요."></textarea>
+        </label>
+        <div class="selector-actions">
+          <p id="chartSelectorStatus" class="selector-status">로컬 서버가 실행 중이어야 차트 추천을 요청할 수 있습니다.</p>
+          <button id="chartSelectorRequestButton" class="method-button selector-request-button" type="button">Codex에 요청</button>
+        </div>
+        <section id="chartSelectorResult" class="selector-result" hidden></section>
+      </div>
+    </section>
+  </div>
+  <div id="chartExplainDialog" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="chartExplainTitle">
+    <div class="modal-backdrop" data-close-chart-explain></div>
+    <section class="selector-modal explain-modal">
+      <header class="method-modal-header">
+        <div>
+          <p id="chartExplainChartId" class="method-chart-id">CHART-EDF-001</p>
+          <h2 id="chartExplainTitle">차트 설명 질문</h2>
+        </div>
+        <button id="chartExplainCloseButton" class="icon-button" type="button" aria-label="닫기">×</button>
+      </header>
+      <div class="explain-body">
+        <div id="chartExplainMessages" class="explain-messages" aria-live="polite"></div>
+        <label class="selector-field explain-input-field">
+          <span>질문</span>
+          <textarea id="chartExplainInput" rows="4" placeholder="현재 차트에서 이해가 안 되는 부분을 질문하세요. 예: t=23 replacement가 무슨 뜻인가요?"></textarea>
+        </label>
+        <div class="selector-actions explain-actions">
+          <p id="chartExplainStatus" class="selector-status">현재 선택한 차트의 설명과 연결된 탐지 방법을 기준으로 답변합니다.</p>
+          <button id="chartExplainRequestButton" class="method-button selector-request-button" type="button">질문 보내기</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="./gallery.js?v=20260623-method-scroll"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-TEXT-001 - 쿼리 의미 공간 이동과 토픽 비중 변화</title>
+  <link rel="stylesheet" href="./chart_text_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-TEXT-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Embedding Projection Scatter</h2>
+          <p>baseline cluster는 왼쪽, current cluster는 오른쪽으로 이동해 분리된다.</p>
+        </div>
+        <svg id="projectionChart" role="img" aria-label="query embedding projection scatter"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Semantic Distance Trend</h2>
+            <p>cosine distance가 t=22에서 threshold 0.36을 넘고 최종 0.58까지 상승한다.</p>
+          </div>
+          <svg id="distanceChart" role="img" aria-label="semantic distance trend"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Topic Proportion + ROC</h2>
+            <p>topic 3이 0.20에서 0.48로 +28pt 증가하고 domain AUC는 0.82다.</p>
+          </div>
+          <svg id="topicRocChart" role="img" aria-label="topic proportion stacked bar and ROC curve"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          LLM query semantic drift는 query embedding의 위치, semantic distance, topic 구성 변화를 함께 본다.
+          이 예시에서는 distance가 t=22 이후 threshold를 넘고 topic 3 비중이 +28pt 증가해
+          LLM query semantic drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch distance"></i>semantic distance</span>
+        <span><i class="swatch topic"></i>topic shift</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_text_001.js"></script>
+</body>
+</html>

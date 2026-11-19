@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-CTRL-003 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-CTRL-003</p>
+    <h1>CHART-CTRL-003 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 MEWMA가 여러 metric을 동시에 smoothing한 뒤 하나의 multivariate statistic으로 control limit 초과를 감지하는 방식을 설명한다.</p> <p>MEWMA는 개별 metric 하나만 보는 control chart가 아니라 metric vector의 공동 이동을 추적한다. 따라서 단일 metric의 변화가 약하더라도 여러 metric이 같은 기간에 함께 이동하면 MEWMA statistic이 상승할 수 있다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. MEWMA statistic이 UCL을 넘는가?
+2. alarm 시점에 어떤 metric이 statistic 상승에 가장 크게 기여했는가?
+3. small multiples에서 여러 metric이 같은 기간에 함께 이동하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - MEWMA statistic trend
+  - UCL
+  - alarm marker
+
+우측 상단
+  - alarm 시점의 metric contribution bar
+  - top contributing metric
+
+우측 하단
+  - 주요 metric별 small multiples
+  - alarm 구간의 time-aligned movement</code></pre> <p>상단 요약 영역에는 MEWMA final, UCL, top metric을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 control chart에서 MEWMA statistic의 흐름을 확인한다.</p> <pre><code>MEWMA statistic이 UCL 아래에서 안정적이다
+  -&gt; 다변량 평균 vector의 변화 증거가 약하다.
+
+MEWMA statistic이 점진적으로 상승한 뒤 UCL을 넘는다
+  -&gt; 여러 metric의 누적 이동에 의한 drift 후보로 본다.
+
+MEWMA statistic이 급격히 튄 뒤 바로 회복한다
+  -&gt; 일시적 multivariate outlier 가능성을 먼저 확인한다.</code></pre> <p>그 다음 우측 상단 contribution bar를 확인한다. 특정 metric의 contribution이 지나치게 크면 그 metric이 alarm의 주된 원인일 수 있다.</p> <p>마지막으로 우측 하단 small multiples에서 여러 metric이 같은 시점에 같은 방향으로 이동하는지 본다. Contribution이 큰 metric과 small multiples의 변동 시점이 일치하면 alarm 원인을 더 구체적으로 설명할 수 있다.</p> <h2>Drift 후보 판단 기준</h2> <p>MEWMA statistic이 UCL을 넘고, contribution bar에서 하나 이상의 metric이 alarm을 설명하며, small multiples에서도 같은 기간의 동시 이동이 보이면 다변량 smoothing control chart 기반 drift 후보로 해석한다.</p> <p>단, MEWMA는 metric scaling, covariance 추정, smoothing parameter, Mahalanobis D2 사용 여부에 민감하다. Metric scale이 맞지 않으면 특정 metric의 기여도가 과대 표시될 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 MEWMA final이 <code>19.1</code>, UCL이 <code>12.0</code>, top metric이 <code>risk_score</code>로 표시되어 있다. 좌측 control chart에서 MEWMA statistic은 점진적으로 상승하다가 23번째 index 부근에서 UCL을 넘는다.</p> <p>우측 상단 contribution bar에서는 <code>risk_score</code>가 38%로 가장 큰 기여도를 보이고, <code>amount</code>, <code>frequency</code>가 뒤를 따른다. 우측 하단 small multiples에서도 세 metric이 같은 구간에서 함께 상승한다. 따라서 이 예시는 단일 metric spike가 아니라 여러 metric의 공동 이동으로 인한 다변량 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>MEWMA control chart에서 multivariate statistic은 19.1로 UCL 12.0을 초과했다.
+Alarm contribution은 risk_score 38%, amount 24%, frequency 18% 순으로 집중되었고,
+small multiples에서도 동일 구간의 동시 상승이 확인되었다.
+이는 여러 metric의 공동 이동에 의한 다변량 smoothing drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - top contribution metric 하나만 drift 원인이라고 단정한다.
+
+금지 2
+  - metric scaling과 covariance 추정 방식을 확인하지 않고 contribution을 비교한다.
+
+금지 3
+  - MEWMA alarm을 개별 metric control chart alarm과 같은 의미로 해석한다.
+
+금지 4
+  - Mahalanobis D2 기반 statistic인지 확인하지 않고 거리 크기를 비교한다.</code></pre> <p>MEWMA는 다변량 평균 vector의 이동을 요약한다. 개별 metric의 분산 변화, tail 변화, category mix 변화는 별도 chart와 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>MEWMA drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>metric standardization 또는 normalization 방식</li> <li>covariance matrix 산정 기간과 regularization 여부</li> <li>smoothing parameter와 control limit 산정 방식</li> <li>Mahalanobis D2 사용 여부</li> <li>top contribution metric의 원자료 trend와 업무 이벤트</li> <li>단변량 control chart, PSI, Wasserstein, energy distance 등 다른 detector와의 합의 여부</li> <li>label 확보 후 성능 지표, calibration, error rate 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>MEWMA / MEWMA_STANDARD</code></li> <li><code>MEWMA / MEWMA_WITH_MAHALANOBIS_D2</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>높은 값 구간 증가로 줄어든 히스토그램 겹침</title>
+  <link rel="stylesheet" href="./chart_hist_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-HIST-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>히스토그램 중첩</h2>
+          <p>20-30 bin은 0.16에서 0.10으로 줄고 70-80 bin은 0.05에서 0.10으로 늘어나는지 본다.</p>
+        </div>
+        <svg id="histogramChart" role="img" aria-label="기준 구간과 현재 구간의 histogram intersection 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>교집합 기여</h2>
+            <p>intersection 0.820 중 중심부 bin은 유지되고 낮은 bin 손실이 생기는지 확인한다.</p>
+          </div>
+          <svg id="intersectionChart" role="img" aria-label="Bin별 histogram intersection 기여"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>거리 추세</h2>
+            <p>HINC가 직전 0.24에서 현재 0.18로 관리 기준 0.22 아래로 내려왔는지 읽는다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="Histogram intersection normalized complement 시간 추세"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 현재 histogram이 기준보다 높은 값 구간으로 이동해 70-80, 80-90 bin 확률이 늘고 20-30 bin 확률은 줄어든다. Intersection은 0.820이고 HINC는 0.180으로 현재 window에서는 관리 기준 0.220 아래다. 따라서 강한 drift 확정보다는 완화 중인 histogram 분포 이동 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 확률</span>
+        <span><i class="swatch current"></i>현재 확률</span>
+        <span><i class="swatch overlap"></i>Intersection</span>
+        <span><i class="swatch distance"></i>거리</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_hist_001.js"></script>
+</body>
+</html>
+

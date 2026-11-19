@@ -1,0 +1,96 @@
+{
+  "scenarioId": "TCASE-004-WASSERSTEIN",
+  "mode": "A",
+  "title": "CASE-004 numeric population shift with Wasserstein distance",
+  "source": {
+    "sourceId": "case-004-wasserstein",
+    "title": "CASE-004 numeric population shift",
+    "description": "Numeric score distribution shift for Wasserstein distance",
+    "sourceType": "test_db",
+    "sourceUrl": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-004-wasserstein",
+    "datasetCaseId": "CASE-004",
+    "csvPath": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 120,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-004-wasserstein",
+    "sourceId": "case-004-wasserstein",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 Wasserstein numeric distribution adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case004-wasserstein",
+    "adapterId": "case-004-wasserstein",
+    "featureId": "score",
+    "methodVariantId": 201,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "wasserstein_numeric_window",
+    "params": {
+      "variant_id": "WASSERSTEIN_1D_EXACT",
+      "value_col": "value",
+      "threshold": 5.0,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case004-wasserstein",
+    "chartId": "CHART-DIST-001",
+    "payloadAdapterKey": "auto__WASSERSTEIN_1D_EXACT__CHART-DIST-001",
+    "chartOptions": {
+      "title": "CASE-004 Wasserstein distance analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 120,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 120,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

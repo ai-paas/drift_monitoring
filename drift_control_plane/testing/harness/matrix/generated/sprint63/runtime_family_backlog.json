@@ -1,0 +1,948 @@
+{
+  "backlogId": "sprint39-runtime-family-backlog-001",
+  "version": 1,
+  "sourceMatrixId": "sprint36-chart-method-compatibility-001",
+  "inputCounts": {
+    "runtimeWrapperMissing": 48,
+    "chartMethodPairs": 188
+  },
+  "classificationCounts": {
+    "dedicated_wrapper_required": 5,
+    "generic_runtime_candidate": 3,
+    "out_of_scope_for_demo": 16,
+    "requires_new_input_contract": 24
+  },
+  "familyCount": 6,
+  "families": [
+    {
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "priority": 2,
+      "pairCount": 3,
+      "uniqueMethodCount": 3,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "CUSUM",
+          "count": 1
+        },
+        {
+          "methodName": "EWMA",
+          "count": 1
+        },
+        {
+          "methodName": "Geometric Moving Average",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CTRL-002",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-CTRL-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters."
+    },
+    {
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 3,
+      "pairCount": 4,
+      "uniqueMethodCount": 2,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "ADWIN",
+          "count": 2
+        },
+        {
+          "methodName": "SPRT",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-STREAM-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-STREAM-005",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse."
+    },
+    {
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 4,
+      "pairCount": 18,
+      "uniqueMethodCount": 8,
+      "uniqueChartCount": 9,
+      "topMethods": [
+        {
+          "methodName": "Classifier 기반 embedding drift detection",
+          "count": 3
+        },
+        {
+          "methodName": "Feature Map Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Autoencoder Representation Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Graph Embedding Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Wasserstein Distance",
+          "count": 2
+        },
+        {
+          "methodName": "MMD",
+          "count": 2
+        },
+        {
+          "methodName": "Energy Distance",
+          "count": 1
+        },
+        {
+          "methodName": "LSDD",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CLS-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-002",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-ANNOT-002",
+          "count": 1
+        },
+        {
+          "chartId": "CHART-DIST-001",
+          "count": 1
+        },
+        {
+          "chartId": "CHART-MV-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation."
+    },
+    {
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 16,
+      "uniqueMethodCount": 6,
+      "uniqueChartCount": 6,
+      "topMethods": [
+        {
+          "methodName": "DriftRetrainingClassifier",
+          "count": 3
+        },
+        {
+          "methodName": "OCDD",
+          "count": 3
+        },
+        {
+          "methodName": "SHAP Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Model Uncertainty Drift",
+          "count": 3
+        },
+        {
+          "methodName": "HAT",
+          "count": 2
+        },
+        {
+          "methodName": "Tree Feature 기반 감지",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-ADAPT-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ANOM-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-EXPL-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-UNC-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ADAPT-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-EXPL-002",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo."
+    },
+    {
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 6,
+      "uniqueMethodCount": 2,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "LLM Query / Semantic Distance 기반 감지",
+          "count": 3
+        },
+        {
+          "methodName": "Text Domain Classifier Drift",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-TEXT-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-TEXT-002",
+          "count": 3
+        }
+      ],
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract."
+    },
+    {
+      "familyId": "unclassified_dedicated_review",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 6,
+      "pairCount": 1,
+      "uniqueMethodCount": 1,
+      "uniqueChartCount": 1,
+      "topMethods": [
+        {
+          "methodName": "Generic / Fallback",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-GEN-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "manual review required before implementation."
+    }
+  ],
+  "rows": [
+    {
+      "chartId": "CHART-ADAPT-001",
+      "methodName": "HAT",
+      "methodVariantKey": "HAT_ADWIN_NODE_MONITORING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HAT_ADWIN_NODE_MONITORING__CHART-ADAPT-001",
+      "description": "Online accuracy trend + drift detector state timeline + alternate tree replacement markers + tree size trend. HAT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-001",
+      "methodName": "HAT",
+      "methodVariantKey": "HAT_ALTERNATE_TREE_REPLACEMENT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HAT_ALTERNATE_TREE_REPLACEMENT__CHART-ADAPT-001",
+      "description": "Online accuracy trend + drift detector state timeline + alternate tree replacement markers + tree size trend. HAT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "methodName": "DriftRetrainingClassifier",
+      "methodVariantKey": "DRIFT_RETRAINING_WITH_ADWIN",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DRIFT_RETRAINING_WITH_ADWIN__CHART-ADAPT-002",
+      "description": "Pre/post retraining performance line + drift alarm and retrain event timeline + champion/challenger comparison. Drift retraining workflow에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "methodName": "DriftRetrainingClassifier",
+      "methodVariantKey": "DRIFT_RETRAINING_WITH_PAGE_HINKLEY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DRIFT_RETRAINING_WITH_PAGE_HINKLEY__CHART-ADAPT-002",
+      "description": "Pre/post retraining performance line + drift alarm and retrain event timeline + champion/challenger comparison. Drift retraining workflow에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "methodName": "DriftRetrainingClassifier",
+      "methodVariantKey": "DRIFT_RETRAINING_CHAMPION_CHALLENGER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DRIFT_RETRAINING_CHAMPION_CHALLENGER__CHART-ADAPT-002",
+      "description": "Pre/post retraining performance line + drift alarm and retrain event timeline + champion/challenger comparison. Drift retraining workflow에 사용한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-002",
+      "methodName": "Wasserstein Distance",
+      "methodVariantKey": "SLICED_WASSERSTEIN_EMBEDDING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SLICED_WASSERSTEIN_EMBEDDING__CHART-ANNOT-002",
+      "description": "Reference/current distribution overlay + distance trend line + feature distance ranking bar. Wasserstein 같은 거리 기반 분포 이동 크기를 설명한다. 근사/투영 annotation. Approximate, sliced, quantile 변종에서 approximation error, projection count, quantile error를 caption 또는 보조 패널에 표시한다."
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "methodName": "OCDD",
+      "methodVariantKey": "ONE_CLASS_SVM_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_CLASS_SVM_DRIFT__CHART-ANOM-001",
+      "description": "Anomaly score distribution + anomaly rate trend + threshold line + PCA/UMAP scatter colored by outlier. OCDD/novelty detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "methodName": "OCDD",
+      "methodVariantKey": "ISOLATION_FOREST_DRIFT_SCORE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ISOLATION_FOREST_DRIFT_SCORE__CHART-ANOM-001",
+      "description": "Anomaly score distribution + anomaly rate trend + threshold line + PCA/UMAP scatter colored by outlier. OCDD/novelty detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "methodName": "OCDD",
+      "methodVariantKey": "AUTOENCODER_RECONSTRUCTION_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__AUTOENCODER_RECONSTRUCTION_DRIFT__CHART-ANOM-001",
+      "description": "Anomaly score distribution + anomaly rate trend + threshold line + PCA/UMAP scatter colored by outlier. OCDD/novelty detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "methodName": "Classifier 기반 embedding drift detection",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_ROC_AUC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DOMAIN_CLASSIFIER_ROC_AUC__CHART-CLS-001",
+      "description": "ROC curve + domain classifier score distribution + feature importance bar + embedding projection scatter. Classifier-based embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "methodName": "Classifier 기반 embedding drift detection",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_PROBABILITY_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DOMAIN_CLASSIFIER_PROBABILITY_DRIFT__CHART-CLS-001",
+      "description": "ROC curve + domain classifier score distribution + feature importance bar + embedding projection scatter. Classifier-based embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "methodName": "Classifier 기반 embedding drift detection",
+      "methodVariantKey": "CROSS_VALIDATED_DOMAIN_CLASSIFIER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CROSS_VALIDATED_DOMAIN_CLASSIFIER__CHART-CLS-001",
+      "description": "ROC curve + domain classifier score distribution + feature importance bar + embedding projection scatter. Classifier-based embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "CUSUM_ON_DISTANCE_STREAM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CUSUM_ON_DISTANCE_STREAM__CHART-CTRL-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "EWMA",
+      "methodVariantKey": "EWMA_BASELINE_REPLAY_THRESHOLD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EWMA_BASELINE_REPLAY_THRESHOLD__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "Geometric Moving Average",
+      "methodVariantKey": "GMA_WITH_EMPIRICAL_LIMIT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GMA_WITH_EMPIRICAL_LIMIT__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다."
+    },
+    {
+      "chartId": "CHART-DIST-001",
+      "methodName": "Wasserstein Distance",
+      "methodVariantKey": "SLICED_WASSERSTEIN_EMBEDDING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SLICED_WASSERSTEIN_EMBEDDING__CHART-DIST-001",
+      "description": "Reference/current distribution overlay + distance trend line + feature distance ranking bar. Wasserstein 같은 거리 기반 분포 이동 크기를 설명한다. 근사/투영 annotation. Approximate, sliced, quantile 변종에서 approximation error, projection count, quantile error를 caption 또는 보조 패널에 표시한다."
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "methodName": "SHAP Drift",
+      "methodVariantKey": "SHAP_VALUE_DISTRIBUTION_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SHAP_VALUE_DISTRIBUTION_TEST__CHART-EXPL-001",
+      "description": "SHAP summary comparison + SHAP value distribution by feature + importance rank change chart + class-wise SHAP heatmap. SHAP drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "methodName": "SHAP Drift",
+      "methodVariantKey": "GLOBAL_IMPORTANCE_RANK_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GLOBAL_IMPORTANCE_RANK_SHIFT__CHART-EXPL-001",
+      "description": "SHAP summary comparison + SHAP value distribution by feature + importance rank change chart + class-wise SHAP heatmap. SHAP drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "methodName": "SHAP Drift",
+      "methodVariantKey": "CLASS_CONDITIONAL_SHAP_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CLASS_CONDITIONAL_SHAP_DRIFT__CHART-EXPL-001",
+      "description": "SHAP summary comparison + SHAP value distribution by feature + importance rank change chart + class-wise SHAP heatmap. SHAP drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-002",
+      "methodName": "Tree Feature 기반 감지",
+      "methodVariantKey": "TIME_FEATURE_SPLIT_DETECTOR",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TIME_FEATURE_SPLIT_DETECTOR__CHART-EXPL-002",
+      "description": "Feature importance bar + time split count bar + split path diagram + segment distribution comparison. Tree feature 기반 감지에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-002",
+      "methodName": "Tree Feature 기반 감지",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_TREE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DOMAIN_CLASSIFIER_TREE__CHART-EXPL-002",
+      "description": "Feature importance bar + time split count bar + split path diagram + segment distribution comparison. Tree feature 기반 감지에 사용한다."
+    },
+    {
+      "chartId": "CHART-GEN-001",
+      "methodName": "Generic / Fallback",
+      "methodVariantKey": "GENERIC_METRIC_THRESHOLD_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "unclassified_dedicated_review",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "manual review required before implementation.",
+      "priority": 6,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GENERIC_METRIC_THRESHOLD_DRIFT__CHART-GEN-001",
+      "description": "Metric trend line + reference/current distribution overlay + threshold/alarm marker. 특정 chart family가 아직 정해지지 않은 method를 임시로 보고할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "methodName": "Energy Distance",
+      "methodVariantKey": "MULTIVARIATE_ENERGY_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MULTIVARIATE_ENERGY_DISTANCE__CHART-MV-001",
+      "description": "Energy distance trend + permutation null histogram + multivariate projection scatter. Energy distance 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "methodName": "MMD",
+      "methodVariantKey": "LINEAR_TIME_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LINEAR_TIME_MMD__CHART-MV-002",
+      "description": "MMD score trend + permutation null histogram + embedding projection scatter. Kernel MMD 기반 고차원 분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "methodName": "MMD",
+      "methodVariantKey": "STREAMING_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__STREAMING_MMD__CHART-MV-002",
+      "description": "MMD score trend + permutation null histogram + embedding projection scatter. Kernel MMD 기반 고차원 분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "methodName": "LSDD",
+      "methodVariantKey": "LSDD_WITH_PREPROCESSING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LSDD_WITH_PREPROCESSING__CHART-MV-003",
+      "description": "LSDD score trend + permutation null histogram + density difference heatmap/projection. 밀도 차이 기반 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "methodName": "Feature Map Drift",
+      "methodVariantKey": "MODEL_FEATURE_MAP_KS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MODEL_FEATURE_MAP_KS__CHART-REP-001",
+      "description": "Layerwise drift heatmap + feature map activation distribution + embedding projection by layer. Feature map drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "methodName": "Feature Map Drift",
+      "methodVariantKey": "MODEL_FEATURE_MAP_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MODEL_FEATURE_MAP_MMD__CHART-REP-001",
+      "description": "Layerwise drift heatmap + feature map activation distribution + embedding projection by layer. Feature map drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "methodName": "Feature Map Drift",
+      "methodVariantKey": "LAYERWISE_FEATURE_MAP_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LAYERWISE_FEATURE_MAP_DRIFT__CHART-REP-001",
+      "description": "Layerwise drift heatmap + feature map activation distribution + embedding projection by layer. Feature map drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "methodName": "Autoencoder Representation Drift",
+      "methodVariantKey": "LATENT_SPACE_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LATENT_SPACE_DRIFT__CHART-REP-002",
+      "description": "Reconstruction error distribution + error trend with threshold + latent projection scatter. Autoencoder representation drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "methodName": "Autoencoder Representation Drift",
+      "methodVariantKey": "RECONSTRUCTION_ERROR_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__RECONSTRUCTION_ERROR_DRIFT__CHART-REP-002",
+      "description": "Reconstruction error distribution + error trend with threshold + latent projection scatter. Autoencoder representation drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "methodName": "Autoencoder Representation Drift",
+      "methodVariantKey": "AUTOENCODER_DOMAIN_CLASSIFIER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__AUTOENCODER_DOMAIN_CLASSIFIER__CHART-REP-002",
+      "description": "Reconstruction error distribution + error trend with threshold + latent projection scatter. Autoencoder representation drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "methodName": "Graph Embedding Drift",
+      "methodVariantKey": "GRAPH_EMBEDDING_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GRAPH_EMBEDDING_MMD__CHART-REP-003",
+      "description": "Graph embedding projection scatter + node drift score heatmap + graph-level distance trend. Graph embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "methodName": "Graph Embedding Drift",
+      "methodVariantKey": "GRAPH_EMBEDDING_CENTROID_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GRAPH_EMBEDDING_CENTROID_SHIFT__CHART-REP-003",
+      "description": "Graph embedding projection scatter + node drift score heatmap + graph-level distance trend. Graph embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "methodName": "Graph Embedding Drift",
+      "methodVariantKey": "NODE_REPRESENTATION_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__NODE_REPRESENTATION_DRIFT__CHART-REP-003",
+      "description": "Graph embedding projection scatter + node drift score heatmap + graph-level distance trend. Graph embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "methodName": "ADWIN",
+      "methodVariantKey": "ADWIN_ERROR_RATE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ADWIN_ERROR_RATE__CHART-STREAM-001",
+      "description": "Stream line chart with alarm markers + adaptive window width trend + before/after window mean comparison. ADWIN에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "methodName": "ADWIN",
+      "methodVariantKey": "ADWIN_DISTANCE_STREAM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ADWIN_DISTANCE_STREAM__CHART-STREAM-001",
+      "description": "Stream line chart with alarm markers + adaptive window width trend + before/after window mean comparison. ADWIN에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-005",
+      "methodName": "SPRT",
+      "methodVariantKey": "SPRT_BERNOULLI_ERROR_RATE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SPRT_BERNOULLI_ERROR_RATE__CHART-STREAM-005",
+      "description": "Log likelihood ratio trend with decision boundaries + sequential decision timeline. SPRT에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-005",
+      "methodName": "SPRT",
+      "methodVariantKey": "SPRT_GAUSSIAN_MEAN_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SPRT_GAUSSIAN_MEAN_SHIFT__CHART-STREAM-005",
+      "description": "Log likelihood ratio trend with decision boundaries + sequential decision timeline. SPRT에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "methodName": "LLM Query / Semantic Distance 기반 감지",
+      "methodVariantKey": "QUERY_CENTROID_COSINE_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__QUERY_CENTROID_COSINE_SHIFT__CHART-TEXT-001",
+      "description": "Embedding projection scatter + semantic distance trend + topic proportion stacked bar + optional domain classifier ROC curve. LLM query semantic drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "methodName": "LLM Query / Semantic Distance 기반 감지",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_DRIFT__CHART-TEXT-001",
+      "description": "Embedding projection scatter + semantic distance trend + topic proportion stacked bar + optional domain classifier ROC curve. LLM query semantic drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "methodName": "LLM Query / Semantic Distance 기반 감지",
+      "methodVariantKey": "TOPIC_DISTRIBUTION_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TOPIC_DISTRIBUTION_SHIFT__CHART-TEXT-001",
+      "description": "Embedding projection scatter + semantic distance trend + topic proportion stacked bar + optional domain classifier ROC curve. LLM query semantic drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "methodName": "Text Domain Classifier Drift",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_ROC_AUC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_ROC_AUC__CHART-TEXT-002",
+      "description": "ROC curve + domain classifier score distribution + top text descriptor drift bar + embedding projection scatter. Text domain classifier drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "methodName": "Text Domain Classifier Drift",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_STAT_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_STAT_TEST__CHART-TEXT-002",
+      "description": "ROC curve + domain classifier score distribution + top text descriptor drift bar + embedding projection scatter. Text domain classifier drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "methodName": "Text Domain Classifier Drift",
+      "methodVariantKey": "TEXT_DESCRIPTOR_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DESCRIPTOR_DRIFT__CHART-TEXT-002",
+      "description": "ROC curve + domain classifier score distribution + top text descriptor drift bar + embedding projection scatter. Text domain classifier drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "methodName": "Model Uncertainty Drift",
+      "methodVariantKey": "SOFTMAX_CONFIDENCE_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SOFTMAX_CONFIDENCE_DRIFT__CHART-UNC-001",
+      "description": "Confidence/entropy distribution overlay + uncertainty trend + calibration curve + uncertainty by class bar. Model uncertainty drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "methodName": "Model Uncertainty Drift",
+      "methodVariantKey": "ENTROPY_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ENTROPY_DRIFT__CHART-UNC-001",
+      "description": "Confidence/entropy distribution overlay + uncertainty trend + calibration curve + uncertainty by class bar. Model uncertainty drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "methodName": "Model Uncertainty Drift",
+      "methodVariantKey": "PREDICTIVE_VARIANCE_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__PREDICTIVE_VARIANCE_DRIFT__CHART-UNC-001",
+      "description": "Confidence/entropy distribution overlay + uncertainty trend + calibration curve + uncertainty by class bar. Model uncertainty drift에 사용한다."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "scenarioId": "TC004-TT-ST-M1",
+  "mode": "A",
+  "title": "CASE-004 t-test 계열 CHART-MEAN-001 analysis",
+  "source": {
+    "sourceId": "c004-ttstm1",
+    "title": "CASE-004 numeric population shift",
+    "description": "Numeric statistical-test fixture for t-test 계열 CHART-MEAN-001",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case004_stat_mean_rank.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004-STAT-MEAN"
+    }
+  },
+  "feeder": {
+    "sourceId": "c004-ttstm1",
+    "datasetCaseId": "CASE-004-STAT-MEAN",
+    "csvPath": "testing/harness/data/case004_stat_mean_rank.csv",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 120,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "c004-ttstm1",
+    "sourceId": "c004-ttstm1",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 t-test 계열 adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "a-ttstm1",
+    "adapterId": "c004-ttstm1",
+    "featureId": "score",
+    "methodVariantId": 342,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "generic_statistical_test_window",
+    "params": {
+      "variant_id": "TWO_SAMPLE_STUDENT_T_TEST",
+      "value_col": "value",
+      "alpha": 0.05,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "an-ttstm1",
+    "chartId": "CHART-MEAN-001",
+    "payloadAdapterKey": "auto__TWO_SAMPLE_STUDENT_T_TEST__CHART-MEAN-001",
+    "chartOptions": {
+      "title": "CASE-004 TT-ST-M1 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 120,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 120,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

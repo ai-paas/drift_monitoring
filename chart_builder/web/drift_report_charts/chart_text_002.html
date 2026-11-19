@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-TEXT-002 - 도메인 분류기로 본 텍스트 구성 변화</title>
+  <link rel="stylesheet" href="./chart_text_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-TEXT-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>도메인 분류기 성능 곡선</h2>
+          <p>ROC AUC 0.89로 classifier가 baseline/current text를 구분한다.</p>
+        </div>
+        <svg id="rocChart" role="img" aria-label="text domain classifier ROC curve"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>분류기 점수 분포</h2>
+            <p>baseline peak는 0.19/34, current peak는 0.68/35로 분리된다.</p>
+          </div>
+          <svg id="scoreChart" role="img" aria-label="domain classifier score distribution"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>설명자 드리프트와 임베딩</h2>
+            <p>refund policy 0.32, enterprise SSO 0.25가 큰 descriptor 변화다.</p>
+          </div>
+          <svg id="descriptorChart" role="img" aria-label="top text descriptor drift bar and embedding projection"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Text domain classifier drift는 baseline/current text를 분류기가 구분할 수 있는지 확인한다.
+          이 예시에서는 AUC 0.89와 KS 0.47, refund descriptor 0.32가 함께 나타나
+          text domain classifier 기반 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch roc"></i>ROC</span>
+        <span><i class="swatch desc"></i>descriptor drift</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_text_002.js"></script>
+</body>
+</html>

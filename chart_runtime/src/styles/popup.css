@@ -1,0 +1,30 @@
+﻿/* Source candidate for runtime popup styles. */
+/* chart_runtime.css remains the browser artifact and source of truth until a build step exists. */
+
+.note-popup { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 24px; background: rgba(23,33,43,.32); }
+.note-popup[hidden] { display: none; }
+.note-popup-panel { display: grid; gap: 12px; width: min(420px, 100%); border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; box-shadow: 0 18px 44px rgba(23,33,43,.24); }
+.note-popup-close { justify-self: end; min-height: 30px; }
+.note-popup-body { color: var(--ink); font-size: 14px; line-height: 1.45; }
+.component-zoom-popup { position: fixed; inset: 0; z-index: 1200; display: grid; place-items: center; padding: 24px; background: rgba(23,33,43,.46); }
+.component-zoom-popup[hidden] { display: none; }
+.component-zoom-panel { display: grid; grid-template-rows: auto minmax(0, 1fr); width: min(1360px, calc(100vw - 48px)); height: min(920px, calc(100vh - 48px)); min-width: 0; min-height: 0; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 22px 64px rgba(23,33,43,.34); overflow: hidden; }
+.component-zoom-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); background: #fff; }
+.component-zoom-head h2 { margin: 0; font-size: 18px; line-height: 1.25; }
+.component-zoom-chart { padding: 16px; border: 0; border-radius: 0; background: #edf1f5; }
+.component-zoom-chart .area-zoom-link { display: none; }
+.component-zoom-chart .area-head h2 { font-size: 21px; }
+.component-zoom-chart .note-link { font-size: 12px; }
+.component-zoom-chart .summary-metric span { font-size: 14px; }
+.component-zoom-chart .summary-metric strong { font-size: 28px; }
+.component-zoom-chart .notes-card h2 { font-size: 21px; }
+.component-zoom-chart .notes-card p { font-size: 15px; }
+.component-zoom-chart .axis-tick { font-size: 10px; }
+.component-zoom-chart .axis-label,
+.component-zoom-chart .line-readout { font-size: 10px; }
+.component-zoom-chart .title-text,
+.component-zoom-chart .bar-label,
+.component-zoom-chart .cell-label,
+.component-zoom-chart .callout { font-size: 11px; }
+.component-zoom-chart .value { font-size: 24px; }
+.component-zoom-chart .label { font-size: 13px; }

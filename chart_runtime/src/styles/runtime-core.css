@@ -1,0 +1,54 @@
+﻿/* Source candidate for chart runtime layout/core styles. */
+/* chart_runtime.css remains the browser artifact and source of truth until a build step exists. */
+
+:root {
+  --bg: #f4f6f7;
+  --panel: #ffffff;
+  --ink: #17212b;
+  --muted: #64707d;
+  --line: #d7dde4;
+  --active: #2f6f9f;
+  --active-bg: #e7f1f8;
+  --warning: #c47d1f;
+  --danger: #b84444;
+  --ok: #247b63;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overflow: hidden; }
+body { background: var(--bg); color: var(--ink); font-family: "Segoe UI", "Malgun Gothic", Arial, sans-serif; }
+button, input { font: inherit; }
+.component-chart { min-height: 0; height: 100%; border: 1px solid var(--line); border-radius: 8px; background: #e9edf1; padding: 12px; overflow: hidden; }
+.chart-container { display: grid; gap: 12px; width: 100%; height: 100%; min-width: 0; min-height: 0; }
+.chart-area { position: relative; min-width: 0; min-height: 0; border: 1px solid #cbd3db; border-radius: 8px; background: #fff; overflow: hidden; }
+.area-body { position: absolute; inset: 0; min-width: 0; min-height: 0; overflow: hidden; }
+.component-stage { position: absolute; inset: 0; min-width: 0; min-height: 0; overflow: auto; scrollbar-gutter: stable both-edges; }
+.component-overlay { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: visible; }
+.runtime-component { width: 100%; height: 100%; min-width: min(100%, var(--runtime-min-w, 0px)); min-height: min(100%, var(--runtime-min-h, 0px)); }
+.runtime-component { position: relative; }
+.component-note-link { position: absolute; top: 6px; right: 6px; z-index: 12; min-height: 22px; padding: 3px 7px; border: 1px solid rgba(156, 169, 181, .75); border-radius: 5px; background: rgba(255,255,255,.92); color: var(--active); font-size: 10px; line-height: 1; font-weight: 850; cursor: pointer; }
+.component-note-link:hover { border-color: #8fb5cc; background: #fff; }
+.chart-note-link { margin-left: 8px; border-color: #a8c8dd; color: var(--active); }
+.interpretation-status { color: var(--muted); font-size: 12px; font-weight: 750; }
+.area-head { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: flex; justify-content: space-between; gap: 18px; padding: 16px 16px 0; overflow: visible; }
+.area-head h2 { margin: 0; color: var(--ink); font-size: 17px; line-height: 1.25; }
+.area-actions { display: flex; align-items: flex-start; justify-content: flex-end; gap: 10px; min-width: 0; }
+.area-head p { max-width: 292px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; text-align: right; }
+.chart-area[data-role="secondary_visual"] .area-head p { max-width: 190px; }
+.note-link { min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--muted); font-size: 10px; line-height: 1.2; font-weight: 800; text-decoration: underline; cursor: pointer; }
+.note-link:hover { color: var(--active); }
+.area-zoom-link { min-height: 22px; padding: 3px 7px; border: 1px solid rgba(156, 169, 181, .75); border-radius: 5px; background: rgba(255,255,255,.88); color: var(--muted); font-size: 10px; line-height: 1; font-weight: 850; cursor: pointer; }
+.area-zoom-link:hover { border-color: #8fb5cc; color: var(--active); background: #fff; }
+.area-zoom-floating { position: absolute; top: 10px; right: 10px; z-index: 5; }
+.area-label { position: absolute; top: 8px; left: 10px; z-index: 4; max-width: calc(100% - 20px); padding: 3px 6px; border-radius: 5px; background: rgba(255,255,255,.78); color: var(--muted); font-size: 10px; font-weight: 850; line-height: 1; pointer-events: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; height: 100%; padding: 8px; align-items: stretch; overflow: visible; }
+.summary-metric { display: grid; grid-template-rows: min-content minmax(0, 1fr); align-content: center; gap: 2px; min-width: 0; min-height: 0; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: #fff; overflow: visible; }
+.summary-metric span { color: var(--muted); font-size: 11px; line-height: 1.05; font-weight: 750; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.summary-metric strong { color: var(--ink); font-size: clamp(14px, 1.7vw, 20px); line-height: 0.98; min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+.summary-metric.summary-metric-long strong { font-size: clamp(11px, 1.2vw, 16px); line-height: 1.05; }
+.summary-metric.summary-metric-tiny strong { font-size: clamp(10px, 1vw, 13px); line-height: 1.08; }
+.notes-card { display: flex; justify-content: space-between; gap: 28px; width: 100%; height: 100%; padding: 18px 20px; }
+.notes-card h2 { margin: 0; color: var(--ink); font-size: 17px; line-height: 1.25; }
+.notes-card p { max-width: 805px; margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.legend-list { display: grid; gap: 8px; min-width: 220px; align-content: center; color: var(--muted); font-size: 13px; }
+.legend-list i { display: inline-block; width: 13px; height: 13px; margin-right: 8px; border-radius: 3px; vertical-align: -2px; }
+.timeline-note-link { cursor: pointer; fill: var(--ink); text-decoration: underline; pointer-events: auto; }

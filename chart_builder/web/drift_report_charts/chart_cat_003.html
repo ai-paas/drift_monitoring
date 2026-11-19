@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>검색 감소가 만든 L-infinity 범주 변화 신호</title>
+  <link rel="stylesheet" href="./chart_cat_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CAT-003">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>범주 비율 비교</h2>
+          <p>검색 비율이 기준 0.28에서 현재 0.16으로 줄어 가장 큰 단일 변화를 만든다.</p>
+        </div>
+        <svg id="proportionChart" role="img" aria-label="기준 구간과 현재 구간의 category 비율 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>최대 범주 변화량</h2>
+            <p>|delta| 0.12인 검색 감소가 1순위다.</p>
+          </div>
+          <svg id="maxDeltaChart" role="img" aria-label="최대 category delta 강조"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>최대거리 추세</h2>
+            <p>최근 window 값 0.12가 관리기준 0.10을 넘었다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="L-infinity distance 시간 추세"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시는 검색 category가 기준 0.28에서 현재 0.16으로 0.12 감소하면서 L-infinity 0.120을 만든다.
+          구매는 0.15에서 0.23으로 0.08 증가하지만 최대 변화는 검색 감소이며, 추세도 0.05에서 0.12까지 올라 관리기준 0.10을 넘었다.
+          따라서 전체 범주가 고르게 흔들린 상황보다 검색 유입 감소에 집중된 category drift 후보로 읽는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 비율</span>
+        <span><i class="swatch current"></i>현재 비율</span>
+        <span><i class="swatch max"></i>최대 Delta</span>
+        <span><i class="swatch threshold"></i>관리 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_cat_003.js"></script>
+</body>
+</html>

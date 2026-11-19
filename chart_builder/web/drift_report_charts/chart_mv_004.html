@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>다변량 평균 벡터의 기준 범위 이탈</title>
+  <link rel="stylesheet" href="./chart_mv_004.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-MV-004">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>기준·현재 평균 위치</h2>
+          <p>기준 평균 중심 약 (-0.2, -0.1)에서 현재 평균 중심 약 (1.9, 1.8)로 이동한 방향을 읽는다.</p>
+        </div>
+        <svg id="pcaChart" role="img" aria-label="기준 구간과 현재 구간의 PCA scatter 및 평균 이동"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>T2 관리도</h2>
+            <p>8번째 window부터 UCL 14.0을 넘고 마지막 값은 25.7이다.</p>
+          </div>
+          <svg id="controlChart" role="img" aria-label="window별 Hotelling T2 관리도"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>특성별 기여도</h2>
+            <p>소득 36%, 거래금액 28%가 평균 이동 기여의 상위 항목이다.</p>
+          </div>
+          <svg id="contributionChart" role="img" aria-label="Hotelling T2 feature contribution bar chart"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 Hotelling T2가 25.7로 UCL 14.0을 초과하고 p-value는 0.004이다.
+          PCA 화면에서도 현재 평균 중심이 기준 정상 변동 타원 밖의 우상단으로 이동하며,
+          소득 36%와 거래금액 28%가 평균 벡터 이동을 가장 크게 설명한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch t2"></i>T2 statistic</span>
+        <span><i class="swatch threshold"></i>UCL</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_mv_004.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오류율 상승과 DDM 드리프트 경보</title>
+  <link rel="stylesheet" href="./chart_err_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ERR-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>오류율 추세</h2>
+          <p>오류율이 0.27 warning 기준과 0.36 drift 기준을 차례로 넘는 흐름을 읽는다.</p>
+        </div>
+        <svg id="errorTrend" role="img" aria-label="DDM warning과 drift 기준선이 표시된 오류율 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>드리프트 기준 초과 여유</h2>
+            <p>t=26부터 drift 기준 대비 여유가 0을 넘어서는지 본다.</p>
+          </div>
+          <svg id="thresholdChart" role="img" aria-label="DDM warning과 drift 기준 초과 여유"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경고 버퍼 타임라인</h2>
+            <p>t=22 warning buffer가 t=26 drift 경보로 이어지는 순서</p>
+          </div>
+          <svg id="bufferTimeline" role="img" aria-label="DDM warning buffer 상태 전환 timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          DDM은 error rate의 p + s가 최소 error 상태의 p_min + 2s_min을 넘으면 warning,
+          p_min + 3s_min을 넘으면 drift로 표시한다. 이 예시에서는 오류율이 0.46까지 상승하고
+          t=22 warning buffer가 t=26 drift 경보로 이어져 DDM 기준 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch error"></i>error rate</span>
+        <span><i class="swatch warning"></i>warning threshold</span>
+        <span><i class="swatch drift"></i>drift threshold</span>
+        <span><i class="swatch buffer"></i>warning buffer</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_err_001.js"></script>
+</body>
+</html>

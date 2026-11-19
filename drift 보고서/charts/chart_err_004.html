@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-004 - ECDD 통계량 상승과 오류율 드리프트 감지</title>
+  <link rel="stylesheet" href="./chart_err_004.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ERR-004">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>ECDD Statistic Control Chart</h2>
+          <p>통계량이 t=22에서 0.72 warning limit, t=26에서 0.95 drift limit을 넘는다.</p>
+        </div>
+        <svg id="statChart" role="img" aria-label="ECDD statistic control chart with warning and drift limits"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Error Rate Trend</h2>
+            <p>weighted error rate가 0.07에서 0.45까지 상승한다.</p>
+          </div>
+          <svg id="errorChart" role="img" aria-label="weighted error rate trend"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Warning / Drift State</h2>
+            <p>t=1~21 normal, t=22~25 warning, t=26 이후 drift로 읽는다.</p>
+          </div>
+          <svg id="stateTimeline" role="img" aria-label="ECDD warning and drift state timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          ECDD-WT는 error stream을 가중 평균 형태로 누적해 statistic control chart로 감시한다.
+          이 예시에서는 statistic이 1.28까지 오르고 weighted error rate도 0.45까지 상승해,
+          t=26 이후를 weighted error-rate detector 기반 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch stat"></i>ECDD statistic</span>
+        <span><i class="swatch error"></i>error rate</span>
+        <span><i class="swatch warning"></i>warning limit</span>
+        <span><i class="swatch drift"></i>drift limit</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_err_004.js"></script>
+</body>
+</html>

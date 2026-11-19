@@ -1,0 +1,29 @@
+{
+  "packId": "v2_representative",
+  "description": "Sprint 29 representative V2 regression pack. It preserves all executable seed rows and intentionally leaves catalog candidate_gap rows out of routine E2E execution.",
+  "selectionPolicy": {
+    "rowStatus": "executable",
+    "modePolicy": "use row harness modes; ADWIN stream row runs both A and B",
+    "coverageIntent": [
+      "stream mean detector",
+      "technical signal variant",
+      "page-hinkley stream detector",
+      "supervised error-rate detectors",
+      "numeric PSI distribution detector",
+      "numeric distance/window detector",
+      "KSWIN stream/window detector"
+    ]
+  },
+  "rowIds": [
+    "V2-ROW-CASE010-ADWIN-STREAM001",
+    "V2-ROW-CASE011-ADWIN-STREAM001-TECHNICAL",
+    "V2-ROW-CASE010-PAGEHINKLEY-STREAM003",
+    "V2-ROW-CASE011-DDM-ERR001",
+    "V2-ROW-CASE011-RDDM-ERR002",
+    "V2-ROW-CASE011-EDDM-ERR003",
+    "V2-ROW-CASE004-PSI-PSI001",
+    "V2-ROW-CASE004-SCOREBAND-PSI001",
+    "V2-ROW-CASE004-WASSERSTEIN-DIST001",
+    "V2-ROW-CASE004-KSWIN-STREAM002"
+  ]
+}

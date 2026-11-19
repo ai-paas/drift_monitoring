@@ -1,0 +1,10 @@
+{
+  "packId": "sprint66_classifier_embedding",
+  "title": "Sprint 66 classifier embedding drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V25-ROW-CASE014-CLS-ROC-AUC-CLS001",
+    "V25-ROW-CASE014-CLS-PROBABILITY-CLS001",
+    "V25-ROW-CASE014-CLS-CV-CLS001"
+  ]
+}

@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Layout Designer</title>
+  <link rel="stylesheet" href="./split_layout_practice.css">
+</head>
+<body>
+  <main class="practice-app" aria-label="Layout Designer">
+    <aside class="control-panel">
+      <header>
+        <p class="eyebrow">Layout Designer</p>
+        <h1>Split Areas</h1>
+      </header>
+
+      <section class="selected-panel">
+        <span>Selected Area</span>
+        <strong id="selectedAreaLabel">main</strong>
+      </section>
+
+      <section class="tool-section">
+        <h2>Split Selected Area</h2>
+        <div class="split-actions">
+          <button id="splitVerticalButton" type="button">상하 분할</button>
+          <button id="splitHorizontalButton" type="button">좌우 분할</button>
+        </div>
+      </section>
+
+      <section class="tool-section">
+        <h2>New Area Name</h2>
+        <label class="field">
+          <span>New area name</span>
+          <input id="newAreaNameInput" type="text" value="side">
+        </label>
+        <p class="hint">비워두면 area_2, area_3처럼 자동 생성됩니다.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>Saved Layouts</h2>
+        <label class="field">
+          <span>Layout name</span>
+          <input id="layoutNameInput" type="text" placeholder="layout name">
+        </label>
+        <label class="field">
+          <span>Saved layout</span>
+          <select id="savedLayoutSelect"></select>
+        </label>
+        <div class="stack-actions">
+          <button id="saveLayoutButton" type="button">Save Layout</button>
+          <button id="loadLayoutButton" type="button">Load Layout</button>
+          <button id="deleteLayoutButton" type="button">Delete Layout</button>
+          <button id="resetButton" type="button">Reset Canvas</button>
+        </div>
+      </section>
+
+      <section class="tool-section">
+        <h2>How It Works</h2>
+        <p class="hint">Area를 선택한 뒤 상하 또는 좌우로 쪼갭니다. 구분선을 드래그하면 split ratio만 바뀝니다.</p>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <header class="workspace-header">
+        <div>
+          <p class="eyebrow">Canvas</p>
+          <h2>Dock-style Split Layout</h2>
+        </div>
+        <p id="statusText" class="status-text">main 영역을 선택했습니다.</p>
+      </header>
+
+      <section id="layoutCanvas" class="layout-canvas" aria-label="Split layout canvas"></section>
+    </section>
+
+    <aside class="payload-panel">
+      <header>
+        <p class="eyebrow">Generated</p>
+        <h1>Payload</h1>
+      </header>
+      <label class="field fill">
+        <span>Split Tree</span>
+        <textarea id="treeViewer" spellcheck="false" readonly></textarea>
+      </label>
+      <label class="field fill">
+        <span>Semantic Grid Areas</span>
+        <textarea id="gridViewer" spellcheck="false" readonly></textarea>
+      </label>
+    </aside>
+  </main>
+  <script src="./split_layout_practice.js"></script>
+</body>
+</html>

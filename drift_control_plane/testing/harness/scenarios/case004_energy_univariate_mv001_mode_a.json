@@ -1,0 +1,97 @@
+{
+  "scenarioId": "TC004-ENERGY-UNI-MV001",
+  "mode": "A",
+  "title": "CASE-004 Energy Distance CHART-MV-001 univariate analysis",
+  "source": {
+    "sourceId": "case-004-energy-univariate-mv001",
+    "title": "CASE-004 numeric population shift",
+    "description": "Numeric score distribution shift for Energy Distance CHART-MV-001",
+    "sourceType": "test_db",
+    "sourceUrl": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-004-energy-univariate-mv001",
+    "datasetCaseId": "CASE-004",
+    "csvPath": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 120,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-004-energy-univariate-mv001",
+    "sourceId": "case-004-energy-univariate-mv001",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 Energy Distance univariate adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case004-energy-univariate-mv001",
+    "adapterId": "case-004-energy-univariate-mv001",
+    "featureId": "score",
+    "methodVariantId": 650,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "energy_distance_window",
+    "params": {
+      "variant_id": "UNIVARIATE_ENERGY_DISTANCE",
+      "value_col": "value",
+      "threshold": 0.2,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case004-energy-univariate-mv001",
+    "chartId": "CHART-MV-001",
+    "payloadAdapterKey": "auto__UNIVARIATE_ENERGY_DISTANCE__CHART-MV-001",
+    "chartOptions": {
+      "title": "CASE-004 Energy Distance analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 120,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 120,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

@@ -1,0 +1,449 @@
+﻿component,chart
+0보다 작은 영역은 현재 CDF가 기준 CDF보다 아래에 있는 구간이다,CHART-EDF-004
+0보다 큰 영역은 현재 CDF가 기준 CDF보다 위에 있는 구간이다,CHART-EDF-004
+95% confidence interval과 null OR=1 기준선,CHART-CAT-004
+accept H0 lower boundary,CHART-STREAM-005
+accept H1 upper boundary,CHART-STREAM-005
+activation shift 방향,CHART-REP-001
+AD 통계량: Anderson-Darling 계열 tail-sensitive 검정량,CHART-EDF-002
+adaptive window width trend,CHART-STREAM-001
+ADWIN alarm marker,CHART-STREAM-001
+alarm and retrain workflow event timeline,CHART-ADAPT-002
+alarm marker,CHART-ANOM-001
+alarm marker,CHART-CTRL-002
+alarm marker,CHART-CTRL-003
+alarm marker,CHART-GEN-001
+alarm marker,CHART-STREAM-003
+alarm marker,CHART-STREAM-004
+alarm threshold,CHART-STREAM-002
+alarm threshold,CHART-STREAM-003
+alarm 구간의 time-aligned movement,CHART-CTRL-003
+alarm 시점의 metric contribution bar,CHART-CTRL-003
+alarm 시점의 window 축소,CHART-STREAM-001
+alarm 이전 window 평균,CHART-STREAM-001
+alarm 이후 window 평균,CHART-STREAM-001
+alarm 이후 지속 구간,CHART-REP-003
+alternate tree size trend,CHART-ADAPT-001
+anomaly rate trend,CHART-ANOM-001
+anomaly score threshold,CHART-ANOM-001
+approximate/quantile drift score line,CHART-ANNOT-002
+approximation error band,CHART-ANNOT-002
+AUC 요약,CHART-TEXT-002
+baseline anomaly score distribution,CHART-ANOM-001
+baseline graph embedding projection,CHART-REP-003
+"baseline normal, current normal, current outlier 구분",CHART-ANOM-001
+baseline/current activation distribution,CHART-REP-001
+baseline/current classifier score distribution,CHART-TEXT-002
+baseline/current cluster,CHART-TEXT-001
+baseline/current cluster 분리,CHART-REP-001
+baseline/current cluster 분리,CHART-REP-002
+baseline/current confidence distribution,CHART-UNC-001
+baseline/current domain probability distribution,CHART-CLS-001
+baseline/current mean SHAP bar,CHART-EXPL-001
+baseline/current reconstruction error distribution,CHART-REP-002
+baseline/current 누적 곡선,CHART-ANNOT-001
+baseline/current 분포 비교,CHART-EXPL-001
+BC 계수: Bhattacharyya coefficient,CHART-PROB-003
+before/after 평균 차이,CHART-STREAM-001
+Bhattacharyya coefficient는 두 확률분포의 유사도를 제곱근 확률 공간에서 요약한다,CHART-PROB-003
+Bhattacharyya: Bhattacharyya distance,CHART-PROB-003
+bin별 PSI contribution 순위,CHART-PSI-001
+C+ / C- 방향성 요약,CHART-CTRL-001
+calibration curve,CHART-UNC-001
+category별 현재 비율 - 기준 비율 순위,CHART-CAT-003
+center line,CHART-CTRL-002
+centroid shift line,CHART-TEXT-001
+challenger promotion marker,CHART-ADAPT-002
+"champion/challenger AUC, F1, latency 비교",CHART-ADAPT-002
+change point marker,CHART-BOCD-001
+change point probability heatmap,CHART-BOCD-001
+channel별 drift score,CHART-REP-001
+Chi-square: 전체 카이제곱 통계량,CHART-CAT-001
+class-wise SHAP drift heatmap,CHART-EXPL-001
+class별 uncertainty bar,CHART-UNC-001
+Cohen's d 효과크기,CHART-MEAN-001
+continue/review/accept H1 decision timeline,CHART-STREAM-005
+control limit,CHART-CTRL-001
+"core, hub, bridge, leaf, new group",CHART-REP-003
+current anomaly score distribution,CHART-ANOM-001
+current graph embedding projection,CHART-REP-003
+current-dominant leaf,CHART-EXPL-002
+CUSUM alarm marker,CHART-CTRL-001
+CvM 통계량: 전체 CDF 차이의 제곱 누적량을 표본 규모로 보정한 요약값,CHART-EDF-003
+D+ / D-: 위쪽 편차와 아래쪽 편차의 크기,CHART-EDF-004
+"D+는 양의 최대 편차, D-는 음의 최대 편차의 절댓값이다",CHART-EDF-004
+DDM reset과 RDDM retain/reactive reset 비교,CHART-ERR-002
+DDM/RDDM comparison timeline,CHART-ERR-002
+decision bound line,CHART-STREAM-004
+decision marker,CHART-STREAM-005
+delta가 큰 category는 drift 설명 문장의 핵심 후보가 된다,CHART-PROB-002
+detector state timeline,CHART-ADAPT-001
+df / p-value: 자유도와 근사 p-value,CHART-CAT-001
+distance threshold,CHART-REP-003
+distance-between-errors score trend,CHART-ERR-003
+domain classifier ROC curve,CHART-CLS-001
+domain classifier ROC curve,CHART-TEXT-002
+drift alarm marker,CHART-ADAPT-002
+drift alarm marker,CHART-STREAM-004
+drift bound,CHART-ERR-005
+drift limit,CHART-ERR-004
+drift marker,CHART-ERR-004
+drift marker,CHART-ERR-005
+drift marker,CHART-ERR-006
+drift threshold,CHART-ERR-001
+drift threshold,CHART-ERR-002
+drift threshold,CHART-ERR-003
+drift threshold,CHART-ERR-006
+drift threshold line,CHART-ANNOT-002
+drift 이후 오류 event 밀집 구간,CHART-ERR-003
+ECDD statistic trend,CHART-ERR-004
+effect size,CHART-GEN-001
+embedding projection scatter,CHART-CLS-001
+embedding projection scatter 요약,CHART-TEXT-002
+entropy 또는 predictive variance trend,CHART-UNC-001
+error event raster,CHART-ERR-003
+error rate trend,CHART-ERR-001
+error rate trend,CHART-ERR-002
+error 또는 weighted error trend,CHART-ERR-005
+event count와 전체 표본 수,CHART-CAT-004
+event와 non-event count 및 비율,CHART-CAT-004
+EWMA/GMA control chart,CHART-CTRL-002
+EWMA/GMA smoothed average,CHART-CTRL-002
+exact/reference drift score line,CHART-ANNOT-002
+feature importance bar,CHART-CLS-001
+feature importance bar,CHART-EXPL-002
+feature x class drift score,CHART-EXPL-001
+feature별 T2 contribution 순위,CHART-MV-004
+final metric,CHART-GEN-001
+frequency t별 ECF imaginary component 차이,CHART-DISTSHAPE-001
+frequency t별 ECF real component 차이,CHART-DISTSHAPE-001
+frequency별 Epps-Singleton statistic 기여도,CHART-DISTSHAPE-001
+generic drift metric trend,CHART-GEN-001
+graph-level MMD 또는 centroid distance trend,CHART-REP-003
+H1 방향 기준선,CHART-STREAM-005
+Hellinger: 두 확률분포의 제곱근 공간 거리,CHART-PROB-002
+high drift layer 강조,CHART-REP-001
+high-drift bridge node marker,CHART-REP-003
+HINC: normalized complement 거리,CHART-HIST-001
+Intersection: 전체 histogram intersection 합,CHART-HIST-001
+"IQR, whisker, 중심선, 표준편차 라벨",CHART-VAR-001
+JS Distance: Jensen-Shannon divergence를 bounded distance 형태로 변환한 값,CHART-PROB-002
+kernel bandwidth 영향 범위를 암시하는 분포 영역,CHART-MV-002
+KLqp: 현재 분포 q를 기준 분포 p와 비교한 KL Divergence,CHART-PROB-001
+KS 통계량: 두 경험 CDF 사이의 최대 차이,CHART-EDF-001
+"KS, Fisher, Mann-Whitney U, CUSUM, EWMA/GMA 변종 적용 matrix",CHART-ANNOT-001
+KSWIN alarm marker,CHART-STREAM-002
+Kuiper V: 양의 최대 편차와 음의 최대 편차를 합친 통계량,CHART-EDF-004
+Kuiper 통계량 V는 D+ + D-로 계산한다,CHART-EDF-004
+latent projection scatter,CHART-REP-002
+layer embedding projection scatter,CHART-REP-001
+layerwise drift heatmap,CHART-REP-001
+log likelihood ratio trend,CHART-STREAM-005
+low-confidence region marker,CHART-UNC-001
+lower direction marker,CHART-ANNOT-001
+lower/less one-sided 판단 카드,CHART-ANNOT-001
+Mahalanobis distance가 높은 sample 강조,CHART-MV-005
+main tree size trend,CHART-ADAPT-001
+Mann-Whitney U: 현재 구간 값이 기준 구간 값보다 큰 상대적 순위 쌍의 정도,CHART-RANK-001
+margin 0 초과 구간,CHART-ERR-001
+mean difference trend,CHART-ERR-005
+MEWMA statistic trend,CHART-CTRL-003
+monitoring/warning/drift state timeline,CHART-STREAM-004
+negative CUSUM C-,CHART-CTRL-001
+node group별 drift score heatmap,CHART-REP-003
+normal/warning/alarm state timeline,CHART-CTRL-002
+normal/warning/alarm/retrain-monitor 상태,CHART-ADAPT-002
+normal/warning/alternate/replace 상태,CHART-ADAPT-001
+normal/warning/drift state timeline,CHART-ERR-001
+normal/warning/drift state timeline,CHART-ERR-003
+normal/warning/drift state timeline,CHART-ERR-004
+normal/warning/drift state timeline,CHART-ERR-006
+normal/warning/drift state timeline,CHART-STREAM-003
+odds ratio forest plot,CHART-CAT-004
+online accuracy trend,CHART-ADAPT-001
+optional domain classifier ROC curve,CHART-TEXT-001
+overall - recent accuracy gap,CHART-ERR-006
+overall accuracy trend,CHART-ERR-006
+"Overlap 계수: bin별 min기준 확률, 현재 확률의 합",CHART-PROB-003
+overlap 영역이 작아질수록 두 분포가 덜 겹친다,CHART-PROB-003
+p+s와 drift threshold의 margin,CHART-ERR-001
+p-value score 또는 confidence score,CHART-GEN-001
+p-value 기준 충족 여부,CHART-MEAN-001
+Page-Hinkley alarm marker,CHART-STREAM-003
+Page-Hinkley statistic line,CHART-STREAM-003
+PCA projection scatter,CHART-MV-005
+PCA/UMAP projection scatter,CHART-ANOM-001
+peak 위치가 회전하거나 특정 방향의 빈도가 바뀌면 circular data drift 후보로 본다,CHART-EDF-004
+permutation null distribution histogram,CHART-MV-001
+permutation null distribution histogram,CHART-MV-002
+permutation null distribution histogram,CHART-MV-003
+permutation p-value,CHART-MV-001
+permutation p-value,CHART-MV-002
+permutation p-value,CHART-MV-003
+positive CUSUM C+,CHART-CTRL-001
+pre/post retraining validation AUC line,CHART-ADAPT-002
+primary/secondary change marker,CHART-BOCD-001
+probability 0.5 기준선,CHART-CLS-001
+projection count별 score spread,CHART-ANNOT-002
+projection 중심 간 gap 표시,CHART-MV-001
+"q25, q50, q75, tail quantile error",CHART-ANNOT-002
+query embedding projection scatter,CHART-TEXT-001
+random baseline diagonal,CHART-TEXT-002
+random classifier diagonal,CHART-CLS-001
+rank change connector,CHART-EXPL-001
+rate threshold,CHART-ANOM-001
+raw metric trend,CHART-CTRL-001
+raw metric trend,CHART-CTRL-002
+raw stream metric,CHART-STREAM-003
+reactive reset 이후 window 축소,CHART-ERR-002
+recent accuracy trend,CHART-ERR-006
+reconstruction error trend,CHART-REP-002
+reference mean,CHART-STREAM-004
+reference/current distribution overlay,CHART-GEN-001
+replacement marker,CHART-ADAPT-001
+representative split path diagram,CHART-EXPL-002
+reset marker,CHART-BOCD-001
+retained window size trend,CHART-ERR-002
+retrain event marker,CHART-ADAPT-002
+ROC-AUC annotation,CHART-CLS-001
+rolling mean line,CHART-STREAM-001
+run length posterior heatmap,CHART-BOCD-001
+running mean,CHART-STREAM-003
+sample별 Mahalanobis distance histogram,CHART-MV-005
+score 분포 분리 여부,CHART-TEXT-002
+segment mean line,CHART-BOCD-001
+segment별 baseline/current distribution comparison,CHART-EXPL-002
+semantic distance trend,CHART-TEXT-001
+sequential evidence line,CHART-STREAM-004
+shift 표시는 기준 대비 현재 비중 차이가 큰 각도 구간을 강조한다,CHART-EDF-004
+"signed delta가 양수면 현재 비율 증가, 음수면 현재 비율 감소를 의미한다",CHART-CAT-002
+signed delta를 함께 표시해 증가/감소 방향 확인,CHART-CAT-003
+stream error rate 또는 metric trend,CHART-STREAM-005
+stream metric line,CHART-STREAM-001
+stream metric line,CHART-STREAM-002
+stream trend,CHART-BOCD-001
+stream value trend,CHART-STREAM-004
+tail 쪽 점이 크게 벗어나면 중심부보다 tail 차이가 큰 것이다,CHART-EDF-002
+Tail 차이: 하위/상위 tail 분위수 차이를 요약한 보조 지표,CHART-EDF-002
+target error line,CHART-ANNOT-002
+target mean,CHART-CTRL-001
+threshold,CHART-GEN-001
+threshold line,CHART-GEN-001
+threshold line,CHART-REP-002
+threshold line,CHART-TEXT-001
+threshold 초과 marker,CHART-REP-002
+threshold 초과 영역,CHART-MV-005
+time split count bar,CHART-EXPL-002
+tolerance line,CHART-ANNOT-002
+top contributing metric,CHART-CTRL-003
+top text descriptor drift bar,CHART-TEXT-002
+topic proportion stacked bar,CHART-TEXT-001
+Total Variation: 전체 category probability mass 이동의 절반,CHART-CAT-002
+two-sided guard band 표시,CHART-ERR-005
+two-sided lower guard band,CHART-ERR-005
+UCL,CHART-CTRL-003
+UCL 또는 운영 관리 기준,CHART-MV-004
+"UCL, LCL, center line",CHART-CTRL-002
+uncertainty threshold,CHART-UNC-001
+upper direction marker,CHART-ANNOT-001
+upper/greater one-sided 판단 카드,CHART-ANNOT-001
+variance ratio 판단 기준선,CHART-VAR-001
+violin 폭은 값 구간별 상대 밀도를 보여준다,CHART-RANK-001
+warning bound,CHART-ERR-005
+warning buffer 구간,CHART-ERR-001
+warning limit,CHART-ERR-004
+warning marker,CHART-ERR-006
+warning threshold,CHART-ERR-001
+warning threshold,CHART-ERR-002
+warning threshold,CHART-ERR-003
+warning threshold,CHART-ERR-006
+"warning, alternate, replacement marker",CHART-ADAPT-001
+"warning, drift, reactive reset marker",CHART-ERR-002
+warning/drift marker,CHART-ERR-001
+warning/drift marker,CHART-ERR-003
+warning/drift marker,CHART-ERR-004
+warning/drift marker,CHART-ERR-005
+warning/drift marker timeline,CHART-ERR-005
+Wasserstein distance는 이러한 분위수 이동량을 평균한 값으로 해석할 수 있다,CHART-DIST-001
+Wasserstein: 현재 대상 feature의 1D Wasserstein distance,CHART-DIST-001
+weighted error rate trend,CHART-ERR-004
+window 비교 시점별 KS statistic 추세,CHART-STREAM-002
+window별 Energy distance 추세,CHART-MV-001
+window별 Hotelling T2 statistic 추세,CHART-MV-004
+window별 L-infinity distance 추세,CHART-CAT-003
+window별 LSDD score 추세,CHART-MV-003
+window별 MMD score 추세,CHART-MV-002
+window별 PSI 추세,CHART-PSI-001
+window별 평균 Mahalanobis distance 추세,CHART-MV-005
+x축은 window 순서다,CHART-DIST-001
+x축은 window 순서다,CHART-PROB-001
+x축은 window 순서다,CHART-PROB-003
+x축은 기준 구간의 분위수다,CHART-EDF-002
+x축은 특성값이다,CHART-EDF-003
+x축은 현재 확률 - 기준 확률이다,CHART-PROB-002
+y축은 0에서 1 사이 bounded distance다,CHART-PROB-002
+y축은 1 - histogram intersection 형태의 normalized complement다,CHART-HIST-001
+y축은 Bhattacharyya distance다,CHART-PROB-003
+y축은 Total Variation Distance다,CHART-CAT-002
+y축은 window별 KL Divergence다,CHART-PROB-001
+y축은 window별 Wasserstein distance다,CHART-DIST-001
+y축은 기준 CDF - 현재 CDF 차이를 제곱한 뒤 왼쪽부터 누적한 값이다,CHART-EDF-003
+y축은 현재 CDF - 기준 CDF다,CHART-EDF-004
+y축은 현재 구간의 분위수다,CHART-EDF-002
+가장 큰 기여 category는 보고서에서 우선 설명한다,CHART-CAT-001
+가장 큰 기여 frequency 강조,CHART-DISTSHAPE-001
+각 bin의 signed 비율 변화 표시,CHART-PSI-001
+각 집단의 대략적인 분포 영역,CHART-MV-001
+"값은 0에서 1 사이이며, 커질수록 전체 probability mass 이동이 크다",CHART-CAT-002
+값이 커질수록 histogram overlap이 줄어든다,CHART-HIST-001
+곡선의 기울기가 커지는 구간은 drift 근거가 많이 쌓이는 값 범위다,CHART-EDF-003
+과거 sliding window 영역,CHART-STREAM-002
+과거 window sample의 ECDF,CHART-STREAM-002
+관리 기준선 표시,CHART-PSI-001
+관리 기준선을 함께 표시,CHART-CAT-003
+관측 Energy distance statistic,CHART-MV-001
+관측 LSDD score,CHART-MV-003
+관측 MMD score,CHART-MV-002
+괄호 안 값은 signed delta다,CHART-CAT-002
+굵은 검은 선은 중앙값이다,CHART-RANK-001
+근사 p-value: 같은 분포라는 귀무가설을 기각할 통계적 근거,CHART-EDF-001
+근사 p-value: 같은 분포라는 귀무가설을 기각할 통계적 근거,CHART-EDF-002
+근사 p-value: 같은 분포라는 귀무가설을 기각할 통계적 근거,CHART-EDF-003
+근사 p-value: 같은 분포라는 귀무가설을 기각할 통계적 근거,CHART-EDF-004
+기대 빈도가 낮은 category는 카이제곱 근사 신뢰성을 별도로 확인해야 한다,CHART-CAT-001
+기준 구간과 현재 구간을 합쳐 값 순서대로 rank를 매긴다,CHART-RANK-001
+기준 구간과 현재 구간의 2x2 contingency mosaic,CHART-CAT-004
+기준 구간과 현재 구간의 bin별 비율 grouped bar,CHART-PSI-001
+기준 구간과 현재 구간의 category 비율 grouped bar,CHART-CAT-003
+기준 구간과 현재 구간의 density overlay,CHART-DISTSHAPE-001
+기준 구간과 현재 구간의 embedding projection scatter,CHART-MV-002
+기준 구간과 현재 구간의 multivariate projection scatter,CHART-MV-001
+기준 구간과 현재 구간의 PCA scatter,CHART-MV-004
+기준 구간과 현재 구간의 violin/box plot,CHART-MEAN-001
+기준 구간과 현재 구간의 violin/box plot,CHART-VAR-001
+기준 구간의 정상 변동 타원,CHART-MV-004
+기준 대비 현재 밀도 차이 heatmap,CHART-MV-003
+기준 대비 현재 확률이 크게 달라진 category는 delta bar에서 다시 확인한다,CHART-PROB-002
+기준 정상 변동 타원,CHART-MV-005
+기준 평균 중심과 현재 평균 중심의 이동 방향,CHART-MV-004
+기준 확률이 낮은 bin에서 현재 확률이 높아지면 KL 기여가 커질 수 있다,CHART-PROB-001
+기준/현재 event rate bar,CHART-CAT-004
+기준/현재 분산 bar,CHART-VAR-001
+기준/현재 평균의 95% confidence interval,CHART-MEAN-001
+낮은 기대빈도: 기대 빈도 5 미만 category 수,CHART-CAT-001
+노란 선이 상승하면 분포 overlap이 줄어드는 방향의 drift 신호가 강화되는 것이다,CHART-PROB-003
+노란 영역은 겹치지 않는 확률 질량 비율이다,CHART-PROB-003
+노란 음영은 이 예시에서 제곱 차이가 큰 대표 구간을 강조한다,CHART-EDF-003
+노란 점선은 관리 기준 또는 운영 threshold 예시다,CHART-CAT-002
+노란 점선은 관리 기준 또는 운영 threshold 예시다,CHART-DIST-001
+노란 점선은 관리 기준 또는 운영 threshold 예시다,CHART-PROB-001
+노란 점선은 관리 기준 또는 운영 threshold 예시다,CHART-PROB-002
+노란 점선은 두 CDF 사이의 세로 차이를 예시로 표시한다,CHART-EDF-003
+노란색은 기대보다 적게 관측된 category다,CHART-CAT-001
+누적 면적: 표본 보정 전 CDF 제곱 차이 면적,CHART-EDF-003
+"다봉성, shoulder, 비대칭 변화 표시",CHART-DISTSHAPE-001
+두 막대 차이가 큰 category는 drift 설명 후보가 된다,CHART-CAT-001
+두 막대 차이는 해당 category의 probability mass 증가 또는 감소를 보여준다,CHART-CAT-002
+두 막대가 어긋나는 구간은 분포 이동이 발생한 위치를 보여준다,CHART-EDF-001
+두 분포의 형태 차이 영역,CHART-DISTSHAPE-001
+두 선이 tail 구간에서 벌어지면 극단값 쪽 분포 차이가 있다는 뜻이다,CHART-EDF-002
+두 집단의 kernel mean embedding 차이 방향,CHART-MV-002
+"막대 길이는 bin별 minp, q 값이다",CHART-HIST-001
+막대 길이는 feature별 Wasserstein distance다,CHART-DIST-001
+막대 길이는 O - E^2 / E 값이다,CHART-CAT-001
+막대 길이는 q logq / p 형태의 bin별 KL 기여도다,CHART-PROB-001
+막대 길이는 현재 비율 - 기준 비율이다,CHART-CAT-002
+막대가 큰 category는 전체 검정 통계량을 키운 핵심 후보다,CHART-CAT-001
+바깥쪽 붉은 막대는 현재 구간의 각도형 분포다,CHART-EDF-004
+박스는 사분위 범위를 보여준다,CHART-RANK-001
+반대 방향은 not counted로 표시,CHART-ANNOT-001
+보라색 음영은 하위 tail과 상위 tail 강조 구간이다,CHART-EDF-002
+붉은 막대는 가장 큰 기여 bin이다,CHART-PROB-001
+붉은 막대는 관측 빈도다,CHART-CAT-001
+붉은 막대는 현재 window에서 가장 큰 이동 거리를 보인 feature다,CHART-DIST-001
+붉은 막대는 현재 구간 sample의 rank 빈도다,CHART-RANK-001
+붉은 막대는 현재 구간의 bin별 확률이다,CHART-HIST-001
+붉은 막대는 현재 구간의 bin별 확률이다,CHART-PROB-001
+붉은 막대는 현재 구간의 bin별 확률이다,CHART-PROB-003
+붉은 막대는 현재 구간의 category 비율이다,CHART-CAT-002
+붉은 막대는 현재 구간의 category별 확률이다,CHART-PROB-002
+붉은 막대는 현재 구간의 값 분포다,CHART-EDF-001
+붉은 밀도는 현재 구간의 분포다,CHART-DIST-001
+붉은 분포는 현재 구간이다,CHART-RANK-001
+붉은 선은 Hellinger Distance 추세다,CHART-PROB-002
+붉은 선은 현재 구간의 경험 CDF다,CHART-EDF-001
+붉은 선은 현재 구간의 경험 CDF다,CHART-EDF-002
+붉은 선은 현재 구간의 경험 CDF다,CHART-EDF-003
+붉은 영역: 현재 밀도 증가,CHART-MV-003
+상위 10% 이동: 상위 분위수 영역의 이동 크기,CHART-DIST-001
+상위 PSI 기여 bin 강조,CHART-PSI-001
+상위 기여 bin은 보고서에서 “어느 값 구간이 drift 신호를 만들었는가”를 설명할 때 사용한다,CHART-PROB-001
+손실 최대 bin: 기준/현재 확률 차이가 가장 큰 bin,CHART-HIST-001
+순위 AUC: 임의의 현재 sample이 임의의 기준 sample보다 클 확률에 가까운 효과 크기,CHART-RANK-001
+안쪽 파란 막대는 기준 구간의 각도형 분포다,CHART-EDF-004
+여러 feature가 동시에 커지면 데이터 소스나 segment 수준의 구조적 변화를 의심한다,CHART-DIST-001
+여러 값 구간에서 작은 CDF 차이가 반복되면 CvM 통계량에 누적 기여한다,CHART-EDF-003
+역방향 KL: 기준 분포 p를 현재 분포 q와 비교한 KL Divergence,CHART-PROB-001
+옅은 초록 영역은 두 분포가 겹치는 확률 질량을 보조적으로 보여준다,CHART-PROB-002
+오른쪽 초록 막대는 현재 확률이 증가한 category다,CHART-PROB-002
+왼쪽 노란 막대는 현재 확률이 감소한 category다,CHART-PROB-002
+운영 threshold 또는 관리 기준,CHART-MV-005
+운영 관리 기준 또는 threshold,CHART-MV-001
+운영 관리 기준 또는 threshold,CHART-MV-002
+운영 관리 기준 또는 threshold,CHART-MV-003
+이 최대 차이가 KS 통계량이다,CHART-EDF-001
+작은 막대 또는 누락된 bin은 겹침이 줄어든 구간 후보로 본다,CHART-HIST-001
+절댓값이 클수록 해당 category의 차이가 크다,CHART-CAT-001
+점선은 기준 분위수와 현재 분위수가 같은 경우의 기준선이다,CHART-EDF-002
+점이 점선에서 멀어질수록 해당 분위수에서 기준 구간과 현재 구간의 값 차이가 크다,CHART-EDF-002
+주요 feature의 SHAP value distribution,CHART-EXPL-001
+주요 metric별 small multiples,CHART-CTRL-003
+중심값 기준 평균 절대편차 비교,CHART-VAR-001
+중앙값 차이: 현재 구간 중앙값에서 기준 구간 중앙값을 뺀 값,CHART-RANK-001
+지배적인 shift 방향,CHART-CTRL-001
+초과 sample 비중,CHART-MV-005
+초록 막대는 두 분포가 공통으로 갖는 overlap 영역이다,CHART-PROB-003
+"초록 막대는 두 분포의 bin별 intersection, 즉 minp, q 영역이다",CHART-HIST-001
+초록 선은 JS Distance 추세다,CHART-PROB-002
+초록 선은 rank bin별 현재 구간 비중 흐름을 보조적으로 보여준다,CHART-RANK-001
+초록 영역은 겹치는 확률 질량 비율이다,CHART-PROB-003
+초록 영역이 줄어들수록 기준/현재 histogram의 공통 확률 질량이 줄어든다,CHART-HIST-001
+초록 점선은 KL 기여도가 큰 bin의 확률 차이를 강조한다,CHART-PROB-001
+초록 점선은 관리 기준 또는 운영 threshold 예시다,CHART-HIST-001
+초록 점선은 관리 기준 또는 운영 threshold 예시다,CHART-PROB-003
+초록 점선은 분위수 이동의 예시를 보여준다,CHART-DIST-001
+초록색 점선은 두 CDF 사이의 최대 세로 차이다,CHART-EDF-001
+초록색은 기대보다 많이 관측된 category다,CHART-CAT-001
+총 절대 이동: category별 절대 delta 합,CHART-CAT-002
+최근 sliding window 영역,CHART-STREAM-002
+최근 window sample의 ECDF,CHART-STREAM-002
+최근 window에서 거리가 계속 증가하면 일시적 노이즈보다 지속적 분포 이동 후보로 본다,CHART-DIST-001
+최대 CDF 차이 D,CHART-STREAM-002
+최대 Delta: 기준 대비 현재 확률 변화가 가장 큰 category,CHART-PROB-002
+최대 Delta: 절대 변화량이 가장 큰 category와 signed delta,CHART-CAT-002
+최대 기여 bin: KL 값을 가장 크게 키운 bin,CHART-PROB-001
+최대 변화 category는 배경 강조로 표시,CHART-CAT-003
+큰 막대는 기준/현재 분포가 여전히 많이 겹치는 bin이다,CHART-HIST-001
+"특정 window에서만 높아졌는지, 지속적으로 높아지는지 구분한다",CHART-PROB-001
+파란 막대는 기대 빈도다,CHART-CAT-001
+파란 막대는 기준 구간 sample의 rank 빈도다,CHART-RANK-001
+파란 막대는 기준 구간의 bin별 확률이다,CHART-HIST-001
+파란 막대는 기준 구간의 bin별 확률이다,CHART-PROB-001
+파란 막대는 기준 구간의 bin별 확률이다,CHART-PROB-003
+파란 막대는 기준 구간의 category 비율이다,CHART-CAT-002
+파란 막대는 기준 구간의 category별 확률이다,CHART-PROB-002
+파란 막대는 기준 구간의 값 분포다,CHART-EDF-001
+파란 밀도는 기준 구간의 분포다,CHART-DIST-001
+파란 분포는 기준 구간이다,CHART-RANK-001
+파란 선은 기준 구간의 경험 CDF다,CHART-EDF-001
+파란 선은 기준 구간의 경험 CDF다,CHART-EDF-002
+파란 선은 기준 구간의 경험 CDF다,CHART-EDF-003
+평균 shift를 주도한 feature 강조,CHART-MV-004
+평균 위치와 신뢰구간 겹침 정도,CHART-MEAN-001
+평균 이동: 현재 구간 평균에서 기준 구간 평균을 뺀 값,CHART-DIST-001
+평균선과 중앙값 표시,CHART-MEAN-001
+표본 수: 기준 구간과 현재 구간의 sample size,CHART-EDF-001
+표준편차와 variance ratio,CHART-VAR-001
+표준화 잔차는 관측 - 기대 / sqrt기대로 계산한다,CHART-CAT-001
+푸른 영역: 현재 밀도 감소,CHART-MV-003
+현재 구간 막대가 높은 rank 쪽에 몰리면 현재 값이 기준보다 전반적으로 크다는 뜻이다,CHART-RANK-001

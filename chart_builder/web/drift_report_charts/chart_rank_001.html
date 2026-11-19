@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>높은 순위로 치우친 현재 구간의 위치 이동</title>
+  <link rel="stylesheet" href="./chart_rank_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-RANK-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>상자/바이올린 분포 비교</h2>
+          <p>중앙값이 -0.07에서 0.50으로 올라가고 IQR도 높은 값 쪽으로 이동했는지 본다.</p>
+        </div>
+        <svg id="distributionChart" role="img" aria-label="기준 구간과 현재 구간의 box violin 분포 비교"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>결합 순위 분포</h2>
+          <p>순위 AUC 0.652처럼 현재 샘플이 기준보다 높은 결합 순위에 더 자주 놓이는지 확인한다.</p>
+        </div>
+        <svg id="rankChart" role="img" aria-label="기준 구간과 현재 구간의 결합 순위 분포 비교"></svg>
+      </article>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 Mann-Whitney U가 31,551이고 순위 AUC가 0.652다.
+          현재 중앙값은 0.50으로 기준 중앙값 -0.07보다 0.57 높고, 현재 구간 막대도 높은 순위 쪽에 더 많이 분포한다.
+          따라서 rank 기반 위치 이동 후보로 해석하되, 평균 변화나 모델 성능 저하는 별도 검증해야 한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch median"></i>중앙값</span>
+        <span><i class="swatch rank"></i>순위 밀도</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_rank_001.js"></script>
+</body>
+</html>
+

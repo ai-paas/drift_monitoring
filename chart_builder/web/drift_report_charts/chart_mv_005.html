@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>기준 공분산 범위 밖 고거리 샘플 집중</title>
+  <link rel="stylesheet" href="./chart_mv_005.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-MV-005">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>거리별 차원축소 산점도</h2>
+          <p>threshold 4.5를 넘는 고거리 sample이 우상단에 집중되는지 읽는다.</p>
+        </div>
+        <svg id="pcaChart" role="img" aria-label="Mahalanobis distance로 색칠한 PCA 산점도"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>거리 추세</h2>
+            <p>8번째 window부터 threshold를 넘고 6.1까지 상승한다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="window별 Mahalanobis distance 추세"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>거리 분포</h2>
+            <p>sample의 22%가 threshold 오른쪽 tail에 놓인다.</p>
+          </div>
+          <svg id="histChart" role="img" aria-label="threshold가 표시된 Mahalanobis distance 분포"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          평균 Mahalanobis distance는 threshold 4.5를 넘어 6.1까지 증가했고, 최대 distance는 6.9다.
+          PCA scatter에서는 threshold 초과 sample이 기준 정상 타원의 우상단 방향에 몰리며,
+          histogram에서는 전체 sample의 22%가 threshold 오른쪽 tail에 놓인다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch low"></i>낮은 distance</span>
+        <span><i class="swatch high"></i>높은 distance</span>
+        <span><i class="swatch distance"></i>평균 distance</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_mv_005.js"></script>
+</body>
+</html>

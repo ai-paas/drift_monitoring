@@ -1,0 +1,102 @@
+{
+  "scenarioId": "TCASE-011-STEPD-WARNING-ERR006",
+  "mode": "A",
+  "title": "CASE-011 STEPD warning CHART-ERR-006 analysis",
+  "source": {
+    "sourceId": "case-011-stepd-warning-err006",
+    "title": "CASE-011 stream error rate and performance",
+    "description": "Prediction log stream with supervised error-rate drift for STEPD_WARNING_DRIFT",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case011_hddm_error_rate.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-011"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-011-stepd-warning-err006",
+    "datasetCaseId": "CASE-011",
+    "csvPath": "testing/harness/data/case011_hddm_error_rate.csv",
+    "speedFactor": 60,
+    "startTime": "2026-08-31T22:00:00Z",
+    "maxRows": 360,
+    "replayWindow": {
+      "start": "2026-08-31T22:00:00Z",
+      "end": "2026-09-01T04:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-011-stepd-warning",
+    "sourceId": "case-011-stepd-warning-err006",
+    "adapterType": "test_db_prediction_log_stream",
+    "adapterTitle": "CASE-011 STEPD prediction log error-rate adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "trueLabelPath": "$.y_true",
+      "predLabelPath": "$.y_pred",
+      "errorPath": "$.error",
+      "confidencePath": "$.confidence"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case011-stepd-warning",
+    "adapterId": "case-011-stepd-warning",
+    "featureId": "error_rate",
+    "methodVariantId": 411,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "stepd_error_rate_stream",
+    "params": {
+      "variant_id": "STEPD_WARNING_DRIFT",
+      "error_col": "error",
+      "window_size": 40,
+      "min_instances": 40,
+      "min_reference_size": 40,
+      "min_current_size": 40,
+      "errorRateShiftThreshold": 0.12,
+      "maxStatePoints": 720
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case011-stepd-warning-err006",
+    "chartId": "CHART-ERR-006",
+    "payloadAdapterKey": "auto__STEPD_WARNING_DRIFT__CHART-ERR-006",
+    "chartOptions": {
+      "title": "CASE-011 STEPD warning CHART-ERR-006 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 10,
+    "tickCount": 36,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 360,
+    "bucketCount": 36,
+    "methodRunCount": 36,
+    "adapterCursorTime": "2026-09-01T04:00:00Z",
+    "methodStateLastBucketEnd": "2026-09-01T04:00:00Z",
+    "bucketRowCount": 10,
+    "bucketErrorRateMinimum": 0.05,
+    "analysisPointCount": 36,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 60,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

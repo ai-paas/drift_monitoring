@@ -1,0 +1,13 @@
+{
+  "packId": "sprint60_multivariate_process",
+  "title": "Sprint 60 Hotelling T2 and Mahalanobis multivariate scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V19-ROW-CASE014-HOTELLING-ONE-MV004",
+    "V19-ROW-CASE014-HOTELLING-TWO-MV004",
+    "V19-ROW-CASE014-HOTELLING-REG-MV004",
+    "V19-ROW-CASE014-MAHAL-SAMPLE-MV005",
+    "V19-ROW-CASE014-MAHAL-WINDOW-MV005",
+    "V19-ROW-CASE014-MAHAL-ROBUST-MV005"
+  ]
+}

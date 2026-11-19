@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-CAT-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-CAT-001</p>
+    <h1>CHART-CAT-001 해석</h1>
+    <h2>차트 목적</h2> <p><code>CHART-CAT-001</code>은 범주형 feature에서 관측 빈도가 기대 빈도와 얼마나 다른지 확인하기 위한 차트다. Chi-square Test와 G-test처럼 범주별 빈도 차이를 검정하는 방법에 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 어떤 category가 기대보다 많이 또는 적게 관측됐는가?
+2. 전체 검정 통계량에 가장 크게 기여한 category는 무엇인가?
+3. 기대 빈도가 낮아 검정 신뢰성에 주의해야 하는 category가 있는가?</code></pre> <h2>차트 구성</h2> <p>왼쪽 패널은 observed vs expected grouped bar다.</p> <ul> <li>파란 막대는 기대 빈도다.</li> <li>붉은 막대는 관측 빈도다.</li> <li>두 막대 차이가 큰 category는 drift 설명 후보가 된다.</li> <li>기대 빈도가 낮은 category는 카이제곱 근사 신뢰성을 별도로 확인해야 한다.</li> </ul> <p>오른쪽 위 패널은 표준화 잔차 heatmap이다.</p> <ul> <li>표준화 잔차는 <code>(관측 - 기대) / sqrt(기대)</code>로 계산한다.</li> <li>초록색은 기대보다 많이 관측된 category다.</li> <li>노란색은 기대보다 적게 관측된 category다.</li> <li>절댓값이 클수록 해당 category의 차이가 크다.</li> </ul> <p>오른쪽 아래 패널은 Chi-square 기여도다.</p> <ul> <li>막대 길이는 <code>(O - E)^2 / E</code> 값이다.</li> <li>막대가 큰 category는 전체 검정 통계량을 키운 핵심 후보다.</li> <li>가장 큰 기여 category는 보고서에서 우선 설명한다.</li> </ul> <p>상단 요약 카드에는 다음 값이 표시된다.</p> <ul> <li><code>Chi-square</code>: 전체 카이제곱 통계량</li> <li><code>df / p-value</code>: 자유도와 근사 p-value</li> <li><code>낮은 기대빈도</code>: 기대 빈도 5 미만 category 수</li> </ul> <h2>해석 순서</h2> <p>먼저 p-value와 낮은 기대빈도 수를 확인한다.</p> <pre><code>p-value가 작고 낮은 기대빈도가 없다
+  -&gt; 범주형 빈도 차이 신호를 비교적 안정적으로 볼 수 있다.
+
+p-value가 작지만 낮은 기대빈도가 있다
+  -&gt; Fisher exact, category 병합, G-test 등 보완 검토가 필요하다.
+
+p-value가 크다
+  -&gt; 전체 빈도 차이에 대한 통계적 근거가 약하다.</code></pre> <p>그 다음 표준화 잔차를 본다. 잔차가 양수인 category는 기대보다 많이 관측됐고, 음수인 category는 기대보다 적게 관측됐다.</p> <p>마지막으로 Chi-square 기여도를 확인한다. 전체 p-value만으로는 어떤 category가 변화했는지 알 수 없으므로, 기여도 상위 category를 중심으로 원인 후보를 좁힌다.</p> <h2>Drift 후보 판단 기준</h2> <p>p-value가 작고 표준화 잔차 또는 Chi-square 기여도가 큰 category가 명확하면 category frequency drift 후보로 해석한다. 기대 빈도 5 미만 category가 있으면 근사 검정 신뢰성을 별도로 확인한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 Chi-square 통계량이 <code>38.0</code>, 자유도가 <code>5</code>, p-value가 <code>0.003</code>으로 표시되어 있다. 낮은 기대빈도 category는 <code>0개</code>이므로 카이제곱 근사를 사용하는 데 큰 주의 신호는 없다.</p> <p>표준화 잔차를 보면 <code>C등급</code>과 <code>D등급</code>은 기대보다 많이 관측됐고, <code>A등급</code>, <code>기타</code>, <code>미상</code>은 기대보다 적게 관측됐다. Chi-square 기여도에서도 <code>C등급</code>이 가장 큰 기여를 한다. 따라서 이 예시는 category mix가 중간 등급 쪽으로 이동한 범주형 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>기준 기대 빈도와 현재 관측 빈도를 Chi-square 관점에서 비교한 결과,
+Chi-square 통계량은 38.0, 자유도는 5, p-value는 0.003으로 나타났다.
+표준화 잔차와 기여도를 보면 C등급과 D등급이 기대보다 많이 관측되었고,
+C등급이 전체 통계량에 가장 크게 기여했다.
+이는 category mix가 중간 등급 쪽으로 이동한 범주형 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - p-value만 보고 어떤 category가 변했는지 단정한다.
+
+금지 2
+  - 기대 빈도가 낮은 category가 있는데도 카이제곱 근사를 그대로 신뢰한다.
+
+금지 3
+  - category 빈도 변화가 곧바로 모델 성능 저하를 의미한다고 말한다.
+
+금지 4
+  - category 정의 또는 mapping 변경 가능성을 확인하지 않고 population 변화로 단정한다.</code></pre> <p>범주형 검정은 category 설계, rare category 처리, unknown mapping, category 병합 방식에 민감하다.</p> <h2>추가 확인 항목</h2> <p>범주형 빈도 차이가 보이면 다음을 추가 확인한다.</p> <ul> <li>category 정의, mapping, unknown 처리 변경 여부</li> <li>기대 빈도 5 미만 category 유무</li> <li>rare category 병합 또는 Fisher exact test 필요 여부</li> <li>같은 feature의 PSI, Total Variation, JS Distance 결과</li> <li>변화 category의 segment, source, 시간대 구성</li> <li>label 확보 후 성능 지표, calibration, error rate 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Chi-square Test / CHI_SQUARE_GOODNESS_OF_FIT</code></li> <li><code>Chi-square Test / CHI_SQUARE_HOMOGENEITY</code></li> <li><code>Chi-square Test / CHI_SQUARE_WITH_LOW_EXPECTED_COUNT_CAUTION</code></li> <li><code>G-test / LIKELIHOOD_RATIO_G_TEST_GOF</code></li> <li><code>G-test / LIKELIHOOD_RATIO_G_TEST_INDEPENDENCE</code></li> <li><code>G-test / G_TEST_WITH_SMALL_COUNT_CAUTION</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+.single-chart {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.single-chart .sidebar {
+  display: none;
+}
+
+.single-chart .workspace {
+  grid-template-rows: auto minmax(0, 1fr);
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.source-compare {
+  background: #f6f7f8;
+}
+
+.source-compare .workspace {
+  position: relative;
+  display: block;
+  width: 1200px;
+  height: 820px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px;
+  overflow: hidden;
+}
+
+.source-compare .workspace-head {
+  position: absolute;
+  right: 28px;
+  bottom: 18px;
+  z-index: 20;
+}
+
+.source-compare .workspace-head > div {
+  display: none;
+}
+
+.source-compare .recreated-pane {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.source-compare .recreated-pane h3 {
+  display: none;
+}
+
+.source-compare .component-chart {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.source-compare .chart-container {
+  gap: 16px;
+}
+
+.source-compare .chart-area {
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.source-compare .chart-area[data-role="summary"] {
+  border: 0;
+  background: transparent;
+}
+
+.source-compare .summary-grid {
+  gap: 10px;
+  padding: 0;
+}
+
+.source-compare .summary-metric {
+  border-color: #d8dee4;
+  padding: 12px 14px;
+}

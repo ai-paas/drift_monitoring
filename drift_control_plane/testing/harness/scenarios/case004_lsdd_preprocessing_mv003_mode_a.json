@@ -1,0 +1,97 @@
+{
+  "scenarioId": "TC004-LSDD-PREPROCESSING-MV003",
+  "mode": "A",
+  "title": "CASE-004 LSDD with preprocessing CHART-MV-003 projected analysis",
+  "source": {
+    "sourceId": "case-004-lsdd-preprocessing-mv003",
+    "title": "CASE-004 numeric population shift",
+    "description": "Projected numeric score distribution shift for LSDD with preprocessing CHART-MV-003",
+    "sourceType": "test_db",
+    "sourceUrl": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-004-lsdd-preprocessing-mv003",
+    "datasetCaseId": "CASE-004",
+    "csvPath": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 120,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-004-lsdd-preprocessing-mv003",
+    "sourceId": "case-004-lsdd-preprocessing-mv003",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 LSDD preprocessing adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case004-lsdd-preprocessing-mv003",
+    "adapterId": "case-004-lsdd-preprocessing-mv003",
+    "featureId": "score",
+    "methodVariantId": 713,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "lsdd_with_preprocessing",
+    "params": {
+      "variant_id": "LSDD_WITH_PREPROCESSING",
+      "value_col": "value",
+      "threshold": 0.01,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case004-lsdd-preprocessing-mv003",
+    "chartId": "CHART-MV-003",
+    "payloadAdapterKey": "auto__LSDD_WITH_PREPROCESSING__CHART-MV-003",
+    "chartOptions": {
+      "title": "CASE-004 LSDD preprocessing analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 120,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 120,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

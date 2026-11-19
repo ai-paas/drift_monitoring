@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component Recreated Drift Charts</title>
+  <link rel="stylesheet" href="../../chart_runtime/chart_runtime.css">
+</head>
+<body>
+  <main class="site">
+    <aside class="sidebar">
+      <header>
+        <p class="eyebrow">Drift Chart Components</p>
+        <h1>Recreated Charts</h1>
+      </header>
+      <input id="searchInput" type="search" placeholder="CHART-CTRL-002, component..." autocomplete="off">
+      <div id="chartList" class="chart-list"></div>
+    </aside>
+    <section class="workspace">
+      <header class="workspace-head">
+        <div>
+          <p id="chartStatus" class="eyebrow">partial reproduction</p>
+          <h2 id="chartTitle"></h2>
+        </div>
+        <button id="originalLink" class="open-link" type="button">원본 보기</button>
+      </header>
+      <section class="recreated-pane">
+        <h3>Component Recreated</h3>
+        <div id="componentChart" class="component-chart"></div>
+      </section>
+      <section class="issues">
+        <h3>Reproduction Notes</h3>
+        <ul id="issueList"></ul>
+      </section>
+    </section>
+  </main>
+  <script src="./recreated_chart_payloads.js"></script>
+  <script src="../../chart_runtime/chart_runtime.js"></script>
+  <script src="./recreated_charts.js"></script>
+</body>
+</html>

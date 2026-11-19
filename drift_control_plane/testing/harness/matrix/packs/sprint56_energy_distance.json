@@ -1,0 +1,9 @@
+{
+  "packId": "sprint56_energy_distance",
+  "title": "Sprint 56 Energy Distance numeric distribution scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V15-ROW-CASE004-ENERGY-UNI-MV001",
+    "V15-ROW-CASE004-ENERGY-PERM-MV001"
+  ]
+}

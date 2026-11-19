@@ -1,0 +1,10 @@
+{
+  "packId": "sprint64_model_uncertainty",
+  "title": "Sprint 64 model uncertainty drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V23-ROW-CASE015-SOFTMAX-UNC001",
+    "V23-ROW-CASE015-ENTROPY-UNC001",
+    "V23-ROW-CASE015-PREDVAR-UNC001"
+  ]
+}

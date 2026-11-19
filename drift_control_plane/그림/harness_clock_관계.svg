@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="780" viewBox="0 0 1320 780">
+  <defs>
+    <style>
+      .bg { fill: #f7f9fb; }
+      .harness { fill: #e8f4ff; stroke: #0f5f99; stroke-width: 3; rx: 10; }
+      .inner { fill: #ffffff; stroke: #0f5f99; stroke-width: 2; rx: 8; }
+      .server { fill: #edf7ed; stroke: #2e7d32; stroke-width: 2; rx: 8; }
+      .db { fill: #fff8e1; stroke: #8a6500; stroke-width: 2; rx: 8; }
+      .artifact { fill: #f3f0ff; stroke: #5e45a0; stroke-width: 2; rx: 8; }
+      .rule { fill: #ffffff; stroke: #263238; stroke-width: 2; rx: 8; }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #182026; }
+      .title { font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; fill: #182026; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #37474f; }
+      .mono { font-family: Consolas, monospace; font-size: 14px; fill: #263238; }
+      .arrow-blue { stroke: #0f5f99; stroke-width: 2.8; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-green { stroke: #2e7d32; stroke-width: 2.8; fill: none; marker-end: url(#arrowhead-green); }
+      .arrow-db { stroke: #8a6500; stroke-width: 2.8; fill: none; marker-end: url(#arrowhead-db); }
+      .arrow-purple { stroke: #5e45a0; stroke-width: 2.8; fill: none; marker-end: url(#arrowhead-purple); }
+      .dash { stroke-dasharray: 8 7; }
+    </style>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f5f99"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrowhead-db" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#8a6500"/>
+    </marker>
+    <marker id="arrowhead-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#5e45a0"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1320" height="780"/>
+  <text class="title" x="40" y="54">Harness Server 내부 Clock과 서버 시간 전송 구조</text>
+
+  <rect class="harness" x="60" y="105" width="480" height="510"/>
+  <text class="label" x="96" y="146">Harness Server</text>
+  <text class="small" x="96" y="174">clock은 harness 내부에 감추어진다</text>
+
+  <rect class="inner" x="100" y="210" width="395" height="110"/>
+  <text class="label" x="128" y="248">Clock Config</text>
+  <text class="mono" x="128" y="278">startTime / endTime</text>
+  <text class="mono" x="128" y="302">tickIntervalMinutes</text>
+
+  <rect class="inner" x="100" y="355" width="395" height="125"/>
+  <text class="label" x="128" y="393">Harness Clock</text>
+  <text class="mono" x="128" y="423">logicalNow</text>
+  <text class="mono" x="128" y="447">previousLogicalNow</text>
+  <text class="mono" x="128" y="471">tickIndex</text>
+
+  <rect class="inner" x="100" y="520" width="395" height="70"/>
+  <text class="label" x="128" y="560">Time Dispatcher</text>
+  <text class="small" x="128" y="582">Harness Clock의 logicalNow를 각 서버에 전송</text>
+
+  <rect class="server" x="770" y="100" width="340" height="120"/>
+  <text class="label" x="805" y="140">Admin Server</text>
+  <text class="small" x="805" y="170">control API 검증 대상</text>
+  <text class="mono" x="805" y="196">logicalNow 포함 요청 수신</text>
+
+  <rect class="server" x="770" y="305" width="340" height="135"/>
+  <text class="label" x="805" y="345">Test Feeder Server</text>
+  <text class="small" x="805" y="375">CSV replay</text>
+  <text class="mono" x="805" y="402">POST /api/test-feeder/.../tick</text>
+  <text class="small" x="805" y="424">logicalNow까지 raw_event insert</text>
+
+  <rect class="server" x="770" y="535" width="340" height="135"/>
+  <text class="label" x="805" y="575">Drift Server</text>
+  <text class="small" x="805" y="605">collector / timeseries / event</text>
+  <text class="mono" x="805" y="632">POST /api/drift/.../poll-once</text>
+  <text class="small" x="805" y="654">logicalNow 기준 수집 가능 데이터 판단</text>
+
+  <rect class="db" x="1145" y="330" width="135" height="90"/>
+  <text class="label" x="1168" y="365">raw_event</text>
+  <text class="small" x="1168" y="395">inserted_at</text>
+
+  <rect class="db" x="1145" y="560" width="135" height="90"/>
+  <text class="label" x="1168" y="595">bucket</text>
+  <text class="small" x="1168" y="625">state/event</text>
+
+  <rect class="artifact" x="770" y="705" width="340" height="55"/>
+  <text class="label" x="805" y="740">Run Artifacts: logicalNow 기록</text>
+
+  <rect class="rule" x="60" y="650" width="480" height="85"/>
+  <text class="label" x="96" y="685">규칙</text>
+  <text class="small" x="96" y="712">서버는 테스트 모드에서 시간을 생성하지 않는다.</text>
+  <text class="small" x="96" y="734">Harness Server가 보낸 logicalNow만 기준으로 삼는다.</text>
+
+  <path class="arrow-blue" d="M298 320 L298 355"/>
+  <text class="small" x="318" y="343">config 적용</text>
+
+  <path class="arrow-blue" d="M298 480 L298 520"/>
+  <text class="small" x="318" y="507">시간 전달</text>
+
+  <path class="arrow-green" d="M495 545 C620 500, 670 165, 770 160"/>
+  <text class="small" x="600" y="245">logicalNow 전송</text>
+
+  <path class="arrow-green" d="M495 555 C620 555, 670 377, 770 377"/>
+  <text class="small" x="610" y="432">logicalNow 전송</text>
+
+  <path class="arrow-green" d="M495 570 C620 635, 670 604, 770 604"/>
+  <text class="small" x="610" y="635">logicalNow 전송</text>
+
+  <path class="arrow-db" d="M1110 377 L1145 377"/>
+  <text class="small" x="1118" y="358">insert</text>
+
+  <path class="arrow-db" d="M1110 604 L1145 604"/>
+  <text class="small" x="1118" y="585">save</text>
+
+  <path class="arrow-purple dash" d="M500 590 C620 720, 690 735, 770 735"/>
+  <text class="small" x="575" y="708">API call artifact</text>
+</svg>

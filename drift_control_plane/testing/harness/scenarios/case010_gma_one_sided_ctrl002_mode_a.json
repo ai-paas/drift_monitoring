@@ -1,0 +1,97 @@
+{
+  "scenarioId": "TCASE-010-GMA-1S-CTRL002",
+  "mode": "A",
+  "title": "CASE-010 GMA one-sided control chart analysis",
+  "source": {
+    "sourceId": "case-010-gma-1s-ctrl002",
+    "title": "CASE-010 smoothing control numeric mean shift",
+    "description": "Synthetic stream numeric mean shift dataset for GMA_ONE_SIDED runtime wrapper",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case010_cusum_upper.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010-gma-1s-ctrl002",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "testing/harness/data/case010_cusum_upper.csv",
+    "speedFactor": 60,
+    "startTime": "2026-01-01T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-010-gma-1s-ctrl002",
+    "sourceId": "case-010-gma-1s-ctrl002",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 smoothing control numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-gma-1s-ctrl002",
+    "adapterId": "case-010-gma-1s-ctrl002",
+    "featureId": "metric",
+    "methodVariantId": 311,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "gma_stream",
+    "params": {
+      "variant_id": "GMA_ONE_SIDED",
+      "center_line": 0.0,
+      "sigma": 0.1,
+      "lambda": 0.3,
+      "control_width": 3.0,
+      "warmup_size": 1,
+      "min_reference_size": 1,
+      "min_current_size": 1,
+      "meanShiftThreshold": 0.2,
+      "maxStatePoints": 40,
+      "threshold": 0.2,
+      "direction": "increase"
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-gma-1s-ctrl002",
+    "chartId": "CHART-CTRL-002",
+    "payloadAdapterKey": "auto__GMA_ONE_SIDED__CHART-CTRL-002",
+    "chartOptions": {
+      "title": "CASE-010 GMA one-sided control chart analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 20,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 20,
+    "bucketCount": 2,
+    "methodRunCount": 2,
+    "adapterCursorTime": "2026-01-01T00:20:00Z",
+    "methodStateLastBucketEnd": "2026-01-01T00:20:00Z",
+    "bucketRowCount": 10,
+    "analysisPointCount": 2,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 2,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

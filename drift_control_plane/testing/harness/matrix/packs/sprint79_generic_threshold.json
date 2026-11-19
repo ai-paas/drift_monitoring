@@ -1,0 +1,7 @@
+{
+  "packId": "sprint79_generic_threshold",
+  "description": "Sprint 79 generic metric threshold executable row.",
+  "rowIds": [
+    "V38-ROW-CASE010-GENERIC-THRESHOLD-GEN001"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "chartCount": 53,
+  "chartMethodPairCount": 188,
+  "uniqueMethodVariantCount": 177,
+  "runtimeRegistryKeys": [
+    "adwin_mean_stream",
+    "anderson_darling_window",
+    "baumgartner_weiss_schindler_window",
+    "bhattacharyya_window",
+    "chi_square_window",
+    "cramer_von_mises_window",
+    "ddm_error_rate_stream",
+    "eddm_error_rate_stream",
+    "epps_singleton_window",
+    "f_test_variance_window",
+    "fisher_exact_window",
+    "g_test_window",
+    "generic_categorical_contingency_window",
+    "generic_distribution_ecdf_window",
+    "generic_probability_distance_window",
+    "generic_statistical_test_window",
+    "hellinger_window",
+    "hinc_window",
+    "jensen_shannon_window",
+    "kl_divergence_window",
+    "ks_test_window",
+    "kswin_numeric_stream",
+    "kswin_numeric_window",
+    "kswin_standard",
+    "kswin_with_subsampling",
+    "kuiper_window",
+    "l_infinity_window",
+    "levene_window",
+    "mann_whitney_window",
+    "page_hinkley_decrease",
+    "page_hinkley_increase",
+    "page_hinkley_stream",
+    "probability_distance_window",
+    "psi_numeric_binned",
+    "rddm_error_rate_stream",
+    "t_test_window",
+    "total_variation_window",
+    "wasserstein_1d_exact",
+    "wasserstein_approx_histogram",
+    "wasserstein_numeric_window",
+    "wasserstein_window_trend"
+  ],
+  "explicitBindingFileCount": 1,
+  "statusCounts": {
+    "runtime_wrapper_missing": 95,
+    "scenario_missing": 40,
+    "tested_passed": 53
+  },
+  "runtimeStatusCounts": {
+    "runtime_available": 93,
+    "runtime_wrapper_missing": 95
+  },
+  "payloadBindingStatusCounts": {
+    "payload_coverage_available": 188
+  },
+  "scenarioStatusCounts": {
+    "scenario_available": 53,
+    "scenario_missing": 135
+  },
+  "topChartsByMissingRuntime": [
+    {
+      "key": "CHART-CTRL-002",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-ERR-005",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-ANNOT-001",
+      "missingCount": 4,
+      "totalCount": 8
+    },
+    {
+      "key": "CHART-CTRL-001",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "CHART-MV-002",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "CHART-ADAPT-002",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-ANOM-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-BOCD-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-CLS-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-ERR-004",
+      "missingCount": 3,
+      "totalCount": 3
+    }
+  ],
+  "topMethodNamesByMissingRuntime": [
+    {
+      "key": "CUSUM",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "EWMA",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Geometric Moving Average",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "MMD",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Autoencoder Representation Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "BOCD",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Classifier 기반 embedding drift detection",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "DriftRetrainingClassifier",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "ECDD-WT",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Energy Distance",
+      "missingCount": 3,
+      "totalCount": 3
+    }
+  ]
+}

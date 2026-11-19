@@ -1,0 +1,10 @@
+{
+  "packId": "sprint69_autoencoder_representation_drift",
+  "title": "Sprint 69 autoencoder representation drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V28-ROW-CASE014-LATENT-SPACE-REP002",
+    "V28-ROW-CASE014-RECONSTRUCTION-ERROR-REP002",
+    "V28-ROW-CASE014-AUTOENCODER-DOMAIN-REP002"
+  ]
+}

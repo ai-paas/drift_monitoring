@@ -1,0 +1,113 @@
+{
+  "chartId": "chart1",
+  "layout": {
+    "layoutType": "semantic_grid",
+    "columns": 12,
+    "rows": 8,
+    "areas": [
+      {
+        "area": "main",
+        "role": "primary_visual",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "area": "side",
+        "role": "secondary_visual",
+        "x": 6,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      {
+        "area": "area_2",
+        "role": "secondary_visual",
+        "x": 6,
+        "y": 6,
+        "w": 6,
+        "h": 2
+      }
+    ],
+    "presetCode": "custom_saved",
+    "displayName": "sample1",
+    "sourceSplitTree": {
+      "type": "split",
+      "direction": "horizontal",
+      "ratio": 0.5,
+      "first": {
+        "type": "leaf",
+        "area": "main"
+      },
+      "second": {
+        "type": "split",
+        "direction": "vertical",
+        "ratio": 0.7880263534803781,
+        "first": {
+          "type": "leaf",
+          "area": "side"
+        },
+        "second": {
+          "type": "leaf",
+          "area": "area_2"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "componentInstanceId": "bar_chart_mqot8i3a_w5qj2",
+      "componentType": "bar_chart",
+      "area": "main",
+      "isOverlay": false,
+      "zIndex": 10,
+      "config": {
+        "orientation": "horizontal",
+        "category_field": "feature",
+        "value_field": "score",
+        "highlight_rule": "max_value",
+        "sort_order": "value_desc"
+      },
+      "dataBinding": {
+        "source": "sample.bars",
+        "category_field": "feature",
+        "value_field": "score"
+      }
+    },
+    {
+      "componentInstanceId": "threshold_line_mqot8jse_4f1ig",
+      "componentType": "threshold_line",
+      "area": "side",
+      "isOverlay": false,
+      "zIndex": 10,
+      "config": {
+        "threshold_value": 0.68,
+        "threshold_type": "upper",
+        "line_style": "dashed",
+        "label": "threshold"
+      },
+      "dataBinding": {
+        "source": "sample.detector",
+        "threshold_value": "threshold"
+      }
+    },
+    {
+      "componentInstanceId": "state_timeline_mqot8lie_az3ei",
+      "componentType": "state_timeline",
+      "area": "area_2",
+      "isOverlay": false,
+      "zIndex": 10,
+      "config": {
+        "time_field": "time",
+        "state_field": "state",
+        "segment_merge": true
+      },
+      "dataBinding": {
+        "source": "sample.states",
+        "time_field": "time",
+        "state_field": "state"
+      }
+    }
+  ]
+}

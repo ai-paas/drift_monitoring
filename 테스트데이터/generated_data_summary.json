@@ -1,0 +1,8 @@
+[
+  {
+    "case_id": "CASE-009",
+    "status": "created",
+    "path": "C:\\Users\\jklee\\PycharmProjects\\drift_llm_intepretation\\테스트데이터\\CASE-009_multivariate_local_density_or_anomaly\\data.csv.gz",
+    "rows": 525600
+  }
+]

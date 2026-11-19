@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>온라인 변화점 확률과 스트림 수준 변화 확인</title>
+  <link rel="stylesheet" href="./chart_bocd_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-BOCD-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>변화점 확률 히트맵</h2>
+          <p>t=18에서 change point probability가 0.87로 가장 높고, t=27에도 보조 peak가 나타나는지 읽는다.</p>
+        </div>
+        <svg id="cpHeatmap" role="img" aria-label="change point probability heatmap"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>런 길이 사후분포</h2>
+            <p>t=18 변화점 후보에서 run length가 낮은 값으로 reset되는지 확인한다.</p>
+          </div>
+          <svg id="runLengthHeatmap" role="img" aria-label="run length posterior heatmap"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>스트림 추세</h2>
+            <p>stream 평균이 0.55에서 0.87, 다시 1.10 수준으로 이동하는지 본다.</p>
+          </div>
+          <svg id="streamTrend" role="img" aria-label="stream trend with change point markers"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          BOCD는 매 시점의 change point probability와 run length posterior를 갱신한다.
+          이 예시에서는 t=18에 posterior가 집중되고 run length가 reset되며 stream 수준이 0.55에서 0.87로 올라간다.
+          t=27의 보조 peak와 추가 상승까지 함께 보이면 stream segment가 두 차례 바뀐 BOCD 기반 drift 후보로 해석한다.
+          단, 변화 원인과 모델 성능 영향은 별도 feature, segment, label 분석으로 확인해야 한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch low"></i>low posterior</span>
+        <span><i class="swatch mid"></i>medium</span>
+        <span><i class="swatch high"></i>high posterior</span>
+        <span><i class="swatch marker"></i>change marker</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_bocd_001.js"></script>
+</body>
+</html>

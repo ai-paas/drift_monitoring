@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chart Builder Prototype</title>
+  <link rel="stylesheet" href="../../chart_runtime/chart_runtime.css">
+  <link rel="stylesheet" href="./builder_prototype.css?v=20261030-all-components-fix">
+</head>
+<body>
+  <main class="builder-app" aria-label="Chart Builder Prototype">
+    <aside class="palette-panel">
+      <header class="panel-header">
+        <p class="eyebrow">Chart Builder</p>
+        <h1>Components</h1>
+      </header>
+      <div id="componentPalette" class="component-palette" aria-label="Component Palette"></div>
+      <section class="builder-help">
+        <h2>배치 방법</h2>
+        <p>Layout Designer에서 레이아웃을 저장한 뒤 상단 Saved 콤보박스에서 선택합니다. Component는 가운데 영역으로 드래그해 배치합니다. <code>threshold_line</code>은 overlay로 추가됩니다.</p>
+      </section>
+    </aside>
+
+    <section class="canvas-panel">
+      <header class="builder-toolbar">
+        <div>
+          <p class="eyebrow">Runtime Render</p>
+          <h2 id="chartTitle">CHART-PROTOTYPE-001</h2>
+        </div>
+        <div class="toolbar-actions">
+          <label class="layout-select">
+            <span>Layout</span>
+            <select id="layoutPresetSelect">
+              <option value="prototype_2x2">2x2 Grid</option>
+              <option value="default_3_panel">Default 3 Panel</option>
+            </select>
+          </label>
+          <label class="layout-select">
+            <span>Saved</span>
+            <select id="savedLayoutSelect"></select>
+          </label>
+          <button id="openLayoutDesignerButton" type="button">Layout Designer</button>
+          <label class="layout-select">
+            <span>Saved Chart</span>
+            <select id="savedChartSelect"></select>
+          </label>
+          <input id="chartNameInput" class="chart-name-input" type="text" placeholder="chart name">
+          <button id="newChartButton" type="button">New Chart</button>
+          <button id="saveChartButton" type="button">Save Chart</button>
+          <button id="deleteChartButton" type="button">Delete Chart</button>
+          <button id="buildButton" type="button">Build Preview</button>
+          <button id="resetButton" type="button">Reset</button>
+        </div>
+      </header>
+      <section id="chartContainer" class="chart-container" aria-label="2x2 Chart Container"></section>
+      <p id="builderStatus" class="builder-status">component를 선택한 뒤 영역을 클릭하세요.</p>
+    </section>
+
+    <aside class="properties-panel">
+      <header class="panel-header">
+        <p class="eyebrow">Properties</p>
+        <h1>설정</h1>
+      </header>
+      <section id="selectionSummary" class="selection-summary">선택된 component가 없습니다.</section>
+      <label class="field">
+        <span>Config JSON</span>
+        <textarea id="configEditor" rows="9" spellcheck="false"></textarea>
+      </label>
+      <label class="field">
+        <span>Data Binding JSON</span>
+        <textarea id="bindingEditor" rows="7" spellcheck="false"></textarea>
+      </label>
+      <div class="property-actions">
+        <button id="applyPropertiesButton" type="button">Apply</button>
+        <button id="deleteComponentButton" type="button">Delete</button>
+      </div>
+      <label class="field payload-field">
+        <span>Runtime Payload</span>
+        <textarea id="payloadViewer" rows="14" readonly spellcheck="false"></textarea>
+      </label>
+    </aside>
+  </main>
+  <script src="../../chart_runtime/chart_runtime.js"></script>
+  <script src="./builder_prototype.js?v=20261030-all-components-fix"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "packId": "sprint59_seqdrift",
+  "title": "Sprint 59 SeqDrift numeric window scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V18-ROW-CASE013-SEQDRIFT1-STREAM004",
+    "V18-ROW-CASE013-SEQDRIFT2-STREAM004"
+  ]
+}

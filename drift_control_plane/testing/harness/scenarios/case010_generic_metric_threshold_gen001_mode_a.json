@@ -1,0 +1,86 @@
+{
+  "scenarioId": "TCASE-010-GENERIC-METRIC-THRESHOLD-GEN001",
+  "mode": "A",
+  "title": "CASE-010 generic metric threshold drift analysis",
+  "source": {
+    "sourceId": "case-010-generic-threshold-gen001",
+    "title": "CASE-010 generic metric threshold stream",
+    "description": "Synthetic stream numeric drift dataset evaluated by GENERIC_METRIC_THRESHOLD_DRIFT",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case010_anchor_drift_window.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010-generic-threshold-gen001",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "testing/harness/data/case010_anchor_drift_window.csv",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T22:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-010-generic-threshold-gen001",
+    "sourceId": "case-010-generic-threshold-gen001",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 generic threshold stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-generic-threshold-gen001",
+    "adapterId": "case-010-generic-threshold-gen001",
+    "featureId": "metric",
+    "methodVariantId": 716,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "generic_metric_threshold_drift",
+    "params": {
+      "variant_id": "GENERIC_METRIC_THRESHOLD_DRIFT",
+      "threshold": 0.68,
+      "direction": "greater_equal"
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-generic-threshold-gen001",
+    "chartId": "CHART-GEN-001",
+    "payloadAdapterKey": "auto__GENERIC_METRIC_THRESHOLD_DRIFT__CHART-GEN-001",
+    "chartOptions": {
+      "title": "CASE-010 generic threshold analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 240,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 240,
+    "bucketCount": 24,
+    "methodRunCount": 24,
+    "adapterCursorTime": "2026-07-01T02:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T02:00:00Z",
+    "bucketRowCount": 10,
+    "analysisPointCount": 24,
+    "analysisMeanDifferenceMinimum": null,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

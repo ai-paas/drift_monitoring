@@ -1,0 +1,93 @@
+{
+  "scenarioId": "TCASE-010-PAGEHINKLEY-DECREASE",
+  "mode": "A",
+  "title": "CASE-010 stream numeric mean shift with Page-Hinkley decrease variant",
+  "source": {
+    "sourceId": "case-010-pagehinkley-decrease",
+    "title": "CASE-010 stream numeric mean shift",
+    "description": "Synthetic stream numeric mean shift dataset with Page-Hinkley decrease variant",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case010_page_hinkley_decrease.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010-pagehinkley-decrease",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "testing/harness/data/case010_page_hinkley_decrease.csv",
+    "speedFactor": 60,
+    "startTime": "2026-01-01T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-010-pagehinkley-decrease",
+    "sourceId": "case-010-pagehinkley-decrease",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 Page-Hinkley decrease numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-pagehinkley-decrease",
+    "adapterId": "case-010-pagehinkley-decrease",
+    "featureId": "metric",
+    "methodVariantId": 273,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "page_hinkley_stream",
+    "params": {
+      "variant_id": "PAGE_HINKLEY_DECREASE",
+      "threshold": 2.0,
+      "delta": 0.001,
+      "min_instances": 2,
+      "min_reference_size": 1,
+      "min_current_size": 1,
+      "meanShiftThreshold": 2.0,
+      "maxStatePoints": 120
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-pagehinkley-decrease-stream",
+    "chartId": "CHART-STREAM-003",
+    "payloadAdapterKey": "auto__PAGE_HINKLEY_DECREASE__CHART-STREAM-003",
+    "chartOptions": {
+      "title": "CASE-010 Page-Hinkley decrease stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 20,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 20,
+    "bucketCount": 2,
+    "methodRunCount": 2,
+    "adapterCursorTime": "2026-01-01T00:20:00Z",
+    "methodStateLastBucketEnd": "2026-01-01T00:20:00Z",
+    "bucketRowCount": 10,
+    "analysisPointCount": 2,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 2,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

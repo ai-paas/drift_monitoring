@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-REP-002 - 복원 오차 증가로 본 오토인코더 표현 드리프트</title>
+  <link rel="stylesheet" href="./chart_rep_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-REP-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Reconstruction Error Distribution</h2>
+          <p>baseline peak는 0.14/38, current peak는 0.26/37로 오른쪽 이동한다.</p>
+        </div>
+        <svg id="distributionChart" role="img" aria-label="autoencoder reconstruction error distribution comparison"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Error Trend with Threshold</h2>
+            <p>trend가 t=23에서 threshold 0.36을 넘어 t=32의 0.54까지 상승한다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="reconstruction error trend with threshold"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Latent Projection Scatter</h2>
+            <p>baseline cluster는 왼쪽, current cluster는 오른쪽으로 분리된다.</p>
+          </div>
+          <svg id="latentChart" role="img" aria-label="autoencoder latent projection scatter"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Autoencoder representation drift는 reconstruction error와 latent space 변화를 함께 본다.
+          이 예시에서는 p95 error 0.51이 threshold 0.36을 넘고 latent AUC도 0.84로 나타나
+          autoencoder representation drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+        <span><i class="swatch latent"></i>latent drift</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_rep_002.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+[
+  {
+    "name": "sample",
+    "layout": {
+      "layoutType": "semantic_grid",
+      "columns": 12,
+      "rows": 8,
+      "areas": [
+        {
+          "area": "main",
+          "role": "primary_visual",
+          "x": 0,
+          "y": 0,
+          "w": 8,
+          "h": 6
+        },
+        {
+          "area": "area_2",
+          "role": "secondary_visual",
+          "x": 8,
+          "y": 0,
+          "w": 4,
+          "h": 6
+        },
+        {
+          "area": "side",
+          "role": "secondary_visual",
+          "x": 0,
+          "y": 6,
+          "w": 12,
+          "h": 2
+        }
+      ],
+      "presetCode": "custom_saved",
+      "displayName": "sample",
+      "sourceSplitTree": {
+        "type": "split",
+        "direction": "vertical",
+        "ratio": 0.6906330564308221,
+        "first": {
+          "type": "split",
+          "direction": "horizontal",
+          "ratio": 0.7056451612903226,
+          "first": {
+            "type": "leaf",
+            "area": "main"
+          },
+          "second": {
+            "type": "leaf",
+            "area": "area_2"
+          }
+        },
+        "second": {
+          "type": "leaf",
+          "area": "side"
+        }
+      }
+    }
+  },
+  {
+    "name": "sample1",
+    "layout": {
+      "layoutType": "semantic_grid",
+      "columns": 12,
+      "rows": 8,
+      "areas": [
+        {
+          "area": "main",
+          "role": "primary_visual",
+          "x": 0,
+          "y": 0,
+          "w": 6,
+          "h": 8
+        },
+        {
+          "area": "side",
+          "role": "secondary_visual",
+          "x": 6,
+          "y": 0,
+          "w": 6,
+          "h": 6
+        },
+        {
+          "area": "area_2",
+          "role": "secondary_visual",
+          "x": 6,
+          "y": 6,
+          "w": 6,
+          "h": 2
+        }
+      ],
+      "presetCode": "custom_saved",
+      "displayName": "sample1",
+      "sourceSplitTree": {
+        "type": "split",
+        "direction": "horizontal",
+        "ratio": 0.5,
+        "first": {
+          "type": "leaf",
+          "area": "main"
+        },
+        "second": {
+          "type": "split",
+          "direction": "vertical",
+          "ratio": 0.7880263534803781,
+          "first": {
+            "type": "leaf",
+            "area": "side"
+          },
+          "second": {
+            "type": "leaf",
+            "area": "area_2"
+          }
+        }
+      }
+    }
+  }
+]

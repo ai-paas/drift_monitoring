@@ -1,0 +1,87 @@
+{
+  "scenarioId": "TCASE-015",
+  "mode": "A",
+  "title": "CASE-015 no source data diagnostics",
+  "source": {
+    "sourceId": "case-015",
+    "title": "CASE-015 no source data",
+    "description": "Empty source dataset for no-source-data diagnostics",
+    "sourceType": "test_db",
+    "sourceUrl": "테스트데이터/CASE-015_no_source_data/data.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-015"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-015",
+    "datasetCaseId": "CASE-015",
+    "csvPath": "테스트데이터/CASE-015_no_source_data/data.csv",
+    "speedFactor": 60,
+    "startTime": "2026-01-05T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-015-adwin",
+    "sourceId": "case-015",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-015 numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric",
+      "maxSourceClockOffsetMs": 300000
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case015-adwin",
+    "adapterId": "case-015-adwin",
+    "featureId": "metric",
+    "methodVariantId": 123,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_mean_stream",
+    "params": {
+      "delta": 0.002
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case015-adwin-stream",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+    "chartOptions": {
+      "title": "CASE-015 ADWIN stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "startTime": "2026-01-05T00:00:00Z",
+    "endTime": "2026-01-05T00:10:00Z",
+    "intervalMinutes": 1,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 0,
+    "bucketCount": 0,
+    "methodRunCount": 0,
+    "adapterCursorTime": null,
+    "methodStateLastBucketEnd": null,
+    "bucketRowCount": 0,
+    "driftEventMinimum": 0,
+    "noBucketsExpected": true,
+    "noMethodRunsExpected": true,
+    "adapterStatus": "warning",
+    "adapterDiagnosticsValidationRequired": true,
+    "pollOutcome": "skipped",
+    "pollStatus": "warning",
+    "diagnosticsCode": "NO_SOURCE_DATA",
+    "diagnosticsSeverity": "warning"
+  }
+}

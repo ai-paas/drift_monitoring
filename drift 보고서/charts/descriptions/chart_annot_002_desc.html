@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ANNOT-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ANNOT-002</p>
+    <h1>CHART-ANNOT-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 approximate, sliced, quantile 변종에서 drift score와 함께 보고해야 하는 근사 오차 정보를 설명한다.</p> <p>근사 기반 detector는 계산량을 줄이기 위해 projection, histogram approximation, quantile approximation을 사용한다. 이 경우 score가 threshold를 넘었는지뿐 아니라 approximation error, projection count, quantile error가 판단을 흔들 정도로 큰지도 함께 확인해야 한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 근사 score가 reference 또는 exact score와 얼마나 차이 나는가?
+2. sliced projection 수가 충분해 score 변동이 안정화되었는가?
+3. quantile error가 threshold 근처 판단을 뒤집을 수 있을 만큼 큰가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - exact/reference drift score line
+  - approximate/quantile drift score line
+  - approximation error band
+  - drift threshold line
+
+우측 상단
+  - projection count별 score spread
+  - tolerance line
+
+우측 하단
+  - q25, q50, q75, tail quantile error
+  - target error line</code></pre> <p>상단 요약 영역에는 approximation error, projection count, quantile error max를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 error band에서 approximate score가 exact/reference score를 안정적으로 따라가는지 확인한다.</p> <pre><code>approximation error가 작다
+  -&gt; 원본 drift score 판단을 신뢰할 수 있다.
+
+threshold 근처에서 approximation error가 크다
+  -&gt; drift 여부가 뒤집힐 수 있으므로 exact 계산이나 projection 증가가 필요하다.
+
+approximate score만 있고 error 정보가 없다
+  -&gt; 근사 변종의 판단 신뢰도를 설명하기 어렵다.</code></pre> <p>그 다음 우측 상단 projection stability에서 projection count가 증가할수록 spread가 tolerance 아래로 내려가는지 확인한다.</p> <p>마지막으로 우측 하단 quantile error에서 중앙 quantile뿐 아니라 tail quantile 오차가 허용 범위를 넘는지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>근사 score가 원본 chart의 threshold를 넘고, approximation error와 quantile error가 허용 범위 안에 있으며, projection count 증가에 따라 score spread가 안정화되면 approximate/sliced/quantile 기반 drift 후보로 해석한다.</p> <p>단, score가 threshold에 매우 가깝거나 tail quantile error가 큰 경우에는 근사 오차 때문에 판단이 뒤집힐 수 있다. 이때는 projection 수를 늘리거나 exact/reference 계산으로 재검증해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 approximation error가 <code>0.03</code>, projection count가 <code>128</code>, quantile error max가 <code>0.022</code>로 표시되어 있다. 좌측 차트에서 approximate line은 exact/reference line을 대체로 따라가며 error band가 drift threshold 주변을 표시한다.</p> <p>우측 상단에서는 projection count가 128 이상일 때 spread가 tolerance 아래로 내려가 안정화된다. 우측 하단에서는 q25, q50, q75 error가 target 안에 있지만 tail error는 target을 넘는다. 따라서 이 예시는 전반 score 판단은 신뢰 가능하지만 tail 기반 해석은 추가 확인이 필요한 근사 annotation 사례로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>근사 기반 drift score는 reference score와 평균 0.03 수준의 차이를 보였다.
+Sliced projection count가 128 이상일 때 score spread는 tolerance 아래로 안정화되었다.
+다만 tail quantile error가 target을 초과하므로,
+tail-sensitive 결론은 projection 증가 또는 exact 계산으로 재검증해야 한다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - approximate score만 보고 exact score와 동일한 신뢰도로 해석한다.
+
+금지 2
+  - projection count가 낮은 결과를 안정화된 sliced distance로 해석한다.
+
+금지 3
+  - 평균 quantile error가 작다는 이유로 tail error를 무시한다.
+
+금지 4
+  - threshold 근처의 근사 오차 가능성을 보고서에서 생략한다.</code></pre> <p>근사/투영 annotation은 drift score의 계산 신뢰도를 설명한다. 원본 chart의 statistic 해석과 별개로 오차 관리를 함께 보고해야 한다.</p> <h2>추가 확인 항목</h2> <p>근사/투영 annotation을 사용할 때는 다음을 추가 확인한다.</p> <ul> <li>exact/reference 계산 가능 여부</li> <li>approximation error의 정의와 허용 기준</li> <li>projection count, random seed, 반복 횟수</li> <li>quantile bin 수와 tail quantile error</li> <li>threshold 근처 window의 재계산 결과</li> <li>histogram binning 또는 sketch 알고리즘 설정</li> <li>score 변동이 보고서 결론을 뒤집는지 여부</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>KS Test / TWO_SAMPLE_KS_APPROX_QUANTILE</code></li> <li><code>Wasserstein Distance / SLICED_WASSERSTEIN_EMBEDDING</code></li> <li><code>Wasserstein Distance / WASSERSTEIN_APPROX_HISTOGRAM</code></li> </ul>
+  </main>
+</body>
+</html>

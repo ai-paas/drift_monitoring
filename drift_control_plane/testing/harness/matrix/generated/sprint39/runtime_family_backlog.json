@@ -1,0 +1,2982 @@
+{
+  "backlogId": "sprint39-runtime-family-backlog-001",
+  "version": 1,
+  "sourceMatrixId": "sprint36-chart-method-compatibility-001",
+  "inputCounts": {
+    "runtimeWrapperMissing": 173,
+    "chartMethodPairs": 188
+  },
+  "classificationCounts": {
+    "dedicated_wrapper_required": 10,
+    "generic_runtime_candidate": 111,
+    "out_of_scope_for_demo": 16,
+    "requires_new_input_contract": 36
+  },
+  "familyCount": 10,
+  "families": [
+    {
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "priority": 1,
+      "pairCount": 26,
+      "uniqueMethodCount": 5,
+      "uniqueChartCount": 7,
+      "topMethods": [
+        {
+          "methodName": "KS Test",
+          "count": 13
+        },
+        {
+          "methodName": "Anderson-Darling Test",
+          "count": 4
+        },
+        {
+          "methodName": "Epps-Singleton Test",
+          "count": 3
+        },
+        {
+          "methodName": "Cramer-von Mises Test",
+          "count": 3
+        },
+        {
+          "methodName": "Kuiper's Test",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-EDF-001",
+          "count": 10
+        },
+        {
+          "chartId": "CHART-EDF-002",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-DISTSHAPE-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-EDF-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-EDF-004",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ANNOT-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-ANNOT-002",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods."
+    },
+    {
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "priority": 1,
+      "pairCount": 17,
+      "uniqueMethodCount": 5,
+      "uniqueChartCount": 4,
+      "topMethods": [
+        {
+          "methodName": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+          "count": 4
+        },
+        {
+          "methodName": "t-test 계열",
+          "count": 4
+        },
+        {
+          "methodName": "Baumgartner-Weiss-Schindler Test",
+          "count": 3
+        },
+        {
+          "methodName": "F-test / Variance Test 계열",
+          "count": 3
+        },
+        {
+          "methodName": "Levene's Test",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-RANK-001",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-VAR-001",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-MEAN-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-ANNOT-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods."
+    },
+    {
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "priority": 1,
+      "pairCount": 10,
+      "uniqueMethodCount": 3,
+      "uniqueChartCount": 3,
+      "topMethods": [
+        {
+          "methodName": "Fisher's Exact Test",
+          "count": 4
+        },
+        {
+          "methodName": "Chi-square Test",
+          "count": 3
+        },
+        {
+          "methodName": "G-test",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CAT-001",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-CAT-004",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ANNOT-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants."
+    },
+    {
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "priority": 2,
+      "pairCount": 33,
+      "uniqueMethodCount": 11,
+      "uniqueChartCount": 10,
+      "topMethods": [
+        {
+          "methodName": "CUSUM",
+          "count": 6
+        },
+        {
+          "methodName": "EWMA",
+          "count": 4
+        },
+        {
+          "methodName": "Geometric Moving Average",
+          "count": 4
+        },
+        {
+          "methodName": "ECDD-WT",
+          "count": 3
+        },
+        {
+          "methodName": "HDDM-A",
+          "count": 3
+        },
+        {
+          "methodName": "HDDM-W",
+          "count": 3
+        },
+        {
+          "methodName": "STEPD",
+          "count": 3
+        },
+        {
+          "methodName": "MEWMA",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CTRL-002",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-ERR-005",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-ANNOT-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-CTRL-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-ERR-004",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ERR-006",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-CTRL-003",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-ERR-001",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters."
+    },
+    {
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "priority": 2,
+      "pairCount": 25,
+      "uniqueMethodCount": 8,
+      "uniqueChartCount": 7,
+      "topMethods": [
+        {
+          "methodName": "KL Divergence",
+          "count": 4
+        },
+        {
+          "methodName": "Jensen-Shannon Distance",
+          "count": 4
+        },
+        {
+          "methodName": "Total Variation Distance",
+          "count": 3
+        },
+        {
+          "methodName": "L-Infinity Distance",
+          "count": 3
+        },
+        {
+          "methodName": "Histogram Intersection Normalized Complement",
+          "count": 3
+        },
+        {
+          "methodName": "Hellinger Distance",
+          "count": 3
+        },
+        {
+          "methodName": "Bhattacharyya Distance",
+          "count": 3
+        },
+        {
+          "methodName": "PSI",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-PROB-002",
+          "count": 7
+        },
+        {
+          "chartId": "CHART-PROB-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-CAT-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-CAT-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-HIST-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-PROB-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-PSI-001",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families."
+    },
+    {
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 3,
+      "pairCount": 9,
+      "uniqueMethodCount": 4,
+      "uniqueChartCount": 4,
+      "topMethods": [
+        {
+          "methodName": "BOCD",
+          "count": 3
+        },
+        {
+          "methodName": "ADWIN",
+          "count": 2
+        },
+        {
+          "methodName": "SeqDrift",
+          "count": 2
+        },
+        {
+          "methodName": "SPRT",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-BOCD-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-STREAM-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-STREAM-004",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-STREAM-005",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse."
+    },
+    {
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 4,
+      "pairCount": 30,
+      "uniqueMethodCount": 10,
+      "uniqueChartCount": 11,
+      "topMethods": [
+        {
+          "methodName": "MMD",
+          "count": 4
+        },
+        {
+          "methodName": "Classifier 기반 embedding drift detection",
+          "count": 3
+        },
+        {
+          "methodName": "Energy Distance",
+          "count": 3
+        },
+        {
+          "methodName": "LSDD",
+          "count": 3
+        },
+        {
+          "methodName": "Hotelling T2",
+          "count": 3
+        },
+        {
+          "methodName": "Mahalanobis Distance",
+          "count": 3
+        },
+        {
+          "methodName": "Feature Map Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Autoencoder Representation Drift",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-MV-002",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-CLS-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-004",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-005",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-002",
+          "count": 3
+        }
+      ],
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation."
+    },
+    {
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 16,
+      "uniqueMethodCount": 6,
+      "uniqueChartCount": 6,
+      "topMethods": [
+        {
+          "methodName": "DriftRetrainingClassifier",
+          "count": 3
+        },
+        {
+          "methodName": "OCDD",
+          "count": 3
+        },
+        {
+          "methodName": "SHAP Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Model Uncertainty Drift",
+          "count": 3
+        },
+        {
+          "methodName": "HAT",
+          "count": 2
+        },
+        {
+          "methodName": "Tree Feature 기반 감지",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-ADAPT-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ANOM-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-EXPL-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-UNC-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ADAPT-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-EXPL-002",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo."
+    },
+    {
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 6,
+      "uniqueMethodCount": 2,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "LLM Query / Semantic Distance 기반 감지",
+          "count": 3
+        },
+        {
+          "methodName": "Text Domain Classifier Drift",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-TEXT-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-TEXT-002",
+          "count": 3
+        }
+      ],
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract."
+    },
+    {
+      "familyId": "unclassified_dedicated_review",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 6,
+      "pairCount": 1,
+      "uniqueMethodCount": 1,
+      "uniqueChartCount": 1,
+      "topMethods": [
+        {
+          "methodName": "Generic / Fallback",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-GEN-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "manual review required before implementation."
+    }
+  ],
+  "rows": [
+    {
+      "chartId": "CHART-ADAPT-001",
+      "methodName": "HAT",
+      "methodVariantKey": "HAT_ADWIN_NODE_MONITORING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HAT_ADWIN_NODE_MONITORING__CHART-ADAPT-001",
+      "description": "Online accuracy trend + drift detector state timeline + alternate tree replacement markers + tree size trend. HAT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-001",
+      "methodName": "HAT",
+      "methodVariantKey": "HAT_ALTERNATE_TREE_REPLACEMENT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HAT_ALTERNATE_TREE_REPLACEMENT__CHART-ADAPT-001",
+      "description": "Online accuracy trend + drift detector state timeline + alternate tree replacement markers + tree size trend. HAT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "methodName": "DriftRetrainingClassifier",
+      "methodVariantKey": "DRIFT_RETRAINING_WITH_ADWIN",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DRIFT_RETRAINING_WITH_ADWIN__CHART-ADAPT-002",
+      "description": "Pre/post retraining performance line + drift alarm and retrain event timeline + champion/challenger comparison. Drift retraining workflow에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "methodName": "DriftRetrainingClassifier",
+      "methodVariantKey": "DRIFT_RETRAINING_WITH_PAGE_HINKLEY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DRIFT_RETRAINING_WITH_PAGE_HINKLEY__CHART-ADAPT-002",
+      "description": "Pre/post retraining performance line + drift alarm and retrain event timeline + champion/challenger comparison. Drift retraining workflow에 사용한다."
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "methodName": "DriftRetrainingClassifier",
+      "methodVariantKey": "DRIFT_RETRAINING_CHAMPION_CHALLENGER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DRIFT_RETRAINING_CHAMPION_CHALLENGER__CHART-ADAPT-002",
+      "description": "Pre/post retraining performance line + drift alarm and retrain event timeline + champion/challenger comparison. Drift retraining workflow에 사용한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_GREATER__CHART-ANNOT-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_LESS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_LESS__CHART-ANNOT-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "Fisher's Exact Test",
+      "methodVariantKey": "ONE_SIDED_FISHER_EXACT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SIDED_FISHER_EXACT__CHART-ANNOT-001",
+      "description": "2x2 contingency mosaic plot + proportion bar + odds ratio forest plot. Fisher exact처럼 작은 표본 contingency 비교에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+      "methodVariantKey": "MANN_WHITNEY_ONE_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MANN_WHITNEY_ONE_SIDED__CHART-ANNOT-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "ONE_SIDED_UPPER_CUSUM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SIDED_UPPER_CUSUM__CHART-ANNOT-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "ONE_SIDED_LOWER_CUSUM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SIDED_LOWER_CUSUM__CHART-ANNOT-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "EWMA",
+      "methodVariantKey": "EWMA_ONE_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EWMA_ONE_SIDED__CHART-ANNOT-001",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "methodName": "Geometric Moving Average",
+      "methodVariantKey": "GMA_ONE_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GMA_ONE_SIDED__CHART-ANNOT-001",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-002",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_APPROX_QUANTILE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_APPROX_QUANTILE__CHART-ANNOT-002",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다. 근사/투영 annotation. Approximate, sliced, quantile 변종에서 approximation error, projection count, quantile error를 caption 또는 보조 패널에 표시한다."
+    },
+    {
+      "chartId": "CHART-ANNOT-002",
+      "methodName": "Wasserstein Distance",
+      "methodVariantKey": "SLICED_WASSERSTEIN_EMBEDDING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SLICED_WASSERSTEIN_EMBEDDING__CHART-ANNOT-002",
+      "description": "Reference/current distribution overlay + distance trend line + feature distance ranking bar. Wasserstein 같은 거리 기반 분포 이동 크기를 설명한다. 근사/투영 annotation. Approximate, sliced, quantile 변종에서 approximation error, projection count, quantile error를 caption 또는 보조 패널에 표시한다."
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "methodName": "OCDD",
+      "methodVariantKey": "ONE_CLASS_SVM_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_CLASS_SVM_DRIFT__CHART-ANOM-001",
+      "description": "Anomaly score distribution + anomaly rate trend + threshold line + PCA/UMAP scatter colored by outlier. OCDD/novelty detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "methodName": "OCDD",
+      "methodVariantKey": "ISOLATION_FOREST_DRIFT_SCORE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ISOLATION_FOREST_DRIFT_SCORE__CHART-ANOM-001",
+      "description": "Anomaly score distribution + anomaly rate trend + threshold line + PCA/UMAP scatter colored by outlier. OCDD/novelty detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "methodName": "OCDD",
+      "methodVariantKey": "AUTOENCODER_RECONSTRUCTION_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__AUTOENCODER_RECONSTRUCTION_DRIFT__CHART-ANOM-001",
+      "description": "Anomaly score distribution + anomaly rate trend + threshold line + PCA/UMAP scatter colored by outlier. OCDD/novelty detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-BOCD-001",
+      "methodName": "BOCD",
+      "methodVariantKey": "BAYESIAN_ONLINE_CHANGE_POINT_GAUSSIAN",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BAYESIAN_ONLINE_CHANGE_POINT_GAUSSIAN__CHART-BOCD-001",
+      "description": "Change point probability heatmap + run length posterior heatmap + stream trend with change markers. BOCD에 사용한다."
+    },
+    {
+      "chartId": "CHART-BOCD-001",
+      "methodName": "BOCD",
+      "methodVariantKey": "BOCD_HAZARD_RATE_VARIANT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BOCD_HAZARD_RATE_VARIANT__CHART-BOCD-001",
+      "description": "Change point probability heatmap + run length posterior heatmap + stream trend with change markers. BOCD에 사용한다."
+    },
+    {
+      "chartId": "CHART-BOCD-001",
+      "methodName": "BOCD",
+      "methodVariantKey": "BOCD_PREDICTIVE_PROBABILITY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BOCD_PREDICTIVE_PROBABILITY__CHART-BOCD-001",
+      "description": "Change point probability heatmap + run length posterior heatmap + stream trend with change markers. BOCD에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "methodName": "Chi-square Test",
+      "methodVariantKey": "CHI_SQUARE_GOODNESS_OF_FIT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CHI_SQUARE_GOODNESS_OF_FIT__CHART-CAT-001",
+      "description": "Observed vs expected/category frequency grouped bar + residual or contribution heatmap. Chi-square/G-test처럼 범주형 빈도 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "methodName": "Chi-square Test",
+      "methodVariantKey": "CHI_SQUARE_HOMOGENEITY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CHI_SQUARE_HOMOGENEITY__CHART-CAT-001",
+      "description": "Observed vs expected/category frequency grouped bar + residual or contribution heatmap. Chi-square/G-test처럼 범주형 빈도 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "methodName": "Chi-square Test",
+      "methodVariantKey": "CHI_SQUARE_WITH_LOW_EXPECTED_COUNT_CAUTION",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CHI_SQUARE_WITH_LOW_EXPECTED_COUNT_CAUTION__CHART-CAT-001",
+      "description": "Observed vs expected/category frequency grouped bar + residual or contribution heatmap. Chi-square/G-test처럼 범주형 빈도 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "methodName": "G-test",
+      "methodVariantKey": "LIKELIHOOD_RATIO_G_TEST_GOF",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LIKELIHOOD_RATIO_G_TEST_GOF__CHART-CAT-001",
+      "description": "Observed vs expected/category frequency grouped bar + residual or contribution heatmap. Chi-square/G-test처럼 범주형 빈도 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "methodName": "G-test",
+      "methodVariantKey": "LIKELIHOOD_RATIO_G_TEST_INDEPENDENCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LIKELIHOOD_RATIO_G_TEST_INDEPENDENCE__CHART-CAT-001",
+      "description": "Observed vs expected/category frequency grouped bar + residual or contribution heatmap. Chi-square/G-test처럼 범주형 빈도 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "methodName": "G-test",
+      "methodVariantKey": "G_TEST_WITH_SMALL_COUNT_CAUTION",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__G_TEST_WITH_SMALL_COUNT_CAUTION__CHART-CAT-001",
+      "description": "Observed vs expected/category frequency grouped bar + residual or contribution heatmap. Chi-square/G-test처럼 범주형 빈도 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-002",
+      "methodName": "Total Variation Distance",
+      "methodVariantKey": "CATEGORICAL_TOTAL_VARIATION",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CATEGORICAL_TOTAL_VARIATION__CHART-CAT-002",
+      "description": "Category proportion grouped bar + absolute delta bar + total variation trend. Probability mass 이동을 설명한다."
+    },
+    {
+      "chartId": "CHART-CAT-002",
+      "methodName": "Total Variation Distance",
+      "methodVariantKey": "HISTOGRAM_TOTAL_VARIATION",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HISTOGRAM_TOTAL_VARIATION__CHART-CAT-002",
+      "description": "Category proportion grouped bar + absolute delta bar + total variation trend. Probability mass 이동을 설명한다."
+    },
+    {
+      "chartId": "CHART-CAT-002",
+      "methodName": "Total Variation Distance",
+      "methodVariantKey": "PROBABILITY_VECTOR_TOTAL_VARIATION",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__PROBABILITY_VECTOR_TOTAL_VARIATION__CHART-CAT-002",
+      "description": "Category proportion grouped bar + absolute delta bar + total variation trend. Probability mass 이동을 설명한다."
+    },
+    {
+      "chartId": "CHART-CAT-003",
+      "methodName": "L-Infinity Distance",
+      "methodVariantKey": "CATEGORICAL_L_INFINITY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CATEGORICAL_L_INFINITY__CHART-CAT-003",
+      "description": "Max category delta bar + category proportion grouped bar + trend. L-infinity처럼 가장 크게 변한 category를 강조한다."
+    },
+    {
+      "chartId": "CHART-CAT-003",
+      "methodName": "L-Infinity Distance",
+      "methodVariantKey": "PROBABILITY_VECTOR_L_INFINITY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__PROBABILITY_VECTOR_L_INFINITY__CHART-CAT-003",
+      "description": "Max category delta bar + category proportion grouped bar + trend. L-infinity처럼 가장 크게 변한 category를 강조한다."
+    },
+    {
+      "chartId": "CHART-CAT-003",
+      "methodName": "L-Infinity Distance",
+      "methodVariantKey": "BINNED_NUMERIC_L_INFINITY",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BINNED_NUMERIC_L_INFINITY__CHART-CAT-003",
+      "description": "Max category delta bar + category proportion grouped bar + trend. L-infinity처럼 가장 크게 변한 category를 강조한다."
+    },
+    {
+      "chartId": "CHART-CAT-004",
+      "methodName": "Fisher's Exact Test",
+      "methodVariantKey": "TWO_BY_TWO_FISHER_EXACT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_BY_TWO_FISHER_EXACT__CHART-CAT-004",
+      "description": "2x2 contingency mosaic plot + proportion bar + odds ratio forest plot. Fisher exact처럼 작은 표본 contingency 비교에 사용한다."
+    },
+    {
+      "chartId": "CHART-CAT-004",
+      "methodName": "Fisher's Exact Test",
+      "methodVariantKey": "ONE_SIDED_FISHER_EXACT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SIDED_FISHER_EXACT__CHART-CAT-004",
+      "description": "2x2 contingency mosaic plot + proportion bar + odds ratio forest plot. Fisher exact처럼 작은 표본 contingency 비교에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-CAT-004",
+      "methodName": "Fisher's Exact Test",
+      "methodVariantKey": "EXTENDED_CONTINGENCY_EXACT_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "categorical_contingency_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_categorical_contingency_window",
+      "implementationStrategy": "one categorical frequency/contingency runtime can cover chi-square, G-test, and Fisher style variants.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EXTENDED_CONTINGENCY_EXACT_TEST__CHART-CAT-004",
+      "description": "2x2 contingency mosaic plot + proportion bar + odds ratio forest plot. Fisher exact처럼 작은 표본 contingency 비교에 사용한다."
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "methodName": "Classifier 기반 embedding drift detection",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_ROC_AUC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DOMAIN_CLASSIFIER_ROC_AUC__CHART-CLS-001",
+      "description": "ROC curve + domain classifier score distribution + feature importance bar + embedding projection scatter. Classifier-based embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "methodName": "Classifier 기반 embedding drift detection",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_PROBABILITY_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DOMAIN_CLASSIFIER_PROBABILITY_DRIFT__CHART-CLS-001",
+      "description": "ROC curve + domain classifier score distribution + feature importance bar + embedding projection scatter. Classifier-based embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "methodName": "Classifier 기반 embedding drift detection",
+      "methodVariantKey": "CROSS_VALIDATED_DOMAIN_CLASSIFIER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CROSS_VALIDATED_DOMAIN_CLASSIFIER__CHART-CLS-001",
+      "description": "ROC curve + domain classifier score distribution + feature importance bar + embedding projection scatter. Classifier-based embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "ONE_SIDED_UPPER_CUSUM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SIDED_UPPER_CUSUM__CHART-CTRL-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "ONE_SIDED_LOWER_CUSUM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SIDED_LOWER_CUSUM__CHART-CTRL-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "TWO_SIDED_CUSUM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SIDED_CUSUM__CHART-CTRL-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "methodName": "CUSUM",
+      "methodVariantKey": "CUSUM_ON_DISTANCE_STREAM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CUSUM_ON_DISTANCE_STREAM__CHART-CTRL-001",
+      "description": "CUSUM control chart + raw metric trend + positive/negative CUSUM paired lines. 누적 편차 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "EWMA",
+      "methodVariantKey": "EWMA_UNIVARIATE_CONTROL_CHART",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EWMA_UNIVARIATE_CONTROL_CHART__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "EWMA",
+      "methodVariantKey": "EWMA_ONE_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EWMA_ONE_SIDED__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "EWMA",
+      "methodVariantKey": "EWMA_BASELINE_REPLAY_THRESHOLD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EWMA_BASELINE_REPLAY_THRESHOLD__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "Geometric Moving Average",
+      "methodVariantKey": "GMA_CONTROL_CHART",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GMA_CONTROL_CHART__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "Geometric Moving Average",
+      "methodVariantKey": "GMA_ONE_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GMA_ONE_SIDED__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "methodName": "Geometric Moving Average",
+      "methodVariantKey": "GMA_WITH_EMPIRICAL_LIMIT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GMA_WITH_EMPIRICAL_LIMIT__CHART-CTRL-002",
+      "description": "Raw metric plus smoothed average line + UCL/LCL control chart + alarm marker timeline. EWMA/GMA에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-003",
+      "methodName": "MEWMA",
+      "methodVariantKey": "MEWMA_STANDARD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MEWMA_STANDARD__CHART-CTRL-003",
+      "description": "MEWMA statistic control chart + metric contribution bar + multivariate metric small multiples. 다변량 smoothing control chart에 사용한다."
+    },
+    {
+      "chartId": "CHART-CTRL-003",
+      "methodName": "MEWMA",
+      "methodVariantKey": "MEWMA_WITH_MAHALANOBIS_D2",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MEWMA_WITH_MAHALANOBIS_D2__CHART-CTRL-003",
+      "description": "MEWMA statistic control chart + metric contribution bar + multivariate metric small multiples. 다변량 smoothing control chart에 사용한다."
+    },
+    {
+      "chartId": "CHART-DIST-001",
+      "methodName": "Wasserstein Distance",
+      "methodVariantKey": "SLICED_WASSERSTEIN_EMBEDDING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SLICED_WASSERSTEIN_EMBEDDING__CHART-DIST-001",
+      "description": "Reference/current distribution overlay + distance trend line + feature distance ranking bar. Wasserstein 같은 거리 기반 분포 이동 크기를 설명한다. 근사/투영 annotation. Approximate, sliced, quantile 변종에서 approximation error, projection count, quantile error를 caption 또는 보조 패널에 표시한다."
+    },
+    {
+      "chartId": "CHART-DISTSHAPE-001",
+      "methodName": "Epps-Singleton Test",
+      "methodVariantKey": "TWO_SAMPLE_EPPS_SINGLETON",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_EPPS_SINGLETON__CHART-DISTSHAPE-001",
+      "description": "Distribution overlay + empirical characteristic function comparison + statistic bar. Epps-Singleton처럼 분포 형태 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-DISTSHAPE-001",
+      "methodName": "Epps-Singleton Test",
+      "methodVariantKey": "DISCRETE_EPPS_SINGLETON",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DISCRETE_EPPS_SINGLETON__CHART-DISTSHAPE-001",
+      "description": "Distribution overlay + empirical characteristic function comparison + statistic bar. Epps-Singleton처럼 분포 형태 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-DISTSHAPE-001",
+      "methodName": "Epps-Singleton Test",
+      "methodVariantKey": "ASYMPTOTIC_EPPS_SINGLETON",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ASYMPTOTIC_EPPS_SINGLETON__CHART-DISTSHAPE-001",
+      "description": "Distribution overlay + empirical characteristic function comparison + statistic bar. Epps-Singleton처럼 분포 형태 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "ONE_SAMPLE_KS_KNOWN_CDF",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SAMPLE_KS_KNOWN_CDF__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_TWO_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_TWO_SIDED__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_GREATER__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_LESS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_LESS__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_EXACT_PVALUE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_EXACT_PVALUE__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_ASYMPTOTIC_PVALUE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_ASYMPTOTIC_PVALUE__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "KS_WITH_TIES_OR_DISCRETE_CAUTION",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__KS_WITH_TIES_OR_DISCRETE_CAUTION__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "LILLIEFORS_RELATED_ONE_SAMPLE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LILLIEFORS_RELATED_ONE_SAMPLE__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "HIGHER_ORDER_KS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HIGHER_ORDER_KS__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "methodName": "KS Test",
+      "methodVariantKey": "TWO_SAMPLE_KS_APPROX_QUANTILE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_KS_APPROX_QUANTILE__CHART-EDF-001",
+      "description": "ECDF overlay + histogram/density overlay + statistic/p-value annotation. KS 계열처럼 경험 CDF의 최대 차이를 설명할 때 사용한다. 근사/투영 annotation. Approximate, sliced, quantile 변종에서 approximation error, projection count, quantile error를 caption 또는 보조 패널에 표시한다."
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "methodName": "Anderson-Darling Test",
+      "methodVariantKey": "ONE_SAMPLE_ANDERSON_DARLING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SAMPLE_ANDERSON_DARLING__CHART-EDF-002",
+      "description": "Tail-focused ECDF overlay + QQ plot + statistic/p-value annotation. Anderson-Darling처럼 tail 차이에 민감한 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "methodName": "Anderson-Darling Test",
+      "methodVariantKey": "TWO_SAMPLE_ANDERSON_DARLING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_ANDERSON_DARLING__CHART-EDF-002",
+      "description": "Tail-focused ECDF overlay + QQ plot + statistic/p-value annotation. Anderson-Darling처럼 tail 차이에 민감한 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "methodName": "Anderson-Darling Test",
+      "methodVariantKey": "K_SAMPLE_ANDERSON_DARLING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__K_SAMPLE_ANDERSON_DARLING__CHART-EDF-002",
+      "description": "Tail-focused ECDF overlay + QQ plot + statistic/p-value annotation. Anderson-Darling처럼 tail 차이에 민감한 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "methodName": "Anderson-Darling Test",
+      "methodVariantKey": "TAIL_SENSITIVE_AD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TAIL_SENSITIVE_AD__CHART-EDF-002",
+      "description": "Tail-focused ECDF overlay + QQ plot + statistic/p-value annotation. Anderson-Darling처럼 tail 차이에 민감한 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-EDF-003",
+      "methodName": "Cramer-von Mises Test",
+      "methodVariantKey": "ONE_SAMPLE_CVM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SAMPLE_CVM__CHART-EDF-003",
+      "description": "ECDF overlay + cumulative squared CDF difference plot. Cramer-von Mises처럼 전체 CDF 차이의 누적 정도를 설명한다."
+    },
+    {
+      "chartId": "CHART-EDF-003",
+      "methodName": "Cramer-von Mises Test",
+      "methodVariantKey": "TWO_SAMPLE_CVM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_CVM__CHART-EDF-003",
+      "description": "ECDF overlay + cumulative squared CDF difference plot. Cramer-von Mises처럼 전체 CDF 차이의 누적 정도를 설명한다."
+    },
+    {
+      "chartId": "CHART-EDF-003",
+      "methodName": "Cramer-von Mises Test",
+      "methodVariantKey": "K_SAMPLE_CVM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__K_SAMPLE_CVM__CHART-EDF-003",
+      "description": "ECDF overlay + cumulative squared CDF difference plot. Cramer-von Mises처럼 전체 CDF 차이의 누적 정도를 설명한다."
+    },
+    {
+      "chartId": "CHART-EDF-004",
+      "methodName": "Kuiper's Test",
+      "methodVariantKey": "KUIPER_TWO_SAMPLE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__KUIPER_TWO_SAMPLE__CHART-EDF-004",
+      "description": "ECDF positive/negative deviation plot + circular histogram optional. Kuiper처럼 양방향 CDF 편차나 circular data를 설명한다."
+    },
+    {
+      "chartId": "CHART-EDF-004",
+      "methodName": "Kuiper's Test",
+      "methodVariantKey": "KUIPER_CIRCULAR_DATA",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__KUIPER_CIRCULAR_DATA__CHART-EDF-004",
+      "description": "ECDF positive/negative deviation plot + circular histogram optional. Kuiper처럼 양방향 CDF 편차나 circular data를 설명한다."
+    },
+    {
+      "chartId": "CHART-EDF-004",
+      "methodName": "Kuiper's Test",
+      "methodVariantKey": "KUIPER_ONE_SAMPLE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "distribution_ecdf_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_distribution_ecdf_window",
+      "implementationStrategy": "one generic runtime can cover two-sample ECDF/statistic style methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__KUIPER_ONE_SAMPLE__CHART-EDF-004",
+      "description": "ECDF positive/negative deviation plot + circular histogram optional. Kuiper처럼 양방향 CDF 편차나 circular data를 설명한다."
+    },
+    {
+      "chartId": "CHART-ERR-001",
+      "methodName": "DDM",
+      "methodVariantKey": "DDM_WARNING_BUFFER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DDM_WARNING_BUFFER__CHART-ERR-001",
+      "description": "Error rate trend + warning/drift threshold lines + warning buffer timeline. DDM에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-001",
+      "methodName": "DDM",
+      "methodVariantKey": "DDM_CLASS_SPECIFIC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DDM_CLASS_SPECIFIC__CHART-ERR-001",
+      "description": "Error rate trend + warning/drift threshold lines + warning buffer timeline. DDM에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-002",
+      "methodName": "RDDM",
+      "methodVariantKey": "RDDM_REACTIVE_RESET",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__RDDM_REACTIVE_RESET__CHART-ERR-002",
+      "description": "Error rate trend + warning/drift timeline + retained window size trend + DDM/RDDM comparison. RDDM에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-003",
+      "methodName": "EDDM",
+      "methodVariantKey": "EDDM_WARNING_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EDDM_WARNING_DRIFT__CHART-ERR-003",
+      "description": "Distance-between-errors trend + warning/drift timeline + error event raster. EDDM에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-003",
+      "methodName": "EDDM",
+      "methodVariantKey": "EDDM_GRADUAL_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__EDDM_GRADUAL_DRIFT__CHART-ERR-003",
+      "description": "Distance-between-errors trend + warning/drift timeline + error event raster. EDDM에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-004",
+      "methodName": "ECDD-WT",
+      "methodVariantKey": "ECDD_WT_STANDARD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ECDD_WT_STANDARD__CHART-ERR-004",
+      "description": "Error rate trend + ECDD statistic control chart + warning/drift state timeline. ECDD-WT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-004",
+      "methodName": "ECDD-WT",
+      "methodVariantKey": "ECDD_WT_WARNING_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ECDD_WT_WARNING_DRIFT__CHART-ERR-004",
+      "description": "Error rate trend + ECDD statistic control chart + warning/drift state timeline. ECDD-WT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-004",
+      "methodName": "ECDD-WT",
+      "methodVariantKey": "ECDD_WT_ERROR_STREAM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ECDD_WT_ERROR_STREAM__CHART-ERR-004",
+      "description": "Error rate trend + ECDD statistic control chart + warning/drift state timeline. ECDD-WT에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "methodName": "HDDM-A",
+      "methodVariantKey": "HDDM_A_HOEFFDING_BOUND",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HDDM_A_HOEFFDING_BOUND__CHART-ERR-005",
+      "description": "Error or weighted error trend + Hoeffding bound chart + warning/drift markers. HDDM 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "methodName": "HDDM-A",
+      "methodVariantKey": "HDDM_A_WARNING_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HDDM_A_WARNING_DRIFT__CHART-ERR-005",
+      "description": "Error or weighted error trend + Hoeffding bound chart + warning/drift markers. HDDM 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "methodName": "HDDM-A",
+      "methodVariantKey": "HDDM_A_TWO_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HDDM_A_TWO_SIDED__CHART-ERR-005",
+      "description": "Error or weighted error trend + Hoeffding bound chart + warning/drift markers. HDDM 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "methodName": "HDDM-W",
+      "methodVariantKey": "HDDM_W_WEIGHTED_AVERAGE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HDDM_W_WEIGHTED_AVERAGE__CHART-ERR-005",
+      "description": "Error or weighted error trend + Hoeffding bound chart + warning/drift markers. HDDM 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "methodName": "HDDM-W",
+      "methodVariantKey": "HDDM_W_WARNING_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HDDM_W_WARNING_DRIFT__CHART-ERR-005",
+      "description": "Error or weighted error trend + Hoeffding bound chart + warning/drift markers. HDDM 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "methodName": "HDDM-W",
+      "methodVariantKey": "HDDM_W_RECENT_ERROR_WEIGHTING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HDDM_W_RECENT_ERROR_WEIGHTING__CHART-ERR-005",
+      "description": "Error or weighted error trend + Hoeffding bound chart + warning/drift markers. HDDM 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-006",
+      "methodName": "STEPD",
+      "methodVariantKey": "STEPD_ACCURACY_WINDOW",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__STEPD_ACCURACY_WINDOW__CHART-ERR-006",
+      "description": "Recent vs overall accuracy line + warning/drift threshold chart + state timeline. STEPD에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-006",
+      "methodName": "STEPD",
+      "methodVariantKey": "STEPD_WARNING_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__STEPD_WARNING_DRIFT__CHART-ERR-006",
+      "description": "Recent vs overall accuracy line + warning/drift threshold chart + state timeline. STEPD에 사용한다."
+    },
+    {
+      "chartId": "CHART-ERR-006",
+      "methodName": "STEPD",
+      "methodVariantKey": "STEPD_SUPERVISED_STREAM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__STEPD_SUPERVISED_STREAM__CHART-ERR-006",
+      "description": "Recent vs overall accuracy line + warning/drift threshold chart + state timeline. STEPD에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "methodName": "SHAP Drift",
+      "methodVariantKey": "SHAP_VALUE_DISTRIBUTION_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SHAP_VALUE_DISTRIBUTION_TEST__CHART-EXPL-001",
+      "description": "SHAP summary comparison + SHAP value distribution by feature + importance rank change chart + class-wise SHAP heatmap. SHAP drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "methodName": "SHAP Drift",
+      "methodVariantKey": "GLOBAL_IMPORTANCE_RANK_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GLOBAL_IMPORTANCE_RANK_SHIFT__CHART-EXPL-001",
+      "description": "SHAP summary comparison + SHAP value distribution by feature + importance rank change chart + class-wise SHAP heatmap. SHAP drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "methodName": "SHAP Drift",
+      "methodVariantKey": "CLASS_CONDITIONAL_SHAP_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CLASS_CONDITIONAL_SHAP_DRIFT__CHART-EXPL-001",
+      "description": "SHAP summary comparison + SHAP value distribution by feature + importance rank change chart + class-wise SHAP heatmap. SHAP drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-002",
+      "methodName": "Tree Feature 기반 감지",
+      "methodVariantKey": "TIME_FEATURE_SPLIT_DETECTOR",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TIME_FEATURE_SPLIT_DETECTOR__CHART-EXPL-002",
+      "description": "Feature importance bar + time split count bar + split path diagram + segment distribution comparison. Tree feature 기반 감지에 사용한다."
+    },
+    {
+      "chartId": "CHART-EXPL-002",
+      "methodName": "Tree Feature 기반 감지",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_TREE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DOMAIN_CLASSIFIER_TREE__CHART-EXPL-002",
+      "description": "Feature importance bar + time split count bar + split path diagram + segment distribution comparison. Tree feature 기반 감지에 사용한다."
+    },
+    {
+      "chartId": "CHART-GEN-001",
+      "methodName": "Generic / Fallback",
+      "methodVariantKey": "GENERIC_METRIC_THRESHOLD_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "unclassified_dedicated_review",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "manual review required before implementation.",
+      "priority": 6,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GENERIC_METRIC_THRESHOLD_DRIFT__CHART-GEN-001",
+      "description": "Metric trend line + reference/current distribution overlay + threshold/alarm marker. 특정 chart family가 아직 정해지지 않은 method를 임시로 보고할 때 사용한다."
+    },
+    {
+      "chartId": "CHART-HIST-001",
+      "methodName": "Histogram Intersection Normalized Complement",
+      "methodVariantKey": "HINC_CATEGORICAL",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HINC_CATEGORICAL__CHART-HIST-001",
+      "description": "Histogram overlay + intersection contribution by bin + distance trend. Histogram intersection 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-HIST-001",
+      "methodName": "Histogram Intersection Normalized Complement",
+      "methodVariantKey": "HINC_HISTOGRAM_NUMERIC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HINC_HISTOGRAM_NUMERIC__CHART-HIST-001",
+      "description": "Histogram overlay + intersection contribution by bin + distance trend. Histogram intersection 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-HIST-001",
+      "methodName": "Histogram Intersection Normalized Complement",
+      "methodVariantKey": "HINC_IMAGE_FEATURE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HINC_IMAGE_FEATURE__CHART-HIST-001",
+      "description": "Histogram overlay + intersection contribution by bin + distance trend. Histogram intersection 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "methodName": "t-test 계열",
+      "methodVariantKey": "ONE_SAMPLE_T_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ONE_SAMPLE_T_TEST__CHART-MEAN-001",
+      "description": "Mean with confidence interval + box/violin plot + effect size/p-value bar. 평균 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "methodName": "t-test 계열",
+      "methodVariantKey": "TWO_SAMPLE_STUDENT_T_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TWO_SAMPLE_STUDENT_T_TEST__CHART-MEAN-001",
+      "description": "Mean with confidence interval + box/violin plot + effect size/p-value bar. 평균 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "methodName": "t-test 계열",
+      "methodVariantKey": "WELCH_T_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__WELCH_T_TEST__CHART-MEAN-001",
+      "description": "Mean with confidence interval + box/violin plot + effect size/p-value bar. 평균 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "methodName": "t-test 계열",
+      "methodVariantKey": "PAIRED_T_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__PAIRED_T_TEST__CHART-MEAN-001",
+      "description": "Mean with confidence interval + box/violin plot + effect size/p-value bar. 평균 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "methodName": "Energy Distance",
+      "methodVariantKey": "UNIVARIATE_ENERGY_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__UNIVARIATE_ENERGY_DISTANCE__CHART-MV-001",
+      "description": "Energy distance trend + permutation null histogram + multivariate projection scatter. Energy distance 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "methodName": "Energy Distance",
+      "methodVariantKey": "MULTIVARIATE_ENERGY_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MULTIVARIATE_ENERGY_DISTANCE__CHART-MV-001",
+      "description": "Energy distance trend + permutation null histogram + multivariate projection scatter. Energy distance 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "methodName": "Energy Distance",
+      "methodVariantKey": "ENERGY_DISTANCE_PERMUTATION_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ENERGY_DISTANCE_PERMUTATION_TEST__CHART-MV-001",
+      "description": "Energy distance trend + permutation null histogram + multivariate projection scatter. Energy distance 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "methodName": "MMD",
+      "methodVariantKey": "KERNEL_MMD_UNBIASED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__KERNEL_MMD_UNBIASED__CHART-MV-002",
+      "description": "MMD score trend + permutation null histogram + embedding projection scatter. Kernel MMD 기반 고차원 분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "methodName": "MMD",
+      "methodVariantKey": "KERNEL_MMD_BIASED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__KERNEL_MMD_BIASED__CHART-MV-002",
+      "description": "MMD score trend + permutation null histogram + embedding projection scatter. Kernel MMD 기반 고차원 분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "methodName": "MMD",
+      "methodVariantKey": "LINEAR_TIME_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LINEAR_TIME_MMD__CHART-MV-002",
+      "description": "MMD score trend + permutation null histogram + embedding projection scatter. Kernel MMD 기반 고차원 분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "methodName": "MMD",
+      "methodVariantKey": "STREAMING_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__STREAMING_MMD__CHART-MV-002",
+      "description": "MMD score trend + permutation null histogram + embedding projection scatter. Kernel MMD 기반 고차원 분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "methodName": "LSDD",
+      "methodVariantKey": "LEAST_SQUARES_DENSITY_DIFFERENCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LEAST_SQUARES_DENSITY_DIFFERENCE__CHART-MV-003",
+      "description": "LSDD score trend + permutation null histogram + density difference heatmap/projection. 밀도 차이 기반 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "methodName": "LSDD",
+      "methodVariantKey": "LSDD_WITH_PREPROCESSING",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LSDD_WITH_PREPROCESSING__CHART-MV-003",
+      "description": "LSDD score trend + permutation null histogram + density difference heatmap/projection. 밀도 차이 기반 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "methodName": "LSDD",
+      "methodVariantKey": "PERMUTATION_LSDD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__PERMUTATION_LSDD__CHART-MV-003",
+      "description": "LSDD score trend + permutation null histogram + density difference heatmap/projection. 밀도 차이 기반 detector에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-004",
+      "methodName": "Hotelling T2",
+      "methodVariantKey": "HOTELLING_T2_ONE_SAMPLE_PHASE_II",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HOTELLING_T2_ONE_SAMPLE_PHASE_II__CHART-MV-004",
+      "description": "T2 control chart + contribution bar + PCA scatter. Hotelling T2 다변량 평균 shift에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-004",
+      "methodName": "Hotelling T2",
+      "methodVariantKey": "HOTELLING_T2_TWO_SAMPLE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HOTELLING_T2_TWO_SAMPLE__CHART-MV-004",
+      "description": "T2 control chart + contribution bar + PCA scatter. Hotelling T2 다변량 평균 shift에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-004",
+      "methodName": "Hotelling T2",
+      "methodVariantKey": "REGULARIZED_HOTELLING_T2",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__REGULARIZED_HOTELLING_T2__CHART-MV-004",
+      "description": "T2 control chart + contribution bar + PCA scatter. Hotelling T2 다변량 평균 shift에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-005",
+      "methodName": "Mahalanobis Distance",
+      "methodVariantKey": "SAMPLE_MAHALANOBIS_OUTLIER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SAMPLE_MAHALANOBIS_OUTLIER__CHART-MV-005",
+      "description": "Mahalanobis distance trend + distance histogram with threshold + PCA scatter colored by distance. 공분산 기반 이탈에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-005",
+      "methodName": "Mahalanobis Distance",
+      "methodVariantKey": "WINDOW_MEAN_MAHALANOBIS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__WINDOW_MEAN_MAHALANOBIS__CHART-MV-005",
+      "description": "Mahalanobis distance trend + distance histogram with threshold + PCA scatter colored by distance. 공분산 기반 이탈에 사용한다."
+    },
+    {
+      "chartId": "CHART-MV-005",
+      "methodName": "Mahalanobis Distance",
+      "methodVariantKey": "ROBUST_MAHALANOBIS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ROBUST_MAHALANOBIS__CHART-MV-005",
+      "description": "Mahalanobis distance trend + distance histogram with threshold + PCA scatter colored by distance. 공분산 기반 이탈에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "methodName": "KL Divergence",
+      "methodVariantKey": "DISCRETE_KL_DIVERGENCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DISCRETE_KL_DIVERGENCE__CHART-PROB-001",
+      "description": "Probability distribution overlay + divergence trend + top contributing bins bar. KL처럼 비대칭 확률분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "methodName": "KL Divergence",
+      "methodVariantKey": "HISTOGRAM_KL_DIVERGENCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HISTOGRAM_KL_DIVERGENCE__CHART-PROB-001",
+      "description": "Probability distribution overlay + divergence trend + top contributing bins bar. KL처럼 비대칭 확률분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "methodName": "KL Divergence",
+      "methodVariantKey": "SMOOTHED_KL_DIVERGENCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SMOOTHED_KL_DIVERGENCE__CHART-PROB-001",
+      "description": "Probability distribution overlay + divergence trend + top contributing bins bar. KL처럼 비대칭 확률분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "methodName": "KL Divergence",
+      "methodVariantKey": "SYMMETRIZED_KL",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SYMMETRIZED_KL__CHART-PROB-001",
+      "description": "Probability distribution overlay + divergence trend + top contributing bins bar. KL처럼 비대칭 확률분포 차이에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Jensen-Shannon Distance",
+      "methodVariantKey": "JENSEN_SHANNON_DIVERGENCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__JENSEN_SHANNON_DIVERGENCE__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Jensen-Shannon Distance",
+      "methodVariantKey": "JENSEN_SHANNON_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__JENSEN_SHANNON_DISTANCE__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Jensen-Shannon Distance",
+      "methodVariantKey": "MULTICLASS_PROBABILITY_JS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MULTICLASS_PROBABILITY_JS__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Jensen-Shannon Distance",
+      "methodVariantKey": "TEXT_TOPIC_JS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_TOPIC_JS__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Hellinger Distance",
+      "methodVariantKey": "DISCRETE_HELLINGER_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DISCRETE_HELLINGER_DISTANCE__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Hellinger Distance",
+      "methodVariantKey": "HISTOGRAM_HELLINGER_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HISTOGRAM_HELLINGER_DISTANCE__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "methodName": "Hellinger Distance",
+      "methodVariantKey": "CATEGORICAL_HELLINGER_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CATEGORICAL_HELLINGER_DISTANCE__CHART-PROB-002",
+      "description": "Probability distribution overlay + bounded distance trend + category delta bar. JS/Hellinger처럼 bounded symmetric distance에 사용한다."
+    },
+    {
+      "chartId": "CHART-PROB-003",
+      "methodName": "Bhattacharyya Distance",
+      "methodVariantKey": "DISCRETE_BHATTACHARYYA_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__DISCRETE_BHATTACHARYYA_DISTANCE__CHART-PROB-003",
+      "description": "Probability distribution overlay + overlap coefficient chart + distance trend. Bhattacharyya처럼 분포 overlap 감소를 설명한다."
+    },
+    {
+      "chartId": "CHART-PROB-003",
+      "methodName": "Bhattacharyya Distance",
+      "methodVariantKey": "GAUSSIAN_BHATTACHARYYA_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GAUSSIAN_BHATTACHARYYA_DISTANCE__CHART-PROB-003",
+      "description": "Probability distribution overlay + overlap coefficient chart + distance trend. Bhattacharyya처럼 분포 overlap 감소를 설명한다."
+    },
+    {
+      "chartId": "CHART-PROB-003",
+      "methodName": "Bhattacharyya Distance",
+      "methodVariantKey": "HISTOGRAM_BHATTACHARYYA_DISTANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__HISTOGRAM_BHATTACHARYYA_DISTANCE__CHART-PROB-003",
+      "description": "Probability distribution overlay + overlap coefficient chart + distance trend. Bhattacharyya처럼 분포 overlap 감소를 설명한다."
+    },
+    {
+      "chartId": "CHART-PSI-001",
+      "methodName": "PSI",
+      "methodVariantKey": "CATEGORICAL_PSI",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__CATEGORICAL_PSI__CHART-PSI-001",
+      "description": "Bin proportion grouped bar + PSI contribution by bin + PSI trend. PSI score의 bin별 기여와 population shift를 설명한다."
+    },
+    {
+      "chartId": "CHART-PSI-001",
+      "methodName": "PSI",
+      "methodVariantKey": "POPULATION_WEIGHTED_PSI",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families.",
+      "priority": 2,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__POPULATION_WEIGHTED_PSI__CHART-PSI-001",
+      "description": "Bin proportion grouped bar + PSI contribution by bin + PSI trend. PSI score의 bin별 기여와 population shift를 설명한다."
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "methodName": "Baumgartner-Weiss-Schindler Test",
+      "methodVariantKey": "BWS_TWO_SAMPLE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BWS_TWO_SAMPLE__CHART-RANK-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다."
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "methodName": "Baumgartner-Weiss-Schindler Test",
+      "methodVariantKey": "BWS_EXACT_OR_ASYMPTOTIC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BWS_EXACT_OR_ASYMPTOTIC__CHART-RANK-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다."
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "methodName": "Baumgartner-Weiss-Schindler Test",
+      "methodVariantKey": "BWS_RANK_BASED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BWS_RANK_BASED__CHART-RANK-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다."
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "methodName": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+      "methodVariantKey": "MANN_WHITNEY_TWO_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MANN_WHITNEY_TWO_SIDED__CHART-RANK-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다."
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "methodName": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+      "methodVariantKey": "MANN_WHITNEY_ONE_SIDED",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MANN_WHITNEY_ONE_SIDED__CHART-RANK-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다. 방향성 annotation. One-sided, upper, lower 변종에서 증가/감소 방향과 one-sided threshold marker를 차트에 추가한다."
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "methodName": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+      "methodVariantKey": "MANN_WHITNEY_EXACT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MANN_WHITNEY_EXACT__CHART-RANK-001",
+      "description": "Box/violin plot + rank distribution plot + statistic/p-value annotation. Rank 기반 위치 차이 검정에 공통으로 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "methodName": "Feature Map Drift",
+      "methodVariantKey": "MODEL_FEATURE_MAP_KS",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MODEL_FEATURE_MAP_KS__CHART-REP-001",
+      "description": "Layerwise drift heatmap + feature map activation distribution + embedding projection by layer. Feature map drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "methodName": "Feature Map Drift",
+      "methodVariantKey": "MODEL_FEATURE_MAP_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MODEL_FEATURE_MAP_MMD__CHART-REP-001",
+      "description": "Layerwise drift heatmap + feature map activation distribution + embedding projection by layer. Feature map drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "methodName": "Feature Map Drift",
+      "methodVariantKey": "LAYERWISE_FEATURE_MAP_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LAYERWISE_FEATURE_MAP_DRIFT__CHART-REP-001",
+      "description": "Layerwise drift heatmap + feature map activation distribution + embedding projection by layer. Feature map drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "methodName": "Autoencoder Representation Drift",
+      "methodVariantKey": "LATENT_SPACE_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LATENT_SPACE_DRIFT__CHART-REP-002",
+      "description": "Reconstruction error distribution + error trend with threshold + latent projection scatter. Autoencoder representation drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "methodName": "Autoencoder Representation Drift",
+      "methodVariantKey": "RECONSTRUCTION_ERROR_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__RECONSTRUCTION_ERROR_DRIFT__CHART-REP-002",
+      "description": "Reconstruction error distribution + error trend with threshold + latent projection scatter. Autoencoder representation drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "methodName": "Autoencoder Representation Drift",
+      "methodVariantKey": "AUTOENCODER_DOMAIN_CLASSIFIER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__AUTOENCODER_DOMAIN_CLASSIFIER__CHART-REP-002",
+      "description": "Reconstruction error distribution + error trend with threshold + latent projection scatter. Autoencoder representation drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "methodName": "Graph Embedding Drift",
+      "methodVariantKey": "GRAPH_EMBEDDING_MMD",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GRAPH_EMBEDDING_MMD__CHART-REP-003",
+      "description": "Graph embedding projection scatter + node drift score heatmap + graph-level distance trend. Graph embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "methodName": "Graph Embedding Drift",
+      "methodVariantKey": "GRAPH_EMBEDDING_CENTROID_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__GRAPH_EMBEDDING_CENTROID_SHIFT__CHART-REP-003",
+      "description": "Graph embedding projection scatter + node drift score heatmap + graph-level distance trend. Graph embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "methodName": "Graph Embedding Drift",
+      "methodVariantKey": "NODE_REPRESENTATION_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation.",
+      "priority": 4,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__NODE_REPRESENTATION_DRIFT__CHART-REP-003",
+      "description": "Graph embedding projection scatter + node drift score heatmap + graph-level distance trend. Graph embedding drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "methodName": "ADWIN",
+      "methodVariantKey": "ADWIN_ERROR_RATE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ADWIN_ERROR_RATE__CHART-STREAM-001",
+      "description": "Stream line chart with alarm markers + adaptive window width trend + before/after window mean comparison. ADWIN에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "methodName": "ADWIN",
+      "methodVariantKey": "ADWIN_DISTANCE_STREAM",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ADWIN_DISTANCE_STREAM__CHART-STREAM-001",
+      "description": "Stream line chart with alarm markers + adaptive window width trend + before/after window mean comparison. ADWIN에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-004",
+      "methodName": "SeqDrift",
+      "methodVariantKey": "SEQDRIFT1",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SEQDRIFT1__CHART-STREAM-004",
+      "description": "Stream value trend + sequential bound chart + alarm marker timeline. SeqDrift 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-004",
+      "methodName": "SeqDrift",
+      "methodVariantKey": "SEQDRIFT2",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SEQDRIFT2__CHART-STREAM-004",
+      "description": "Stream value trend + sequential bound chart + alarm marker timeline. SeqDrift 계열에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-005",
+      "methodName": "SPRT",
+      "methodVariantKey": "SPRT_BERNOULLI_ERROR_RATE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SPRT_BERNOULLI_ERROR_RATE__CHART-STREAM-005",
+      "description": "Log likelihood ratio trend with decision boundaries + sequential decision timeline. SPRT에 사용한다."
+    },
+    {
+      "chartId": "CHART-STREAM-005",
+      "methodName": "SPRT",
+      "methodVariantKey": "SPRT_GAUSSIAN_MEAN_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse.",
+      "priority": 3,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SPRT_GAUSSIAN_MEAN_SHIFT__CHART-STREAM-005",
+      "description": "Log likelihood ratio trend with decision boundaries + sequential decision timeline. SPRT에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "methodName": "LLM Query / Semantic Distance 기반 감지",
+      "methodVariantKey": "QUERY_CENTROID_COSINE_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__QUERY_CENTROID_COSINE_SHIFT__CHART-TEXT-001",
+      "description": "Embedding projection scatter + semantic distance trend + topic proportion stacked bar + optional domain classifier ROC curve. LLM query semantic drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "methodName": "LLM Query / Semantic Distance 기반 감지",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_DRIFT__CHART-TEXT-001",
+      "description": "Embedding projection scatter + semantic distance trend + topic proportion stacked bar + optional domain classifier ROC curve. LLM query semantic drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "methodName": "LLM Query / Semantic Distance 기반 감지",
+      "methodVariantKey": "TOPIC_DISTRIBUTION_SHIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TOPIC_DISTRIBUTION_SHIFT__CHART-TEXT-001",
+      "description": "Embedding projection scatter + semantic distance trend + topic proportion stacked bar + optional domain classifier ROC curve. LLM query semantic drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "methodName": "Text Domain Classifier Drift",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_ROC_AUC",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_ROC_AUC__CHART-TEXT-002",
+      "description": "ROC curve + domain classifier score distribution + top text descriptor drift bar + embedding projection scatter. Text domain classifier drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "methodName": "Text Domain Classifier Drift",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_STAT_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_STAT_TEST__CHART-TEXT-002",
+      "description": "ROC curve + domain classifier score distribution + top text descriptor drift bar + embedding projection scatter. Text domain classifier drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "methodName": "Text Domain Classifier Drift",
+      "methodVariantKey": "TEXT_DESCRIPTOR_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TEXT_DESCRIPTOR_DRIFT__CHART-TEXT-002",
+      "description": "ROC curve + domain classifier score distribution + top text descriptor drift bar + embedding projection scatter. Text domain classifier drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "methodName": "Model Uncertainty Drift",
+      "methodVariantKey": "SOFTMAX_CONFIDENCE_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__SOFTMAX_CONFIDENCE_DRIFT__CHART-UNC-001",
+      "description": "Confidence/entropy distribution overlay + uncertainty trend + calibration curve + uncertainty by class bar. Model uncertainty drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "methodName": "Model Uncertainty Drift",
+      "methodVariantKey": "ENTROPY_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ENTROPY_DRIFT__CHART-UNC-001",
+      "description": "Confidence/entropy distribution overlay + uncertainty trend + calibration curve + uncertainty by class bar. Model uncertainty drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "methodName": "Model Uncertainty Drift",
+      "methodVariantKey": "PREDICTIVE_VARIANCE_DRIFT",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo.",
+      "priority": 5,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__PREDICTIVE_VARIANCE_DRIFT__CHART-UNC-001",
+      "description": "Confidence/entropy distribution overlay + uncertainty trend + calibration curve + uncertainty by class bar. Model uncertainty drift에 사용한다."
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "methodName": "F-test / Variance Test 계열",
+      "methodVariantKey": "F_TEST_EQUAL_VARIANCE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__F_TEST_EQUAL_VARIANCE__CHART-VAR-001",
+      "description": "Variance comparison bar + box/violin plot + variance ratio or absolute deviation plot. 분산 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "methodName": "F-test / Variance Test 계열",
+      "methodVariantKey": "ANOVA_F_TEST_GROUP_MEAN",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__ANOVA_F_TEST_GROUP_MEAN__CHART-VAR-001",
+      "description": "Variance comparison bar + box/violin plot + variance ratio or absolute deviation plot. 분산 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "methodName": "F-test / Variance Test 계열",
+      "methodVariantKey": "MODEL_COMPARISON_F_TEST",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__MODEL_COMPARISON_F_TEST__CHART-VAR-001",
+      "description": "Variance comparison bar + box/violin plot + variance ratio or absolute deviation plot. 분산 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "methodName": "Levene's Test",
+      "methodVariantKey": "LEVENE_MEAN_CENTER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__LEVENE_MEAN_CENTER__CHART-VAR-001",
+      "description": "Variance comparison bar + box/violin plot + variance ratio or absolute deviation plot. 분산 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "methodName": "Levene's Test",
+      "methodVariantKey": "BROWN_FORSYTHE_MEDIAN_CENTER",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__BROWN_FORSYTHE_MEDIAN_CENTER__CHART-VAR-001",
+      "description": "Variance comparison bar + box/violin plot + variance ratio or absolute deviation plot. 분산 차이 검정에 사용한다."
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "methodName": "Levene's Test",
+      "methodVariantKey": "TRIMMED_MEAN_LEVENE",
+      "currentStatus": "runtime_wrapper_missing",
+      "familyId": "rank_mean_variance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_statistical_test_window",
+      "implementationStrategy": "one numeric reference/current statistical-test runtime can cover rank, mean, and variance comparison methods.",
+      "priority": 1,
+      "payloadBindingStatus": "payload_coverage_available",
+      "payloadBindingKey": "auto__TRIMMED_MEAN_LEVENE__CHART-VAR-001",
+      "description": "Variance comparison bar + box/violin plot + variance ratio or absolute deviation plot. 분산 차이 검정에 사용한다."
+    }
+  ]
+}

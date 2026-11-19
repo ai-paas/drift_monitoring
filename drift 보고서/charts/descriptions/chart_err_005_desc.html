@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-005 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ERR-005</p>
+    <h1>CHART-ERR-005 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 HDDM-A와 HDDM-W가 reference window와 recent window의 error mean 차이를 Hoeffding bound와 비교해 drift를 감지하는 방식을 설명한다.</p> <p>HDDM-A는 평균 차이를 직접 비교하고, HDDM-W는 최근 관측에 더 큰 가중치를 둔 weighted average를 사용할 수 있다. Two-sided 설정에서는 상방 error 증가뿐 아니라 하방 변화도 guard band로 함께 감시한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. recent mean과 reference mean의 차이가 warning bound를 넘는가?
+2. mean difference가 drift bound까지 초과하는가?
+3. error 또는 weighted error trend도 같은 방향으로 이동하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - mean difference trend
+  - warning bound
+  - drift bound
+  - two-sided lower guard band
+  - warning/drift marker
+
+우측 상단
+  - error 또는 weighted error trend
+  - drift marker
+
+우측 하단
+  - warning/drift marker timeline
+  - two-sided guard band 표시</code></pre> <p>상단 요약 영역에는 final difference, warning 시점, drift 시점을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 Hoeffding bound chart에서 mean difference가 warning bound와 drift bound를 넘는지 확인한다.</p> <pre><code>mean difference가 bound 아래에 있다
+  -&gt; reference와 recent window의 error 평균 차이가 통계적으로 충분하지 않다.
+
+mean difference가 warning bound를 넘는다
+  -&gt; error 평균 shift 후보로 보고 추가 관측한다.
+
+mean difference가 drift bound를 넘는다
+  -&gt; HDDM 기준 drift 후보로 본다.</code></pre> <p>그 다음 우측 상단 error trend를 확인한다. Bound 초과가 실제 error 또는 weighted error 상승과 같은 방향인지 확인해야 한다.</p> <p>마지막으로 우측 하단 timeline에서 warning 이후 drift marker가 나타나는지, two-sided 설정이 필요한지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Mean difference가 warning bound를 넘은 뒤 drift bound를 초과하고, error 또는 weighted error trend가 같은 기간 상승하며, marker timeline이 drift 상태로 전환되면 HDDM 기반 drift 후보로 해석한다.</p> <p>단, HDDM은 window 크기, confidence parameter, one-sided/two-sided 설정, weighting 방식에 민감하다. Window가 너무 작으면 bound가 불안정하고, 너무 크면 drift 감지가 늦어질 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 final diff가 <code>0.50</code>, warning 시점이 <code>t=22</code>, drift 시점이 <code>t=26</code>으로 표시되어 있다. 좌측 Hoeffding bound chart에서 mean difference는 warning bound <code>0.26</code>을 넘은 뒤 drift bound <code>0.36</code>을 초과한다.</p> <p>우측 상단 error trend도 같은 기간 상승한다. 우측 하단 timeline에서는 normal 상태가 warning을 거쳐 drift 상태로 전환되고, two-sided guard band가 함께 표시된다. 따라서 이 예시는 recent error mean이 reference 대비 통계적으로 커진 HDDM drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>HDDM으로 reference window와 recent window의 error mean을 비교한 결과,
+mean difference는 t=22에서 warning bound 0.26을 초과했고
+t=26에서 drift bound 0.36을 초과했다.
+Weighted error trend도 같은 기간 상승했으므로
+Hoeffding-bound 기반 error-rate drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - bound 초과만으로 원인 feature를 특정한다.
+
+금지 2
+  - confidence parameter와 window size를 확인하지 않고 민감도를 평가한다.
+
+금지 3
+  - one-sided/two-sided 설정을 구분하지 않고 방향성을 해석한다.
+
+금지 4
+  - weighted average 사용 여부를 확인하지 않고 HDDM-A와 HDDM-W를 같은 방식으로 설명한다.</code></pre> <p>HDDM은 error mean 차이의 통계적 bound 초과를 감지한다. 입력 데이터 drift, class별 error 변화, calibration 변화는 별도 분석이 필요하다.</p> <h2>추가 확인 항목</h2> <p>HDDM drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>reference/recent window 크기</li> <li>Hoeffding bound confidence parameter</li> <li>one-sided 또는 two-sided 설정</li> <li>HDDM-A 평균 비교인지 HDDM-W weighted average인지 여부</li> <li>warning/drift marker 전후 class별 error 변화</li> <li>DDM, RDDM, EDDM, ECDD-WT 등 다른 error detector와의 합의 여부</li> <li>입력 feature drift와 모델 성능 지표 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>HDDM-A / HDDM_A_HOEFFDING_BOUND</code></li> <li><code>HDDM-A / HDDM_A_WARNING_DRIFT</code></li> <li><code>HDDM-A / HDDM_A_TWO_SIDED</code></li> <li><code>HDDM-W / HDDM_W_WEIGHTED_AVERAGE</code></li> <li><code>HDDM-W / HDDM_W_WARNING_DRIFT</code></li> <li><code>HDDM-W / HDDM_W_RECENT_ERROR_WEIGHTING</code></li> </ul>
+  </main>
+</body>
+</html>

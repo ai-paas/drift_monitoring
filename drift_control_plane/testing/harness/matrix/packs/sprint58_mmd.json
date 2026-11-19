@@ -1,0 +1,9 @@
+{
+  "packId": "sprint58_mmd",
+  "title": "Sprint 58 MMD numeric distribution scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V17-ROW-CASE004-MMD-BIASED-MV002",
+    "V17-ROW-CASE004-MMD-UNBIASED-MV002"
+  ]
+}

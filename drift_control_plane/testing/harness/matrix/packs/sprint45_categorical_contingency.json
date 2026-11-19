@@ -1,0 +1,16 @@
+{
+  "packId": "sprint45_categorical_contingency",
+  "description": "Sprint 45 categorical contingency chart-method scenarios.",
+  "rowIds": [
+    "V5-ROW-CASE004-FISHER-1S-A1",
+    "V5-ROW-CASE004-CHI-GOF-C1",
+    "V5-ROW-CASE004-CHI-HOM-C1",
+    "V5-ROW-CASE004-CHI-LOW-C1",
+    "V5-ROW-CASE004-G-GOF-C1",
+    "V5-ROW-CASE004-G-IND-C1",
+    "V5-ROW-CASE004-G-SMALL-C1",
+    "V5-ROW-CASE004-FISHER-2X2-C4",
+    "V5-ROW-CASE004-FISHER-1S-C4",
+    "V5-ROW-CASE004-FISHER-EXT-C4"
+  ]
+}

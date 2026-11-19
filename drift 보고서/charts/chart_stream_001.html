@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADWIN 경보 이후 스트림 평균 상승과 윈도 축소</title>
+  <link rel="stylesheet" href="./chart_stream_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-STREAM-001">
+    <header class="header header-summary-only">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>스트림 평균 상승</h2>
+          <p>t=23 경보 전후로 metric이 0.38 수준에서 0.68 수준으로 올라가는지 읽는다.</p>
+        </div>
+        <svg id="streamChart" role="img" aria-label="ADWIN 경보가 표시된 스트림 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>적응형 윈도 폭</h2>
+            <p>경보 직후 170에서 62로 줄고 이후 다시 넓어진다.</p>
+          </div>
+          <svg id="windowChart" role="img" aria-label="ADWIN 적응형 윈도 폭 추세"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경보 전후 평균</h2>
+            <p>0.38에서 0.68로 올라 delta +0.30이 기준 0.20을 넘는다.</p>
+          </div>
+          <svg id="meanChart" role="img" aria-label="경보 전후 윈도 평균 비교"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 t=23에서 ADWIN 경보가 발생하고 p-value는 0.009로 표시된다.
+          경보 직후 적응형 윈도 폭이 170에서 62로 축소되며, 경보 전후 평균 차이 +0.30은
+          운영 기준 delta 0.20을 넘어 스트림 평균 상승 드리프트 후보로 읽는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch stream"></i>stream metric</span>
+        <span><i class="swatch mean"></i>rolling mean</span>
+        <span><i class="swatch alarm"></i>drift alarm</span>
+        <span><i class="swatch threshold"></i>판단 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_stream_001.js"></script>
+</body>
+</html>

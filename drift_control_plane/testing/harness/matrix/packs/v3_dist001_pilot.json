@@ -1,0 +1,16 @@
+{
+  "packId": "v3_dist001_pilot",
+  "description": "V3 pilot pack for CHART-DIST-001 candidate_gap promotion. It runs the newly promoted histogram-approx Wasserstein row plus the existing exact Wasserstein baseline.",
+  "selectionPolicy": {
+    "rowStatus": "executable",
+    "modePolicy": "mode A only",
+    "coverageIntent": [
+      "baseline exact Wasserstein distance on CHART-DIST-001",
+      "histogram-approx Wasserstein distance on CHART-DIST-001"
+    ]
+  },
+  "rowIds": [
+    "V2-ROW-CASE004-WASSERSTEIN-DIST001",
+    "V3-ROW-CASE004-WASSERSTEIN-HIST-DIST001"
+  ]
+}

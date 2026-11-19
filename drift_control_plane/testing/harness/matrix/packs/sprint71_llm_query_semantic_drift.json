@@ -1,0 +1,10 @@
+{
+  "packId": "sprint71_llm_query_semantic_drift",
+  "title": "Sprint 71 LLM query semantic drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V30-ROW-CASE018-QUERY-CENTROID-TEXT001",
+    "V30-ROW-CASE018-TEXT-DOMAIN-CLASSIFIER-TEXT001",
+    "V30-ROW-CASE018-TOPIC-DISTRIBUTION-TEXT001"
+  ]
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-006 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ERR-006</p>
+    <h1>CHART-ERR-006 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 STEPD가 recent window accuracy와 overall historical accuracy를 비교해 supervised stream drift를 감지하는 방식을 설명한다.</p> <p>STEPD는 최근 구간의 정답/오답 결과가 전체 구간의 성능보다 유의하게 나빠지는지를 본다. Recent accuracy가 overall accuracy보다 지속적으로 낮아지고 gap이 warning/drift threshold를 넘으면 error-rate drift 후보로 해석한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. recent accuracy가 overall accuracy보다 지속적으로 낮아지는가?
+2. overall - recent accuracy gap이 warning threshold를 넘는가?
+3. gap이 drift threshold까지 초과하며 state가 drift로 전환되는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - recent accuracy trend
+  - overall accuracy trend
+  - warning marker
+  - drift marker
+
+우측 상단
+  - overall - recent accuracy gap
+  - warning threshold
+  - drift threshold
+
+우측 하단
+  - normal/warning/drift state timeline</code></pre> <p>상단 요약 영역에는 recent accuracy, overall accuracy, drift 시점을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 accuracy trend에서 recent accuracy가 overall accuracy보다 낮아지는지 확인한다.</p> <pre><code>recent accuracy가 overall accuracy와 비슷하다
+  -&gt; STEPD drift 증거가 약하다.
+
+recent accuracy가 지속적으로 낮아진다
+  -&gt; supervised performance degradation 후보로 본다.
+
+warning 이후 drift marker가 나타난다
+  -&gt; gap threshold 초과가 누적된 상태로 본다.</code></pre> <p>그 다음 우측 상단 threshold chart에서 gap이 warning threshold와 drift threshold를 순서대로 넘는지 확인한다.</p> <p>마지막으로 우측 하단 timeline에서 normal, warning, drift 상태 전환이 실제 marker와 일치하는지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Recent accuracy가 overall accuracy보다 지속적으로 낮고, overall - recent accuracy gap이 warning threshold를 넘은 뒤 drift threshold까지 초과하며, state timeline이 drift로 전환되면 STEPD 기반 supervised error-rate drift 후보로 해석한다.</p> <p>단, STEPD는 label이 필요한 detector다. Delayed label, label noise, class imbalance 변화가 있으면 recent accuracy 저하가 실제 모델 drift인지 데이터 수집/라벨링 문제인지 추가 확인해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 recent accuracy가 <code>0.68</code>, overall accuracy가 <code>0.78</code>, drift 시점이 <code>t=20</code>으로 표시되어 있다. 좌측 accuracy trend는 recent accuracy가 overall accuracy보다 빠르게 하락하는 패턴을 보인다.</p> <p>우측 상단 threshold chart에서는 overall - recent accuracy gap이 warning threshold <code>0.10</code>을 넘은 뒤 drift threshold <code>0.15</code>를 초과한다. 우측 하단 timeline도 normal에서 warning을 거쳐 drift로 전환된다. 따라서 이 예시는 최근 supervised performance가 전체 기준 대비 유의하게 나빠진 STEPD drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>STEPD 모니터링 결과 recent accuracy는 0.68까지 하락했고
+overall accuracy 0.78 대비 gap이 drift threshold를 초과했다.
+t=15에서 warning 상태가 시작되고 t=20에서 drift 상태로 전환되었으므로
+supervised error-rate drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - accuracy 저하만으로 입력 feature drift를 단정한다.
+
+금지 2
+  - label delay와 label quality를 확인하지 않고 STEPD 결과를 확정한다.
+
+금지 3
+  - class별 accuracy 차이를 보지 않고 전체 accuracy만으로 운영 영향을 판단한다.
+
+금지 4
+  - warning 상태를 drift 확정으로 해석한다.</code></pre> <p>STEPD는 supervised error-rate detector다. 성능 저하의 원인을 설명하려면 feature drift, label drift, class mix 변화, calibration 변화를 함께 분석해야 한다.</p> <h2>추가 확인 항목</h2> <p>STEPD drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>recent/overall window 크기와 업데이트 방식</li> <li>label delay와 label noise 여부</li> <li>class별 accuracy, precision, recall 변화</li> <li>warning/drift threshold 설정</li> <li>DDM, RDDM, EDDM, ECDD, HDDM 등 다른 error detector와의 합의 여부</li> <li>입력 feature drift 또는 class prior shift</li> <li>배포, 정책, 데이터 수집 이벤트</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>STEPD / STEPD_ACCURACY_WINDOW</code></li> <li><code>STEPD / STEPD_WARNING_DRIFT</code></li> <li><code>STEPD / STEPD_SUPERVISED_STREAM</code></li> </ul>
+  </main>
+</body>
+</html>

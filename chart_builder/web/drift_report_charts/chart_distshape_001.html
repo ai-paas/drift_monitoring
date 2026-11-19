@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>현재 분포의 오른쪽 어깨와 다봉성 변화</title>
+  <link rel="stylesheet" href="./chart_distshape_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-DISTSHAPE-001">
+    <header class="header summary-only">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>분포 비교</h2>
+          <p>기준은 50 부근 단봉형이고, 현재는 65 부근 봉우리와 오른쪽 shoulder가 두드러지는지 본다.</p>
+        </div>
+        <svg id="distributionChart" role="img" aria-label="기준 구간과 현재 구간의 분포 형태 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>특성함수 차이</h2>
+            <p>t=2.0에서 real 0.24, imaginary 0.19로 차이가 가장 크다.</p>
+          </div>
+          <svg id="ecfChart" role="img" aria-label="empirical characteristic function component difference"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>통계량 기여</h2>
+            <p>최대 기여 주파수와 ES statistic 12.8, p-value 0.006을 함께 확인한다.</p>
+          </div>
+          <svg id="statChart" role="img" aria-label="Epps-Singleton statistic contribution"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>현재 상황 요약</h2>
+        <p>
+          현재 예시는 기준 분포의 50 부근 단봉 구조가 약해지고 65 부근 현재 봉우리가 커진 사례다.
+          ES statistic은 12.8, p-value는 0.006이며 특성함수 차이와 통계량 기여가 t=2.0에서 가장 크게 나타나 분포 형태 drift 후보로 읽는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 분포</span>
+        <span><i class="swatch current"></i>현재 분포</span>
+        <span><i class="swatch ecf"></i>특성함수 차이</span>
+        <span><i class="swatch threshold"></i>판단 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_distshape_001.js"></script>
+</body>
+</html>

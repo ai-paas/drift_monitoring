@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>원형 데이터의 피크 각도 이동과 누적분포 편차</title>
+  <link rel="stylesheet" href="./chart_edf_004.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-EDF-004">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>경험누적분포 양/음 편차</h2>
+          <p>49.5° 부근에서 D-=0.365가 크게 나타나고 D+=0.012는 작은지 확인한다.</p>
+        </div>
+        <svg id="deviationChart" role="img" aria-label="ECDF 양의 편차와 음의 편차"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>원형 히스토그램</h2>
+          <p>기준 peak가 20~40°에 집중된 반면 현재는 40~80°와 240~260° 쪽으로 이동했는지 본다.</p>
+        </div>
+        <svg id="circularChart" role="img" aria-label="기준 구간과 현재 구간의 원형 히스토그램 비교"></svg>
+      </article>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 Kuiper V가 0.377, p-value가 0.009이고 D-=0.365가 49.5° 부근에서 지배적이다.
+          원형 히스토그램에서도 기준 peak가 20~40°에 많고 현재는 40~80° 및 240~260° 구간으로 이동한다.
+          시작점이 임의적인 circular data의 위치 이동 후보로 해석하되, wrap-around 처리와 시간대/계절성 원인은 별도 확인한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch positive"></i>양의 편차 D+</span>
+        <span><i class="swatch negative"></i>음의 편차 D-</span>
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_edf_004.js"></script>
+</body>
+</html>
+

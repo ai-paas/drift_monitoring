@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chart Runtime Smoke</title>
+  <link rel="stylesheet" href="./chart_runtime.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #eef2f6;
+    }
+
+    #chart-root {
+      min-height: 100vh;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <main id="chart-root" class="component-chart"></main>
+  <script src="./chart_runtime.js"></script>
+  <script>
+    window.renderChartRuntimeSmokePayload = function renderChartRuntimeSmokePayload(payload) {
+      window.ChartRuntime.renderChartPayload(document.querySelector("#chart-root"), payload);
+      return window.__CHART_TEST_STATE__;
+    };
+  </script>
+</body>
+</html>

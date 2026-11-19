@@ -1,0 +1,93 @@
+{
+  "scenarioId": "TCASE-013",
+  "mode": "A",
+  "title": "CASE-013 source clock offset too large",
+  "source": {
+    "sourceId": "case-013",
+    "title": "CASE-013 source clock offset too large",
+    "description": "Synthetic stream where source clock offset exceeds adapter threshold",
+    "sourceType": "test_db",
+    "sourceUrl": "테스트데이터/CASE-013_source_clock_offset_large/data.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-013"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-013",
+    "datasetCaseId": "CASE-013",
+    "csvPath": "테스트데이터/CASE-013_source_clock_offset_large/data.csv",
+    "sourceClockOffsetMs": 1800000,
+    "speedFactor": 60,
+    "startTime": "2026-01-03T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-013-adwin",
+    "sourceId": "case-013",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-013 numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric",
+      "sourceClockOffsetMs": 1800000,
+      "maxSourceClockOffsetMs": 300000
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case013-adwin",
+    "adapterId": "case-013-adwin",
+    "featureId": "metric",
+    "methodVariantId": 123,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_mean_stream",
+    "params": {
+      "delta": 0.002
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case013-adwin-stream",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+    "chartOptions": {
+      "title": "CASE-013 ADWIN stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "startTime": "2026-01-03T00:00:00Z",
+    "endTime": "2026-01-03T00:20:00Z",
+    "intervalMinutes": 1,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 0,
+    "bucketCount": 0,
+    "methodRunCount": 0,
+    "adapterCursorTime": null,
+    "methodStateLastBucketEnd": null,
+    "bucketRowCount": 0,
+    "driftEventMinimum": 0,
+    "timePolicyValidationRequired": true,
+    "adapterUnusableRequired": true,
+    "adapterStatus": "unusable",
+    "futureRejectedRowsMinimum": 1,
+    "noBucketsExpected": true,
+    "noMethodRunsExpected": true,
+    "adapterDiagnosticsValidationRequired": true,
+    "pollOutcome": "blocked",
+    "pollStatus": "unusable",
+    "diagnosticsCode": "SOURCE_CLOCK_OFFSET_TOO_LARGE",
+    "diagnosticsSeverity": "error",
+    "resetRecoveryRequired": true
+  }
+}

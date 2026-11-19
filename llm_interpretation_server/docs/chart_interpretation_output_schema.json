@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChartInterpretationOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "detail", "componentNotes"],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 300,
+      "description": "One Korean report-style sentence summarizing what the full chart shows."
+    },
+    "detail": {
+      "type": "string",
+      "minLength": 80,
+      "description": "Korean report-style full chart interpretation following the interpretation guide."
+    },
+    "componentNotes": {
+      "type": "array",
+      "description": "LLM-written notes for each visible chart component, generated from the current payload/config/data rather than copied from templates.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["componentInstanceId", "title", "summary", "detail"],
+        "properties": {
+          "componentInstanceId": {"type": "string"},
+          "title": {"type": "string", "minLength": 2, "maxLength": 120},
+          "summary": {"type": "string", "minLength": 10, "maxLength": 300},
+          "detail": {"type": "string", "minLength": 30},
+          "severity": {"type": "string", "enum": ["normal", "watch", "candidate"]}
+        }
+      }
+    }
+  }
+}

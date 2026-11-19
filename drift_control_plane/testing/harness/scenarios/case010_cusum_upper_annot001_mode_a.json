@@ -1,0 +1,95 @@
+{
+  "scenarioId": "TCASE-010-CUSUM-UPPER-ANNOT001",
+  "mode": "A",
+  "title": "CASE-010 CUSUM upper shift annotation analysis",
+  "source": {
+    "sourceId": "case-010-cusum-upper-annot001",
+    "title": "CASE-010 CUSUM numeric mean shift",
+    "description": "Synthetic stream numeric mean shift dataset for ONE_SIDED_UPPER_CUSUM runtime wrapper",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case010_cusum_upper.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010-cusum-upper-annot001",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "testing/harness/data/case010_cusum_upper.csv",
+    "speedFactor": 60,
+    "startTime": "2026-01-01T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-010-cusum-upper-annot001",
+    "sourceId": "case-010-cusum-upper-annot001",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 CUSUM numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-cusum-upper-annot001",
+    "adapterId": "case-010-cusum-upper-annot001",
+    "featureId": "metric",
+    "methodVariantId": 290,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "cusum_stream",
+    "params": {
+      "variant_id": "ONE_SIDED_UPPER_CUSUM",
+      "target_mean": 0.0,
+      "allowance_k": 0.0,
+      "decision_threshold_h": 1.0,
+      "warmup_size": 1,
+      "min_reference_size": 1,
+      "min_current_size": 1,
+      "meanShiftThreshold": 1.0,
+      "maxStatePoints": 40
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-cusum-upper-annot001",
+    "chartId": "CHART-ANNOT-001",
+    "payloadAdapterKey": "auto__ONE_SIDED_UPPER_CUSUM__CHART-ANNOT-001",
+    "chartOptions": {
+      "title": "CASE-010 CUSUM upper shift annotation analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 20,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 20,
+    "bucketCount": 2,
+    "methodRunCount": 2,
+    "adapterCursorTime": "2026-01-01T00:20:00Z",
+    "methodStateLastBucketEnd": "2026-01-01T00:20:00Z",
+    "bucketRowCount": 10,
+    "analysisPointCount": 2,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 2,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

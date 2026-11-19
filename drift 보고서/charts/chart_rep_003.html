@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-REP-003 - 그래프 임베딩 분리와 허브 노드 드리프트</title>
+  <link rel="stylesheet" href="./chart_rep_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-REP-003">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Graph Embedding Projection</h2>
+          <p>baseline cluster는 왼쪽, current cluster는 오른쪽으로 분리된다.</p>
+        </div>
+        <svg id="projectionChart" role="img" aria-label="graph embedding projection scatter"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Node Drift Score Heatmap</h2>
+            <p>hub는 0.70, bridge는 0.66까지 올라 후반 구간에 drift가 집중된다.</p>
+          </div>
+          <svg id="heatmapChart" role="img" aria-label="node drift score heatmap"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Graph-level Distance Trend</h2>
+            <p>distance가 t=15에서 0.40 threshold를 넘고 최종 0.67까지 상승한다.</p>
+          </div>
+          <svg id="distanceChart" role="img" aria-label="graph-level distance trend"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Graph embedding drift는 그래프 전체 embedding 분리, node drift score 집중, graph-level distance 상승을 함께 본다.
+          이 예시에서는 distance가 t=15 이후 threshold를 넘고 hub/bridge score가 0.70, 0.66까지 높아져
+          graph representation drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline graph</span>
+        <span><i class="swatch current"></i>current graph</span>
+        <span><i class="swatch drift"></i>high node drift</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_rep_003.js"></script>
+</body>
+</html>

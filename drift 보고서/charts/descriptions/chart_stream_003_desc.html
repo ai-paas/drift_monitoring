@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-STREAM-003 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-STREAM-003</p>
+    <h1>CHART-STREAM-003 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 Page-Hinkley Test가 stream 평균 변화 또는 누적 편차 증가를 어떻게 감지하는지 설명한다.</p> <p>Page-Hinkley는 관측값과 누적 평균 사이의 편차를 순차적으로 누적하고, 그 누적 통계량이 threshold를 넘으면 drift alarm을 발생시킨다. 따라서 갑작스러운 step change뿐 아니라 점진적으로 평균이 한 방향으로 이동하는 stream drift를 설명하는 데 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. raw stream이 어느 시점부터 한 방향으로 이동하는가?
+2. Page-Hinkley statistic이 threshold를 언제 넘는가?
+3. normal, warning, drift 상태가 시간상 어떻게 이어지는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - raw stream metric
+  - running mean
+  - Page-Hinkley alarm marker
+
+우측 상단
+  - Page-Hinkley statistic line
+  - alarm threshold
+
+우측 하단
+  - normal/warning/drift state timeline
+  - alarm marker</code></pre> <p>상단 요약 영역에는 PH statistic, threshold, alarm index를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 raw stream에서 값이 한 방향으로 누적 이동하는지 확인한다.</p> <pre><code>값이 일시적으로만 튄다
+  -&gt; 단기 outlier 또는 spike 가능성을 확인한다.
+
+값이 꾸준히 상승한다
+  -&gt; 증가 방향 Page-Hinkley drift 후보를 확인한다.
+
+값이 꾸준히 하락한다
+  -&gt; 감소 방향 Page-Hinkley drift 후보를 확인한다.</code></pre> <p>그 다음 우측 상단 PH statistic을 확인한다. 통계량이 threshold 아래에 있으면 drift evidence가 아직 부족한 상태다. threshold를 넘으면 detector가 누적 편차를 drift로 판정한 시점으로 본다.</p> <p>마지막으로 우측 하단 timeline에서 warning 상태가 drift 상태로 이어지는지 확인한다. warning이 길게 지속되다가 drift로 전환되면 gradual drift 가능성이 높다.</p> <h2>Drift 후보 판단 기준</h2> <p>raw stream이 한 방향으로 이동하고, Page-Hinkley statistic이 threshold를 넘으며, alarm timeline에서 warning 이후 drift 상태가 나타나면 평균 변화 기반 stream drift 후보로 해석한다.</p> <p>단, Page-Hinkley는 delta, lambda, alpha 같은 민감도 설정에 영향을 받는다. 설정이 너무 민감하면 작은 trend에도 alarm이 발생하고, 너무 둔감하면 drift 감지가 늦어질 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 PH statistic이 <code>25.5</code>, threshold가 <code>18.0</code>, alarm index가 <code>29</code>로 표시되어 있다. 좌측 raw stream에서는 metric이 20번 이후부터 점진적으로 상승하고 running mean도 따라 올라간다.</p> <p>우측 상단 PH statistic은 지속적으로 증가하다가 threshold <code>18.0</code>을 넘는다. 우측 하단 timeline에서는 normal 상태가 warning 상태를 거쳐 drift 상태로 전환된다. 따라서 이 예시는 stream 평균이 점진적으로 상승한 Page-Hinkley drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>Page-Hinkley Test로 stream metric을 모니터링한 결과,
+time index 29에서 PH statistic이 25.5로 threshold 18.0을 초과했다.
+Raw stream에서는 20번 이후 평균 수준이 점진적으로 상승했고,
+alarm timeline에서도 warning 이후 drift 상태로 전환되었다.
+이는 평균 상승 방향의 gradual stream drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - PH statistic 초과만으로 drift 원인을 특정 source로 단정한다.
+
+금지 2
+  - 민감도 파라미터를 확인하지 않고 alarm 품질을 평가한다.
+
+금지 3
+  - 단기 spike와 gradual mean shift를 구분하지 않는다.
+
+금지 4
+  - stream 평균 변화가 곧바로 모델 성능 저하를 의미한다고 말한다.</code></pre> <p>Page-Hinkley는 평균 변화 detector다. 분포 형태 변화, 분산 변화, error rate 변화는 별도 chart와 detector로 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>Page-Hinkley drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>delta, lambda, alpha, min_instances 등 민감도 설정</li> <li>alarm 전후 stream ordering, batch 적재, 지연 데이터 유입 여부</li> <li>gradual drift인지 abrupt drift인지 구분</li> <li>ADWIN, KSWIN, CUSUM 등 다른 stream detector와의 합의 여부</li> <li>segment/source/time별 평균 변화 집중 여부</li> <li>label 확보 후 성능 지표, error rate, calibration 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Page-Hinkley Test / PAGE_HINKLEY_INCREASE</code></li> <li><code>Page-Hinkley Test / PAGE_HINKLEY_DECREASE</code></li> </ul>
+  </main>
+</body>
+</html>

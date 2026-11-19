@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-CTRL-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-CTRL-001</p>
+    <h1>CHART-CTRL-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 CUSUM이 기준 평균 대비 작은 편차를 누적해 평균 shift를 감지하는 과정을 설명한다.</p> <p>CUSUM은 단일 시점의 큰 변화보다, 기준선보다 조금 높은 값 또는 낮은 값이 반복될 때 빠르게 반응한다. 상방 CUSUM <code>C+</code>는 증가 방향 shift를, 하방 CUSUM <code>C-</code>는 감소 방향 shift를 설명한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. raw metric이 target mean 대비 한 방향으로 누적 이탈하는가?
+2. C+ 또는 C- 중 어느 방향의 CUSUM이 control limit을 넘는가?
+3. alarm이 일시적 spike가 아니라 누적 편차에 의해 발생했는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - raw metric trend
+  - target mean
+  - CUSUM alarm marker
+
+우측 상단
+  - positive CUSUM C+
+  - negative CUSUM C-
+  - control limit
+
+우측 하단
+  - C+ / C- 방향성 요약
+  - 지배적인 shift 방향</code></pre> <p>상단 요약 영역에는 C+ max, C- max, raw metric shift를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 raw metric trend에서 target mean보다 지속적으로 높은지 또는 낮은지 확인한다.</p> <pre><code>target 주변에서 무작위로 흔들린다
+  -&gt; CUSUM drift 신호가 약하다.
+
+target보다 조금 높은 값이 반복된다
+  -&gt; C+ 누적 증가를 확인한다.
+
+target보다 조금 낮은 값이 반복된다
+  -&gt; C- 누적 증가를 확인한다.</code></pre> <p>그 다음 우측 상단 CUSUM control chart에서 C+ 또는 C-가 control limit을 넘는지 본다. C+가 넘으면 상방 평균 shift, C-가 넘으면 하방 평균 shift 후보로 해석한다.</p> <p>마지막으로 우측 하단 방향성 요약에서 어느 방향의 누적 편차가 지배적인지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>raw metric이 target mean 대비 한 방향으로 지속적으로 이탈하고, 해당 방향의 CUSUM이 control limit을 넘으며, 방향성 요약에서 C+ 또는 C-가 명확히 지배적이면 CUSUM drift 후보로 해석한다.</p> <p>단, CUSUM은 target mean, allowance <code>k</code>, decision interval <code>h</code> 설정에 민감하다. target이 오래되었거나 seasonality가 있으면 false alarm이 늘 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 C+ max가 <code>52.9</code>, C- max가 <code>0.1</code>, shift가 <code>+0.29</code>로 표시되어 있다. 좌측 raw metric은 target <code>0.53</code>보다 지속적으로 높은 방향으로 이동하고, 25번 시점에서 상방 alarm이 표시된다.</p> <p>우측 상단 CUSUM chart에서는 C+가 control limit <code>25</code>를 넘고 계속 증가하지만, C-는 거의 증가하지 않는다. 우측 하단 방향성 요약에서도 상방 변화가 지배적이다. 따라서 이 예시는 raw metric의 평균이 위쪽으로 이동한 상방 CUSUM drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>CUSUM으로 raw metric을 모니터링한 결과,
+C+ 누적 편차가 52.9까지 증가해 control limit 25를 초과했다.
+반면 C-는 0.1 수준으로 낮아 하방 변화 신호는 약했다.
+Raw metric도 target mean 0.53 대비 지속적으로 높은 수준을 보여,
+상방 평균 shift 기반 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - CUSUM alarm만으로 drift 원인을 특정 source로 단정한다.
+
+금지 2
+  - target mean, k, h 설정을 확인하지 않고 alarm 민감도를 평가한다.
+
+금지 3
+  - seasonality 또는 운영 주기 변화를 배제하지 않는다.
+
+금지 4
+  - 평균 shift가 곧바로 모델 성능 저하를 의미한다고 말한다.</code></pre> <p>CUSUM은 누적 평균 shift 감지에 강하지만, 분포 형태나 tail 변화는 별도 chart로 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>CUSUM drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>target mean 산정 기간과 최신성</li> <li>allowance <code>k</code>, decision interval <code>h</code>, reset 방식</li> <li>one-sided 또는 two-sided 설정</li> <li>seasonality, 주기성, 배치 처리 변화</li> <li>ADWIN, Page-Hinkley, EWMA 등 다른 control chart와의 합의 여부</li> <li>label 확보 후 성능 지표, error rate, calibration 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>CUSUM / ONE_SIDED_UPPER_CUSUM</code></li> <li><code>CUSUM / ONE_SIDED_LOWER_CUSUM</code></li> <li><code>CUSUM / TWO_SIDED_CUSUM</code></li> <li><code>CUSUM / CUSUM_ON_DISTANCE_STREAM</code></li> </ul>
+  </main>
+</body>
+</html>

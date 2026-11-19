@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-GEN-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-GEN-001</p>
+    <h1>CHART-GEN-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 아직 특정 chart family가 정해지지 않은 method를 설명하기 위한 기본 fallback chart다.</p> <p>전용 chart가 없더라도 drift report에는 최소한 metric trend, reference/current distribution, threshold 또는 alarm marker가 필요하다. 이 chart는 method-specific chart가 추가되기 전까지 공통 해석 틀을 제공한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. drift metric이 시간에 따라 threshold를 넘는가?
+2. reference/current distribution이 같은 방향의 이동을 보이는가?
+3. alarm marker와 evidence summary가 drift 후보 판단을 뒷받침하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - generic drift metric trend
+  - threshold line
+  - alarm marker
+
+우측 상단
+  - reference/current distribution overlay
+
+우측 하단
+  - final metric
+  - threshold
+  - effect size
+  - p-value score 또는 confidence score</code></pre> <p>상단 요약 영역에는 metric, threshold, alarm 시점을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 metric trend에서 score가 threshold를 넘는지 확인한다.</p> <pre><code>metric이 threshold 아래에 있다
+  -&gt; drift 후보 증거가 약하다.
+
+metric이 threshold를 넘지만 distribution 이동이 없다
+  -&gt; metric 정의와 threshold 설정을 다시 확인한다.
+
+metric과 distribution 이동이 같은 방향이다
+  -&gt; generic drift 후보로 본다.</code></pre> <p>그 다음 우측 상단 distribution overlay에서 reference/current 차이가 trend와 일관되는지 확인한다.</p> <p>마지막으로 우측 하단 evidence summary에서 final metric, threshold, effect size, p-value score가 서로 모순되지 않는지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Drift metric trend가 threshold를 넘고 alarm marker가 표시되며, reference/current distribution이 같은 방향으로 이동하고 evidence summary가 threshold 초과를 뒷받침하면 generic drift 후보로 해석한다.</p> <p>단, 이 chart는 전용 family chart가 없는 경우의 fallback이다. Method의 통계량, p-value, distance 정의, window 구조가 명확해지면 반드시 더 구체적인 chart family로 대체해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 metric이 <code>0.68</code>, threshold가 <code>0.45</code>, alarm 시점이 <code>t=15</code>로 표시되어 있다. 좌측 trend는 중반 이후 threshold를 넘고 alarm 이후에도 상승한다.</p> <p>우측 상단 distribution은 current가 reference보다 오른쪽으로 이동한다. 우측 하단 evidence summary도 final metric과 effect size가 threshold 초과를 뒷받침한다. 따라서 이 예시는 전용 chart family가 아직 없는 method의 generic drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>Generic drift metric은 t=15에서 threshold 0.45를 초과했고
+최종 값은 0.68까지 상승했다.
+Reference/current distribution도 current 방향으로 이동했으므로
+전용 chart family가 정의되기 전까지는 generic drift 후보로 해석한다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - generic chart를 method-specific chart와 같은 해석력으로 본다.
+
+금지 2
+  - metric 정의 없이 threshold 초과만 보고 원인을 단정한다.
+
+금지 3
+  - p-value, distance, score를 같은 단위로 혼합해 해석한다.
+
+금지 4
+  - 전용 family chart가 필요한데 fallback chart로 계속 유지한다.</code></pre> <p>Generic chart는 보고서 공백을 막는 최소 공통 형식이다. 장기적으로는 method family에 맞는 전용 chart로 전환해야 한다.</p> <h2>추가 확인 항목</h2> <p>Generic drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>metric의 정의와 단위</li> <li>threshold 산정 방식</li> <li>reference/current window 정의</li> <li>p-value, confidence, effect size의 의미</li> <li>sample size와 missing/duplicate 처리</li> <li>method-specific chart family로 승격 가능 여부</li> <li>downstream model 성능 또는 business metric 영향</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 상황에 적합하다.</p> <ul> <li>특정 chart family가 아직 정해지지 않은 method</li> <li>metric trend와 threshold만 우선 설명해야 하는 초기 report</li> <li>method-specific visualization을 설계하기 전의 임시 fallback</li> </ul>
+  </main>
+</body>
+</html>

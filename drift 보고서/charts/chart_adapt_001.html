@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ADAPT-001 - HAT 모델의 드리프트 감지와 대체 트리 교체 과정</title>
+  <link rel="stylesheet" href="./chart_adapt_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ADAPT-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Online Accuracy Trend</h2>
+          <p>t=1~8에는 accuracy가 0.91 수준으로 안정적이다가 t=11 warning 이후 계속 하락해 t=19에서 0.72까지 내려간다. t=23 replacement marker 이후에는 0.84, 0.86, 0.90대로 회복되는지를 읽는다.</p>
+        </div>
+        <svg id="accuracyChart" role="img" aria-label="online accuracy trend with HAT drift and replacement markers"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Detector State Timeline</h2>
+            <p>상태가 normal(t=1~10) → warning(t=11~13) → alternate(t=14~22) → replace(t=23 이후) 순서로 이어지는지 본다. 이 순서가 맞아야 단순 성능 하락이 아니라 HAT의 적응 절차로 해석할 수 있다.</p>
+          </div>
+          <svg id="stateChart" role="img" aria-label="HAT drift detector state timeline"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Tree Size Trend</h2>
+            <p>alternate tree node가 t=11부터 4, 8, 12...로 증가해 t=22에서 64 nodes까지 커지고, t=23 replacement에서 0으로 내려가는지 본다. 동시에 main tree size가 57에서 42로 재구성되면 교체가 반영된 것이다.</p>
+          </div>
+          <svg id="treeSizeChart" role="img" aria-label="HAT main and alternate tree size trend"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          현재 상황은 운영 중인 HAT 모델이 스트리밍 데이터를 예측하다가 중간 구간에서 정확도가 떨어지고,
+          내부 detector가 이를 감지해 대체 tree를 키운 뒤 기존 tree 일부를 교체한 사례다.
+          초반에는 모델이 안정적이지만 t=11 이후 warning이 발생하고, t=14부터 alternate tree가 성장하며,
+          t=23에서 replacement 이후 accuracy가 회복된다.
+        </p>
+        <p>
+          이 예시에서는 online accuracy 하락이 먼저 나타나고, detector state가 warning과 alternate로 전환된 뒤,
+          alternate tree가 64 nodes까지 성장하고 t=23에서 replacement가 발생한다.
+          이후 accuracy가 다시 0.90 수준으로 회복되므로 HAT가 drift 후보 구간에 대해 alternate tree replacement로 적응한 사례로 해석한다.
+          단, 이 차트는 적응 동작을 보여주는 것이며 drift 원인 자체는 feature/segment 분석으로 별도 확인해야 한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch accuracy"></i>online accuracy</span>
+        <span><i class="swatch alt"></i>alternate tree</span>
+        <span><i class="swatch replace"></i>replacement</span>
+        <span><i class="swatch size"></i>tree size</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_adapt_001.js"></script>
+</body>
+</html>

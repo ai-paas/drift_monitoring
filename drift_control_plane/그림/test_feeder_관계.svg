@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+  <defs>
+    <style>
+      .bg { fill: #f7f9fb; }
+      .box { fill: #ffffff; stroke: #263238; stroke-width: 2; rx: 8; }
+      .main { fill: #e8f4ff; stroke: #0f5f99; stroke-width: 3; rx: 8; }
+      .db { fill: #fff8e1; stroke: #8a6500; stroke-width: 2; rx: 8; }
+      .api { fill: #edf7ed; stroke: #2e7d32; stroke-width: 2; rx: 8; }
+      .note { fill: #f3f0ff; stroke: #5e45a0; stroke-width: 2; rx: 8; }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #182026; }
+      .title { font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; fill: #182026; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #37474f; }
+      .mono { font-family: Consolas, monospace; font-size: 14px; fill: #263238; }
+      .arrow { stroke: #263238; stroke-width: 2.4; fill: none; marker-end: url(#arrowhead); }
+      .arrow-blue { stroke: #0f5f99; stroke-width: 2.6; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-green { stroke: #2e7d32; stroke-width: 2.6; fill: none; marker-end: url(#arrowhead-green); }
+      .arrow-db { stroke: #8a6500; stroke-width: 2.6; fill: none; marker-end: url(#arrowhead-db); }
+      .dash { stroke-dasharray: 8 7; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#263238"/>
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f5f99"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrowhead-db" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#8a6500"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="760"/>
+  <text class="title" x="40" y="54">Test Feeder Server 중심 관계 및 호출 흐름</text>
+
+  <rect class="box" x="60" y="130" width="250" height="110"/>
+  <text class="label" x="88" y="168">CASE-010 CSV</text>
+  <text class="mono" x="88" y="198">data.csv.gz</text>
+  <text class="small" x="88" y="222">테스트 입력 원본</text>
+
+  <rect class="api" x="60" y="320" width="250" height="150"/>
+  <text class="label" x="88" y="358">Admin Server</text>
+  <text class="small" x="88" y="388">control plane</text>
+  <text class="mono" x="88" y="418">reset / tick</text>
+  <text class="mono" x="88" y="442">start / stop / status</text>
+
+  <rect class="api" x="60" y="550" width="250" height="110"/>
+  <text class="label" x="88" y="588">Test Harness</text>
+  <text class="small" x="88" y="618">scenario 실행</text>
+  <text class="mono" x="88" y="642">case010_mode_a.json</text>
+
+  <rect class="main" x="440" y="270" width="360" height="180"/>
+  <text class="label" x="482" y="314">Test Feeder Server</text>
+  <text class="small" x="482" y="346">테스트 source simulator</text>
+  <text class="mono" x="482" y="378">POST /api/test-feeder/feeders</text>
+  <text class="mono" x="482" y="404">POST /api/test-feeder/.../tick</text>
+  <text class="mono" x="482" y="430">POST /api/test-feeder/reset</text>
+
+  <rect class="db" x="930" y="150" width="280" height="130"/>
+  <text class="label" x="962" y="190">test_source.feed_state</text>
+  <text class="small" x="962" y="222">feeder 진행 상태</text>
+  <text class="mono" x="962" y="250">logical_cursor_time</text>
+
+  <rect class="db" x="930" y="360" width="280" height="130"/>
+  <text class="label" x="962" y="400">test_source.raw_event</text>
+  <text class="small" x="962" y="432">source event처럼 적재</text>
+  <text class="mono" x="962" y="460">event_time + payload_json</text>
+
+  <rect class="box" x="850" y="585" width="360" height="110"/>
+  <text class="label" x="880" y="623">Drift Server</text>
+  <text class="small" x="880" y="653">adapter가 raw_event를 읽음</text>
+  <text class="mono" x="880" y="677">test_db_numeric_stream</text>
+
+  <rect class="note" x="440" y="560" width="300" height="100"/>
+  <text class="label" x="468" y="598">SourceAdapter 경계</text>
+  <text class="small" x="468" y="628">Drift Server는 CSV를 직접 읽지 않음</text>
+  <text class="small" x="468" y="650">adapter가 source 접근 방식을 숨김</text>
+
+  <path class="arrow-blue" d="M310 185 C370 185, 390 260, 440 315"/>
+  <text class="small" x="325" y="184">CSV row 읽기</text>
+
+  <path class="arrow-green" d="M310 390 L440 350"/>
+  <text class="small" x="324" y="358">제어 API 호출</text>
+
+  <path class="arrow-green dash" d="M310 600 C365 590, 380 455, 440 410"/>
+  <text class="small" x="318" y="538">시나리오에서 호출</text>
+
+  <path class="arrow-db" d="M800 330 C850 290, 875 230, 930 215"/>
+  <text class="small" x="820" y="268">상태 저장/갱신</text>
+
+  <path class="arrow-db" d="M800 405 C850 410, 875 420, 930 425"/>
+  <text class="small" x="822" y="397">raw event insert</text>
+
+  <path class="arrow" d="M930 490 C880 535, 840 585, 850 635"/>
+  <text class="small" x="794" y="548">adapter fetch</text>
+
+  <path class="arrow-blue" d="M740 610 C785 610, 805 642, 850 642"/>
+  <text class="small" x="748" y="594">공통 row 형태</text>
+
+  <path class="arrow" d="M1030 585 L1030 505"/>
+  <text class="small" x="1048" y="548">시간 범위 조회</text>
+
+  <rect class="box" x="440" y="90" width="360" height="110"/>
+  <text class="label" x="482" y="128">Harness Clock</text>
+  <text class="mono" x="482" y="160">logicalNow = absolute time</text>
+  <text class="mono" x="482" y="184">10m boundary = collector poll</text>
+
+  <path class="arrow-green dash" d="M620 200 L620 270"/>
+  <text class="small" x="635" y="242">logicalNow 전달</text>
+
+  <rect class="box" x="850" y="40" width="360" height="70"/>
+  <text class="small" x="878" y="74">운영 source 대신 테스트 source를 재현하는 장치</text>
+  <text class="small" x="878" y="96">Drift Server의 수집 흐름은 운영 구조와 동일하게 유지</text>
+</svg>

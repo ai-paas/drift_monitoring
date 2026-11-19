@@ -1,0 +1,102 @@
+{
+  "scenarioId": "TCASE-011-ECDDWT-WARNING-ERR004",
+  "mode": "A",
+  "title": "CASE-011 ECDD-WT warning CHART-ERR-004 analysis",
+  "source": {
+    "sourceId": "case-011-ecdd-wt-warning-err004",
+    "title": "CASE-011 stream error rate and performance",
+    "description": "Prediction log stream with supervised error-rate drift for ECDD_WT_WARNING_DRIFT",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case011_hddm_error_rate.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-011"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-011-ecdd-wt-warning-err004",
+    "datasetCaseId": "CASE-011",
+    "csvPath": "testing/harness/data/case011_hddm_error_rate.csv",
+    "speedFactor": 60,
+    "startTime": "2026-08-31T22:00:00Z",
+    "maxRows": 360,
+    "replayWindow": {
+      "start": "2026-08-31T22:00:00Z",
+      "end": "2026-09-01T04:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-011-ecdd-wt-warning",
+    "sourceId": "case-011-ecdd-wt-warning-err004",
+    "adapterType": "test_db_prediction_log_stream",
+    "adapterTitle": "CASE-011 ECDD-WT prediction log error-rate adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "trueLabelPath": "$.y_true",
+      "predLabelPath": "$.y_pred",
+      "errorPath": "$.error",
+      "confidencePath": "$.confidence"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case011-ecdd-wt-warning",
+    "adapterId": "case-011-ecdd-wt-warning",
+    "featureId": "error_rate",
+    "methodVariantId": 381,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "ecdd_wt_error_rate_stream",
+    "params": {
+      "variant_id": "ECDD_WT_WARNING_DRIFT",
+      "error_col": "error",
+      "lambda": 0.2,
+      "min_instances": 30,
+      "min_reference_size": 30,
+      "min_current_size": 30,
+      "errorRateShiftThreshold": 0.12,
+      "maxStatePoints": 720
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case011-ecdd-wt-warning-err004",
+    "chartId": "CHART-ERR-004",
+    "payloadAdapterKey": "auto__ECDD_WT_WARNING_DRIFT__CHART-ERR-004",
+    "chartOptions": {
+      "title": "CASE-011 ECDD-WT warning CHART-ERR-004 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 10,
+    "tickCount": 36,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 360,
+    "bucketCount": 36,
+    "methodRunCount": 36,
+    "adapterCursorTime": "2026-09-01T04:00:00Z",
+    "methodStateLastBucketEnd": "2026-09-01T04:00:00Z",
+    "bucketRowCount": 10,
+    "bucketErrorRateMinimum": 0.05,
+    "analysisPointCount": 36,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 60,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

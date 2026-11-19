@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeqDrift 순차 검정의 스트림 상승 경보</title>
+  <link rel="stylesheet" href="./chart_stream_004.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-STREAM-004">
+    <header class="header chart-summary-header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>스트림 값 상승</h2>
+          <p>t=27 경보 시점에서 reference mean 0.53보다 값이 높아지고 delta가 +0.34까지 커진다.</p>
+        </div>
+        <svg id="streamChart" role="img" aria-label="SeqDrift 스트림 값 상승 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>순차 증거와 판정 경계</h2>
+            <p>evidence가 bound를 넘어 최종 26.5까지 증가한다.</p>
+          </div>
+          <svg id="boundChart" role="img" aria-label="SeqDrift 순차 증거와 판정 경계"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경보 상태 전환</h2>
+            <p>t=22 warning 이후 t=27 drift 상태로 바뀐다.</p>
+          </div>
+          <svg id="timelineChart" role="img" aria-label="SeqDrift 경보 상태 전환 timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 stream 값이 reference mean 0.53 위로 지속 상승하고, t=27에서 drift alarm이 표시된다.
+          Sequential evidence는 bound를 넘은 뒤 최종 26.5까지 증가하며, detect delay는 4 step으로 표시된다.
+          값 상승, bound 초과, warning에서 drift로 이어지는 timeline을 함께 읽어 순차 검정 기반 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch stream"></i>stream value</span>
+        <span><i class="swatch mean"></i>reference mean</span>
+        <span><i class="swatch alarm"></i>drift alarm</span>
+        <span><i class="swatch threshold"></i>decision bound</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_stream_004.js"></script>
+</body>
+</html>

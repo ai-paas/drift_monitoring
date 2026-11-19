@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drift Admin</title>
+  <link rel="stylesheet" href="/chart_runtime/chart_runtime.css?v=20260706-admin-scroll-fix">
+  <link rel="stylesheet" href="/admin/static/styles.css?v=20260706-admin-scroll-fix">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">drift_control_plane</p>
+        <h1>Drift Admin</h1>
+      </div>
+      <div class="actions">
+        <button id="refreshHealth" class="secondary" type="button">Health</button>
+        <button id="runAnchor" class="primary" type="button">Run Scenario</button>
+      </div>
+    </header>
+
+    <section class="status-grid">
+      <article><span class="label">Admin</span><strong id="healthAdmin">대기</strong></article>
+      <article><span class="label">Drift</span><strong id="healthDrift">대기</strong></article>
+      <article><span class="label">Feeder</span><strong id="healthFeeder">대기</strong></article>
+      <article><span class="label">LLM</span><strong id="healthLlm">대기</strong></article>
+    </section>
+
+    <section class="admin-grid">
+      <aside class="connection-sidebar panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Connections</p>
+            <h2>Datasource + Adapter</h2>
+          </div>
+        </div>
+        <div class="connection-toolbar">
+          <select id="connectionMenu">
+            <option value="">connection preset 로딩 중</option>
+          </select>
+          <select id="replayProfile">
+            <option value="demo_4h">빠른 시계열</option>
+            <option value="validation_2d">넓은 검증</option>
+          </select>
+          <button id="addConnection" class="secondary" type="button">Add</button>
+        </div>
+        <div id="connectionList" class="connection-list"></div>
+      </aside>
+
+      <section class="config-column">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">01 Connection Detail</p>
+              <h2>선택된 연결</h2>
+            </div>
+          </div>
+          <div class="focus-summary">
+            <div>
+              <span class="label">Datasource</span>
+              <strong id="connectionSummaryTitle">선택된 datasource 없음</strong>
+              <p id="connectionSummaryMeta">왼쪽 목록에서 datasource + adapter 연결을 선택합니다.</p>
+            </div>
+            <button id="openTimeseries" class="secondary" type="button">Open Timeseries</button>
+          </div>
+          <details class="advanced-panel">
+            <summary>상세 연결 설정</summary>
+            <div class="button-row detail-actions">
+              <button id="registerSource" class="secondary" type="button">Datasource</button>
+              <button id="registerFeeder" class="secondary" type="button">Feeder</button>
+              <button id="registerAdapter" class="secondary" type="button">Adapter</button>
+            </div>
+            <div class="form-grid">
+              <label>Source ID<input id="sourceId" autocomplete="off"></label>
+              <label>Title<input id="sourceTitle" autocomplete="off"></label>
+              <label>Type<select id="sourceType"><option value="test_db">test_db</option><option value="database">database</option><option value="http">http</option></select></label>
+              <label>URL / Path<input id="sourceUrl" autocomplete="off"></label>
+              <label class="span-2">Description<input id="sourceDescription" autocomplete="off"></label>
+              <label>Dataset Case<input id="datasetCaseId" autocomplete="off"></label>
+              <label>Adapter ID<input id="adapterId" autocomplete="off"></label>
+              <label>Adapter Type<select id="adapterType"><option value="test_db_numeric_stream">test_db_numeric_stream</option><option value="test_db_numeric_distribution_window">test_db_numeric_distribution_window</option><option value="test_db_categorical_count_window">test_db_categorical_count_window</option><option value="test_db_multivariate_window">test_db_multivariate_window</option><option value="test_db_prediction_log_stream">test_db_prediction_log_stream</option><option value="prediction_log_error_rate">prediction_log_error_rate</option></select></label>
+              <label>Collection Minutes<input id="collectionIntervalMinutes" type="number" min="1"></label>
+              <label>Aggregate Minutes<input id="aggregateIntervalMinutes" type="number" min="1"></label>
+              <label>Start Time<input id="startTime" autocomplete="off"></label>
+              <label>Replay End<input id="replayEnd" autocomplete="off"></label>
+              <label class="span-2">CSV Path<input id="csvPath" autocomplete="off"></label>
+              <label>Value Path<input id="valuePath" autocomplete="off"></label>
+            </div>
+          </details>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">02 Analysis Chart</p>
+              <h2>분석 차트</h2>
+            </div>
+          </div>
+          <div class="recommendation-panel">
+            <div class="recommendation-head">
+              <div>
+                <span class="label">Recommended analysis</span>
+                <strong id="recommendedAnalysisTitle">connection을 선택하세요.</strong>
+              </div>
+              <button id="applyTopRecommendation" class="secondary" type="button">1순위 추천 선택</button>
+            </div>
+            <div id="recommendedAnalysisList" class="recommendation-list"></div>
+            <p id="compatibilityWarning" class="compatibility-warning"></p>
+          </div>
+          <div class="picker-block">
+            <div class="picker-head">
+              <div>
+                <span class="label">Chart catalog</span>
+                <strong>분석 차트 목록</strong>
+              </div>
+              <span id="chartPickerCount" class="badge">0</span>
+            </div>
+            <div id="chartPickerList" class="picker-list tall"></div>
+          </div>
+          <div class="chart-link-panel">
+            <div>
+              <span id="chartCatalogSource" class="preview-source">catalog 대기</span>
+              <strong id="chartPreviewTitle">선택된 차트</strong>
+              <p id="chartMethodSummary">연결 가능한 method를 선택하세요.</p>
+            </div>
+            <a id="openReportChart" href="#" target="_blank" rel="noreferrer">Open report UI</a>
+          </div>
+          <details class="advanced-panel">
+            <summary>차트 상세 설정</summary>
+            <div class="button-row detail-actions">
+              <button id="refreshChartCatalog" class="secondary" type="button">Reload Catalog</button>
+              <button id="registerChart" class="secondary" type="button">Register Chart</button>
+            </div>
+            <div class="form-grid">
+              <label>Analysis Chart ID<input id="analysisChartId" autocomplete="off"></label>
+              <label>Chart Search<input id="chartSearch" autocomplete="off" placeholder="CHART-STREAM, ADWIN, Wasserstein"></label>
+              <label>Chart ID<select id="chartId"><option value="CHART-STREAM-001">CHART-STREAM-001</option></select></label>
+              <label>Compatible Method<select id="compatibleMethod"><option value="">catalog 로딩 중</option></select></label>
+              <label class="span-2">Payload Adapter Key<input id="payloadAdapterKey" autocomplete="off"></label>
+              <label class="span-2">Chart Title<input id="chartTitle" autocomplete="off"></label>
+            </div>
+          </details>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">03 Drift Method</p>
+              <h2>드리프트 메소드</h2>
+            </div>
+          </div>
+          <div class="picker-block">
+            <div class="picker-head">
+              <div>
+                <span class="label">Method catalog</span>
+                <strong>선택한 차트에 연결 가능한 메소드</strong>
+              </div>
+              <span id="methodPickerCount" class="badge">0</span>
+            </div>
+            <div id="methodPickerList" class="picker-list"></div>
+          </div>
+          <div class="selection-register">
+            <div>
+              <span class="label">Selected pairing</span>
+              <strong id="selectionSummary">차트와 메소드를 선택하세요.</strong>
+              <p id="selectionRegisterHint">추천에서 선택한 뒤 적용은 아래 등록 버튼을 누르십시오.</p>
+            </div>
+            <button id="registerSelection" class="primary" type="button">선택 조합 등록</button>
+          </div>
+          <details class="advanced-panel">
+            <summary>메소드 상세 설정</summary>
+            <div class="button-row detail-actions">
+              <button id="registerMethod" class="secondary" type="button">Register Method</button>
+            </div>
+            <div class="form-grid">
+              <label>Assignment ID<input id="assignmentId" autocomplete="off"></label>
+              <label>Feature ID<input id="featureId" autocomplete="off"></label>
+              <label>Runtime Method<select id="runtimeMethodKey"><option value="adwin_mean_stream">adwin_mean_stream</option><option value="page_hinkley_stream">page_hinkley_stream</option><option value="kswin_numeric_window">kswin_numeric_window</option><option value="wasserstein_numeric_window">wasserstein_numeric_window</option><option value="psi_numeric_binned">psi_numeric_binned</option><option value="ddm_error_rate_stream">ddm_error_rate_stream</option><option value="rddm_error_rate_stream">rddm_error_rate_stream</option><option value="eddm_error_rate_stream">eddm_error_rate_stream</option></select></label>
+              <label>Event Level<select id="eventLevel"><option value="drift">drift</option><option value="warning">warning</option></select></label>
+              <label>Delta<input id="delta" type="number" step="0.001"></label>
+              <label>Mean Shift Threshold<input id="meanShiftThreshold" type="number" step="0.01"></label>
+              <label>Bucket Resolution<input id="bucketResolution" autocomplete="off"></label>
+              <label>Lookback Buckets<input id="lookbackBuckets" type="number" min="1"></label>
+              <label class="check-row"><input id="useAlgorithmImpl" type="checkbox"> Use algorithm implementation</label>
+              <label class="check-row"><input id="methodEnabled" type="checkbox"> Enabled</label>
+            </div>
+          </details>
+        </article>
+      </section>
+
+      <aside class="operations-column">
+        <article class="panel run-panel">
+          <div class="summary">
+            <p class="panel-kicker">Execution</p>
+            <h2 id="runStatus">idle</h2>
+            <p id="runSubtitle">connection preset을 선택하고 Add를 눌러 실행 대상을 정합니다.</p>
+          </div>
+          <div class="metrics">
+            <article><span>raw_event</span><strong id="rawCount">-</strong></article>
+            <article><span>bucket</span><strong id="bucketCount">-</strong></article>
+            <article><span>method_run</span><strong id="runCount">-</strong></article>
+            <article><span>event</span><strong id="eventCount">-</strong></article>
+          </div>
+          <div class="run-controls">
+            <label>Tick interval (ms)<input id="tickDelayMs" type="number" min="0" step="100" value="200"></label>
+            <label class="check-row"><input id="openTimeseriesBeforeRun" type="checkbox" checked> Open timeseries before run</label>
+          </div>
+          <div class="link-panel">
+            <h2>Datasource Timeseries URL</h2>
+            <a id="timeseriesLink" href="#" target="_blank" rel="noreferrer">datasource 연결 후 생성됩니다.</a>
+          </div>
+          <details class="advanced-panel compact-detail">
+            <summary>수동 실행 상세</summary>
+            <div class="button-row wide detail-actions">
+              <button id="resetScenario" class="secondary" type="button">Reset</button>
+              <button id="runReplay" class="secondary" type="button">Replay & Poll</button>
+            </div>
+          </details>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Workflow</p>
+              <h2>실행 단계</h2>
+            </div>
+          </div>
+          <ol id="stepList" class="step-list"></ol>
+        </article>
+
+        <article class="panel">
+          <details class="advanced-panel">
+            <summary>최근 응답 상세</summary>
+            <pre id="artifactView">{}</pre>
+          </details>
+        </article>
+      </aside>
+    </section>
+  </main>
+  <script src="/admin/static/app.js?v=20260706-window-runtime-algorithm-default"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-EXPL-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-EXPL-001</p>
+    <h1>CHART-EXPL-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 SHAP value와 feature importance 순위가 baseline 대비 어떻게 달라졌는지 설명한다.</p> <p>SHAP drift는 입력 feature 분포가 바뀌었는지뿐 아니라 모델이 예측에 사용하는 contribution 구조가 바뀌었는지 확인한다. 따라서 mean |SHAP| 순위, feature별 SHAP value distribution, class-wise SHAP heatmap을 함께 해석해야 한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. feature별 mean |SHAP| 중요도가 baseline 대비 바뀌었는가?
+2. 주요 feature의 SHAP value distribution이 이동했는가?
+3. 특정 class에서 SHAP drift가 집중되는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - baseline/current mean |SHAP| bar
+  - rank change connector
+
+우측 상단
+  - 주요 feature의 SHAP value distribution
+  - baseline/current 분포 비교
+
+우측 하단
+  - class-wise SHAP drift heatmap
+  - feature x class drift score</code></pre> <p>상단 요약 영역에는 top shift, rank change, class heat를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 SHAP summary comparison에서 mean |SHAP|가 큰 feature와 순위가 이동한 feature를 확인한다.</p> <pre><code>baseline/current bar가 비슷하다
+  -&gt; explanation drift 증거가 약하다.
+
+특정 feature의 current mean |SHAP|가 크게 증가한다
+  -&gt; 해당 feature contribution 증가 후보로 본다.
+
+중요도 순위가 크게 바뀐다
+  -&gt; global importance rank shift 후보로 본다.</code></pre> <p>그 다음 우측 상단 distribution에서 주요 feature의 SHAP value가 양수/음수 방향으로 이동했는지 확인한다.</p> <p>마지막으로 우측 하단 class-wise heatmap에서 drift가 특정 class에 집중되는지 확인한다. Global summary와 class-wise heatmap이 같은 feature를 가리키면 설명력이 높다.</p> <h2>Drift 후보 판단 기준</h2> <p>Mean |SHAP| 중요도 순위가 바뀌고, 주요 feature의 SHAP value distribution이 baseline 대비 이동하며, class-wise heatmap에서도 특정 class/feature drift가 확인되면 SHAP drift 후보로 해석한다.</p> <p>단, SHAP drift는 feature contribution 변화 신호다. 데이터 drift, 모델 drift, label drift 중 어느 원인인지 바로 단정하면 안 된다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 top shift가 <code>risk_score</code>, rank change가 <code>+3</code>, class heat가 <code>0.48</code>로 표시되어 있다. 좌측 summary에서는 <code>risk_score</code>와 <code>channel</code>의 current mean |SHAP|가 baseline보다 증가하고, <code>amount</code>의 중요도는 낮아진다.</p> <p>우측 상단 distribution에서는 <code>risk_score</code> SHAP value가 current에서 양수 방향으로 이동한다. 우측 하단 heatmap에서는 class B/C에서 <code>risk_score</code>와 <code>channel</code>의 SHAP drift가 강하다. 따라서 이 예시는 모델 설명 구조가 특정 feature와 class 중심으로 이동한 SHAP drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>SHAP drift 분석 결과, risk_score의 mean |SHAP| 중요도가 상승했고 rank change는 +3으로 나타났다.
+risk_score의 SHAP value distribution은 current에서 양수 방향으로 이동했으며,
+class-wise heatmap에서도 class B/C의 drift score가 높았다.
+이는 explanation-level SHAP drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - SHAP 중요도 상승만으로 feature 원인 drift를 확정한다.
+
+금지 2
+  - SHAP value 분포 이동을 곧바로 모델 성능 저하로 해석한다.
+
+금지 3
+  - class-wise drift를 보지 않고 global SHAP summary만 보고 결론낸다.
+
+금지 4
+  - SHAP 계산 sample, background data, explainer 설정을 확인하지 않는다.</code></pre> <p>SHAP drift는 설명 구조의 변화다. 실제 원인과 영향은 feature drift, error rate, calibration, segment 분석과 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>SHAP drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>SHAP background dataset과 explainer 설정</li> <li>class별 sample 수와 class imbalance 변화</li> <li>feature별 입력 분포 drift</li> <li>global importance rank 변화의 반복성</li> <li>model version, feature engineering, preprocessing 변경</li> <li>성능 지표, calibration, error rate 변화</li> <li>high drift feature의 segment별 업무 이벤트</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>SHAP Drift / SHAP_VALUE_DISTRIBUTION_TEST</code></li> <li><code>SHAP Drift / GLOBAL_IMPORTANCE_RANK_SHIFT</code></li> <li><code>SHAP Drift / CLASS_CONDITIONAL_SHAP_DRIFT</code></li> </ul>
+  </main>
+</body>
+</html>

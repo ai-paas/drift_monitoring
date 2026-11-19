@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-MV-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-MV-002</p>
+    <h1>CHART-MV-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 kernel MMD를 이용해 기준 구간과 현재 구간의 고차원 분포가 달라졌는지 설명한다.</p> <p>MMD는 두 표본 집단을 kernel mean embedding으로 변환한 뒤 그 차이를 측정한다. 따라서 원본 feature 공간이나 embedding 공간에서 평균, 분산, cluster 구조가 복합적으로 달라질 때 유용하다. 특히 RBF kernel 같은 비선형 kernel을 사용하면 단순 선형 평균 차이보다 더 복잡한 분포 변화를 포착할 수 있다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 기준 구간과 현재 구간의 embedding 분포가 분리되는가?
+2. MMD score가 최근 window에서 증가하거나 관리 기준을 넘는가?
+3. 관측 MMD score가 permutation null distribution의 상위 꼬리에 있는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - 기준 구간과 현재 구간의 embedding projection scatter
+  - kernel bandwidth 영향 범위를 암시하는 분포 영역
+  - 두 집단의 kernel mean embedding 차이 방향
+
+우측 상단
+  - window별 MMD score 추세
+  - 운영 관리 기준 또는 threshold
+
+우측 하단
+  - permutation null distribution histogram
+  - 관측 MMD score
+  - permutation p-value</code></pre> <p>상단 요약 영역에는 MMD score, permutation p-value, kernel bandwidth를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 embedding projection에서 기준 sample과 현재 sample이 섞이는지, 또는 중심/cluster 구조가 달라지는지 확인한다.</p> <pre><code>두 집단이 넓게 겹친다
+  -&gt; kernel 기반 분포 차이 신호가 약할 수 있다.
+
+현재 집단의 중심이 이동했다
+  -&gt; embedding 평균 또는 주요 feature 조합이 이동했을 수 있다.
+
+현재 집단의 cluster 구조가 달라졌다
+  -&gt; segment mix 변화, 신규 topic, 신규 population 유입을 의심한다.</code></pre> <p>그 다음 우측 상단의 MMD score 추세를 본다. 최근 window에서 기준선을 반복적으로 넘으면 일시적 fluctuation보다 지속적 고차원 분포 변화 후보로 본다.</p> <p>마지막으로 permutation null distribution을 확인한다. 관측 MMD score가 귀무분포의 상위 꼬리에 있고 p-value가 기준보다 작으면, label shuffle으로 설명되기 어려운 분포 차이 후보로 해석한다.</p> <h2>Drift 후보 판단 기준</h2> <p>MMD score가 관리 기준을 넘고 상승 추세가 지속되며, permutation p-value가 기준보다 작고, embedding projection에서 기준/현재 sample의 중심 또는 cluster 구조 차이가 확인되면 kernel 기반 다변량 drift 후보로 해석한다.</p> <p>단, MMD는 kernel 종류와 bandwidth에 민감하다. bandwidth가 너무 작으면 local noise에 민감하고, 너무 크면 세부 cluster 차이가 희석될 수 있으므로 kernel 설정을 함께 보고해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 MMD score가 <code>0.36</code>, permutation p-value가 <code>0.008</code>, kernel bandwidth가 <code>1.20</code>으로 표시되어 있다. 좌측 embedding projection에서는 현재 sample이 기준 sample보다 우상단으로 이동했고, 현재 집단의 cluster 영역이 기준 집단과 부분적으로 분리되어 있다.</p> <p>우측 상단의 추세에서는 최근 window에서 MMD score가 관리 기준 <code>0.18</code>을 넘고 계속 증가한다. 우측 하단의 permutation null distribution에서는 관측 MMD score가 귀무분포의 상위 꼬리 바깥쪽에 위치한다. 따라서 이 예시는 kernel mean embedding 차이가 커진 고차원 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>기준 구간과 현재 구간의 embedding 분포를 Kernel MMD로 비교한 결과,
+관측 MMD score는 0.36, permutation p-value는 0.008로 나타났다.
+최근 window에서 MMD score가 관리 기준을 초과하며 증가했고,
+embedding projection에서도 현재 sample의 중심 및 cluster 구조가 기준 sample과 달라졌다.
+이는 kernel 기반 고차원 분포 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - MMD score가 크다는 이유만으로 어떤 feature가 원인인지 단정한다.
+
+금지 2
+  - kernel bandwidth 설정을 확인하지 않고 drift 강도를 절대 비교한다.
+
+금지 3
+  - projection scatter의 2차원 분리만으로 고차원 전체 구조를 확정한다.
+
+금지 4
+  - p-value가 작다는 이유만으로 모델 성능 저하를 확정한다.</code></pre> <p>MMD는 고차원 분포 차이를 요약하는 detector이므로, 원인 설명에는 feature별 detector, embedding 차원별 분석, segment 분석이 필요하다.</p> <h2>추가 확인 항목</h2> <p>MMD drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>kernel 종류와 bandwidth 설정</li> <li>biased/unbiased estimator 및 linear-time approximation 사용 여부</li> <li>embedding 모델 또는 feature normalization 변경 여부</li> <li>projection 방법과 random seed에 따른 시각화 안정성</li> <li>특정 cluster, segment, source가 MMD score를 주도하는지 여부</li> <li>label 확보 후 성능 지표, calibration, confidence 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>MMD / KERNEL_MMD_UNBIASED</code></li> <li><code>MMD / KERNEL_MMD_BIASED</code></li> <li><code>MMD / LINEAR_TIME_MMD</code></li> <li><code>MMD / STREAMING_MMD</code></li> </ul>
+  </main>
+</body>
+</html>

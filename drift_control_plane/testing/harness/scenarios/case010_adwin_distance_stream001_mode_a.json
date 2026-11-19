@@ -1,0 +1,92 @@
+{
+  "scenarioId": "TCASE-010-ADWIN-DISTANCE-STREAM001",
+  "mode": "A",
+  "title": "CASE-010 ADWIN distance stream analysis",
+  "source": {
+    "sourceId": "case-010-adwin-distance-stream001",
+    "title": "CASE-010 ADWIN projected distance stream",
+    "description": "Synthetic stream numeric drift dataset replayed as a projected distance stream for ADWIN_DISTANCE_STREAM",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case010_anchor_drift_window.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010-adwin-distance-stream001",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "testing/harness/data/case010_anchor_drift_window.csv",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T22:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-010-adwin-distance-stream001",
+    "sourceId": "case-010-adwin-distance-stream001",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 ADWIN distance stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-adwin-distance-stream001",
+    "adapterId": "case-010-adwin-distance-stream001",
+    "featureId": "metric",
+    "methodVariantId": 715,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_distance_stream",
+    "params": {
+      "variant_id": "ADWIN_DISTANCE_STREAM",
+      "delta": 0.5,
+      "min_window_length": 1,
+      "grace_period": 1,
+      "min_reference_size": 1,
+      "min_current_size": 1,
+      "maxStatePoints": 50
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-adwin-distance-stream001",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "auto__ADWIN_DISTANCE_STREAM__CHART-STREAM-001",
+    "chartOptions": {
+      "title": "CASE-010 ADWIN distance stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 240,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 240,
+    "bucketCount": 24,
+    "methodRunCount": 24,
+    "adapterCursorTime": "2026-07-01T02:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T02:00:00Z",
+    "bucketRowCount": 10,
+    "analysisPointCount": 24,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 2,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

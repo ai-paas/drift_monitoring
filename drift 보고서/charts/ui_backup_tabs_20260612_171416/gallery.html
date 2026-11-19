@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drift Chart Gallery</title>
+  <link rel="stylesheet" href="./gallery.css">
+</head>
+<body>
+  <main class="app" aria-label="Drift Chart Gallery">
+    <aside class="sidebar">
+      <button id="leftHandle" class="collapse-handle left-handle" type="button" aria-label="차트 목록 접기" aria-expanded="true">‹</button>
+      <div class="panel-content">
+        <header class="sidebar-header">
+          <div>
+            <p class="eyebrow">Drift Chart Gallery</p>
+            <h1>차트 모음</h1>
+          </div>
+          <span class="count" id="totalCount">53</span>
+        </header>
+
+        <label class="search">
+          <span>검색</span>
+          <input id="searchInput" type="search" placeholder="CHART-EDF-001, KS, error..." autocomplete="off">
+        </label>
+
+        <nav class="tree" id="chartTree" aria-label="차트 종류"></nav>
+      </div>
+    </aside>
+
+    <section class="viewer">
+      <header class="viewer-header">
+        <div>
+          <p class="selected-family" id="selectedFamily">EDF 계열</p>
+          <h2 id="selectedTitle">CHART-EDF-001</h2>
+        </div>
+        <div class="viewer-actions">
+          <div class="tabs main-tabs" role="tablist" aria-label="상위 표시 모드">
+            <button id="mainChartTab" class="tab active" type="button" role="tab" aria-selected="true">차트</button>
+            <button id="mainMethodTab" class="tab" type="button" role="tab" aria-selected="false">탐지 방법</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <div id="chartWorkspace" class="workspace-pane">
+          <div class="subtab-bar">
+            <div class="tabs sub-tabs" role="tablist" aria-label="차트 표시 모드">
+              <button id="chartViewTab" class="tab active" type="button" role="tab" aria-selected="true">차트</button>
+              <button id="chartDescriptionTab" class="tab" type="button" role="tab" aria-selected="false">설명</button>
+            </div>
+            <button id="methodButton" class="method-button" type="button">탐지 방법 목록</button>
+          </div>
+          <div class="frame-shell" id="frameShell">
+            <iframe id="chartFrame" title="선택된 차트" src="./chart_edf_001.html"></iframe>
+            <article id="descriptionPanel" class="description-panel" hidden></article>
+          </div>
+        </div>
+        <div id="methodWorkspace" class="workspace-pane" hidden>
+          <article id="methodPanel" class="description-panel method-workspace-panel"></article>
+        </div>
+      </div>
+    </section>
+    <aside class="method-sidebar">
+      <button id="rightHandle" class="collapse-handle right-handle" type="button" aria-label="탐지 방법 목록 접기" aria-expanded="true">›</button>
+      <div class="panel-content">
+        <header class="method-sidebar-header">
+          <div>
+            <p class="eyebrow">Drift Methods</p>
+            <h1>탐지 방법</h1>
+          </div>
+          <span class="count" id="methodCount">0</span>
+        </header>
+        <label class="search">
+          <span>검색</span>
+          <input id="methodSearchInput" type="search" placeholder="KS, ADWIN, MMD..." autocomplete="off">
+        </label>
+        <nav class="tree" id="methodTree" aria-label="탐지 방법 목록"></nav>
+      </div>
+    </aside>
+  </main>
+  <div id="methodDialog" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="methodDialogTitle">
+    <div class="modal-backdrop" data-close-methods></div>
+    <section class="method-modal">
+      <header class="method-modal-header">
+        <div>
+          <p id="methodDialogChart" class="method-chart-id">CHART-EDF-001</p>
+          <h2 id="methodDialogTitle">연결된 탐지 방법</h2>
+        </div>
+        <button id="methodCloseButton" class="icon-button" type="button" aria-label="닫기">×</button>
+      </header>
+      <div id="methodList" class="method-list"></div>
+    </section>
+  </div>
+  <script src="./description_data.js"></script>
+  <script src="./method_data.js"></script>
+  <script src="./method_description_data.js"></script>
+  <script src="./gallery.js"></script>
+</body>
+</html>

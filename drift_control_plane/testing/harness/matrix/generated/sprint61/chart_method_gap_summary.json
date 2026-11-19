@@ -1,0 +1,222 @@
+{
+  "chartCount": 53,
+  "chartMethodPairCount": 188,
+  "uniqueMethodVariantCount": 177,
+  "runtimeRegistryKeys": [
+    "adwin_mean_stream",
+    "anderson_darling_window",
+    "baumgartner_weiss_schindler_window",
+    "bayesian_online_change_point_gaussian",
+    "bhattacharyya_window",
+    "bocd_hazard_rate_variant",
+    "bocd_predictive_probability",
+    "bocd_stream",
+    "chi_square_window",
+    "cramer_von_mises_window",
+    "cusum_stream",
+    "ddm_error_rate_stream",
+    "ecdd_wt_error_rate_stream",
+    "ecdd_wt_error_stream",
+    "ecdd_wt_standard",
+    "ecdd_wt_warning_drift",
+    "eddm_error_rate_stream",
+    "energy_distance_permutation_test",
+    "energy_distance_window",
+    "epps_singleton_window",
+    "ewma_one_sided",
+    "ewma_stream",
+    "ewma_univariate_control_chart",
+    "f_test_variance_window",
+    "fisher_exact_window",
+    "g_test_window",
+    "generic_categorical_contingency_window",
+    "generic_distribution_ecdf_window",
+    "generic_probability_distance_window",
+    "generic_statistical_test_window",
+    "gma_control_chart",
+    "gma_one_sided",
+    "gma_stream",
+    "hddm_a_error_rate_stream",
+    "hddm_a_hoeffding_bound",
+    "hddm_a_two_sided",
+    "hddm_a_warning_drift",
+    "hddm_w_error_rate_stream",
+    "hddm_w_recent_error_weighting",
+    "hddm_w_warning_drift",
+    "hddm_w_weighted_average",
+    "hellinger_window",
+    "hinc_window",
+    "hotelling_t2_one_sample_phase_ii",
+    "hotelling_t2_two_sample",
+    "hotelling_t2_window",
+    "jensen_shannon_window",
+    "kernel_mmd_biased",
+    "kernel_mmd_unbiased",
+    "kl_divergence_window",
+    "ks_test_window",
+    "kswin_numeric_stream",
+    "kswin_numeric_window",
+    "kswin_standard",
+    "kswin_with_subsampling",
+    "kuiper_window",
+    "l_infinity_window",
+    "least_squares_density_difference",
+    "levene_window",
+    "lsdd_window",
+    "mahalanobis_window",
+    "mann_whitney_window",
+    "mewma_standard",
+    "mewma_window",
+    "mewma_with_mahalanobis_d2",
+    "mmd_window",
+    "multivariate_process_window",
+    "one_sided_lower_cusum",
+    "one_sided_upper_cusum",
+    "page_hinkley_decrease",
+    "page_hinkley_increase",
+    "page_hinkley_stream",
+    "permutation_lsdd",
+    "probability_distance_window",
+    "psi_numeric_binned",
+    "rddm_error_rate_stream",
+    "regularized_hotelling_t2",
+    "robust_mahalanobis",
+    "sample_mahalanobis_outlier",
+    "seqdrift1",
+    "seqdrift2",
+    "seqdrift_numeric_window",
+    "stepd_accuracy_window",
+    "stepd_error_rate_stream",
+    "stepd_supervised_stream",
+    "stepd_warning_drift",
+    "t_test_window",
+    "total_variation_window",
+    "two_sided_cusum",
+    "univariate_energy_distance",
+    "wasserstein_1d_exact",
+    "wasserstein_approx_histogram",
+    "wasserstein_numeric_window",
+    "wasserstein_window_trend",
+    "window_mean_mahalanobis"
+  ],
+  "explicitBindingFileCount": 1,
+  "statusCounts": {
+    "runtime_wrapper_missing": 53,
+    "tested_passed": 135
+  },
+  "runtimeStatusCounts": {
+    "runtime_available": 135,
+    "runtime_wrapper_missing": 53
+  },
+  "payloadBindingStatusCounts": {
+    "payload_coverage_available": 188
+  },
+  "scenarioStatusCounts": {
+    "scenario_available": 135,
+    "scenario_missing": 53
+  },
+  "topChartsByMissingRuntime": [
+    {
+      "key": "CHART-ADAPT-002",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-ANOM-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-CLS-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-EXPL-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-REP-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-REP-002",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-REP-003",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-TEXT-001",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-TEXT-002",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "CHART-UNC-001",
+      "missingCount": 3,
+      "totalCount": 3
+    }
+  ],
+  "topMethodNamesByMissingRuntime": [
+    {
+      "key": "Autoencoder Representation Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Classifier 기반 embedding drift detection",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "DriftRetrainingClassifier",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Feature Map Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Graph Embedding Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "LLM Query / Semantic Distance 기반 감지",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Model Uncertainty Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "OCDD",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "SHAP Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    },
+    {
+      "key": "Text Domain Classifier Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    }
+  ]
+}

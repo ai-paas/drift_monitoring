@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MEWMA로 확인하는 여러 지표의 동시 상승 경보</title>
+  <link rel="stylesheet" href="./chart_ctrl_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CTRL-003">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>MEWMA 통계량 관리도</h2>
+          <p>MEWMA statistic이 점진적으로 올라 t=23 부근에서 UCL 12.0을 넘고 final 19.1에 도달하는지 본다.</p>
+        </div>
+        <svg id="statChart" role="img" aria-label="MEWMA statistic control chart with upper control limit"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>지표 기여도</h2>
+            <p>alarm 기여도가 risk_score 38%, amount 24%, frequency 18% 순으로 집중되는지 확인한다.</p>
+          </div>
+          <svg id="contributionChart" role="img" aria-label="metric contribution bar chart"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>다변량 소형 추세</h2>
+            <p>risk_score, amount, frequency가 같은 구간에서 함께 상승하는지 읽는다.</p>
+          </div>
+          <svg id="smallMultiples" role="img" aria-label="multivariate metric small multiples"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          MEWMA는 여러 metric vector를 smoothing한 뒤 하나의 multivariate statistic으로 관리한다.
+          이 예시에서는 statistic이 t=23 부근에서 UCL 12.0을 넘고 final 19.1까지 상승한다.
+          risk_score가 38%로 가장 크게 기여하며 amount와 frequency도 함께 상승하므로, 여러 지표의 공동 이동에 의한 다변량 drift 후보로 해석한다.
+          단, metric scaling과 covariance 추정 방식을 확인하지 않고 특정 지표 하나를 원인으로 단정하지 않는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch stat"></i>MEWMA statistic</span>
+        <span><i class="swatch limit"></i>UCL</span>
+        <span><i class="swatch contrib"></i>contribution</span>
+        <span><i class="swatch alarm"></i>alarm</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_ctrl_003.js"></script>
+</body>
+</html>

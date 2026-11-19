@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>상위 점수 구간 증가로 본 PSI 드리프트</title>
+  <link rel="stylesheet" href="./chart_psi_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-PSI-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>구간 비율 비교</h2>
+          <p>80-100 bin은 기준 12%에서 현재 20%로 +8pp 증가한다.</p>
+        </div>
+        <svg id="binChart" role="img" aria-label="기준 구간과 현재 구간의 bin 비율 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>PSI 기여도</h2>
+            <p>80-100 bin 기여도 0.041이 전체 PSI를 가장 크게 만든다.</p>
+          </div>
+          <svg id="contributionChart" role="img" aria-label="bin별 PSI 기여도"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>PSI 추세</h2>
+            <p>최근 window PSI 0.123이 관리 기준 0.10을 넘는다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="PSI 시간 추세"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 PSI가 0.123으로 관리 기준 0.10을 초과한다.
+          80-100 bin은 기준 12%에서 현재 20%로 +8pp 늘어 기여도 0.041로 가장 크고,
+          60-80 bin도 24%에서 32%로 +8pp 증가한다. 상위 score band로 population이 이동한 PSI drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 비율</span>
+        <span><i class="swatch current"></i>현재 비율</span>
+        <span><i class="swatch contribution"></i>PSI 기여</span>
+        <span><i class="swatch threshold"></i>관리 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_psi_001.js"></script>
+</body>
+</html>

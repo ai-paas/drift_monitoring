@@ -1,0 +1,33 @@
+services:
+  drift-llm-postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: drift_monitoring
+      DRIFT_DB_HOST: 127.0.0.1
+      DRIFT_DB_PORT: 5432
+      DRIFT_DB_NAME: drift_monitoring
+      DRIFT_DB_USER: postgres
+      DRIFT_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      LLM_API_ENDPOINT: ${LLM_API_ENDPOINT:-http://host.docker.internal:8001/v1/chat/completions}
+      LLM_MODEL: ${LLM_MODEL:-your-model}
+      LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-90}
+      LLM_RETRY_COUNT: ${LLM_RETRY_COUNT:-1}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:15432:5432"
+      - "${BIND_ADDRESS:-127.0.0.1}:8765:8765"
+      - "${BIND_ADDRESS:-127.0.0.1}:8766:8766"
+      - "${BIND_ADDRESS:-127.0.0.1}:8767:8767"
+      - "${BIND_ADDRESS:-127.0.0.1}:8770:8770"
+    volumes:
+      - .:/opt/drift_llm_intepretation
+      - drift_llm_postgres_data:/var/lib/postgresql/data
+volumes:
+  drift_llm_postgres_data:
