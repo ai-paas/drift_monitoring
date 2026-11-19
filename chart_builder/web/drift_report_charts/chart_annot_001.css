@@ -1,0 +1,167 @@
+:root {
+  --bg: #f6f7f8;
+  --panel: #ffffff;
+  --ink: #17212b;
+  --muted: #5e6976;
+  --grid: #dfe5e9;
+  --baseline: #2f6f9f;
+  --current: #3a8064;
+  --upper: #c9952f;
+  --lower: #b95a50;
+  --axis: #2b3640;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow: hidden;
+}
+
+.page {
+  width: 1200px;
+  height: 820px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.chart-id {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1 { margin: 0; font-size: 28px; line-height: 1.2; }
+h2 { margin: 0; font-size: 17px; line-height: 1.25; }
+p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  min-width: 430px;
+}
+
+.metric {
+  background: var(--panel);
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.metric .label { color: var(--muted); font-size: 12px; }
+.metric .value { margin-top: 4px; font-size: 23px; font-weight: 750; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+}
+
+.side { display: grid; gap: 16px; }
+
+.panel, .notes {
+  background: var(--panel);
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+}
+
+.panel { padding: 16px; }
+.panel-large { min-height: 516px; }
+.panel-small { height: 250px; }
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.panel-head p {
+  max-width: 292px;
+  text-align: right;
+}
+
+.panel-head.compact p { max-width: 190px; }
+
+#directionChart {
+  width: 630px;
+  height: 440px;
+  display: block;
+}
+
+#testChart, #matrixChart {
+  width: 472px;
+  height: 185px;
+  display: block;
+}
+
+.notes {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 16px;
+  padding: 18px 20px;
+}
+
+.notes p { max-width: 805px; margin-top: 6px; }
+
+.legend {
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+  align-content: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+  border-radius: 3px;
+  vertical-align: -2px;
+}
+
+.baseline { background: var(--baseline); }
+.current { background: var(--current); }
+.upper { background: var(--upper); }
+.lower { background: var(--lower); }
+
+.grid-line { stroke: var(--grid); stroke-width: 1; }
+.axis-line { stroke: var(--axis); stroke-width: 1; }
+.baseline-line { fill: none; stroke: var(--baseline); stroke-width: 3; }
+.current-line { fill: none; stroke: var(--current); stroke-width: 3; }
+.upper-line { stroke: var(--upper); stroke-width: 2.5; stroke-dasharray: 5 4; }
+.lower-line { stroke: var(--lower); stroke-width: 2.5; stroke-dasharray: 5 4; }
+.neutral-line { stroke: #7b8793; stroke-width: 1.5; stroke-dasharray: 4 4; }
+.upper-fill { fill: rgba(201, 149, 47, 0.18); }
+.lower-fill { fill: rgba(185, 90, 80, 0.16); }
+.baseline-point { fill: var(--baseline); stroke: #ffffff; stroke-width: 2; }
+.current-point { fill: var(--current); stroke: #ffffff; stroke-width: 2; }
+.upper-point { fill: var(--upper); stroke: #ffffff; stroke-width: 2; }
+.lower-point { fill: var(--lower); stroke: #ffffff; stroke-width: 2; }
+.tick-text, .axis-label { fill: var(--muted); font-size: 12px; }
+.bar-label { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.callout-upper { fill: var(--upper); font-size: 12px; font-weight: 700; }
+.callout-lower { fill: var(--lower); font-size: 12px; font-weight: 700; }
+.card-title { fill: var(--ink); font-size: 13px; font-weight: 750; }
+.card-text { fill: var(--muted); font-size: 12px; }
+.decision-pass { fill: rgba(58, 128, 100, 0.12); stroke: rgba(58, 128, 100, 0.45); stroke-width: 1; }
+.decision-fail { fill: rgba(185, 90, 80, 0.10); stroke: rgba(185, 90, 80, 0.38); stroke-width: 1; }
+.matrix-head { fill: #eef2f5; }
+.matrix-on { fill: rgba(58, 128, 100, 0.72); }
+.matrix-off { fill: rgba(126, 137, 148, 0.30); }

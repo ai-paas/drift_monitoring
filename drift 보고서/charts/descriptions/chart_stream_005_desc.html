@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-STREAM-005 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-STREAM-005</p>
+    <h1>CHART-STREAM-005 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 SPRT가 H0와 H1의 likelihood ratio를 순차적으로 비교해 stream drift 여부를 판단하는 과정을 설명한다.</p> <p>SPRT는 각 관측값이 H0, H1 중 어느 가설을 더 지지하는지 log likelihood ratio로 누적한다. LLR이 상한 boundary를 넘으면 H1, 즉 drift 또는 변화 가설을 채택하고, 하한 boundary를 넘으면 H0를 유지한다. 따라서 error rate 상승, 평균 shift 등 명확한 대립가설을 두고 빠르게 순차 판정해야 할 때 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. LLR이 H1 방향으로 누적되고 있는가?
+2. LLR이 accept H1 boundary를 언제 넘는가?
+3. error rate 또는 stream metric이 H1에서 가정한 방향으로 이동하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - log likelihood ratio trend
+  - accept H1 upper boundary
+  - accept H0 lower boundary
+  - decision marker
+
+우측 상단
+  - stream error rate 또는 metric trend
+  - H1 방향 기준선
+
+우측 하단
+  - continue/review/accept H1 decision timeline</code></pre> <p>상단 요약 영역에는 final LLR, alpha/beta, 최종 decision을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 LLR trend를 확인한다.</p> <pre><code>LLR이 0 주변에서 흔들린다
+  -&gt; 아직 H0/H1 중 어느 쪽 evidence도 충분하지 않다.
+
+LLR이 상한 boundary 방향으로 증가한다
+  -&gt; H1, 즉 drift 가설을 지지하는 evidence가 누적되고 있다.
+
+LLR이 하한 boundary 방향으로 감소한다
+  -&gt; H0 유지 evidence가 누적되고 있다.</code></pre> <p>그 다음 우측 상단 stream metric을 확인한다. Bernoulli error rate SPRT라면 error rate가 H1에서 가정한 높은 수준으로 이동하는지 확인한다. Gaussian mean shift SPRT라면 평균이 H1 방향으로 이동하는지 확인한다.</p> <p>마지막으로 우측 하단 decision timeline을 확인한다. Continue 상태가 review를 거쳐 accept H1로 전환되면 순차 검정이 drift 가설 채택 조건을 만족한 것이다.</p> <h2>Drift 후보 판단 기준</h2> <p>LLR이 accept H1 boundary를 넘고, stream metric이 H1에서 정의한 방향으로 이동하며, decision timeline이 accept H1 상태로 전환되면 SPRT 기반 drift 후보로 해석한다.</p> <p>단, SPRT는 H0/H1 가설 설정, alpha, beta, likelihood model에 강하게 의존한다. H1이 실제 운영 drift 형태와 맞지 않으면 LLR 해석이 왜곡될 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 final LLR이 <code>16.0</code>, alpha/beta가 <code>0.05 / 0.10</code>, decision이 <code>accept H1</code>로 표시되어 있다. 좌측 LLR trend는 초기에 0 근처에서 움직이다가 점차 증가해 accept H1 boundary <code>10.8</code>을 넘는다.</p> <p>우측 상단 error rate stream에서는 error rate가 H1 방향으로 상승해 <code>0.30</code> 기준선을 넘어선다. 우측 하단 timeline에서도 continue 상태가 review를 거쳐 accept H1로 전환된다. 따라서 이 예시는 error rate 상승 가설을 지지하는 evidence가 누적되어 SPRT가 drift를 판정한 사례로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>SPRT로 error rate stream을 순차 검정한 결과,
+LLR은 최종 16.0까지 증가했고 accept H1 boundary 10.8을 초과했다.
+Error rate도 H1에서 가정한 높은 수준으로 이동했으며,
+decision timeline은 accept H1 상태로 전환되었다.
+이는 error rate 상승 방향의 순차 가설 검정 기반 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - H1 채택만으로 drift 원인을 특정 feature로 단정한다.
+
+금지 2
+  - H0/H1 가설과 likelihood model을 확인하지 않고 LLR을 해석한다.
+
+금지 3
+  - alpha/beta 설정에 따른 false alarm, miss risk를 보고하지 않는다.
+
+금지 4
+  - error rate 상승을 원인 분석 없이 데이터 drift로만 해석한다.</code></pre> <p>SPRT는 사전에 정의한 가설을 빠르게 판정하는 detector다. drift 원인과 모델 영향은 별도 분석이 필요하다.</p> <h2>추가 확인 항목</h2> <p>SPRT drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>H0/H1 error rate 또는 mean shift 가정</li> <li>alpha, beta, decision boundary 설정</li> <li>likelihood model이 실제 metric 분포와 맞는지 여부</li> <li>label 지연과 error rate 계산 시점</li> <li>ADWIN, Page-Hinkley, DDM 등 다른 detector와의 합의 여부</li> <li>alarm 전후 segment/source/time 구성 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>SPRT / SPRT_BERNOULLI_ERROR_RATE</code></li> <li><code>SPRT / SPRT_GAUSSIAN_MEAN_SHIFT</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "scenarioId": "TC004-KS-GT-A1",
+  "mode": "A",
+  "title": "CASE-004 KS Test CHART-ANNOT-001 analysis",
+  "source": {
+    "sourceId": "c004-ksgta1",
+    "title": "CASE-004 numeric population shift",
+    "description": "Numeric score distribution shift for KS Test CHART-ANNOT-001",
+    "sourceType": "test_db",
+    "sourceUrl": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004"
+    }
+  },
+  "feeder": {
+    "sourceId": "c004-ksgta1",
+    "datasetCaseId": "CASE-004",
+    "csvPath": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 120,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "c004-ksgta1",
+    "sourceId": "c004-ksgta1",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 KS Test adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "a-ksgta1",
+    "adapterId": "c004-ksgta1",
+    "featureId": "score",
+    "methodVariantId": 321,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "generic_distribution_ecdf_window",
+    "params": {
+      "variant_id": "TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "value_col": "value",
+      "alpha": 0.05,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "an-ksgta1",
+    "chartId": "CHART-ANNOT-001",
+    "payloadAdapterKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_GREATER__CHART-ANNOT-001",
+    "chartOptions": {
+      "title": "CASE-004 KS-GT-A1 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 120,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 120,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "packId": "sprint78_adwin_projected_streams",
+  "description": "Sprint 78 ADWIN projected error-rate and distance stream executable rows.",
+  "rowIds": [
+    "V37-ROW-CASE010-ADWIN-ERROR-RATE-STREAM001",
+    "V37-ROW-CASE010-ADWIN-DISTANCE-STREAM001"
+  ]
+}

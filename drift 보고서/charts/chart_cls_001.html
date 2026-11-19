@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-CLS-001 - 도메인 분류기로 확인한 임베딩 분리</title>
+  <link rel="stylesheet" href="./chart_cls_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CLS-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Domain Classifier ROC</h2>
+          <p>ROC-AUC 0.89로 classifier가 baseline/current sample을 구분한다.</p>
+        </div>
+        <svg id="rocChart" role="img" aria-label="domain classifier ROC curve"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Score Distribution</h2>
+            <p>baseline peak는 0.19/38, current peak는 0.68/36으로 분리된다.</p>
+          </div>
+          <svg id="scoreChart" role="img" aria-label="domain classifier score distribution"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Importance + Projection</h2>
+            <p>emb_17 importance 0.31이 가장 높고 projection도 좌우로 분리된다.</p>
+          </div>
+          <svg id="importanceChart" role="img" aria-label="feature importance bar and embedding projection scatter"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Domain classifier가 baseline과 current를 높은 ROC-AUC로 구분하고 score distribution이 분리되면
+          embedding 또는 feature space drift 후보로 해석한다. 이 예시에서는 emb_17 0.31과 score gap 0.41이 함께 나타나
+          classifier-based drift 설명력이 높아진다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch roc"></i>ROC curve</span>
+        <span><i class="swatch feature"></i>feature importance</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_cls_001.js"></script>
+</body>
+</html>

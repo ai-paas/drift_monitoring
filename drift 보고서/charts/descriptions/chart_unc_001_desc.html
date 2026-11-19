@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-UNC-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-UNC-001</p>
+    <h1>CHART-UNC-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 model uncertainty가 baseline 대비 증가했는지 설명한다.</p> <p>Softmax confidence drift, entropy drift, predictive variance drift는 모델이 current sample에 대해 덜 확신하거나 더 불안정한 예측을 내는지를 본다. Confidence 분포, uncertainty trend, calibration curve, class별 uncertainty를 함께 확인해야 한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. current confidence 분포가 baseline보다 낮은 쪽으로 이동했는가?
+2. entropy 또는 predictive variance trend가 threshold를 넘는가?
+3. calibration 이탈과 특정 class의 uncertainty 집중이 함께 나타나는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - baseline/current confidence distribution
+  - low-confidence region marker
+
+우측 상단
+  - entropy 또는 predictive variance trend
+  - uncertainty threshold
+
+우측 하단
+  - calibration curve
+  - class별 uncertainty bar</code></pre> <p>상단 요약 영역에는 entropy, ECE, alarm 시점을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 confidence distribution에서 current confidence가 낮아졌는지 확인한다.</p> <pre><code>confidence 분포가 baseline과 유사하다
+  -&gt; uncertainty drift 증거가 약하다.
+
+current confidence가 낮은 영역으로 이동한다
+  -&gt; 모델 확신도 저하 후보로 본다.
+
+confidence 하락과 entropy 상승이 함께 나타난다
+  -&gt; uncertainty drift 설명력이 높아진다.</code></pre> <p>그 다음 우측 상단 trend에서 entropy 또는 predictive variance가 threshold를 넘고 지속되는지 확인한다.</p> <p>마지막으로 우측 하단 calibration curve와 class별 bar에서 miscalibration과 class-specific uncertainty가 집중되는지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Current confidence가 낮아지고 entropy 또는 predictive variance가 threshold를 지속적으로 넘으며, calibration curve가 perfect calibration에서 벗어나고 특정 class의 uncertainty가 높으면 model uncertainty drift 후보로 해석한다.</p> <p>단, uncertainty drift는 성능 저하와 동일하지 않다. Label delay 때문에 실제 accuracy를 모를 수 있으며, 모델이 더 불확실해졌지만 아직 정확도는 유지될 수도 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 entropy가 <code>0.77</code>, ECE가 <code>0.12</code>, alarm 시점이 <code>t=15</code>로 표시되어 있다. 좌측 분포에서는 current confidence가 baseline보다 낮은 영역으로 이동한다.</p> <p>우측 상단 trend는 entropy가 threshold <code>0.55</code>를 넘은 뒤 계속 상승한다. 우측 하단에서는 calibration curve가 perfect line 아래로 이탈하고 class C의 uncertainty가 높다. 따라서 이 예시는 model uncertainty가 증가한 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>Model uncertainty 모니터링 결과 current confidence 분포는 낮은 영역으로 이동했고,
+entropy는 t=15 이후 threshold를 초과해 최종 0.77까지 상승했다.
+ECE는 0.12로 calibration 이탈이 확인되며 class C에서 uncertainty가 집중되었다.
+이는 model uncertainty drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - uncertainty 증가만으로 accuracy 저하를 단정한다.
+
+금지 2
+  - calibration 이탈을 feature drift 원인으로 해석한다.
+
+금지 3
+  - class별 uncertainty를 보지 않고 전체 entropy만으로 운영 영향을 판단한다.
+
+금지 4
+  - temperature scaling, threshold, ensemble 설정을 확인하지 않는다.</code></pre> <p>Uncertainty drift는 모델 확신도의 변화 신호다. 실제 영향은 delayed label 성능, class별 error, calibration 재보정 결과와 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>Model uncertainty drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>softmax confidence, entropy, predictive variance 계산 방식</li> <li>temperature scaling 또는 calibration 방법</li> <li>ECE, Brier score, reliability diagram 변화</li> <li>class별 uncertainty와 class별 error rate</li> <li>label delay 이후 실제 accuracy 변화</li> <li>ensemble, MC dropout, Bayesian model 설정</li> <li>input feature drift 또는 class prior shift와의 관계</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Model Uncertainty Drift / SOFTMAX_CONFIDENCE_DRIFT</code></li> <li><code>Model Uncertainty Drift / ENTROPY_DRIFT</code></li> <li><code>Model Uncertainty Drift / PREDICTIVE_VARIANCE_DRIFT</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ANOM-001 - 정상 영역 밖 샘플 증가와 이상치 드리프트 후보</title>
+  <link rel="stylesheet" href="./chart_anom_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ANOM-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>이상 점수 분포</h2>
+          <p>Current score 분포가 baseline보다 오른쪽으로 이동하고 threshold 0.62 초과 영역이 커지는지 확인한다.</p>
+        </div>
+        <svg id="scoreChart" role="img" aria-label="anomaly score distribution with threshold line"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>이상 비율 추세</h2>
+            <p>Outlier rate가 t=14에서 기준선 0.20을 넘고 최종 0.37까지 계속 상승하는지 읽는다.</p>
+          </div>
+          <svg id="rateChart" role="img" aria-label="anomaly rate trend with threshold"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>차원축소 투영</h2>
+            <p>빨간 outlier가 baseline 정상 cluster 밖의 current 영역에 모여 있는지 확인한다.</p>
+          </div>
+          <svg id="projectionChart" role="img" aria-label="PCA or UMAP scatter colored by outlier"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          현재 상황은 baseline 정상 영역을 학습한 novelty detector가 current sample 중 정상 영역 밖으로 벗어난 점들을 outlier로 표시하는 사례다.
+          Current score 분포가 threshold 0.62 오른쪽으로 이동하고 outlier rate가 t=14 이후 기준선 0.20을 넘으며,
+          projection에서도 outlier가 current cluster에 집중되므로 이상치 기반 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline normal</span>
+        <span><i class="swatch current"></i>current normal</span>
+        <span><i class="swatch outlier"></i>current outlier</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_anom_001.js"></script>
+</body>
+</html>

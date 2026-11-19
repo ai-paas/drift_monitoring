@@ -1,0 +1,137 @@
+{
+  "chartCount": 53,
+  "chartMethodPairCount": 188,
+  "uniqueMethodVariantCount": 177,
+  "runtimeRegistryKeys": [
+    "adwin_mean_stream",
+    "ddm_error_rate_stream",
+    "eddm_error_rate_stream",
+    "kswin_numeric_window",
+    "page_hinkley_stream",
+    "psi_numeric_binned",
+    "rddm_error_rate_stream",
+    "wasserstein_numeric_window"
+  ],
+  "explicitBindingFileCount": 1,
+  "statusCounts": {
+    "runtime_wrapper_missing": 173,
+    "scenario_blocked": 3,
+    "tested_passed": 12
+  },
+  "runtimeStatusCounts": {
+    "runtime_available": 15,
+    "runtime_wrapper_missing": 173
+  },
+  "payloadBindingStatusCounts": {
+    "payload_coverage_available": 188
+  },
+  "scenarioStatusCounts": {
+    "scenario_available": 12,
+    "scenario_blocked": 3,
+    "scenario_missing": 173
+  },
+  "topChartsByMissingRuntime": [
+    {
+      "key": "CHART-EDF-001",
+      "missingCount": 10,
+      "totalCount": 10
+    },
+    {
+      "key": "CHART-ANNOT-001",
+      "missingCount": 8,
+      "totalCount": 8
+    },
+    {
+      "key": "CHART-PROB-002",
+      "missingCount": 7,
+      "totalCount": 7
+    },
+    {
+      "key": "CHART-CAT-001",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-CTRL-002",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-ERR-005",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-RANK-001",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-VAR-001",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-CTRL-001",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "CHART-EDF-002",
+      "missingCount": 4,
+      "totalCount": 4
+    }
+  ],
+  "topMethodNamesByMissingRuntime": [
+    {
+      "key": "KS Test",
+      "missingCount": 13,
+      "totalCount": 13
+    },
+    {
+      "key": "CUSUM",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "Anderson-Darling Test",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "EWMA",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Fisher's Exact Test",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Geometric Moving Average",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Jensen-Shannon Distance",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "KL Divergence",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "MMD",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+      "missingCount": 4,
+      "totalCount": 4
+    }
+  ]
+}

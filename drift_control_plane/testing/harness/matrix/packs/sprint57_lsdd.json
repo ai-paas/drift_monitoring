@@ -1,0 +1,9 @@
+{
+  "packId": "sprint57_lsdd",
+  "title": "Sprint 57 LSDD numeric distribution scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V16-ROW-CASE004-LSDD-MV003",
+    "V16-ROW-CASE004-LSDD-PERM-MV003"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "packId": "sprint68_feature_map_drift",
+  "title": "Sprint 68 feature map drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V27-ROW-CASE014-FEATURE-MAP-KS-REP001",
+    "V27-ROW-CASE014-FEATURE-MAP-MMD-REP001",
+    "V27-ROW-CASE014-LAYERWISE-FEATURE-MAP-REP001"
+  ]
+}

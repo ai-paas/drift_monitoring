@@ -1,0 +1,9 @@
+{
+  "packId": "sprint75_control_variants",
+  "description": "Sprint 75 CHART-CTRL-001/002 CUSUM/EWMA/GMA executable rows.",
+  "rowIds": [
+    "V34-ROW-CASE010-CUSUM-DISTANCE-CTRL001",
+    "V34-ROW-CASE010-EWMA-BASELINE-CTRL002",
+    "V34-ROW-CASE010-GMA-EMPIRICAL-CTRL002"
+  ]
+}

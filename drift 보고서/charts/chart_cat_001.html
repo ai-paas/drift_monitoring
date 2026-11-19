@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C·D등급 증가와 A등급 감소로 보는 범주 비중 변화</title>
+  <link rel="stylesheet" href="./chart_cat_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CAT-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Observed vs Expected</h2>
+          <p>C등급은 176건 기대 대비 225건 관측되고 A등급은 132건 기대 대비 101건인지 본다.</p>
+        </div>
+        <svg id="barChart" role="img" aria-label="범주별 관측 빈도와 기대 빈도 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>표준화 잔차</h2>
+            <p>C등급 +3.7, D등급 +2.6과 A등급 -2.7 잔차의 방향을 확인한다.</p>
+          </div>
+          <svg id="residualChart" role="img" aria-label="범주별 표준화 잔차 heatmap"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Chi-square 기여</h2>
+            <p>C등급 기여도 13.6이 전체 통계량을 가장 크게 키우는지 읽는다.</p>
+          </div>
+          <svg id="contributionChart" role="img" aria-label="범주별 chi-square 기여도"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 C등급이 기대 176건보다 많은 225건, D등급이 기대 112건보다 많은 139건 관측된다. 반대로 A등급은 132건 기대 대비 101건으로 줄어든다. Chi-square 38.0, p-value 0.003, 낮은 기대빈도 0개이므로 A/기타/미상에서 C/D등급 쪽으로 이동한 범주형 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch expected"></i>기대 빈도</span>
+        <span><i class="swatch observed"></i>관측 빈도</span>
+        <span><i class="swatch high"></i>과대 관측</span>
+        <span><i class="swatch low"></i>과소 관측</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_cat_001.js"></script>
+</body>
+</html>
+

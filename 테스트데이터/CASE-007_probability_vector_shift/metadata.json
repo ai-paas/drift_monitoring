@@ -1,0 +1,32 @@
+{
+  "case_id": "CASE-007",
+  "case_name": "probability_vector_shift",
+  "data_file": "data.csv.gz",
+  "row_count": 525600,
+  "frequency": "1min",
+  "start_inclusive": "2026-01-01 00:00:00",
+  "end_exclusive": "2027-01-01 00:00:00",
+  "drift_start": "2026-07-01 00:00:00",
+  "transition_minutes": 86400,
+  "window_minutes": 60,
+  "columns": [
+    "timestamp",
+    "case_id",
+    "sample_id",
+    "window_id",
+    "period",
+    "drift_start",
+    "abrupt_strength",
+    "gradual_strength",
+    "season_factor",
+    "cycle_phase",
+    "category",
+    "class_label",
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+  ],
+  "random_seed": 2026007
+}

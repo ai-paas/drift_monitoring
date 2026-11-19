@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>기준·현재 구간의 다변량 분포 분리</title>
+  <link rel="stylesheet" href="./chart_mv_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-MV-001">
+    <header class="header metrics-only">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>다변량 투영 산점도</h2>
+          <p>현재 sample이 기준 sample보다 우상단으로 이동하며 중심 간 gap 1.35를 만든다.</p>
+        </div>
+        <svg id="projectionChart" role="img" aria-label="기준 구간과 현재 구간의 다변량 projection scatter"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>에너지 거리 추세</h2>
+            <p>7번째 window부터 관리 기준 0.45를 넘고 마지막 값은 0.73이다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="window별 energy distance 추세"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>순열 영분포</h2>
+            <p>관측값 0.73이 null 분포의 오른쪽 꼬리 밖에 있으며 p-value는 0.012이다.</p>
+          </div>
+          <svg id="nullChart" role="img" aria-label="permutation null distribution and observed statistic"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 Energy distance가 0.73으로 관리 기준 0.45를 넘고, permutation p-value가 0.012로 작다.
+          Projection scatter에서도 현재 구간 sample이 우상단으로 이동해 기준 구간과 분리되므로,
+          여러 feature의 결합 분포가 함께 달라진 다변량 drift 후보로 읽는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch energy"></i>Energy distance</span>
+        <span><i class="swatch threshold"></i>판단 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_mv_001.js"></script>
+</body>
+</html>

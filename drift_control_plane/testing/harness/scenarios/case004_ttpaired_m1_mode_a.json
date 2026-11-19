@@ -1,0 +1,94 @@
+{
+  "scenarioId": "TC004-TT-PAIRED-M1",
+  "mode": "A",
+  "title": "CASE-004 paired t-test CHART-MEAN-001 analysis",
+  "source": {
+    "sourceId": "c004-ttpairedm1",
+    "title": "CASE-004 paired numeric population shift",
+    "description": "Paired numeric shift fixture for paired t-test CHART-MEAN-001",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case004_paired_t_test.csv",
+    "sourceConfig": {"datasetCaseId": "CASE-004-PAIRED-T"}
+  },
+  "feeder": {
+    "sourceId": "c004-ttpairedm1",
+    "datasetCaseId": "CASE-004-PAIRED-T",
+    "csvPath": "testing/harness/data/case004_paired_t_test.csv",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 40,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "c004-ttpairedm1",
+    "sourceId": "c004-ttpairedm1",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 paired t-test adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period",
+      "pairPath": "$.pair_id"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "a-ttpairedm1",
+    "adapterId": "c004-ttpairedm1",
+    "featureId": "score",
+    "methodVariantId": 344,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "generic_statistical_test_window",
+    "params": {
+      "variant_id": "PAIRED_T_TEST",
+      "value_col": "value",
+      "pair_col": "pair_id",
+      "direction_or_alternative": "increase",
+      "alpha": 0.05,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {"eventLevel": "drift"},
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "an-ttpairedm1",
+    "chartId": "CHART-MEAN-001",
+    "payloadAdapterKey": "auto__PAIRED_T_TEST__CHART-MEAN-001",
+    "chartOptions": {"title": "CASE-004 paired t-test M1 analysis"},
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 40,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 40,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

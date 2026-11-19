@@ -1,0 +1,98 @@
+{
+  "scenarioId": "TCASE-004-KSWIN-NUMERIC-STREAM",
+  "mode": "A",
+  "title": "CASE-004 numeric population shift with KSWIN numeric stream",
+  "source": {
+    "sourceId": "case-004-kswin-numeric-stream",
+    "title": "CASE-004 numeric population shift",
+    "description": "Numeric score distribution shift for KSWIN numeric stream variant",
+    "sourceType": "test_db",
+    "sourceUrl": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-004-kswin-numeric-stream",
+    "datasetCaseId": "CASE-004",
+    "csvPath": "../테스트데이터/CASE-004_binned_numeric_population_shift/data.csv.gz",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 120,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-07-01T01:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-004-kswin-numeric-stream",
+    "sourceId": "case-004-kswin-numeric-stream",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 KSWIN numeric stream adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case004-kswin-numeric-stream",
+    "adapterId": "case-004-kswin-numeric-stream",
+    "featureId": "score",
+    "methodVariantId": 283,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "kswin_numeric_window",
+    "params": {
+      "variant_id": "KSWIN_NUMERIC_STREAM",
+      "value_col": "value",
+      "alpha": 0.01,
+      "window_size": 60,
+      "stat_size": 20,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "120m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case004-kswin-numeric-stream",
+    "chartId": "CHART-STREAM-002",
+    "payloadAdapterKey": "auto__KSWIN_NUMERIC_STREAM__CHART-STREAM-002",
+    "chartOptions": {
+      "title": "CASE-004 KSWIN numeric stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 120,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 120,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-07-01T01:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T01:00:00Z",
+    "bucketRowCount": 120,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

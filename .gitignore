@@ -1,0 +1,52 @@
+# Credentials and machine-local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Dependencies and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+# State and runtime outputs (catalog CSV/JSON are source inputs)
+runtime/
+*.sqlite*
+*.db
+*.db-wal
+*.db-shm
+*.log
+interpretation_runs/
+interpretation_tests/
+test_results/
+tmp_compare/
+downloads/
+drift_control_plane/testing/runs/
+drift 보고서/db/load_data.sql
+drift 보고서/drift_metric_timeseries_live_state.json
+# Externally sourced datasets and locally generated exports
+테스트데이터/CASE-019*/
+테스트데이터/CASE-*/data.csv*
+테스트데이터/realtime_demo/data/
+*.zip
+*.7z
+*.gz
+*.tar
+*.dump
+*.docx
+*.pdf
+*.pptx
+*.xlsx
+# Local assistant tooling and binaries
+.agents/
+.codex/
+.aws/
+ADL/tools/**
+!ADL/tools/README.md
+ADL/tla/states/

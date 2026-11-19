@@ -1,0 +1,8 @@
+{
+  "packId": "sprint76_sliced_wasserstein",
+  "description": "Sprint 76 SLICED_WASSERSTEIN_EMBEDDING executable rows.",
+  "rowIds": [
+    "V35-ROW-CASE004-SLICED-WASSERSTEIN-ANNOT002",
+    "V35-ROW-CASE004-SLICED-WASSERSTEIN-DIST001"
+  ]
+}

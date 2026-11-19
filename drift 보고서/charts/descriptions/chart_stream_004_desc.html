@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-STREAM-004 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-STREAM-004</p>
+    <h1>CHART-STREAM-004 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 SeqDrift 계열 detector가 stream에서 누적 evidence와 sequential decision bound를 이용해 drift를 감지하는 과정을 설명한다.</p> <p>SeqDrift는 stream을 순차적으로 읽으면서 reference 구간 대비 현재 구간의 통계적 차이가 충분히 커졌는지 평가한다. 누적 evidence가 decision bound를 넘으면 drift alarm이 발생한다. 따라서 stream 변화가 시간 순서에 따라 점진적으로 쌓이는 상황을 설명하는 데 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. stream 값이 reference mean 대비 어느 방향으로 이동하는가?
+2. sequential evidence가 decision bound를 언제 넘는가?
+3. monitoring, warning, drift 상태가 시간상 어떻게 전환되는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - stream value trend
+  - reference mean
+  - drift alarm marker
+
+우측 상단
+  - sequential evidence line
+  - decision bound line
+
+우측 하단
+  - monitoring/warning/drift state timeline
+  - alarm marker</code></pre> <p>상단 요약 영역에는 evidence, alarm index, detect delay를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 stream value trend에서 값이 reference mean 대비 한 방향으로 이동하는지 확인한다.</p> <pre><code>값이 reference mean 주변에서 흔들린다
+  -&gt; drift evidence가 약하다.
+
+값이 reference mean보다 지속적으로 높아진다
+  -&gt; 증가 방향 drift 후보를 확인한다.
+
+값이 reference mean보다 지속적으로 낮아진다
+  -&gt; 감소 방향 drift 후보를 확인한다.</code></pre> <p>그 다음 우측 상단 sequential bound chart를 본다. Evidence가 bound 아래에 있으면 아직 drift 판정 전이고, evidence가 bound를 넘으면 순차 검정이 drift 판정 조건을 만족한 것이다.</p> <p>마지막으로 우측 하단 timeline에서 warning 구간과 drift 구간의 길이를 확인한다. warning이 짧고 바로 drift로 전환되면 abrupt drift에 가깝고, warning이 길게 지속되면 gradual drift 후보로 본다.</p> <h2>Drift 후보 판단 기준</h2> <p>stream 값이 reference mean 대비 지속적으로 이동하고, sequential evidence가 decision bound를 넘으며, timeline에서 warning 이후 drift 상태가 표시되면 SeqDrift 기반 stream drift 후보로 해석한다.</p> <p>단, SeqDrift는 bound 설정, reference window, reservoir 또는 sample 유지 방식에 영향을 받는다. drift 민감도와 탐지 지연을 함께 보고해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 evidence가 <code>26.5</code>, alarm index가 <code>27</code>, detect delay가 <code>4 step</code>으로 표시되어 있다. 좌측 stream value trend에서는 값이 reference mean <code>0.53</code>보다 지속적으로 높아지며, alarm 시점에는 delta가 <code>+0.34</code> 수준으로 확대된다.</p> <p>우측 상단에서는 sequential evidence가 decision bound를 넘은 뒤 계속 증가한다. 우측 하단 timeline에서는 monitoring 상태가 warning 상태를 거쳐 drift 상태로 전환된다. 따라서 이 예시는 reference mean 대비 stream 값이 상승하며 누적 evidence가 bound를 넘은 SeqDrift drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>SeqDrift로 stream metric을 순차 모니터링한 결과,
+time index 27에서 sequential evidence가 decision bound를 초과했다.
+Stream 값은 reference mean 0.53 대비 지속적으로 상승했으며,
+alarm 시점의 delta는 +0.34 수준으로 나타났다.
+이는 reference 구간 대비 현재 stream 수준이 상승한 순차 검정 기반 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - evidence가 bound를 넘었다는 이유만으로 drift 원인을 확정한다.
+
+금지 2
+  - reference window와 bound 설정을 확인하지 않고 detector 민감도를 평가한다.
+
+금지 3
+  - detect delay를 데이터 지연 적재와 혼동한다.
+
+금지 4
+  - stream 값 변화가 곧바로 모델 성능 저하를 의미한다고 말한다.</code></pre> <p>SeqDrift는 순차 검정 기반 alarm을 제공한다. 원인 설명과 모델 영향 평가는 별도의 segment 분석과 성능 지표 확인이 필요하다.</p> <h2>추가 확인 항목</h2> <p>SeqDrift drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>decision bound, significance level, reference window 설정</li> <li>reservoir 또는 sample 유지 방식</li> <li>detect delay와 업무 허용 지연 기준</li> <li>alarm 전후 stream ordering, batch 적재, 지연 데이터 유입 여부</li> <li>ADWIN, KSWIN, Page-Hinkley 등 다른 stream detector와의 합의 여부</li> <li>label 확보 후 성능 지표, error rate, calibration 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>SeqDrift / SEQDRIFT1</code></li> <li><code>SeqDrift / SEQDRIFT2</code></li> </ul>
+  </main>
+</body>
+</html>

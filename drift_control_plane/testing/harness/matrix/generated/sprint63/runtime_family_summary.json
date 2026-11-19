@@ -1,0 +1,272 @@
+{
+  "backlogId": "sprint39-runtime-family-backlog-001",
+  "inputCounts": {
+    "runtimeWrapperMissing": 48,
+    "chartMethodPairs": 188
+  },
+  "classificationCounts": {
+    "dedicated_wrapper_required": 5,
+    "generic_runtime_candidate": 3,
+    "out_of_scope_for_demo": 16,
+    "requires_new_input_contract": 24
+  },
+  "familyCount": 6,
+  "families": [
+    {
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "priority": 2,
+      "pairCount": 3,
+      "uniqueMethodCount": 3,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "CUSUM",
+          "count": 1
+        },
+        {
+          "methodName": "EWMA",
+          "count": 1
+        },
+        {
+          "methodName": "Geometric Moving Average",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CTRL-002",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-CTRL-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters."
+    },
+    {
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 3,
+      "pairCount": 4,
+      "uniqueMethodCount": 2,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "ADWIN",
+          "count": 2
+        },
+        {
+          "methodName": "SPRT",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-STREAM-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-STREAM-005",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse."
+    },
+    {
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 4,
+      "pairCount": 18,
+      "uniqueMethodCount": 8,
+      "uniqueChartCount": 9,
+      "topMethods": [
+        {
+          "methodName": "Classifier 기반 embedding drift detection",
+          "count": 3
+        },
+        {
+          "methodName": "Feature Map Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Autoencoder Representation Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Graph Embedding Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Wasserstein Distance",
+          "count": 2
+        },
+        {
+          "methodName": "MMD",
+          "count": 2
+        },
+        {
+          "methodName": "Energy Distance",
+          "count": 1
+        },
+        {
+          "methodName": "LSDD",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CLS-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-002",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-ANNOT-002",
+          "count": 1
+        },
+        {
+          "chartId": "CHART-DIST-001",
+          "count": 1
+        },
+        {
+          "chartId": "CHART-MV-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation."
+    },
+    {
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 16,
+      "uniqueMethodCount": 6,
+      "uniqueChartCount": 6,
+      "topMethods": [
+        {
+          "methodName": "DriftRetrainingClassifier",
+          "count": 3
+        },
+        {
+          "methodName": "OCDD",
+          "count": 3
+        },
+        {
+          "methodName": "SHAP Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Model Uncertainty Drift",
+          "count": 3
+        },
+        {
+          "methodName": "HAT",
+          "count": 2
+        },
+        {
+          "methodName": "Tree Feature 기반 감지",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-ADAPT-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ANOM-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-EXPL-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-UNC-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ADAPT-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-EXPL-002",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo."
+    },
+    {
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 6,
+      "uniqueMethodCount": 2,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "LLM Query / Semantic Distance 기반 감지",
+          "count": 3
+        },
+        {
+          "methodName": "Text Domain Classifier Drift",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-TEXT-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-TEXT-002",
+          "count": 3
+        }
+      ],
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract."
+    },
+    {
+      "familyId": "unclassified_dedicated_review",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 6,
+      "pairCount": 1,
+      "uniqueMethodCount": 1,
+      "uniqueChartCount": 1,
+      "topMethods": [
+        {
+          "methodName": "Generic / Fallback",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-GEN-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "manual review required before implementation."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "packId": "sprint61_mewma",
+  "title": "Sprint 61 MEWMA multivariate scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V20-ROW-CASE014-MEWMA-STANDARD-CTRL003",
+    "V20-ROW-CASE014-MEWMA-MAHAL-CTRL003"
+  ]
+}

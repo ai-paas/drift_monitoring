@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ADAPT-001 - HAT model drift adaptation</title>
+  <link rel="stylesheet" href="./chart_adapt_001.css?v=note-popup-2">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ADAPT-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>온라인 정확도 추세</h2>
+          <button class="panel-note-link" type="button" data-note="t=1~8에는 accuracy가 0.91 수준으로 안정적이다가 t=11 warning 이후 계속 하락해 t=19에서 0.72까지 내려간다. t=23 replacement marker 이후에는 0.84, 0.86, 0.90대로 회복되는지를 읽는다.">Note</button>
+        </div>
+        <svg id="accuracyChart" role="img" aria-label="online accuracy trend with HAT drift and replacement markers"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>감지기 상태 타임라인</h2>
+            <button class="panel-note-link" type="button" data-note="상태가 normal(t=1~10) → warning(t=11~13) → alternate(t=14~22) → replace(t=23 이후) 순서로 이어지는지 본다. 이 순서가 맞아야 단순 성능 하락이 아니라 HAT의 적응 절차로 해석할 수 있다.">Note</button>
+          </div>
+          <svg id="stateChart" role="img" aria-label="HAT drift detector state timeline"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>트리 크기 추세</h2>
+            <button class="panel-note-link" type="button" data-note="alternate tree node가 t=11부터 4, 8, 12...로 증가해 t=22에서 64 nodes까지 커지고, t=23 replacement에서 0으로 내려가는지 본다. 동시에 main tree size가 57에서 42로 재구성되면 교체가 반영된 것이다.">Note</button>
+          </div>
+          <svg id="treeSizeChart" role="img" aria-label="HAT main and alternate tree size trend"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          HAT 모델은 online accuracy 하락 이후 detector가 warning과 alternate 상태로 전환되고,
+          alternate tree가 성장한 뒤 t=23에서 replacement가 발생하면서 accuracy가 회복되는 흐름을 보인다.
+        </p>
+      </div>
+      <div class="legend" aria-label="Legend">
+        <span><i class="swatch accuracy"></i>online accuracy</span>
+        <span><i class="swatch alt"></i>alternate tree</span>
+        <span><i class="swatch replace"></i>replacement</span>
+        <span><i class="swatch size"></i>tree size</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_adapt_001.js?v=note-popup-2"></script>
+</body>
+</html>

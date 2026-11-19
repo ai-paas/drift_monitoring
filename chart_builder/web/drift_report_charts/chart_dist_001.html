@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>결제금액 분포의 오른쪽 이동과 거리 증가</title>
+  <link rel="stylesheet" href="./chart_dist_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-DIST-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>기준/현재 분포 비교</h2>
+          <p>평균이 -0.07에서 0.61로, 중앙값이 -0.06에서 0.58로 오른쪽 이동했는지 본다.</p>
+        </div>
+        <svg id="distributionChart" role="img" aria-label="기준 구간과 현재 구간의 분포 밀도 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>거리 추세</h2>
+            <p>distance가 관리 기준 0.30을 넘고 최근 window에서 0.68까지 증가하는지 확인한다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="Wasserstein distance 시간 추세"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>특징 거리 순위</h2>
+            <p>결제금액 distance 0.68이 feature 순위에서 가장 큰 이동인지 읽는다.</p>
+          </div>
+          <svg id="rankingChart" role="img" aria-label="Feature별 Wasserstein distance 순위"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 Wasserstein distance가 0.68이고 평균 이동도 +0.68이다.
+          현재 분포는 기준보다 오른쪽으로 이동하며 상위 10% 분위수도 1.13에서 1.99로 커진다.
+          최근 window distance가 관리 기준 0.30을 넘고 결제금액이 feature 순위 1위이므로, 해당 feature의 분포 이동 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch distance"></i>이동 거리</span>
+        <span><i class="swatch threshold"></i>관리 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_dist_001.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPRT의 오류율 상승 가설 채택 과정</title>
+  <link rel="stylesheet" href="./chart_stream_005.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-STREAM-005">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>로그 우도비 누적</h2>
+          <p>t=25에서 LLR 11.0이 H1 경계 10.8을 넘어서는 판정 시점을 읽는다.</p>
+        </div>
+        <svg id="llrChart" role="img" aria-label="SPRT 로그 우도비와 판정 경계 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>오류율 스트림</h2>
+            <p>오류율이 0.08에서 0.40까지 상승하고 0.30 기준선을 넘는 흐름을 확인한다.</p>
+          </div>
+          <svg id="errorChart" role="img" aria-label="SPRT 오류율 스트림"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>순차 판정 상태</h2>
+            <p>continue가 review를 거쳐 t=25부터 accept H1로 바뀌는 순서를 확인한다.</p>
+          </div>
+          <svg id="decisionChart" role="img" aria-label="SPRT 순차 판정 timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 오류율이 초반 0.08~0.15 수준에서 후반 0.35~0.40까지 상승한다.
+          LLR은 t=25에서 H1 경계 10.8을 넘고 최종 16.0까지 증가하므로, SPRT가 오류율 상승 가설을 채택한 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch llr"></i>LLR</span>
+        <span><i class="swatch upper"></i>accept H1</span>
+        <span><i class="swatch lower"></i>accept H0</span>
+        <span><i class="swatch alarm"></i>decision</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_stream_005.js"></script>
+</body>
+</html>

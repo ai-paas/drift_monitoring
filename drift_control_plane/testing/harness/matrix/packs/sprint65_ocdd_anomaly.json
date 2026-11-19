@@ -1,0 +1,10 @@
+{
+  "packId": "sprint65_ocdd_anomaly",
+  "title": "Sprint 65 OCDD anomaly drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V24-ROW-CASE014-OCDD-ONECLASS-ANOM001",
+    "V24-ROW-CASE014-OCDD-ISOLATION-ANOM001",
+    "V24-ROW-CASE014-OCDD-AUTOENCODER-ANOM001"
+  ]
+}

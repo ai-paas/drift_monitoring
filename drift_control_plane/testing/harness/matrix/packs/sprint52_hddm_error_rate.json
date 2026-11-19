@@ -1,0 +1,13 @@
+{
+  "packId": "sprint52_hddm_error_rate",
+  "title": "Sprint 52 HDDM-A and HDDM-W error-rate scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V11-ROW-CASE011-HDDMA-HOEFF-ERR005",
+    "V11-ROW-CASE011-HDDMA-WARN-ERR005",
+    "V11-ROW-CASE011-HDDMA-TWO-ERR005",
+    "V11-ROW-CASE011-HDDMW-WAVG-ERR005",
+    "V11-ROW-CASE011-HDDMW-WARN-ERR005",
+    "V11-ROW-CASE011-HDDMW-RECENT-ERR005"
+  ]
+}

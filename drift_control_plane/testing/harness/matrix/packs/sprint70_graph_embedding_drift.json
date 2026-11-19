@@ -1,0 +1,10 @@
+{
+  "packId": "sprint70_graph_embedding_drift",
+  "title": "Sprint 70 graph embedding drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V29-ROW-CASE017-GRAPH-MMD-REP003",
+    "V29-ROW-CASE017-GRAPH-CENTROID-REP003",
+    "V29-ROW-CASE017-NODE-REPRESENTATION-REP003"
+  ]
+}

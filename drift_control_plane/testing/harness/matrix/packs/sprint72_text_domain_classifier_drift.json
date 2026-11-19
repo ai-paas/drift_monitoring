@@ -1,0 +1,10 @@
+{
+  "packId": "sprint72_text_domain_classifier_drift",
+  "title": "Sprint 72 text domain classifier drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V31-ROW-CASE018-TEXT-DOMAIN-ROC-TEXT002",
+    "V31-ROW-CASE018-TEXT-DOMAIN-STAT-TEXT002",
+    "V31-ROW-CASE018-TEXT-DESCRIPTOR-TEXT002"
+  ]
+}

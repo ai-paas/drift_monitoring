@@ -1,0 +1,82 @@
+{
+  "scenarioId": "TC017-DOMAIN-CLASSIFIER-TREE-EXPL002",
+  "mode": "A",
+  "title": "CASE-017 domain classifier tree CHART-EXPL-002 analysis",
+  "source": {
+    "sourceId": "case-017-domain-classifier-tree-expl002",
+    "title": "CASE-017 tree feature domain classifier drift",
+    "description": "Synthetic reference/current explanation drift dataset for domain classifier tree detection",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case017_shap_drift.csv",
+    "sourceConfig": {"datasetCaseId": "CASE-017"}
+  },
+  "feeder": {
+    "sourceId": "case-017-domain-classifier-tree-expl002",
+    "datasetCaseId": "CASE-017",
+    "csvPath": "testing/harness/data/case017_shap_drift.csv",
+    "speedFactor": 60,
+    "startTime": "2027-04-01T00:00:00Z",
+    "maxRows": 40,
+    "replayWindow": {"start": "2027-04-01T00:00:00Z", "end": "2027-04-01T02:00:00Z"}
+  },
+  "adapter": {
+    "adapterId": "case-017-domain-classifier-tree-expl002",
+    "sourceId": "case-017-domain-classifier-tree-expl002",
+    "adapterType": "test_db_multivariate_window",
+    "adapterTitle": "CASE-017 domain classifier tree adapter",
+    "collectionIntervalMinutes": 120,
+    "aggregateIntervalMinutes": 120,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "featureColumns": ["shap_a", "shap_b", "shap_c"],
+      "attributeColumns": ["class"],
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case017-domain-classifier-tree-expl002",
+    "adapterId": "case-017-domain-classifier-tree-expl002",
+    "featureId": "multivariate",
+    "methodVariantId": 718,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "domain_classifier_tree",
+    "params": {
+      "variant_id": "DOMAIN_CLASSIFIER_TREE",
+      "feature_cols": ["shap_a", "shap_b", "shap_c"],
+      "auc_threshold": 0.8,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {"eventLevel": "drift"},
+    "windowConfig": {"bucketResolution": "120m", "lookbackBuckets": 1},
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case017-domain-classifier-tree-expl002",
+    "chartId": "CHART-EXPL-002",
+    "payloadAdapterKey": "auto__DOMAIN_CLASSIFIER_TREE__CHART-EXPL-002",
+    "chartOptions": {"title": "CASE-017 domain classifier tree analysis"},
+    "payloadAdapterConfig": {}
+  },
+  "tick": {"logicalMinutesPerTick": 120, "tickCount": 1, "pollEveryTicks": 1},
+  "expectations": {
+    "rawEventCount": 40,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2027-04-01T02:00:00Z",
+    "methodStateLastBucketEnd": "2027-04-01T02:00:00Z",
+    "bucketRowCount": 40,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 40,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

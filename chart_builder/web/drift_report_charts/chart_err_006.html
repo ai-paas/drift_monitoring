@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-006 - 최근 정확도 하락으로 본 STEPD 드리프트 전환</title>
+  <link rel="stylesheet" href="./chart_err_006.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ERR-006">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>최근 정확도와 전체 정확도 비교</h2>
+          <p>recent accuracy가 0.91에서 0.64까지 하락하며 overall보다 빠르게 낮아진다.</p>
+        </div>
+        <svg id="accuracyChart" role="img" aria-label="STEPD recent and overall accuracy trend with warning and drift markers"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>STEPD 임계값 차트</h2>
+            <p>gap이 t=15에서 0.12, t=20에서 0.16으로 기준을 넘는다.</p>
+          </div>
+          <svg id="thresholdChart" role="img" aria-label="STEPD warning and drift threshold chart"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>상태 타임라인</h2>
+            <p>t=1~14 normal, t=15~19 warning, t=20 이후 drift로 읽는다.</p>
+          </div>
+          <svg id="stateChart" role="img" aria-label="STEPD state timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          STEPD는 최근 window accuracy와 전체 historical accuracy를 비교한다.
+          이 예시에서는 t=20의 gap이 0.16으로 drift threshold 0.15를 넘어,
+          최근 supervised 성능 저하에 따른 error-rate drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch recent"></i>recent accuracy</span>
+        <span><i class="swatch overall"></i>overall accuracy</span>
+        <span><i class="swatch warning"></i>warning threshold</span>
+        <span><i class="swatch drift"></i>drift threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_err_006.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ADAPT-002 - 드리프트 경보 후 재학습과 챌린저 승격 검토 과정</title>
+  <link rel="stylesheet" href="./chart_adapt_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ADAPT-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>재학습 전후 성능</h2>
+          <p>Champion AUC가 t=18 전후 0.74까지 하락한 뒤, t=24 retrain event 이후 challenger 성능이 0.86 이상으로 회복되는지 읽는다.</p>
+        </div>
+        <svg id="performanceChart" role="img" aria-label="pre and post retraining performance line with drift alarm and retrain event markers"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경보 및 재학습 타임라인</h2>
+            <p>normal(t=1~13) → warning(t=13~18) → alarm(t=18~24) → retrain/monitor(t=24 이후) 순서인지 확인한다.</p>
+          </div>
+          <svg id="timelineChart" role="img" aria-label="drift alarm and retrain event timeline"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>운영 모델과 후보 모델 비교</h2>
+            <p>Challenger는 AUC 0.87, F1 0.82로 개선되지만 latency가 0.53으로 증가하므로 승격 전 운영 영향을 점검한다.</p>
+          </div>
+          <svg id="comparisonChart" role="img" aria-label="champion challenger performance comparison"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          현재 상황은 champion 모델의 검증 AUC가 계속 낮아지면서 t=18에서 drift alarm이 발생하고,
+          t=24에서 retrain event 이후 challenger 모델을 평가하는 사례다.
+          Challenger는 AUC와 F1을 회복시키지만 latency도 증가하므로,
+          이 차트는 재학습 효과와 승격 전 운영 검증 필요성을 함께 보여준다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch champion"></i>champion</span>
+        <span><i class="swatch challenger"></i>challenger</span>
+        <span><i class="swatch alarm"></i>drift alarm</span>
+        <span><i class="swatch retrain"></i>retrain event</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_adapt_002.js"></script>
+</body>
+</html>

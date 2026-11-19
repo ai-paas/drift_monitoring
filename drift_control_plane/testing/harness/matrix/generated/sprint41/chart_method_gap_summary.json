@@ -1,0 +1,150 @@
+{
+  "chartCount": 53,
+  "chartMethodPairCount": 188,
+  "uniqueMethodVariantCount": 177,
+  "runtimeRegistryKeys": [
+    "adwin_mean_stream",
+    "anderson_darling_window",
+    "cramer_von_mises_window",
+    "ddm_error_rate_stream",
+    "eddm_error_rate_stream",
+    "epps_singleton_window",
+    "generic_distribution_ecdf_window",
+    "ks_test_window",
+    "kswin_numeric_stream",
+    "kswin_numeric_window",
+    "kswin_standard",
+    "kswin_with_subsampling",
+    "kuiper_window",
+    "page_hinkley_decrease",
+    "page_hinkley_increase",
+    "page_hinkley_stream",
+    "psi_numeric_binned",
+    "rddm_error_rate_stream",
+    "wasserstein_1d_exact",
+    "wasserstein_approx_histogram",
+    "wasserstein_numeric_window",
+    "wasserstein_window_trend"
+  ],
+  "explicitBindingFileCount": 1,
+  "statusCounts": {
+    "runtime_wrapper_missing": 147,
+    "scenario_missing": 12,
+    "tested_passed": 29
+  },
+  "runtimeStatusCounts": {
+    "runtime_available": 41,
+    "runtime_wrapper_missing": 147
+  },
+  "payloadBindingStatusCounts": {
+    "payload_coverage_available": 188
+  },
+  "scenarioStatusCounts": {
+    "scenario_available": 29,
+    "scenario_missing": 159
+  },
+  "topChartsByMissingRuntime": [
+    {
+      "key": "CHART-PROB-002",
+      "missingCount": 7,
+      "totalCount": 7
+    },
+    {
+      "key": "CHART-ANNOT-001",
+      "missingCount": 6,
+      "totalCount": 8
+    },
+    {
+      "key": "CHART-CAT-001",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-CTRL-002",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-ERR-005",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-RANK-001",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-VAR-001",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "CHART-CTRL-001",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "CHART-MEAN-001",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "CHART-MV-002",
+      "missingCount": 4,
+      "totalCount": 4
+    }
+  ],
+  "topMethodNamesByMissingRuntime": [
+    {
+      "key": "CUSUM",
+      "missingCount": 6,
+      "totalCount": 6
+    },
+    {
+      "key": "EWMA",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Fisher's Exact Test",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Geometric Moving Average",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Jensen-Shannon Distance",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "KL Divergence",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "MMD",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Mann-Whitney U / Wilcoxon Rank Sum Test",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "t-test 계열",
+      "missingCount": 4,
+      "totalCount": 4
+    },
+    {
+      "key": "Autoencoder Representation Drift",
+      "missingCount": 3,
+      "totalCount": 3
+    }
+  ]
+}

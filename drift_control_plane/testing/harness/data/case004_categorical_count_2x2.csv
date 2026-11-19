@@ -1,0 +1,5 @@
+timestamp,category,count,period,metric
+2026-06-30T23:10:00Z,approved,40,reference,40
+2026-06-30T23:11:00Z,declined,10,reference,10
+2026-07-01T00:10:00Z,approved,10,current,10
+2026-07-01T00:11:00Z,declined,40,current,40

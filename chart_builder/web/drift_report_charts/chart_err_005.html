@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-005 - 평균 오류 차이 확대로 보는 HDDM 드리프트 경보</title>
+  <link rel="stylesheet" href="./chart_err_005.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ERR-005">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>회프딩 경계 차트</h2>
+          <p>mean difference가 t=22에서 0.26 warning, t=26에서 0.36 drift bound를 넘는다.</p>
+        </div>
+        <svg id="boundChart" role="img" aria-label="HDDM Hoeffding bound chart with warning and drift markers"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>오류율/가중 오류율 추세</h2>
+            <p>error trend가 0.08에서 0.47까지 상승한다.</p>
+          </div>
+          <svg id="errorChart" role="img" aria-label="error or weighted error trend for HDDM"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>주의/드리프트 표시</h2>
+            <p>t=1~21 normal, t=22~25 warning, t=26 이후 drift로 읽는다.</p>
+          </div>
+          <svg id="markerTimeline" role="img" aria-label="HDDM warning and drift marker timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          HDDM은 reference window와 recent window의 error mean 차이를 Hoeffding bound와 비교한다.
+          이 예시에서는 mean difference가 0.50까지 커지고 error trend도 0.47까지 상승해,
+          t=26 이후를 Hoeffding-bound 기반 error-rate drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch diff"></i>mean difference</span>
+        <span><i class="swatch error"></i>error trend</span>
+        <span><i class="swatch warning"></i>warning bound</span>
+        <span><i class="swatch drift"></i>drift bound</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_err_005.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "packId": "sprint67_shap_drift",
+  "title": "Sprint 67 SHAP drift scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V26-ROW-CASE017-SHAP-DIST-EXPL001",
+    "V26-ROW-CASE017-SHAP-RANK-EXPL001",
+    "V26-ROW-CASE017-SHAP-CLASS-EXPL001"
+  ]
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generated CHART-CAT-003</title>
+  <link rel="stylesheet" href="../../chart_runtime/chart_runtime.css">
+  <link rel="stylesheet" href="./generated_chart_page.css">
+</head>
+<body>
+  <main class="site single-chart source-compare">
+    <aside class="sidebar" aria-hidden="true">
+      <input id="searchInput" type="search" autocomplete="off">
+      <div id="chartList" class="chart-list"></div>
+    </aside>
+    <section class="workspace">
+      <header class="workspace-head">
+        <div>
+          <p id="chartStatus" class="eyebrow">generated chart</p>
+          <h2 id="chartTitle">CHART-CAT-003</h2>
+        </div>
+        <button id="originalLink" class="open-link" type="button">원본 보기</button>
+      </header>
+      <section class="recreated-pane">
+        <h3>Generated Chart</h3>
+        <div id="componentChart" class="component-chart"></div>
+      </section>
+      <section class="issues" hidden>
+        <h3>Generation Notes</h3>
+        <ul id="issueList"></ul>
+      </section>
+    </section>
+  </main>
+  <script src="./recreated_chart_payloads.js"></script>
+  <script>
+    window.RECREATED_CHART_PAYLOADS = (window.RECREATED_CHART_PAYLOADS || []).filter(
+      (payload) => payload.chartId === "CHART-CAT-003"
+    ).map((payload) => ({
+      ...payload,
+      reproduction: { ...payload.reproduction, issues: [] }
+    }));
+  </script>
+  <script src="../../chart_runtime/chart_runtime.js"></script>
+  <script src="./recreated_charts.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "packId": "sprint63_sprt_stream",
+  "title": "Sprint 63 SPRT stream variant scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V22-ROW-CASE011-SPRT-BERNOULLI-STREAM005",
+    "V22-ROW-CASE012-SPRT-GAUSSIAN-STREAM005"
+  ]
+}

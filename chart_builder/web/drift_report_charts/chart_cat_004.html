@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>피셔 검정으로 본 event 비율 상승</title>
+  <link rel="stylesheet" href="./chart_cat_004.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CAT-004">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>2x2 분할표 모자이크</h2>
+          <p>기준 6/42, 현재 14/38로 event 비율이 14.3%에서 36.8%로 커진다.</p>
+        </div>
+        <svg id="mosaicChart" role="img" aria-label="기준 구간과 현재 구간의 2x2 contingency mosaic"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>사건 비율 비교</h2>
+            <p>현재 event rate가 기준보다 +22.6pp 높다.</p>
+          </div>
+          <svg id="rateChart" role="img" aria-label="기준 구간과 현재 구간의 event 비율 비교"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Odds Ratio</h2>
+            <p>OR 3.50, 95% CI [1.18, 10.4]가 null 1을 넘는다.</p>
+          </div>
+          <svg id="forestChart" role="img" aria-label="odds ratio forest plot"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 기준 구간 event가 6/42(14.3%)인 반면 현재 구간은 14/38(36.8%)이다.
+          Fisher two-sided p-value 0.018과 one-sided p-value 0.009가 0.05보다 작고,
+          odds ratio 3.50의 95% 신뢰구간 [1.18, 10.4]가 1을 벗어나므로 현재 구간 event 증가를 작은 표본 category drift 후보로 본다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch event"></i>Event</span>
+        <span><i class="swatch nonevent"></i>Non-event</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch threshold"></i>Null OR = 1</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_cat_004.js"></script>
+</body>
+</html>

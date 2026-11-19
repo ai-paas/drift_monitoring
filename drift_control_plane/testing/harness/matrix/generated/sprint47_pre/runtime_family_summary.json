@@ -1,0 +1,406 @@
+{
+  "backlogId": "sprint39-runtime-family-backlog-001",
+  "inputCounts": {
+    "runtimeWrapperMissing": 120,
+    "chartMethodPairs": 188
+  },
+  "classificationCounts": {
+    "dedicated_wrapper_required": 10,
+    "generic_runtime_candidate": 58,
+    "out_of_scope_for_demo": 16,
+    "requires_new_input_contract": 36
+  },
+  "familyCount": 7,
+  "families": [
+    {
+      "familyId": "streaming_control_chart",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_streaming_control_chart",
+      "priority": 2,
+      "pairCount": 33,
+      "uniqueMethodCount": 11,
+      "uniqueChartCount": 10,
+      "topMethods": [
+        {
+          "methodName": "CUSUM",
+          "count": 6
+        },
+        {
+          "methodName": "EWMA",
+          "count": 4
+        },
+        {
+          "methodName": "Geometric Moving Average",
+          "count": 4
+        },
+        {
+          "methodName": "ECDD-WT",
+          "count": 3
+        },
+        {
+          "methodName": "HDDM-A",
+          "count": 3
+        },
+        {
+          "methodName": "HDDM-W",
+          "count": 3
+        },
+        {
+          "methodName": "STEPD",
+          "count": 3
+        },
+        {
+          "methodName": "MEWMA",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-CTRL-002",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-ERR-005",
+          "count": 6
+        },
+        {
+          "chartId": "CHART-ANNOT-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-CTRL-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-ERR-004",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ERR-006",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-CTRL-003",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-ERR-001",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "one numeric stream control-chart runtime can cover CUSUM, EWMA, GMA, ECDD/HDDM/STEPD style alarm outputs after method-specific statistic adapters."
+    },
+    {
+      "familyId": "probability_distance_window",
+      "classification": "generic_runtime_candidate",
+      "genericRuntimeKey": "generic_probability_distance_window",
+      "priority": 2,
+      "pairCount": 25,
+      "uniqueMethodCount": 8,
+      "uniqueChartCount": 7,
+      "topMethods": [
+        {
+          "methodName": "KL Divergence",
+          "count": 4
+        },
+        {
+          "methodName": "Jensen-Shannon Distance",
+          "count": 4
+        },
+        {
+          "methodName": "Total Variation Distance",
+          "count": 3
+        },
+        {
+          "methodName": "L-Infinity Distance",
+          "count": 3
+        },
+        {
+          "methodName": "Histogram Intersection Normalized Complement",
+          "count": 3
+        },
+        {
+          "methodName": "Hellinger Distance",
+          "count": 3
+        },
+        {
+          "methodName": "Bhattacharyya Distance",
+          "count": 3
+        },
+        {
+          "methodName": "PSI",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-PROB-002",
+          "count": 7
+        },
+        {
+          "chartId": "CHART-PROB-001",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-CAT-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-CAT-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-HIST-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-PROB-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-PSI-001",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "one probability/category distance runtime can cover KL, JS, Hellinger, Bhattacharyya, TV, L-infinity, and HINC families."
+    },
+    {
+      "familyId": "streaming_change_point",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 3,
+      "pairCount": 9,
+      "uniqueMethodCount": 4,
+      "uniqueChartCount": 4,
+      "topMethods": [
+        {
+          "methodName": "BOCD",
+          "count": 3
+        },
+        {
+          "methodName": "ADWIN",
+          "count": 2
+        },
+        {
+          "methodName": "SeqDrift",
+          "count": 2
+        },
+        {
+          "methodName": "SPRT",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-BOCD-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-STREAM-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-STREAM-004",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-STREAM-005",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "BOCD, SeqDrift, and SPRT require dedicated state/statistic wrappers before generic chart payload reuse."
+    },
+    {
+      "familyId": "multivariate_embedding_distance",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 4,
+      "pairCount": 30,
+      "uniqueMethodCount": 10,
+      "uniqueChartCount": 11,
+      "topMethods": [
+        {
+          "methodName": "MMD",
+          "count": 4
+        },
+        {
+          "methodName": "Classifier 기반 embedding drift detection",
+          "count": 3
+        },
+        {
+          "methodName": "Energy Distance",
+          "count": 3
+        },
+        {
+          "methodName": "LSDD",
+          "count": 3
+        },
+        {
+          "methodName": "Hotelling T2",
+          "count": 3
+        },
+        {
+          "methodName": "Mahalanobis Distance",
+          "count": 3
+        },
+        {
+          "methodName": "Feature Map Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Autoencoder Representation Drift",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-MV-002",
+          "count": 4
+        },
+        {
+          "chartId": "CHART-CLS-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-003",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-004",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-MV-005",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-REP-002",
+          "count": 3
+        }
+      ],
+      "implementationStrategy": "requires feature matrix, embedding, kernel, or projection input contracts before runtime implementation."
+    },
+    {
+      "familyId": "model_explanation_or_retraining",
+      "classification": "out_of_scope_for_demo",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 16,
+      "uniqueMethodCount": 6,
+      "uniqueChartCount": 6,
+      "topMethods": [
+        {
+          "methodName": "DriftRetrainingClassifier",
+          "count": 3
+        },
+        {
+          "methodName": "OCDD",
+          "count": 3
+        },
+        {
+          "methodName": "SHAP Drift",
+          "count": 3
+        },
+        {
+          "methodName": "Model Uncertainty Drift",
+          "count": 3
+        },
+        {
+          "methodName": "HAT",
+          "count": 2
+        },
+        {
+          "methodName": "Tree Feature 기반 감지",
+          "count": 2
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-ADAPT-002",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ANOM-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-EXPL-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-UNC-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-ADAPT-001",
+          "count": 2
+        },
+        {
+          "chartId": "CHART-EXPL-002",
+          "count": 2
+        }
+      ],
+      "implementationStrategy": "needs model lifecycle, explanation, anomaly, or retraining workflow contracts; defer for current datasource demo."
+    },
+    {
+      "familyId": "text_semantic_drift",
+      "classification": "requires_new_input_contract",
+      "genericRuntimeKey": null,
+      "priority": 5,
+      "pairCount": 6,
+      "uniqueMethodCount": 2,
+      "uniqueChartCount": 2,
+      "topMethods": [
+        {
+          "methodName": "LLM Query / Semantic Distance 기반 감지",
+          "count": 3
+        },
+        {
+          "methodName": "Text Domain Classifier Drift",
+          "count": 3
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-TEXT-001",
+          "count": 3
+        },
+        {
+          "chartId": "CHART-TEXT-002",
+          "count": 3
+        }
+      ],
+      "implementationStrategy": "requires text/embedding source schema and projection/reproducibility contract."
+    },
+    {
+      "familyId": "unclassified_dedicated_review",
+      "classification": "dedicated_wrapper_required",
+      "genericRuntimeKey": null,
+      "priority": 6,
+      "pairCount": 1,
+      "uniqueMethodCount": 1,
+      "uniqueChartCount": 1,
+      "topMethods": [
+        {
+          "methodName": "Generic / Fallback",
+          "count": 1
+        }
+      ],
+      "topCharts": [
+        {
+          "chartId": "CHART-GEN-001",
+          "count": 1
+        }
+      ],
+      "implementationStrategy": "manual review required before implementation."
+    }
+  ]
+}

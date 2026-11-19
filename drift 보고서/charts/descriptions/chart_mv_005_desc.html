@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-MV-005 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-MV-005</p>
+    <h1>CHART-MV-005 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 기준 평균과 공분산 구조를 기준으로 sample 또는 window 평균이 얼마나 이탈했는지 설명한다.</p> <p>Mahalanobis distance는 feature 간 상관과 scale을 고려한 거리다. 단순 Euclidean distance와 달리 기준 분포에서 흔한 방향의 변화는 작게, 드문 방향의 변화는 크게 볼 수 있다. 따라서 공분산 기반 정상 영역에서 벗어난 sample, window, outlier cluster를 설명하는 데 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 현재 sample 중 기준 공분산 구조에서 멀어진 점이 어디에 있는가?
+2. window별 평균 Mahalanobis distance가 threshold를 넘고 증가하는가?
+3. threshold를 넘는 sample 비중이 커졌는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - PCA projection scatter
+  - 기준 정상 변동 타원
+  - Mahalanobis distance가 높은 sample 강조
+
+우측 상단
+  - window별 평균 Mahalanobis distance 추세
+  - 운영 threshold 또는 관리 기준
+
+우측 하단
+  - sample별 Mahalanobis distance histogram
+  - threshold 초과 영역
+  - 초과 sample 비중</code></pre> <p>상단 요약 영역에는 평균 distance, threshold 초과 비중, 최대 distance를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 PCA scatter에서 높은 distance sample이 기준 정상 타원 밖의 어느 방향에 몰려 있는지 확인한다.</p> <pre><code>높은 distance sample이 소수 outlier에만 있다
+  -&gt; 데이터 품질, 이상치, 수집 오류를 먼저 확인한다.
+
+높은 distance sample이 특정 방향에 군집한다
+  -&gt; 신규 segment 또는 특정 feature 조합의 구조적 변화를 의심한다.
+
+전체 sample의 distance가 넓게 증가한다
+  -&gt; 공분산 구조 또는 전처리 변경 가능성을 확인한다.</code></pre> <p>그 다음 우측 상단의 distance 추세를 본다. 평균 distance가 threshold 아래에서 안정적이면 이탈 신호가 약하다. 최근 window에서 threshold를 넘고 상승하면 공분산 기반 이탈 신호가 강화된 것으로 본다.</p> <p>마지막으로 우측 하단 histogram에서 threshold 초과 sample 비중을 확인한다. 평균 distance가 커도 초과 sample이 극소수이면 outlier 중심 해석이 필요하고, 초과 비중이 넓게 증가하면 population 수준 변화 후보로 해석한다.</p> <h2>Drift 후보 판단 기준</h2> <p>평균 Mahalanobis distance가 threshold를 넘고 최근 window에서 상승하며, threshold 초과 sample 비중이 운영 기준보다 커지고, PCA scatter에서 고거리 sample이 특정 방향 또는 cluster로 나타나면 공분산 기반 이탈 drift 후보로 해석한다.</p> <p>단, Mahalanobis distance는 공분산 추정과 feature scaling에 민감하다. 공분산 행렬이 불안정하거나 고차원 소표본이면 robust covariance 또는 regularization 기반 변종을 함께 고려해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 평균 Mahalanobis distance가 <code>6.1</code>, threshold 초과 비중이 <code>22%</code>, 최대 distance가 <code>6.9</code>로 표시되어 있다. 좌측 PCA scatter에서 threshold 초과 sample은 기준 정상 타원의 우상단 방향에 집중되어 있다.</p> <p>우측 상단 추세에서는 최근 window의 평균 distance가 threshold <code>4.5</code>를 넘고 계속 증가한다. 우측 하단 histogram에서도 threshold 오른쪽 tail 영역의 sample 비중이 눈에 띈다. 따라서 이 예시는 기준 공분산 구조에서 벗어난 sample이 특정 방향에 집중되는 공분산 기반 이탈 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>기준 평균과 공분산 구조를 기준으로 Mahalanobis distance를 계산한 결과,
+현재 window의 평균 distance는 6.1로 threshold 4.5를 초과했다.
+Distance histogram에서는 전체 sample의 22%가 threshold를 넘었고,
+PCA scatter에서는 고거리 sample이 우상단 방향에 집중되어 있다.
+이는 기준 공분산 구조에서 벗어난 sample cluster가 증가한 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - distance가 큰 sample을 모두 오류 데이터로 단정한다.
+
+금지 2
+  - 공분산 추정 안정성을 확인하지 않고 threshold 초과를 확정적으로 해석한다.
+
+금지 3
+  - PCA 2차원 위치만으로 전체 고차원 이탈 방향을 단정한다.
+
+금지 4
+  - 높은 distance가 곧바로 모델 성능 저하를 의미한다고 말한다.</code></pre> <p>Mahalanobis distance는 공분산 기반 이탈을 요약한다. 원인 설명에는 feature contribution, segment 분석, 단변량 drift chart가 필요하다.</p> <h2>추가 확인 항목</h2> <p>Mahalanobis distance drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>feature scaling, normalization, missing value 처리 변경 여부</li> <li>공분산 행렬 추정 안정성과 robust covariance 필요성</li> <li>threshold 초과 sample의 segment/source/time 분포</li> <li>고거리 sample이 특정 feature 조합에 의해 발생하는지 여부</li> <li>Hotelling T2, MMD, Energy Distance와의 합의 여부</li> <li>label 확보 후 성능 지표, calibration, confidence 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Mahalanobis Distance / SAMPLE_MAHALANOBIS_OUTLIER</code></li> <li><code>Mahalanobis Distance / WINDOW_MEAN_MAHALANOBIS</code></li> <li><code>Mahalanobis Distance / ROBUST_MAHALANOBIS</code></li> </ul>
+  </main>
+</body>
+</html>

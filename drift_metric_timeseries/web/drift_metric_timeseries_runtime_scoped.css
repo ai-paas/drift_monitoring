@@ -1,0 +1,1288 @@
+/* Generated scoped copy of ../../chart_runtime/src/styles/chart-visuals.css.
+   Keep chart runtime visual classes inside analysis chart surfaces only. */
+
+.analysis-chart .swatch-baseline,
+.component-zoom-chart .swatch-baseline { background: #2f6f9f; }
+
+.analysis-chart .swatch-current,
+.component-zoom-chart .swatch-current { background: #3a8064; }
+
+.analysis-chart .swatch-current-red,
+.component-zoom-chart .swatch-current-red { background: #b95a50; }
+
+.analysis-chart .swatch-upper,
+.component-zoom-chart .swatch-upper { background: #c9952f; }
+
+.analysis-chart .swatch-lower,
+.component-zoom-chart .swatch-lower { background: #b95a50; }
+
+.analysis-chart .swatch-exact,
+.component-zoom-chart .swatch-exact { background: #2f6f9f; }
+
+.analysis-chart .swatch-approx,
+.component-zoom-chart .swatch-approx { background: #3a8064; }
+
+.analysis-chart .swatch-band,
+.component-zoom-chart .swatch-band { background: rgba(201, 149, 47, 0.55); }
+
+.analysis-chart .swatch-limit,
+.component-zoom-chart .swatch-limit { background: #b95a50; }
+
+.analysis-chart .swatch-base,
+.component-zoom-chart .swatch-base { background: #2f6f9f; }
+
+.analysis-chart .swatch-outlier,
+.component-zoom-chart .swatch-outlier { background: #b95a50; }
+
+.analysis-chart .swatch-threshold,
+.component-zoom-chart .swatch-threshold { background: #c9952f; }
+
+.analysis-chart .swatch-mean,
+.component-zoom-chart .swatch-mean { background: #34775d; }
+
+.analysis-chart .swatch-energy,
+.component-zoom-chart .swatch-energy { background: #3a8064; }
+
+.analysis-chart .swatch-mmd,
+.component-zoom-chart .swatch-mmd { background: #3a8064; }
+
+.analysis-chart .swatch-increase,
+.component-zoom-chart .swatch-increase { background: #b95a50; }
+
+.analysis-chart .swatch-decrease,
+.component-zoom-chart .swatch-decrease { background: #2f6f9f; }
+
+.analysis-chart .swatch-lsdd,
+.component-zoom-chart .swatch-lsdd { background: #3a8064; }
+
+.analysis-chart .swatch-t2,
+.component-zoom-chart .swatch-t2 { background: #3a8064; }
+
+.analysis-chart .swatch-distance,
+.component-zoom-chart .swatch-distance { background: #3a8064; }
+
+.analysis-chart .swatch-divergence,
+.component-zoom-chart .swatch-divergence { background: #2f7f6f; }
+
+.analysis-chart .swatch-low,
+.component-zoom-chart .swatch-low { background: #d9e6ef; }
+
+.analysis-chart .swatch-mid,
+.component-zoom-chart .swatch-mid { background: #c9952f; }
+
+.analysis-chart .swatch-high,
+.component-zoom-chart .swatch-high { background: #b95a50; }
+
+.analysis-chart .swatch-marker,
+.component-zoom-chart .swatch-marker { background: #b95a50; }
+
+.analysis-chart .swatch-expected,
+.component-zoom-chart .swatch-expected { background: #246b9f; }
+
+.analysis-chart .swatch-observed,
+.component-zoom-chart .swatch-observed { background: #c64e4e; }
+
+.analysis-chart .swatch-res-high,
+.component-zoom-chart .swatch-res-high { background: #2f7f6f; }
+
+.analysis-chart .swatch-res-low,
+.component-zoom-chart .swatch-res-low { background: #d8a13a; }
+
+.analysis-chart .swatch-reference,
+.component-zoom-chart .swatch-reference { background: #246b9f; }
+
+.analysis-chart .swatch-overlap,
+.component-zoom-chart .swatch-overlap { background: #2f7f6f; }
+
+.analysis-chart .swatch-current-prop,
+.component-zoom-chart .swatch-current-prop { background: #c64e4e; }
+
+.analysis-chart .swatch-current-red,
+.component-zoom-chart .swatch-current-red { background: #b95a50; }
+
+.analysis-chart .swatch-shift,
+.component-zoom-chart .swatch-shift { background: #3a8064; }
+
+.analysis-chart .swatch-heat,
+.component-zoom-chart .swatch-heat { background: #c9952f; }
+
+.analysis-chart .swatch-importance,
+.component-zoom-chart .swatch-importance { background: #3a8064; }
+
+.analysis-chart .swatch-time,
+.component-zoom-chart .swatch-time { background: #c9952f; }
+
+.analysis-chart .swatch-delta,
+.component-zoom-chart .swatch-delta { background: #2f7f6f; }
+
+.analysis-chart .swatch-gap,
+.component-zoom-chart .swatch-gap { background: #2f9b73; }
+
+.analysis-chart .swatch-cdf-gap,
+.component-zoom-chart .swatch-cdf-gap { background: #d8a13a; }
+
+.analysis-chart .swatch-cumulative,
+.component-zoom-chart .swatch-cumulative { background: #2f7f6f; }
+
+.analysis-chart .swatch-positive,
+.component-zoom-chart .swatch-positive { background: #2f7f6f; }
+
+.analysis-chart .swatch-negative,
+.component-zoom-chart .swatch-negative { background: #d8a13a; }
+
+.analysis-chart .swatch-threshold-line,
+.component-zoom-chart .swatch-threshold-line { background: #d8a13a; }
+
+.analysis-chart .swatch-max,
+.component-zoom-chart .swatch-max { background: #2f7f6f; }
+
+.analysis-chart .swatch-event,
+.component-zoom-chart .swatch-event { background: #2d6f8f; }
+
+.analysis-chart .swatch-nonevent,
+.component-zoom-chart .swatch-nonevent { background: #c9d7df; }
+
+.analysis-chart .swatch-roc,
+.component-zoom-chart .swatch-roc { background: #b95a50; }
+
+.analysis-chart .swatch-stream,
+.component-zoom-chart .swatch-stream { background: #2f6f9f; }
+
+.analysis-chart .swatch-topic,
+.component-zoom-chart .swatch-topic { background: #c9952f; }
+
+.analysis-chart .swatch-desc,
+.component-zoom-chart .swatch-desc { background: #c9952f; }
+
+.analysis-chart .swatch-uncertainty,
+.component-zoom-chart .swatch-uncertainty { background: #b95a50; }
+
+.analysis-chart .swatch-spread,
+.component-zoom-chart .swatch-spread { background: #3a8064; }
+
+.analysis-chart .swatch-feature,
+.component-zoom-chart .swatch-feature { background: #c9952f; }
+
+.analysis-chart .swatch-raw,
+.component-zoom-chart .swatch-raw { background: #2f6f9f; }
+
+.analysis-chart .swatch-pos,
+.component-zoom-chart .swatch-pos { background: #b95a50; }
+
+.analysis-chart .swatch-neg,
+.component-zoom-chart .swatch-neg { background: #3a8064; }
+
+.analysis-chart .swatch-control-limit,
+.component-zoom-chart .swatch-control-limit { background: #c9952f; }
+
+.analysis-chart .swatch-smooth,
+.component-zoom-chart .swatch-smooth { background: #3a8064; }
+
+.analysis-chart .swatch-alarm,
+.component-zoom-chart .swatch-alarm { background: #b95a50; }
+
+.analysis-chart .swatch-stat,
+.component-zoom-chart .swatch-stat { background: #2f6f9f; }
+
+.analysis-chart .swatch-contrib,
+.component-zoom-chart .swatch-contrib { background: #3a8064; }
+
+.analysis-chart .swatch-distance,
+.component-zoom-chart .swatch-distance { background: #2f7f6f; }
+
+.analysis-chart .swatch-ecf,
+.component-zoom-chart .swatch-ecf { background: #3a8064; }
+
+.analysis-chart .swatch-tail,
+.component-zoom-chart .swatch-tail { background: #7a5dc7; }
+
+.analysis-chart .swatch-error-rate,
+.component-zoom-chart .swatch-error-rate { background: #2f6f9f; }
+
+.analysis-chart .swatch-weighted-error,
+.component-zoom-chart .swatch-weighted-error { background: #3a8064; }
+
+.analysis-chart .swatch-error-trend,
+.component-zoom-chart .swatch-error-trend { background: #3a8064; }
+
+.analysis-chart .swatch-distance-score,
+.component-zoom-chart .swatch-distance-score { background: #2f6f9f; }
+
+.analysis-chart .swatch-mean-diff,
+.component-zoom-chart .swatch-mean-diff { background: #2f6f9f; }
+
+.analysis-chart .swatch-recent-accuracy,
+.component-zoom-chart .swatch-recent-accuracy { background: #2f6f9f; }
+
+.analysis-chart .swatch-overall-accuracy,
+.component-zoom-chart .swatch-overall-accuracy { background: #3a8064; }
+
+.analysis-chart .swatch-warning-threshold,
+.component-zoom-chart .swatch-warning-threshold { background: #c9952f; }
+
+.analysis-chart .swatch-drift-threshold,
+.component-zoom-chart .swatch-drift-threshold { background: #b95a50; }
+
+.analysis-chart .swatch-warning-buffer,
+.component-zoom-chart .swatch-warning-buffer { background: #3a8064; }
+
+.analysis-chart .swatch-retained-window,
+.component-zoom-chart .swatch-retained-window { background: #3a8064; }
+
+.analysis-chart .swatch-error-event,
+.component-zoom-chart .swatch-error-event { background: #3a8064; }
+
+.analysis-chart .swatch-metric,
+.component-zoom-chart .swatch-metric { background: #2f6f9f; }
+
+.analysis-chart .swatch-current-red,
+.component-zoom-chart .swatch-current-red { background: #b95a50; }
+
+.analysis-chart .swatch-layer,
+.component-zoom-chart .swatch-layer { background: #3a8064; }
+
+.analysis-chart .swatch-drift,
+.component-zoom-chart .swatch-drift { background: #b95a50; }
+
+.analysis-chart .swatch-stream,
+.component-zoom-chart .swatch-stream { background: #2f6f9f; }
+
+.analysis-chart .swatch-stream-green,
+.component-zoom-chart .swatch-stream-green { background: #3a8064; }
+
+.analysis-chart .chart-svg,
+.component-zoom-chart .chart-svg { display: block; width: max(100%, var(--chart-svg-w, 100%)); height: var(--chart-svg-h, 100%); min-width: var(--chart-svg-w, 0); min-height: var(--chart-svg-h, 0); overflow: visible; }
+
+.analysis-chart .axis-line,
+.component-zoom-chart .axis-line,
+.analysis-chart .grid-line,
+.component-zoom-chart .grid-line { vector-effect: non-scaling-stroke; }
+
+.analysis-chart .grid-line,
+.component-zoom-chart .grid-line { stroke: #e3e8ee; stroke-width: 1; }
+
+.analysis-chart .projection-dark-frame,
+.component-zoom-chart .projection-dark-frame { fill: #050607; stroke: #111820; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .projection-dark-grid,
+.component-zoom-chart .projection-dark-grid { stroke: rgba(255, 255, 255, 0.56); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .axis-line,
+.component-zoom-chart .axis-line { stroke: #aeb9c4; stroke-width: 1; }
+
+.analysis-chart .series-line,
+.component-zoom-chart .series-line { fill: none; stroke: var(--active); stroke-width: 2.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .secondary-line,
+.component-zoom-chart .secondary-line { fill: none; stroke: var(--warning); stroke-width: 2; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ref-line,
+.component-zoom-chart .ref-line { fill: none; stroke: #246b9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-line,
+.component-zoom-chart .cur-line { fill: none; stroke: #c64e4e; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gap-line,
+.component-zoom-chart .gap-line { fill: none; stroke: #2f9b73; stroke-width: 3; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gap-point,
+.component-zoom-chart .gap-point { fill: #2f9b73; stroke: #fff; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gap-label,
+.component-zoom-chart .gap-label { fill: #2f9b73; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .gap-marker,
+.component-zoom-chart .gap-marker { stroke: #d8a13a; stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cvm-area,
+.component-zoom-chart .cvm-area { fill: rgba(47, 127, 111, 0.16); }
+
+.analysis-chart .cvm-line,
+.component-zoom-chart .cvm-line { fill: none; stroke: #2f7f6f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cvm-band,
+.component-zoom-chart .cvm-band { fill: rgba(216, 161, 58, 0.16); }
+
+.analysis-chart .pos-area,
+.component-zoom-chart .pos-area { fill: rgba(47, 127, 111, 0.16); }
+
+.analysis-chart .neg-area,
+.component-zoom-chart .neg-area { fill: rgba(216, 161, 58, 0.18); }
+
+.analysis-chart .dev-line,
+.component-zoom-chart .dev-line { fill: none; stroke: #2c3642; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .pos-marker,
+.component-zoom-chart .pos-marker { stroke: #2f7f6f; stroke-width: 3; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .neg-marker,
+.component-zoom-chart .neg-marker { stroke: #d8a13a; stroke-width: 3; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ring,
+.component-zoom-chart .ring { fill: none; stroke: #dfe4ea; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .angle-label,
+.component-zoom-chart .angle-label { fill: var(--muted); font-size: 8px; }
+
+.analysis-chart .callout-strong,
+.component-zoom-chart .callout-strong { fill: var(--ink); font-size: 9px; font-weight: 800; }
+
+.analysis-chart .qq-point,
+.component-zoom-chart .qq-point { fill: rgba(198, 78, 78, 0.72); stroke: #fff; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .qq-ref,
+.component-zoom-chart .qq-ref { stroke: #246b9f; stroke-width: 2; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .tail-band,
+.component-zoom-chart .tail-band { fill: rgba(122, 93, 199, 0.10); }
+
+.analysis-chart .tail-label,
+.component-zoom-chart .tail-label { fill: #7a5dc7; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .champion-line,
+.component-zoom-chart .champion-line { fill: none; stroke: var(--active); stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .challenger-line,
+.component-zoom-chart .challenger-line { fill: none; stroke: var(--ok); stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .main-line,
+.component-zoom-chart .main-line { fill: none; stroke: var(--ok); stroke-width: 2.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .alt-line,
+.component-zoom-chart .alt-line { fill: none; stroke: var(--warning); stroke-width: 2.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .series-point,
+.component-zoom-chart .series-point { fill: var(--active); stroke: #fff; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .secondary-point,
+.component-zoom-chart .secondary-point { fill: var(--warning); stroke: #fff; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .champion-point,
+.component-zoom-chart .champion-point { fill: var(--active); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .challenger-point,
+.component-zoom-chart .challenger-point { fill: var(--ok); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .alarm-point,
+.component-zoom-chart .alarm-point { fill: var(--warning); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .retrain-point,
+.component-zoom-chart .retrain-point { fill: var(--danger); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bar,
+.component-zoom-chart .bar { fill: #5b91b4; }
+
+.analysis-chart .bar.hot,
+.component-zoom-chart .bar.hot { fill: var(--warning); }
+
+.analysis-chart .expected-bar,
+.component-zoom-chart .expected-bar { fill: rgba(36, 107, 159, 0.62); }
+
+.analysis-chart .observed-bar,
+.component-zoom-chart .observed-bar { fill: rgba(198, 78, 78, 0.58); }
+
+.analysis-chart .base-bar,
+.component-zoom-chart .base-bar { fill: rgba(47, 111, 159, 0.68); }
+
+.analysis-chart .current-bar,
+.component-zoom-chart .current-bar { fill: rgba(185, 90, 80, 0.72); }
+
+.analysis-chart .importance-bar,
+.component-zoom-chart .importance-bar { fill: rgba(58, 128, 100, 0.76); }
+
+.analysis-chart .time-bar,
+.component-zoom-chart .time-bar { fill: rgba(201, 149, 47, 0.72); }
+
+.analysis-chart .bar-metric,
+.component-zoom-chart .bar-metric { fill: rgba(47, 111, 159, 0.78); }
+
+.analysis-chart .bar-current,
+.component-zoom-chart .bar-current { fill: rgba(185, 90, 80, 0.76); }
+
+.analysis-chart .ref-bar,
+.component-zoom-chart .ref-bar { fill: rgba(36, 107, 159, 0.62); }
+
+.analysis-chart .cur-bar,
+.component-zoom-chart .cur-bar { fill: rgba(198, 78, 78, 0.58); }
+
+.analysis-chart .overlap-band,
+.component-zoom-chart .overlap-band { fill: rgba(47, 127, 111, 0.16); }
+
+.analysis-chart .overlap-bar,
+.component-zoom-chart .overlap-bar { fill: rgba(47, 127, 111, 0.50); }
+
+.analysis-chart .intersection-bar,
+.component-zoom-chart .intersection-bar { fill: rgba(47, 127, 111, 0.72); }
+
+.analysis-chart .intersection-bar-highlight,
+.component-zoom-chart .intersection-bar-highlight { fill: rgba(198, 78, 78, 0.82); stroke: rgba(142, 43, 43, 0.55); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ref-fill,
+.component-zoom-chart .ref-fill { fill: rgba(47, 111, 159, 0.36); stroke: rgba(47, 111, 159, 0.85); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-fill,
+.component-zoom-chart .cur-fill { fill: rgba(185, 90, 80, 0.38); stroke: rgba(185, 90, 80, 0.88); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .summary-box,
+.component-zoom-chart .summary-box { fill: rgba(255, 255, 255, 0.75); stroke: #2b3640; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bar-ref,
+.component-zoom-chart .bar-ref { fill: rgba(36, 107, 159, 0.52); }
+
+.analysis-chart .bar-cur,
+.component-zoom-chart .bar-cur { fill: rgba(198, 78, 78, 0.46); }
+
+.analysis-chart .delta-bar,
+.component-zoom-chart .delta-bar { fill: rgba(47, 127, 111, 0.78); }
+
+.analysis-chart .delta-highlight,
+.component-zoom-chart .delta-highlight { fill: rgba(198, 78, 78, 0.78); }
+
+.analysis-chart .highlight-band,
+.component-zoom-chart .highlight-band { fill: rgba(47, 127, 111, 0.12); }
+
+.analysis-chart .max-bar,
+.component-zoom-chart .max-bar { fill: rgba(47, 127, 111, 0.78); }
+
+.analysis-chart .other-bar,
+.component-zoom-chart .other-bar { fill: rgba(95, 107, 122, 0.34); }
+
+.analysis-chart .event-fill,
+.component-zoom-chart .event-fill { fill: rgba(45, 111, 143, 0.82); }
+
+.analysis-chart .nonevent-fill,
+.component-zoom-chart .nonevent-fill { fill: rgba(201, 215, 223, 0.92); }
+
+.analysis-chart .current-outline,
+.component-zoom-chart .current-outline { stroke: #b4554b; stroke-width: 3; fill: none; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .res-high,
+.component-zoom-chart .res-high { fill: rgba(47, 127, 111, 0.80); }
+
+.analysis-chart .res-low,
+.component-zoom-chart .res-low { fill: rgba(216, 161, 58, 0.82); }
+
+.analysis-chart .res-neutral,
+.component-zoom-chart .res-neutral { fill: #e8edf2; }
+
+.analysis-chart .contrib-bar,
+.component-zoom-chart .contrib-bar { fill: rgba(47, 127, 111, 0.76); }
+
+.analysis-chart .contrib-highlight,
+.component-zoom-chart .contrib-highlight { fill: rgba(198, 78, 78, 0.78); }
+
+.analysis-chart .cell,
+.component-zoom-chart .cell { stroke: #fff; stroke-width: 1; }
+
+.analysis-chart .scatter,
+.component-zoom-chart .scatter { opacity: .78; stroke: #fff; stroke-width: 1; }
+
+.analysis-chart .ref-point,
+.component-zoom-chart .ref-point { fill: rgba(47, 111, 159, 0.72); stroke: #ffffff; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-point,
+.component-zoom-chart .cur-point { fill: rgba(185, 90, 80, 0.78); stroke: #ffffff; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ref-ellipse,
+.component-zoom-chart .ref-ellipse { fill: rgba(47, 111, 159, 0.12); stroke: rgba(47, 111, 159, 0.85); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-ellipse,
+.component-zoom-chart .cur-ellipse { fill: rgba(185, 90, 80, 0.14); stroke: rgba(185, 90, 80, 0.85); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ref-kernel,
+.component-zoom-chart .ref-kernel { fill: rgba(47, 111, 159, 0.10); stroke: rgba(47, 111, 159, 0.82); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-kernel,
+.component-zoom-chart .cur-kernel { fill: rgba(185, 90, 80, 0.12); stroke: rgba(185, 90, 80, 0.82); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mmd-line,
+.component-zoom-chart .mmd-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mmd-point,
+.component-zoom-chart .mmd-point { fill: #3a8064; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .contour-increase,
+.component-zoom-chart .contour-increase { fill: none; stroke: rgba(185, 90, 80, 0.88); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .contour-decrease,
+.component-zoom-chart .contour-decrease { fill: none; stroke: rgba(47, 111, 159, 0.88); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .lsdd-line,
+.component-zoom-chart .lsdd-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .lsdd-point,
+.component-zoom-chart .lsdd-point { fill: #3a8064; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mean-shift-line,
+.component-zoom-chart .mean-shift-line { stroke: #c9952f; stroke-width: 2.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mean-point-ref,
+.component-zoom-chart .mean-point-ref { fill: #2f6f9f; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mean-point-cur,
+.component-zoom-chart .mean-point-cur { fill: #b95a50; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .t2-line,
+.component-zoom-chart .t2-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .t2-point,
+.component-zoom-chart .t2-point { fill: #3a8064; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .alert-point,
+.component-zoom-chart .alert-point { fill: #b95a50; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .top-contrib-bar,
+.component-zoom-chart .top-contrib-bar { fill: rgba(185, 90, 80, 0.76); }
+
+.analysis-chart .normal-ellipse,
+.component-zoom-chart .normal-ellipse { fill: rgba(47, 111, 159, 0.10); stroke: rgba(47, 111, 159, 0.82); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .distance-point,
+.component-zoom-chart .distance-point { fill: #3a8064; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .distance-tail-bar,
+.component-zoom-chart .distance-tail-bar { fill: rgba(185, 90, 80, 0.72); }
+
+.analysis-chart .hist-bar,
+.component-zoom-chart .hist-bar { fill: rgba(47, 111, 159, 0.52); }
+
+.analysis-chart .contrib-line,
+.component-zoom-chart .contrib-line { stroke: #2f7f6f; stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bar-highlight,
+.component-zoom-chart .bar-highlight { fill: rgba(198, 78, 78, 0.78); }
+
+.analysis-chart .band,
+.component-zoom-chart .band { fill: rgba(47,111,159,.22); }
+
+.analysis-chart .threshold,
+.component-zoom-chart .threshold { stroke: var(--danger); stroke-width: 2; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .marker-line,
+.component-zoom-chart .marker-line { stroke: var(--danger); stroke-width: 2; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .zero-line,
+.component-zoom-chart .zero-line { stroke: #2b3640; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .random-line,
+.component-zoom-chart .random-line { stroke: #7b8793; stroke-width: 1.6; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .roc-line,
+.component-zoom-chart .roc-line { fill: none; stroke: #b95a50; stroke-width: 3.2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .roc-fill,
+.component-zoom-chart .roc-fill { fill: rgba(185, 90, 80, 0.10); }
+
+.analysis-chart .baseline-line,
+.component-zoom-chart .baseline-line { stroke: #7b8793; stroke-width: 1.6; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .direction-baseline-line,
+.component-zoom-chart .direction-baseline-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .direction-current-line,
+.component-zoom-chart .direction-current-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .exact-line,
+.component-zoom-chart .exact-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .approx-line,
+.component-zoom-chart .approx-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .band-fill,
+.component-zoom-chart .band-fill { fill: rgba(201, 149, 47, 0.18); }
+
+.analysis-chart .limit-line,
+.component-zoom-chart .limit-line { stroke: #b95a50; stroke-width: 2; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .tolerance-line,
+.component-zoom-chart .tolerance-line { stroke: #7b8793; stroke-width: 1.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .exact-point,
+.component-zoom-chart .exact-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .approx-point,
+.component-zoom-chart .approx-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .warn-point,
+.component-zoom-chart .warn-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .upper-line,
+.component-zoom-chart .upper-line { stroke: #c9952f; stroke-width: 2.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .lower-line,
+.component-zoom-chart .lower-line { stroke: #b95a50; stroke-width: 2.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .neutral-line,
+.component-zoom-chart .neutral-line { stroke: #7b8793; stroke-width: 1.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .upper-fill,
+.component-zoom-chart .upper-fill { fill: rgba(201, 149, 47, 0.18); }
+
+.analysis-chart .lower-fill,
+.component-zoom-chart .lower-fill { fill: rgba(185, 90, 80, 0.16); }
+
+.analysis-chart .baseline-point,
+.component-zoom-chart .baseline-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .current-point,
+.component-zoom-chart .current-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .upper-point,
+.component-zoom-chart .upper-point { fill: #c9952f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .lower-point,
+.component-zoom-chart .lower-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .alarm-line,
+.component-zoom-chart .alarm-line { stroke: var(--warning); stroke-width: 2.4; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .retrain-line,
+.component-zoom-chart .retrain-line { stroke: var(--danger); stroke-width: 2.6; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .event,
+.component-zoom-chart .event { fill: #7868a8; }
+
+.analysis-chart .replace-point,
+.component-zoom-chart .replace-point { fill: var(--danger); stroke: #fff; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .warning-text,
+.component-zoom-chart .warning-text { fill: var(--danger); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .warning-threshold-text,
+.component-zoom-chart .warning-threshold-text { fill: #c9952f; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .drift-text,
+.component-zoom-chart .drift-text { fill: #b95a50; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .retained-text,
+.component-zoom-chart .retained-text { fill: #3a8064; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .event-text,
+.component-zoom-chart .event-text { fill: #3a8064; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout,
+.component-zoom-chart .callout { fill: var(--ok); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-roc,
+.component-zoom-chart .callout-roc { fill: #b95a50; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-alarm,
+.component-zoom-chart .callout-alarm { fill: var(--warning); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-retrain,
+.component-zoom-chart .callout-retrain { fill: var(--danger); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-win,
+.component-zoom-chart .callout-win { fill: var(--ok); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-upper,
+.component-zoom-chart .callout-upper { fill: #c9952f; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-lower,
+.component-zoom-chart .callout-lower { fill: #b95a50; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .callout-annot,
+.component-zoom-chart .callout-annot { fill: #b95a50; font-size: 10px; font-weight: 800; }
+
+.analysis-chart .card-title,
+.component-zoom-chart .card-title { fill: var(--ink); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .card-text,
+.component-zoom-chart .card-text { fill: var(--muted); font-size: 8px; }
+
+.analysis-chart .bar-label,
+.component-zoom-chart .bar-label { fill: var(--ink); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .title-text,
+.component-zoom-chart .title-text { fill: var(--ink); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .cell-label,
+.component-zoom-chart .cell-label { fill: #fff; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .cell-label.dark,
+.component-zoom-chart .cell-label.dark { fill: var(--ink); }
+
+.analysis-chart .warning,
+.component-zoom-chart .warning { fill: #b4554b; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .decision-pass,
+.component-zoom-chart .decision-pass { fill: rgba(58, 128, 100, 0.12); stroke: rgba(58, 128, 100, 0.45); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .decision-fail,
+.component-zoom-chart .decision-fail { fill: rgba(185, 90, 80, 0.10); stroke: rgba(185, 90, 80, 0.38); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .matrix-head,
+.component-zoom-chart .matrix-head { fill: #eef2f5; }
+
+.analysis-chart .matrix-on,
+.component-zoom-chart .matrix-on { fill: rgba(58, 128, 100, 0.72); }
+
+.analysis-chart .matrix-off,
+.component-zoom-chart .matrix-off { fill: rgba(126, 137, 148, 0.30); }
+
+.analysis-chart .ok-text,
+.component-zoom-chart .ok-text { fill: #3a8064; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .ok-text-annot,
+.component-zoom-chart .ok-text-annot { fill: #3a8064; font-size: 10px; font-weight: 800; }
+
+.analysis-chart .bar-projection,
+.component-zoom-chart .bar-projection { fill: rgba(47, 111, 159, 0.78); }
+
+.analysis-chart .bar-error,
+.component-zoom-chart .bar-error { fill: rgba(201, 149, 47, 0.72); }
+
+.analysis-chart .bar-over,
+.component-zoom-chart .bar-over { fill: rgba(185, 90, 80, 0.72); }
+
+.analysis-chart .threshold-line,
+.component-zoom-chart .threshold-line { stroke: #c9952f; stroke-width: 2.4; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .base-area,
+.component-zoom-chart .base-area { fill: rgba(47, 111, 159, 0.32); stroke: #2f6f9f; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .current-area,
+.component-zoom-chart .current-area { fill: rgba(58, 128, 100, 0.30); stroke: #3a8064; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .rep-current-area,
+.component-zoom-chart .rep-current-area { fill: rgba(185, 90, 80, 0.34); stroke: #b95a50; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ref-area,
+.component-zoom-chart .ref-area { fill: rgba(36, 107, 159, 0.22); stroke: #246b9f; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-area,
+.component-zoom-chart .cur-area { fill: rgba(198, 78, 78, 0.22); stroke: #c64e4e; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .diff-band,
+.component-zoom-chart .diff-band { fill: rgba(58, 128, 100, 0.13); }
+
+.analysis-chart .transport,
+.component-zoom-chart .transport { stroke: #2f7f6f; stroke-width: 2; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .transport-label,
+.component-zoom-chart .transport-label { fill: #2f7f6f; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .rank-line,
+.component-zoom-chart .rank-line { stroke: #3a8064; stroke-width: 2.2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .current-red-area,
+.component-zoom-chart .current-red-area { fill: rgba(185, 90, 80, 0.30); stroke: #b95a50; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .node,
+.component-zoom-chart .node { fill: #f8fafb; stroke: #cfd7de; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .node-current,
+.component-zoom-chart .node-current { fill: rgba(185, 90, 80, 0.12); stroke: #b95a50; stroke-width: 1.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .path-line,
+.component-zoom-chart .path-line { stroke: #2b3640; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gen-metric-line,
+.component-zoom-chart .gen-metric-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gen-metric-point,
+.component-zoom-chart .gen-metric-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gen-ref-area,
+.component-zoom-chart .gen-ref-area { fill: rgba(58, 128, 100, 0.30); stroke: #3a8064; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .gen-cur-area,
+.component-zoom-chart .gen-cur-area { fill: rgba(185, 90, 80, 0.31); stroke: #b95a50; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .real-line,
+.component-zoom-chart .real-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .imag-line,
+.component-zoom-chart .imag-line { fill: none; stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .real-point,
+.component-zoom-chart .real-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .imag-point,
+.component-zoom-chart .imag-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .stat-bar,
+.component-zoom-chart .stat-bar { fill: rgba(58, 128, 100, 0.76); }
+
+.analysis-chart .top-stat-bar,
+.component-zoom-chart .top-stat-bar { fill: rgba(185, 90, 80, 0.76); }
+
+.analysis-chart .rate-line,
+.component-zoom-chart .rate-line { fill: none; stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .error-line,
+.component-zoom-chart .error-line { fill: none; stroke: #2f6f9f; stroke-width: 2.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .weighted-error-line,
+.component-zoom-chart .weighted-error-line { fill: none; stroke: #3a8064; stroke-width: 2.7; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .distance-line,
+.component-zoom-chart .distance-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .rep-distance-line,
+.component-zoom-chart .rep-distance-line { fill: none; stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .diff-line,
+.component-zoom-chart .diff-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .recent-line,
+.component-zoom-chart .recent-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .overall-line,
+.component-zoom-chart .overall-line { fill: none; stroke: #3a8064; stroke-width: 2.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .window-line,
+.component-zoom-chart .window-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .warning-line,
+.component-zoom-chart .warning-line { stroke: #c9952f; stroke-width: 2.2; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .drift-line,
+.component-zoom-chart .drift-line { stroke: #b95a50; stroke-width: 2.4; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .state-line,
+.component-zoom-chart .state-line { stroke: #b95a50; stroke-width: 2.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .reset-line,
+.component-zoom-chart .reset-line { stroke: #b95a50; stroke-width: 2.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .error-point,
+.component-zoom-chart .error-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .weighted-error-point,
+.component-zoom-chart .weighted-error-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .distance-point,
+.component-zoom-chart .distance-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .diff-point,
+.component-zoom-chart .diff-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .recent-point,
+.component-zoom-chart .recent-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .overall-point,
+.component-zoom-chart .overall-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .warning-point,
+.component-zoom-chart .warning-point { fill: #c9952f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .drift-point,
+.component-zoom-chart .drift-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .window-point,
+.component-zoom-chart .window-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .event-mark,
+.component-zoom-chart .event-mark { stroke: #3a8064; stroke-width: 2.2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .event-mark.hot,
+.component-zoom-chart .event-mark.hot { stroke: #b95a50; stroke-width: 2.6; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .warning-fill,
+.component-zoom-chart .warning-fill { fill: rgba(201, 149, 47, 0.65); }
+
+.analysis-chart .drift-fill,
+.component-zoom-chart .drift-fill { fill: rgba(185, 90, 80, 0.74); }
+
+.analysis-chart .buffer-fill,
+.component-zoom-chart .buffer-fill { fill: rgba(58, 128, 100, 0.70); }
+
+.analysis-chart .normal-fill,
+.component-zoom-chart .normal-fill { fill: rgba(47, 111, 159, 0.35); }
+
+.analysis-chart .retained-fill,
+.component-zoom-chart .retained-fill { fill: rgba(58, 128, 100, 0.72); }
+
+.analysis-chart .ddm-fill,
+.component-zoom-chart .ddm-fill { fill: rgba(47, 111, 159, 0.42); }
+
+.analysis-chart .rddm-fill,
+.component-zoom-chart .rddm-fill { fill: rgba(58, 128, 100, 0.58); }
+
+.analysis-chart .two-sided-fill,
+.component-zoom-chart .two-sided-fill { fill: rgba(58, 128, 100, 0.58); }
+
+.analysis-chart .rate-point,
+.component-zoom-chart .rate-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .stream-line,
+.component-zoom-chart .stream-line { fill: none; stroke: #2f6f9f; stroke-width: 2.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .evidence-line,
+.component-zoom-chart .evidence-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bound-line,
+.component-zoom-chart .bound-line { fill: none; stroke: #c9952f; stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .llr-line,
+.component-zoom-chart .llr-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .llr-point,
+.component-zoom-chart .llr-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .decision-point,
+.component-zoom-chart .decision-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .evidence-point,
+.component-zoom-chart .evidence-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .upper-boundary-line,
+.component-zoom-chart .upper-boundary-line { stroke: #b95a50; stroke-width: 2.3; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .lower-boundary-line,
+.component-zoom-chart .lower-boundary-line { stroke: #2f6f9f; stroke-width: 2.3; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .centroid-line,
+.component-zoom-chart .centroid-line { stroke: #c9952f; stroke-width: 2.4; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .domain-roc-line,
+.component-zoom-chart .domain-roc-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .entropy-line,
+.component-zoom-chart .entropy-line { fill: none; stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .entropy-point,
+.component-zoom-chart .entropy-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .perfect-line,
+.component-zoom-chart .perfect-line { stroke: #7b8793; stroke-width: 1.6; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .calibration-line,
+.component-zoom-chart .calibration-line { fill: none; stroke: #3a8064; stroke-width: 2.6; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bar-class,
+.component-zoom-chart .bar-class { fill: rgba(185, 90, 80, 0.74); }
+
+.analysis-chart .bar-base,
+.component-zoom-chart .bar-base { fill: rgba(47, 111, 159, 0.72); }
+
+.analysis-chart .bar-topic-a,
+.component-zoom-chart .bar-topic-a { fill: rgba(47, 111, 159, 0.68); }
+
+.analysis-chart .bar-topic-b,
+.component-zoom-chart .bar-topic-b { fill: rgba(201, 149, 47, 0.70); }
+
+.analysis-chart .bar-topic-c,
+.component-zoom-chart .bar-topic-c { fill: rgba(185, 90, 80, 0.70); }
+
+.analysis-chart .stream-green-line,
+.component-zoom-chart .stream-green-line { fill: none; stroke: #3a8064; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .trend-line,
+.component-zoom-chart .trend-line { fill: none; stroke: #2f7f6f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .rep-trend-line,
+.component-zoom-chart .rep-trend-line { fill: none; stroke: #3a8064; stroke-width: 2.8; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ph-line,
+.component-zoom-chart .ph-line,
+.analysis-chart .ks-line,
+.component-zoom-chart .ks-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ref-line,
+.component-zoom-chart .ref-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cur-line,
+.component-zoom-chart .cur-line { fill: none; stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .energy-line,
+.component-zoom-chart .energy-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .distance-trend-line,
+.component-zoom-chart .distance-trend-line { fill: none; stroke: #d8a13a; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .raw-line,
+.component-zoom-chart .raw-line { fill: none; stroke: #2f6f9f; stroke-width: 2.6; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .raw-noise-line,
+.component-zoom-chart .raw-noise-line { fill: none; stroke: #2f6f9f; stroke-width: 2.3; opacity: .82; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .smooth-line,
+.component-zoom-chart .smooth-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .stat-line,
+.component-zoom-chart .stat-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mewma-stat-line,
+.component-zoom-chart .mewma-stat-line { fill: none; stroke: #2f6f9f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .metric-line,
+.component-zoom-chart .metric-line { fill: none; stroke: #3a8064; stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .metric-line.alt,
+.component-zoom-chart .metric-line.alt { stroke: #7d6fb2; }
+
+.analysis-chart .metric-line.third,
+.component-zoom-chart .metric-line.third { stroke: #c9952f; }
+
+.analysis-chart .pos-line,
+.component-zoom-chart .pos-line { fill: none; stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .neg-line,
+.component-zoom-chart .neg-line { fill: none; stroke: #3a8064; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .or-line,
+.component-zoom-chart .or-line { stroke: #b4554b; stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mean-line,
+.component-zoom-chart .mean-line { stroke: #3a8064; stroke-width: 2; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mean-line-solid,
+.component-zoom-chart .mean-line-solid { fill: none; stroke: #34775d; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .median-line,
+.component-zoom-chart .median-line { stroke: #2b3640; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ci-line-ref,
+.component-zoom-chart .ci-line-ref { stroke: #2f6f9f; stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ci-line-cur,
+.component-zoom-chart .ci-line-cur { stroke: #b95a50; stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .target-line,
+.component-zoom-chart .target-line,
+.analysis-chart .cusum-limit-line,
+.component-zoom-chart .cusum-limit-line { stroke: #c9952f; stroke-width: 2; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ewma-limit-line,
+.component-zoom-chart .ewma-limit-line { stroke: #c9952f; stroke-width: 2; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .center-line,
+.component-zoom-chart .center-line { stroke: #2b3640; stroke-width: 1.4; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cusum-alarm-line,
+.component-zoom-chart .cusum-alarm-line { stroke: #b95a50; stroke-width: 2.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ewma-alarm-line,
+.component-zoom-chart .ewma-alarm-line { stroke: #b95a50; stroke-width: 2.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .marker-point,
+.component-zoom-chart .marker-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .trend-point,
+.component-zoom-chart .trend-point { fill: #2f7f6f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .energy-point,
+.component-zoom-chart .energy-point { fill: #3a8064; stroke: #ffffff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .distance-trend-point,
+.component-zoom-chart .distance-trend-point { fill: #d8a13a; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .pos-point,
+.component-zoom-chart .pos-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .neg-point,
+.component-zoom-chart .neg-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .cusum-alarm-point,
+.component-zoom-chart .cusum-alarm-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .smooth-point,
+.component-zoom-chart .smooth-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ewma-alarm-point,
+.component-zoom-chart .ewma-alarm-point { fill: #b95a50; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .stat-point,
+.component-zoom-chart .stat-point { fill: #2f6f9f; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .or-point,
+.component-zoom-chart .or-point { fill: #b4554b; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .mean-point,
+.component-zoom-chart .mean-point { fill: #34775d; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .normal-point,
+.component-zoom-chart .normal-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .base-dot,
+.component-zoom-chart .base-dot { fill: rgba(47, 111, 159, 0.70); stroke: #fff; stroke-width: 1.3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .current-dot,
+.component-zoom-chart .current-dot { fill: rgba(58, 128, 100, 0.72); stroke: #fff; stroke-width: 1.3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .text2-current-dot,
+.component-zoom-chart .text2-current-dot { fill: rgba(185, 90, 80, 0.74); stroke: #fff; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .rep-current-dot,
+.component-zoom-chart .rep-current-dot { fill: rgba(185, 90, 80, 0.74); stroke: #fff; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bridge-dot,
+.component-zoom-chart .bridge-dot { fill: rgba(185, 90, 80, 0.82); stroke: #fff; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .outlier-dot,
+.component-zoom-chart .outlier-dot { fill: rgba(185, 90, 80, 0.84); stroke: #fff; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .bar-champion,
+.component-zoom-chart .bar-champion { fill: rgba(47, 111, 159, 0.82); }
+
+.analysis-chart .bar-challenger,
+.component-zoom-chart .bar-challenger { fill: rgba(58, 128, 100, 0.84); }
+
+.analysis-chart .bar-latency,
+.component-zoom-chart .bar-latency { fill: rgba(185, 90, 80, 0.72); }
+
+.analysis-chart .bar-feature,
+.component-zoom-chart .bar-feature { fill: rgba(201, 149, 47, 0.78); }
+
+.analysis-chart .feature-text,
+.component-zoom-chart .feature-text { fill: #c9952f; font-size: 8px; font-weight: 800; }
+
+.analysis-chart .bar-pos,
+.component-zoom-chart .bar-pos { fill: rgba(185, 90, 80, 0.74); }
+
+.analysis-chart .bar-neg,
+.component-zoom-chart .bar-neg { fill: rgba(58, 128, 100, 0.72); }
+
+.analysis-chart .bar-fill,
+.component-zoom-chart .bar-fill { fill: rgba(58, 128, 100, 0.78); }
+
+.analysis-chart .deviation-bar,
+.component-zoom-chart .deviation-bar { fill: rgba(58, 128, 100, 0.74); }
+
+.analysis-chart .ratio-bar,
+.component-zoom-chart .ratio-bar { fill: rgba(58, 128, 100, 0.78); }
+
+.analysis-chart .base-bar,
+.component-zoom-chart .base-bar { fill: rgba(47, 111, 159, 0.68); }
+
+.analysis-chart .rep-current-bar,
+.component-zoom-chart .rep-current-bar { fill: rgba(185, 90, 80, 0.70); }
+
+.analysis-chart .mean-bar-before,
+.component-zoom-chart .mean-bar-before { fill: rgba(47, 111, 159, 0.68); }
+
+.analysis-chart .mean-bar-after,
+.component-zoom-chart .mean-bar-after { fill: rgba(185, 90, 80, 0.72); }
+
+.analysis-chart .delta-bar,
+.component-zoom-chart .delta-bar { fill: rgba(58, 128, 100, 0.74); }
+
+.analysis-chart .bar-fill.hot,
+.component-zoom-chart .bar-fill.hot { fill: rgba(185, 90, 80, 0.80); }
+
+.analysis-chart .effect-bar,
+.component-zoom-chart .effect-bar { fill: rgba(52, 119, 93, 0.78); }
+
+.analysis-chart .pvalue-bar,
+.component-zoom-chart .pvalue-bar { fill: rgba(185, 90, 80, 0.70); }
+
+.analysis-chart .null-bar,
+.component-zoom-chart .null-bar { fill: rgba(47, 111, 159, 0.48); }
+
+.analysis-chart .tail-bar,
+.component-zoom-chart .tail-bar { fill: rgba(201, 149, 47, 0.65); }
+
+.analysis-chart .observed-line,
+.component-zoom-chart .observed-line { stroke: #b95a50; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .dist-bar,
+.component-zoom-chart .dist-bar { fill: rgba(47, 127, 111, 0.75); }
+
+.analysis-chart .dist-bar-highlight,
+.component-zoom-chart .dist-bar-highlight { fill: rgba(198, 78, 78, 0.78); }
+
+.analysis-chart .overlap-bg,
+.component-zoom-chart .overlap-bg { fill: rgba(223, 228, 234, 0.9); }
+
+.analysis-chart .overlap-fill,
+.component-zoom-chart .overlap-fill { fill: rgba(47, 127, 111, 0.74); }
+
+.analysis-chart .missing-fill,
+.component-zoom-chart .missing-fill { fill: rgba(216, 161, 58, 0.62); }
+
+.analysis-chart .delta-pos,
+.component-zoom-chart .delta-pos { fill: rgba(47, 127, 111, 0.78); }
+
+.analysis-chart .delta-neg,
+.component-zoom-chart .delta-neg { fill: rgba(216, 161, 58, 0.82); }
+
+.analysis-chart .top-contribution,
+.component-zoom-chart .top-contribution { fill: rgba(185, 90, 80, 0.78); }
+
+.analysis-chart .highlight-band,
+.component-zoom-chart .highlight-band { fill: rgba(201, 149, 47, 0.12); }
+
+.analysis-chart .hell-line,
+.component-zoom-chart .hell-line { fill: none; stroke: #c64e4e; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .hell-point,
+.component-zoom-chart .hell-point { fill: #c64e4e; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .violin-ref,
+.component-zoom-chart .violin-ref { fill: rgba(36, 107, 159, 0.24); stroke: #246b9f; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .violin-cur,
+.component-zoom-chart .violin-cur { fill: rgba(198, 78, 78, 0.24); stroke: #c64e4e; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .box-ref,
+.component-zoom-chart .box-ref { fill: rgba(36, 107, 159, 0.16); stroke: #246b9f; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .box-cur,
+.component-zoom-chart .box-cur { fill: rgba(198, 78, 78, 0.16); stroke: #c64e4e; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .whisker,
+.component-zoom-chart .whisker { stroke: #2c3642; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .rank-ref,
+.component-zoom-chart .rank-ref { fill: rgba(36, 107, 159, 0.58); }
+
+.analysis-chart .rank-cur,
+.component-zoom-chart .rank-cur { fill: rgba(198, 78, 78, 0.58); }
+
+.analysis-chart .rank-balance,
+.component-zoom-chart .rank-balance { fill: none; stroke: #2f7f6f; stroke-width: 3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .row-bg,
+.component-zoom-chart .row-bg { fill: #f3f6f7; }
+
+.analysis-chart .state-normal,
+.component-zoom-chart .state-normal { fill: rgba(47, 111, 159, 0.35); }
+
+.analysis-chart .state-warning,
+.component-zoom-chart .state-warning { fill: rgba(201, 149, 47, 0.62); }
+
+.analysis-chart .state-alarm,
+.component-zoom-chart .state-alarm { fill: rgba(185, 90, 80, 0.72); }
+
+.analysis-chart .state-alt,
+.component-zoom-chart .state-alt { fill: rgba(58, 128, 100, 0.66); }
+
+.analysis-chart .state-replace,
+.component-zoom-chart .state-replace { fill: rgba(185, 90, 80, 0.74); }
+
+.analysis-chart .state-drift,
+.component-zoom-chart .state-drift { fill: #d97870; }
+
+.analysis-chart .state-retrain,
+.component-zoom-chart .state-retrain { fill: rgba(58, 128, 100, 0.66); }
+
+.analysis-chart .layer-ring,
+.component-zoom-chart .layer-ring { fill: none; stroke: #3a8064; stroke-width: 2.3; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .ks-point,
+.component-zoom-chart .ks-point,
+.analysis-chart .ph-point,
+.component-zoom-chart .ph-point { fill: #3a8064; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.analysis-chart .label,
+.component-zoom-chart .label { fill: var(--muted); font-size: 8px; font-weight: 750; }
+
+.analysis-chart .timeline-label,
+.component-zoom-chart .timeline-label { font-size: 8px; font-weight: 850; }
+
+.analysis-chart .mini-title,
+.component-zoom-chart .mini-title { fill: var(--ink); font-size: 8px; font-weight: 800; }
+
+.analysis-chart .value,
+.component-zoom-chart .value { fill: var(--ink); font-size: 8px; font-weight: 850; }
+
+.analysis-chart .axis-tick,
+.component-zoom-chart .axis-tick { fill: var(--muted); font-size: 8px; font-weight: 700; }
+
+.analysis-chart .axis-label,
+.component-zoom-chart .axis-label { fill: var(--muted); font-size: 8px; font-weight: 750; }
+
+.analysis-chart .line-readout,
+.component-zoom-chart .line-readout { fill: var(--muted); font-size: 8px; font-weight: 800; }

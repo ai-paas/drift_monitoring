@@ -1,0 +1,22 @@
+{
+  "packId": "sprint49_deferred_variants",
+  "title": "Sprint 49 deferred ECDF and statistical executable scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V8-ROW-CASE004-KS-APPROX-A2",
+    "V8-ROW-CASE004-EPS-ASYM-DS1",
+    "V8-ROW-CASE004-KS-1S-E1",
+    "V8-ROW-CASE004-LILLIE-E1",
+    "V8-ROW-CASE004-KS-HIGHER-E1",
+    "V8-ROW-CASE004-KS-APPROX-E1",
+    "V8-ROW-CASE004-AD-1S-E2",
+    "V8-ROW-CASE004-AD-KS-E2",
+    "V8-ROW-CASE004-CVM-1S-E3",
+    "V8-ROW-CASE004-CVM-KS-E3",
+    "V8-ROW-CASE004-KUIP-CIRC-E4",
+    "V8-ROW-CASE004-KUIP-1S-E4",
+    "V8-ROW-CASE004-BWS-EXACT-R1",
+    "V8-ROW-CASE004-ANOVA-F-V1",
+    "V8-ROW-CASE004-MODEL-F-V1"
+  ]
+}

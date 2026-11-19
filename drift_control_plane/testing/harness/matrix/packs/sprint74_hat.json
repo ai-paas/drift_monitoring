@@ -1,0 +1,8 @@
+{
+  "packId": "sprint74_hat",
+  "description": "Sprint 74 CHART-ADAPT-001 HAT executable rows.",
+  "rowIds": [
+    "V33-ROW-CASE020-HAT-NODE-ADAPT001",
+    "V33-ROW-CASE020-HAT-ALTERNATE-ADAPT001"
+  ]
+}

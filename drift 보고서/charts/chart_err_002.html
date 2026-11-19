@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RDDM의 경보 구간 보존과 재설정 과정</title>
+  <link rel="stylesheet" href="./chart_err_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ERR-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>RDDM 오류율과 reset</h2>
+          <p>오류율이 0.28 경보 기준을 지나 0.38 드리프트 기준에 닿은 뒤 reset 이후 낮아지는 흐름을 읽는다.</p>
+        </div>
+        <svg id="errorTrend" role="img" aria-label="RDDM warning과 drift marker가 표시된 오류율 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>보존 윈도 크기</h2>
+            <p>t=25의 156개 보존 window가 t=26 reset 직후 44개로 줄어드는지 본다.</p>
+          </div>
+          <svg id="windowChart" role="img" aria-label="RDDM retained window size 추세"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>DDM과 RDDM 비교</h2>
+            <p>DDM은 drift 후 reset으로, RDDM은 warning 데이터를 retain한 뒤 reactive reset으로 이어진다.</p>
+          </div>
+          <svg id="comparisonChart" role="img" aria-label="DDM과 RDDM 대응 비교 timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 error rate가 t=20에 warning 기준 0.28에 도달하고 t=25에 drift 기준 0.38을 넘은 뒤
+          t=26 reactive reset 이후 0.42에서 0.36으로 낮아진다. Retained window는 reset 직전 156개에서
+          reset 직후 44개로 축소되어, RDDM이 warning 구간을 보존한 뒤 새 window로 전환한 상황으로 읽는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch error"></i>error rate</span>
+        <span><i class="swatch warning"></i>warning</span>
+        <span><i class="swatch drift"></i>drift/reset</span>
+        <span><i class="swatch retained"></i>retained window</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_err_002.js"></script>
+</body>
+</html>

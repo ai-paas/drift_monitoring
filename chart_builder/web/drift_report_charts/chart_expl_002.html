@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-EXPL-002 - query_age 분기로 드러난 현재 구간 분리</title>
+  <link rel="stylesheet" href="./chart_expl_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-EXPL-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>특징 중요도와 시간 분기 수</h2>
+          <p>query_age가 importance 0.34, time split 18로 가장 높다.</p>
+        </div>
+        <svg id="importanceChart" role="img" aria-label="tree feature importance and time split count"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>분기 경로 다이어그램</h2>
+            <p>query_age > 14d 이후 device = mobile에서 current 82% leaf가 만들어진다.</p>
+          </div>
+          <svg id="pathChart" role="img" aria-label="tree split path diagram"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>세그먼트 분포</h2>
+            <p>S4 segment는 baseline 18%, current 82%로 current가 지배적이다.</p>
+          </div>
+          <svg id="segmentChart" role="img" aria-label="segment distribution comparison"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Tree feature 기반 감지는 domain classifier tree가 시간 또는 domain을 구분하는 split을 학습했는지 확인한다.
+          이 예시에서는 query_age split 18회와 current 82% leaf가 함께 나타나
+          tree feature 기반 drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch importance"></i>importance</span>
+        <span><i class="swatch time"></i>time split</span>
+        <span><i class="swatch current"></i>current segment</span>
+        <span><i class="swatch base"></i>baseline</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_expl_002.js"></script>
+</body>
+</html>

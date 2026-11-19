@@ -1,0 +1,10 @@
+{
+  "packId": "sprint53_ecdd_wt_error_rate",
+  "title": "Sprint 53 ECDD-WT error-rate scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V12-ROW-CASE011-ECDDWT-STANDARD-ERR004",
+    "V12-ROW-CASE011-ECDDWT-WARNING-ERR004",
+    "V12-ROW-CASE011-ECDDWT-ERROR-STREAM-ERR004"
+  ]
+}

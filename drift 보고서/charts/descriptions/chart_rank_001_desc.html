@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-RANK-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-RANK-001</p>
+    <h1>CHART-RANK-001 해석</h1>
+    <h2>차트 목적</h2> <p><code>CHART-RANK-001</code>은 기준 구간과 현재 구간의 값 분포 차이를 순위 기반 관점에서 확인하기 위한 차트다. Baumgartner-Weiss-Schindler Test, Mann-Whitney U, Wilcoxon Rank Sum Test처럼 원래 값보다 결합 순위의 치우침을 사용하는 검정에 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 현재 구간 값이 기준 구간보다 전반적으로 높은 순위에 놓이는가?
+2. 중앙값 또는 사분위 범위가 이동했는가?
+3. 위치 이동뿐 아니라 분포 폭 또는 형태 변화도 함께 나타나는가?</code></pre> <h2>차트 구성</h2> <p>왼쪽 패널은 Box/Violin 분포 비교다.</p> <ul> <li>파란 분포는 기준 구간이다.</li> <li>붉은 분포는 현재 구간이다.</li> <li>굵은 검은 선은 중앙값이다.</li> <li>박스는 사분위 범위를 보여준다.</li> <li>violin 폭은 값 구간별 상대 밀도를 보여준다.</li> </ul> <p>오른쪽 패널은 결합 순위 분포다.</p> <ul> <li>기준 구간과 현재 구간을 합쳐 값 순서대로 rank를 매긴다.</li> <li>파란 막대는 기준 구간 sample의 rank 빈도다.</li> <li>붉은 막대는 현재 구간 sample의 rank 빈도다.</li> <li>현재 구간 막대가 높은 rank 쪽에 몰리면 현재 값이 기준보다 전반적으로 크다는 뜻이다.</li> <li>초록 선은 rank bin별 현재 구간 비중 흐름을 보조적으로 보여준다.</li> </ul> <p>상단 요약 카드에는 다음 값이 표시된다.</p> <ul> <li><code>Mann-Whitney U</code>: 현재 구간 값이 기준 구간 값보다 큰 상대적 순위 쌍의 정도</li> <li><code>순위 AUC</code>: 임의의 현재 sample이 임의의 기준 sample보다 클 확률에 가까운 효과 크기</li> <li><code>중앙값 차이</code>: 현재 구간 중앙값에서 기준 구간 중앙값을 뺀 값</li> </ul> <h2>해석 순서</h2> <p>먼저 오른쪽 순위 분포를 본다. 두 그룹이 같은 분포라면 기준과 현재의 rank가 전체 범위에 비슷하게 섞인다. 현재 구간이 높은 rank 쪽에 더 많이 나타나면 위치 shift 후보로 본다.</p> <p>그 다음 왼쪽 Box/Violin 패널에서 중앙값과 사분위 범위를 확인한다. Rank 기반 검정은 상대 순위 차이에 민감하지만, 실제 보고서에서는 값 분포가 얼마나 이동했는지와 분포 폭이 달라졌는지를 함께 설명해야 한다.</p> <p>마지막으로 U 통계량과 순위 AUC를 함께 본다.</p> <pre><code>순위 AUC가 0.5에 가깝다
+  -&gt; 두 구간의 상대 순위가 크게 치우치지 않았다.
+
+순위 AUC가 0.5보다 충분히 크다
+  -&gt; 현재 구간 값이 기준 구간보다 높은 순위에 놓이는 경향이 있다.
+
+순위 AUC가 0.5보다 충분히 작다
+  -&gt; 현재 구간 값이 기준 구간보다 낮은 순위에 놓이는 경향이 있다.
+
+중앙값 차이와 rank 치우침이 같은 방향이다
+  -&gt; 위치 이동 설명이 비교적 일관적이다.</code></pre> <h2>Drift 후보 판단 기준</h2> <p>순위 AUC가 0.5에서 충분히 벗어나고 중앙값 차이가 같은 방향이면 위치 drift 후보로 해석한다. 순위 치우침과 분포 폭 변화가 함께 보이면 형태 변화도 추가 확인한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 Mann-Whitney U가 <code>31,551</code>, 순위 AUC가 <code>0.652</code>, 중앙값 차이가 <code>0.57</code>로 표시되어 있다. 순위 AUC가 0.5보다 크므로 임의의 현재 sample이 임의의 기준 sample보다 큰 경우가 더 많다는 뜻이다.</p> <p>왼쪽 Box/Violin 패널에서도 현재 구간의 중앙값이 기준 구간보다 높게 나타난다. 오른쪽 순위 분포에서는 현재 구간의 붉은 막대가 높은 rank 영역에 더 많이 분포한다. 따라서 이 예시는 rank 기반 위치 이동 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>기준 구간과 현재 구간을 Mann-Whitney U / Wilcoxon Rank Sum 관점에서 비교한 결과,
+Mann-Whitney U는 31,551, 순위 AUC는 0.652로 나타났다.
+현재 구간 sample이 높은 결합 순위 영역에 더 많이 분포하고,
+중앙값도 기준 구간보다 0.57 높게 관측된다.
+이는 해당 feature의 위치 shift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - 평균이 반드시 변했다고 단정한다.
+
+금지 2
+  - rank shift가 모델 성능 저하를 직접 의미한다고 말한다.
+
+금지 3
+  - 순위 기반 차이만으로 분포의 모든 형태 차이를 설명한다.
+
+금지 4
+  - label 없이 concept drift가 발생했다고 확정한다.</code></pre> <p>Rank 기반 검정은 상대적 위치 차이에 강하지만, 평균 차이, tail 변화, 분산 변화는 별도 차트와 통계량으로 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>Rank 기반 차이가 보이면 다음을 추가 확인한다.</p> <ul> <li>median, IQR, trimmed mean, effect size의 방향이 일관적인지</li> <li>outlier 또는 clipping 변경이 rank 구조에 영향을 줬는지</li> <li>같은 feature의 KS Test, Cramer-von Mises Test, t-test, Wasserstein Distance 결과</li> <li>one-sided 검정이라면 사전에 방향성 가설이 정의되어 있었는지</li> <li>여러 feature를 동시에 검정했다면 다중 검정 보정 여부</li> <li>label 확보 후 성능 지표, calibration, error rate 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Baumgartner-Weiss-Schindler Test / BWS_TWO_SAMPLE</code></li> <li><code>Baumgartner-Weiss-Schindler Test / BWS_EXACT_OR_ASYMPTOTIC</code></li> <li><code>Baumgartner-Weiss-Schindler Test / BWS_RANK_BASED</code></li> <li><code>Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_TWO_SIDED</code></li> <li><code>Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_ONE_SIDED</code></li> <li><code>Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_EXACT</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "scenarioId": "TC004-MW-EX-R1",
+  "mode": "A",
+  "title": "CASE-004 Mann-Whitney U / Wilcoxon Rank Sum Test CHART-RANK-001 analysis",
+  "source": {
+    "sourceId": "c004-mwexr1",
+    "title": "CASE-004 numeric population shift",
+    "description": "Numeric statistical-test fixture for Mann-Whitney U / Wilcoxon Rank Sum Test CHART-RANK-001",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case004_mw_exact.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-004-MW-EXACT"
+    }
+  },
+  "feeder": {
+    "sourceId": "c004-mwexr1",
+    "datasetCaseId": "CASE-004-MW-EXACT",
+    "csvPath": "testing/harness/data/case004_mw_exact.csv",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T23:00:00Z",
+    "maxRows": 16,
+    "replayWindow": {
+      "start": "2026-06-30T23:00:00Z",
+      "end": "2026-06-30T23:16:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "c004-mwexr1",
+    "sourceId": "c004-mwexr1",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-004 Mann-Whitney U / Wilcoxon Rank Sum Test adapter",
+    "collectionIntervalMinutes": 16,
+    "aggregateIntervalMinutes": 16,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.score",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "a-mwexr1",
+    "adapterId": "c004-mwexr1",
+    "featureId": "score",
+    "methodVariantId": 349,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "generic_statistical_test_window",
+    "params": {
+      "variant_id": "MANN_WHITNEY_EXACT",
+      "value_col": "value",
+      "alpha": 0.05,
+      "min_reference_size": 5,
+      "min_current_size": 5,
+      "exact_max_sample_size": 8
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "16m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "an-mwexr1",
+    "chartId": "CHART-RANK-001",
+    "payloadAdapterKey": "auto__MANN_WHITNEY_EXACT__CHART-RANK-001",
+    "chartOptions": {
+      "title": "CASE-004 MW-EX-R1 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 16,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 16,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-06-30T23:16:00Z",
+    "methodStateLastBucketEnd": "2026-06-30T23:16:00Z",
+    "bucketRowCount": 16,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

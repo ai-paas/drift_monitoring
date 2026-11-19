@@ -1,0 +1,12 @@
+{
+  "packId": "sprint50_cusum_control_chart",
+  "title": "Sprint 50 CUSUM control chart runtime scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V9-ROW-CASE010-CUSUM-UPPER-ANNOT001",
+    "V9-ROW-CASE010-CUSUM-LOWER-ANNOT001",
+    "V9-ROW-CASE010-CUSUM-UPPER-CTRL001",
+    "V9-ROW-CASE010-CUSUM-LOWER-CTRL001",
+    "V9-ROW-CASE010-CUSUM-TWOSIDED-CTRL001"
+  ]
+}

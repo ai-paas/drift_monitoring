@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-003 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ERR-003</p>
+    <h1>CHART-ERR-003 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 EDDM이 오류 사이의 거리(distance between errors)를 이용해 점진적 성능 저하를 감지하는 방식을 설명한다.</p> <p>EDDM은 단순 error rate보다 오류 사이 간격의 변화에 주목한다. 오류가 점점 자주 발생하면 오류 사이 거리가 짧아지고, distance score ratio가 warning 또는 drift 기준 아래로 내려간다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 오류 사이 간격 기반 score가 점진적으로 낮아지는가?
+2. score가 warning 기준을 지나 drift 기준 아래로 내려가는가?
+3. error event raster에서 오류 발생이 실제로 촘촘해지는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - distance-between-errors score trend
+  - warning threshold
+  - drift threshold
+  - warning/drift marker
+
+우측 상단
+  - normal/warning/drift state timeline
+
+우측 하단
+  - error event raster
+  - drift 이후 오류 event 밀집 구간</code></pre> <p>상단 요약 영역에는 final score, warning 시점, drift 시점을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 distance score trend를 확인한다.</p> <pre><code>distance score가 1 근처에서 안정적이다
+  -&gt; 오류 사이 간격이 baseline과 유사하다.
+
+distance score가 warning 기준 아래로 내려간다
+  -&gt; 오류 발생 간격이 줄어드는 초기 징후로 본다.
+
+distance score가 drift 기준 아래로 내려간다
+  -&gt; gradual error-rate drift 후보로 본다.</code></pre> <p>그 다음 우측 상단 timeline에서 normal, warning, drift 상태가 순차적으로 전환되는지 확인한다.</p> <p>마지막으로 우측 하단 error event raster를 확인한다. Drift 이후 error event가 촘촘해지면 distance score 하락이 실제 error event 밀집과 일치한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Distance-between-errors score가 warning 기준 아래로 먼저 하락하고 이후 drift 기준 아래로 내려가며, error event raster에서도 오류 발생 간격이 짧아지는 패턴이 확인되면 EDDM 기반 drift 후보로 해석한다.</p> <p>단, EDDM은 gradual drift에 민감하지만 갑작스러운 일회성 error spike에는 과잉 반응하거나 반대로 늦게 반응할 수 있다. Label 지연과 error event 정의도 반드시 확인해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 final score가 <code>0.44</code>, warning 시점이 <code>t=11</code>, drift 시점이 <code>t=19</code>로 표시되어 있다. 좌측 trend에서 distance score는 1.0 근처에서 시작해 점진적으로 하락하고, warning threshold <code>0.90</code>과 drift threshold <code>0.75</code> 아래로 차례로 내려간다.</p> <p>우측 상단 timeline에서는 normal 상태가 warning을 거쳐 drift 상태로 전환된다. 우측 하단 raster에서도 drift 이후 error event가 더 촘촘하게 나타난다. 따라서 이 예시는 오류 사이 간격이 줄어드는 점진적 error-rate drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>EDDM으로 오류 사이 간격을 모니터링한 결과,
+distance score는 t=11에서 warning 기준 0.90 아래로 내려갔고
+t=19에서 drift 기준 0.75 아래로 하락했다.
+Error event raster에서도 drift 이후 오류 발생 간격이 촘촘해졌다.
+이는 gradual error-rate drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - error event 밀집만으로 원인 feature를 특정한다.
+
+금지 2
+  - label 지연을 확인하지 않고 error event 시점을 실제 발생 시점으로 해석한다.
+
+금지 3
+  - EDDM drift를 갑작스러운 concept drift로 단정한다.
+
+금지 4
+  - class별 error event 분포를 보지 않고 전체 오류 증가만 해석한다.</code></pre> <p>EDDM은 오류 사이 간격의 변화에 초점을 둔다. 입력 데이터 drift, calibration 변화, class-specific error 변화는 별도 chart와 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>EDDM drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>error event 정의와 label 지연</li> <li>오류 사이 거리의 평균과 표준편차 산정 방식</li> <li>warning/drift threshold 설정</li> <li>class별 error event raster</li> <li>gradual drift가 의심되는 운영 이벤트 또는 데이터 source 변화</li> <li>DDM, RDDM, ECDD-WT, HDDM 등 다른 error detector와의 합의 여부</li> <li>모델 성능 지표, calibration, feature drift chart와의 관계</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>EDDM / EDDM_DISTANCE_BETWEEN_ERRORS</code></li> <li><code>EDDM / EDDM_WARNING_DRIFT</code></li> <li><code>EDDM / EDDM_GRADUAL_DRIFT</code></li> </ul>
+  </main>
+</body>
+</html>

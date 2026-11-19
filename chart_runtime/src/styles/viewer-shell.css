@@ -1,0 +1,28 @@
+﻿/* Source candidate for recreated-chart viewer shell styles. */
+/* chart_runtime.css remains the browser artifact and source of truth until a build step exists. */
+
+.site { display: grid; grid-template-columns: 320px minmax(0, 1fr); height: 100vh; height: 100dvh; max-height: 100vh; max-height: 100dvh; min-height: 0; overflow: hidden; }
+.sidebar { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: 14px; min-width: 0; min-height: 0; padding: 18px; border-right: 1px solid var(--line); background: var(--panel); overflow: hidden; }
+.sidebar h1, .workspace-head h2, .recreated-pane h3, .issues h3 { margin: 0; }
+.eyebrow { margin: 0 0 5px; color: var(--muted); font-size: 12px; font-weight: 850; }
+#searchInput { height: 36px; padding: 0 11px; border: 1px solid var(--line); border-radius: 7px; }
+.chart-list { display: grid; align-content: start; gap: 7px; min-height: 0; overflow: auto; padding-right: 4px; }
+.chart-button { display: grid; gap: 4px; width: 100%; padding: 10px 11px; border: 1px solid var(--line); border-radius: 7px; background: #fff; text-align: left; cursor: pointer; }
+.chart-button.active { border-color: #a8c8dd; background: var(--active-bg); color: var(--active); }
+.chart-button strong { font-size: 13px; }
+.chart-button span { color: var(--muted); font-size: 11px; line-height: 1.35; }
+.workspace { display: grid; grid-template-rows: auto minmax(0, 1fr) minmax(0, 160px); gap: 12px; min-width: 0; min-height: 0; height: 100%; padding: 18px; overflow: hidden; }
+.workspace-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.workspace-head h2 { font-size: 22px; line-height: 1.25; }
+.open-link { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 7px 11px; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 800; cursor: pointer; }
+.recreated-pane { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 8px; min-width: 0; min-height: 0; }
+.recreated-pane h3, .issues h3 { color: var(--muted); font-size: 13px; font-weight: 900; }
+.issues { min-height: 0; max-height: 160px; overflow: auto; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.issues ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.original-popup { position: fixed; inset: 0; z-index: 1100; display: grid; place-items: center; padding: 24px; background: rgba(23,33,43,.42); }
+.original-popup[hidden] { display: none; }
+.original-popup-panel { display: grid; grid-template-rows: auto minmax(0, 1fr); width: min(1240px, calc(100vw - 48px)); height: min(880px, calc(100vh - 48px)); min-width: 0; min-height: 0; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 22px 60px rgba(23,33,43,.30); overflow: hidden; }
+.original-popup-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); background: #fff; }
+.original-popup-head h2 { margin: 0; font-size: 18px; line-height: 1.25; }
+.original-popup-actions { display: flex; gap: 8px; align-items: center; }
+.original-popup-frame { width: 100%; height: 100%; border: 0; background: #f6f7f8; }

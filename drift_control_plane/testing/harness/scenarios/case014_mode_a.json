@@ -1,0 +1,92 @@
+{
+  "scenarioId": "TCASE-014",
+  "mode": "A",
+  "title": "CASE-014 future event time rejection",
+  "source": {
+    "sourceId": "case-014",
+    "title": "CASE-014 future event time rejection",
+    "description": "Synthetic stream where normalized event time remains in the future",
+    "sourceType": "test_db",
+    "sourceUrl": "테스트데이터/CASE-014_future_event_time_rejection/data.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-014"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-014",
+    "datasetCaseId": "CASE-014",
+    "csvPath": "테스트데이터/CASE-014_future_event_time_rejection/data.csv",
+    "sourceClockOffsetMs": 240000,
+    "speedFactor": 60,
+    "startTime": "2026-01-04T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-014-adwin",
+    "sourceId": "case-014",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-014 numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric",
+      "sourceClockOffsetMs": 240000,
+      "maxSourceClockOffsetMs": 300000
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case014-adwin",
+    "adapterId": "case-014-adwin",
+    "featureId": "metric",
+    "methodVariantId": 123,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_mean_stream",
+    "params": {
+      "delta": 0.002
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case014-adwin-stream",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+    "chartOptions": {
+      "title": "CASE-014 ADWIN stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "startTime": "2026-01-04T00:00:00Z",
+    "endTime": "2026-01-04T00:03:00Z",
+    "intervalMinutes": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 0,
+    "bucketCount": 0,
+    "methodRunCount": 0,
+    "adapterCursorTime": null,
+    "methodStateLastBucketEnd": null,
+    "bucketRowCount": 0,
+    "driftEventMinimum": 0,
+    "timePolicyValidationRequired": true,
+    "adapterStatus": "warning",
+    "futureRejectedRowsMinimum": 1,
+    "noBucketsExpected": true,
+    "noMethodRunsExpected": true,
+    "adapterDiagnosticsValidationRequired": true,
+    "pollOutcome": "skipped",
+    "pollStatus": "warning",
+    "diagnosticsCode": "FUTURE_EVENT_TIME_REJECTED",
+    "diagnosticsSeverity": "warning",
+    "pollRejectedRowsMinimum": 1
+  }
+}

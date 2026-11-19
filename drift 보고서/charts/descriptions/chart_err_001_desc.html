@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ERR-001</p>
+    <h1>CHART-ERR-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 DDM이 online error rate의 증가를 warning과 drift 단계로 구분해 감지하는 방식을 설명한다.</p> <p>DDM은 현재 error rate의 <code>p + s</code>를 최소 error 상태의 <code>p_min + 2s_min</code>, <code>p_min + 3s_min</code> 기준과 비교한다. Warning 구간은 drift 전 후보 데이터를 보관하는 buffer 역할을 하며, drift threshold를 넘으면 error-rate detector 기반 drift 후보로 판단한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. error rate가 warning threshold를 넘는가?
+2. warning buffer가 drift threshold 초과로 이어지는가?
+3. drift alarm 이후 error rate 상승이 지속되는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - error rate trend
+  - warning threshold
+  - drift threshold
+  - warning/drift marker
+
+우측 상단
+  - p+s와 drift threshold의 margin
+  - margin 0 초과 구간
+
+우측 하단
+  - normal/warning/drift state timeline
+  - warning buffer 구간</code></pre> <p>상단 요약 영역에는 final error, warning start, drift alarm을 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 error rate trend에서 warning threshold와 drift threshold 초과 여부를 확인한다.</p> <pre><code>error rate가 warning threshold 아래에 있다
+  -&gt; DDM 기준으로 정상 상태로 본다.
+
+error rate가 warning threshold를 넘지만 drift threshold 아래에 있다
+  -&gt; warning buffer를 유지하며 추가 관측이 필요하다.
+
+error rate가 drift threshold를 넘는다
+  -&gt; DDM drift 후보로 본다.</code></pre> <p>그 다음 우측 상단 threshold margin을 본다. Margin이 0을 넘는 시점은 drift threshold 초과 시점이다.</p> <p>마지막으로 우측 하단 warning buffer timeline을 확인한다. Warning 구간이 짧게 끝나는지, drift 상태로 이어지는지에 따라 후속 조치가 달라진다.</p> <h2>Drift 후보 판단 기준</h2> <p>Error rate가 warning threshold를 넘은 뒤 buffer 구간을 거쳐 drift threshold를 초과하고, 이후 error rate 상승이 지속되면 DDM 기반 drift 후보로 해석한다.</p> <p>단, DDM은 label이 있어야 error rate를 계산할 수 있고, label 지연이 있으면 alarm 시점이 실제 drift 시점보다 늦게 보일 수 있다. Class-specific DDM을 사용할 때는 전체 error rate와 class별 error rate를 구분해 해석해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 final error가 <code>0.46</code>, warning start가 <code>t=22</code>, drift alarm이 <code>t=26</code>으로 표시되어 있다. 좌측 error trend는 warning threshold <code>0.27</code>을 넘은 뒤 drift threshold <code>0.36</code>을 초과한다.</p> <p>우측 상단 margin chart에서는 t=26 부근부터 drift threshold 대비 margin이 0을 넘는다. 우측 하단 timeline에서는 normal 상태가 warning buffer를 거쳐 drift 상태로 전환된다. 따라서 이 예시는 error rate 상승이 DDM 기준 drift threshold를 넘은 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>DDM으로 error rate stream을 모니터링한 결과,
+t=22에서 warning threshold를 초과했고 t=26에서 drift threshold를 초과했다.
+Final error rate는 0.46으로 상승했으며 warning buffer가 drift 상태로 이어졌다.
+이는 error-rate detector 기준의 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - DDM drift alarm만으로 원인 feature를 특정한다.
+
+금지 2
+  - label 지연과 label 품질을 확인하지 않고 alarm 시점을 해석한다.
+
+금지 3
+  - class imbalance가 큰 상황에서 전체 error rate만 보고 class별 영향을 단정한다.
+
+금지 4
+  - warning buffer 없이 단일 error spike를 drift로 단정한다.</code></pre> <p>DDM은 error rate 변화 detector다. 데이터 분포 변화, 입력 feature 변화, calibration 변화는 별도 chart와 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>DDM drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>label 지연과 error rate 산정 지연</li> <li>warning buffer에 포함된 sample 구성</li> <li>class별 error rate와 class imbalance 변화</li> <li>최근 배포, threshold 변경, 운영 정책 변경</li> <li>DDM min error 기준의 초기화 여부</li> <li>RDDM, EDDM, ECDD-WT 등 다른 error-rate detector와의 합의 여부</li> <li>입력 feature drift, PSI, KS, Wasserstein 등 데이터 drift chart와의 관계</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>DDM / DDM_STANDARD</code></li> <li><code>DDM / DDM_WARNING_BUFFER</code></li> <li><code>DDM / DDM_CLASS_SPECIFIC</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "packId": "sprint77_multivariate_distribution",
+  "description": "Sprint 77 multivariate distribution executable rows.",
+  "rowIds": [
+    "V36-ROW-CASE004-MULTIVARIATE-ENERGY-MV001",
+    "V36-ROW-CASE004-LINEAR-MMD-MV002",
+    "V36-ROW-CASE004-STREAMING-MMD-MV002",
+    "V36-ROW-CASE004-LSDD-PREPROCESSING-MV003"
+  ]
+}

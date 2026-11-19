@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오른쪽 이동으로 줄어든 기준·현재 분포 겹침</title>
+  <link rel="stylesheet" href="./chart_prob_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-PROB-003">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>확률분포 중첩</h2>
+          <p>1.5 bin은 0.06에서 0.115로 늘고 -1 bin은 0.13에서 0.08로 줄어드는지 본다.</p>
+        </div>
+        <svg id="distributionChart" role="img" aria-label="기준 구간과 현재 구간의 확률분포 overlap 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>겹침 계수</h2>
+            <p>겹침 82.0%와 BC 0.977이 아직 높은 유사도를 뜻하는지 확인한다.</p>
+          </div>
+          <svg id="overlapChart" role="img" aria-label="Overlap coefficient breakdown"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>거리 추세</h2>
+            <p>distance가 직전 0.031에서 현재 0.023으로 관리 기준 0.030 아래로 내려왔는지 읽는다.</p>
+          </div>
+          <svg id="trendChart" role="img" aria-label="Bhattacharyya distance 시간 추세"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 현재 분포가 기준보다 오른쪽으로 이동해 1, 1.5, 2 bin 확률이 커지고 왼쪽 bin 확률은 줄어든다. 겹침 계수는 0.820이고 Bhattacharyya distance는 0.023으로 현재 window에서는 관리 기준 0.030 아래다. 따라서 강한 분리 확정보다는 완만한 overlap 감소가 완화 중인 분포 변화 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 확률</span>
+        <span><i class="swatch current"></i>현재 확률</span>
+        <span><i class="swatch overlap"></i>겹침 영역</span>
+        <span><i class="swatch distance"></i>거리</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_prob_003.js"></script>
+</body>
+</html>
+

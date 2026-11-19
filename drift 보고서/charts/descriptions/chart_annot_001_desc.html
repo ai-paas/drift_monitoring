@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ANNOT-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ANNOT-001</p>
+    <h1>CHART-ANNOT-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 one-sided, upper, lower 변종에서 drift 해석 방향을 명시하는 보조 annotation을 설명한다.</p> <p>One-sided 검정은 변화 크기뿐 아니라 대립가설의 방향이 맞는지가 중요하다. 같은 절대 차이라도 upper 방향 검정에서는 증가 방향의 차이만, lower 방향 검정에서는 감소 방향의 차이만 drift 증거로 해석한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 변종이 upper/greater 또는 lower/less 중 어느 방향을 선언했는가?
+2. 관측된 차이가 선언된 one-sided 방향과 일치하는가?
+3. 반대 방향 차이를 drift 증거로 잘못 해석하지 않았는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - baseline/current 누적 곡선
+  - upper direction marker
+  - lower direction marker
+  - 반대 방향은 not counted로 표시
+
+우측 상단
+  - upper/greater one-sided 판단 카드
+  - lower/less one-sided 판단 카드
+
+우측 하단
+  - KS, Fisher, Mann-Whitney U, CUSUM, EWMA/GMA 변종 적용 matrix</code></pre> <p>상단 요약 영역에는 선언된 direction, D+ gap, one-sided p-value를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 변종 이름이나 설정에서 one-sided 방향을 확인한다.</p> <pre><code>upper 또는 greater
+  -&gt; 현재 구간이 기준 구간보다 커지는 방향만 drift 증거로 본다.
+
+lower 또는 less
+  -&gt; 현재 구간이 기준 구간보다 작아지는 방향만 drift 증거로 본다.
+
+two-sided
+  -&gt; 이 annotation은 보조 설명이 아니며 양방향 차트를 사용한다.</code></pre> <p>그 다음 좌측 overlay에서 표시된 upper/lower marker가 실제로 대립가설 방향과 맞는지 확인한다.</p> <p>마지막으로 우측 판단 카드에서 p-value와 방향이 함께 만족되는지 확인한다. p-value가 작아도 방향이 반대이면 해당 one-sided 검정의 drift 후보로 보지 않는다.</p> <h2>Drift 후보 판단 기준</h2> <p>선언된 one-sided 방향과 관측된 차이 방향이 일치하고, 해당 방향의 statistic 또는 p-value가 임계값을 넘으면 방향성 drift 후보로 해석한다.</p> <p>단, 이 차트는 독립적인 drift 검정 결과가 아니라 기존 family 차트에 붙는 해석 annotation이다. 따라서 원본 차트의 표본 정의, statistic, p-value, control limit과 함께 확인해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 direction이 <code>upper</code>, D+ gap이 <code>+0.11</code>, one-sided p-value가 <code>0.018</code>로 표시되어 있다. 좌측 overlay에서 current 곡선이 upper marker 구간에서 baseline보다 높은 방향으로 벌어진다.</p> <p>우측 상단 카드에서는 upper/greater 방향이 drift candidate로 표시되고, lower/less 방향은 p-value가 충분하지 않아 not counted로 표시된다. 따라서 이 예시는 upper one-sided 변종에서 증가 방향 drift 후보를 설명하는 annotation으로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>해당 변종은 upper one-sided 대립가설을 사용한다.
+관측된 차이는 current가 baseline보다 커지는 방향으로 나타났고,
+D+ gap은 +0.11, one-sided p-value는 0.018이다.
+따라서 증가 방향 drift 후보로 해석하며,
+반대 방향 차이는 이 검정의 drift 증거로 계산하지 않는다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - one-sided 결과를 two-sided 유의성으로 해석한다.
+
+금지 2
+  - 방향이 반대인 차이를 p-value만 보고 drift 후보로 해석한다.
+
+금지 3
+  - upper/lower marker를 원본 statistic 정의와 무관하게 붙인다.
+
+금지 4
+  - annotation만 보고 원본 chart family의 해석을 생략한다.</code></pre> <p>방향성 annotation은 기존 chart의 해석을 보완한다. 원본 statistic이 무엇을 측정하는지 먼저 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>One-sided 방향성 annotation을 사용할 때는 다음을 추가 확인한다.</p> <ul> <li>variant 이름의 <code>ONE_SIDED</code>, <code>GREATER</code>, <code>LESS</code>, <code>UPPER</code>, <code>LOWER</code> 의미</li> <li>statistic 부호와 차이 방향의 정의</li> <li>p-value가 one-sided 기준인지 two-sided 기준인지 여부</li> <li>threshold marker가 원본 detector의 control limit과 일치하는지 여부</li> <li>반대 방향 변화가 별도 위험 신호인지 여부</li> <li>보고서 문장에서 증가/감소 방향을 명시했는지 여부</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>KS Test / TWO_SAMPLE_KS_ONE_SIDED_GREATER</code></li> <li><code>KS Test / TWO_SAMPLE_KS_ONE_SIDED_LESS</code></li> <li><code>Fisher&#x27;s Exact Test / ONE_SIDED_FISHER_EXACT</code></li> <li><code>Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_ONE_SIDED</code></li> <li><code>CUSUM / ONE_SIDED_UPPER_CUSUM</code></li> <li><code>CUSUM / ONE_SIDED_LOWER_CUSUM</code></li> <li><code>EWMA / EWMA_ONE_SIDED</code></li> <li><code>Geometric Moving Average / GMA_ONE_SIDED</code></li> </ul>
+  </main>
+</body>
+</html>

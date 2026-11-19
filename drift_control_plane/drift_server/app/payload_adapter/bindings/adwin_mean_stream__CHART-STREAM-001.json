@@ -1,0 +1,196 @@
+{
+  "bindingId": "adwin_mean_stream__CHART-STREAM-001",
+  "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+  "methodVariantKey": "ADWIN_MEAN_STREAM",
+  "runtimeMethodKey": "adwin_mean_stream",
+  "chartId": "CHART-STREAM-001",
+  "templateDataPolicy": "replace_data_only",
+  "methodEventContract": {
+    "requiredContextPaths": [
+      "$.source.sourceId",
+      "$.feature.featureId",
+      "$.assignment.runtimeMethodKey",
+      "$.methodRun.methodRunId",
+      "$.driftEvent.eventId",
+      "$.driftEvent.eventStart",
+      "$.driftEvent.eventEnd",
+      "$.driftEvent.level",
+      "$.driftEvent.score"
+    ]
+  },
+  "payloadTemplate": {
+    "chartId": "CHART-STREAM-001",
+    "title": "ADWIN stream analysis",
+    "layout": {
+      "areas": [
+        {
+          "area": "main",
+          "title": "Metric stream",
+          "role": "primary_signal",
+          "description": "Bucketed metric mean trend and detected drift marker."
+        },
+        {
+          "area": "summary",
+          "title": "Event summary",
+          "role": "event_context",
+          "description": "Detected event score, window, and method context."
+        },
+        {
+          "area": "notes",
+          "title": "Interpretation notes",
+          "role": "notes_legend",
+          "description": "Legend and interpretation note placeholder updated by LLM output."
+        }
+      ]
+    },
+    "components": [
+      {
+        "componentInstanceId": "CHART-STREAM-001.metric_stream",
+        "componentType": "trend_line",
+        "area": "main",
+        "config": {
+          "title": "Metric mean stream",
+          "time_field": "time",
+          "value_field": "value",
+          "x_axis_label": "logical time",
+          "y_axis_label": "Metric",
+          "show_points": true
+        },
+        "dataBinding": {
+          "source": "metric_series"
+        }
+      },
+      {
+        "componentInstanceId": "CHART-STREAM-001.drift_marker",
+        "componentType": "event_marker",
+        "area": "main",
+        "config": {
+          "time_field": "time",
+          "event_type_field": "event_type",
+          "label_field": "label",
+          "highlight_point": true
+        },
+        "dataBinding": {
+          "source": "event_markers"
+        }
+      },
+      {
+        "componentInstanceId": "CHART-STREAM-001.event_summary",
+        "componentType": "decision_card",
+        "area": "summary",
+        "config": {
+          "title": "Drift event summary"
+        },
+        "dataBinding": {
+          "source": "event_summary"
+        }
+      },
+      {
+        "componentInstanceId": "CHART-STREAM-001.notes",
+        "componentType": "decision_card",
+        "area": "notes",
+        "config": {
+          "title": "Analysis notes",
+          "card_style": "notes_legend"
+        },
+        "dataBinding": {
+          "source": "analysis_note"
+        }
+      }
+    ],
+    "data": {}
+  },
+  "dataBindings": [
+    {
+      "targetDataSource": "metric_series",
+      "input": "buckets",
+      "fields": {
+        "time": "@.bucket.bucketEnd",
+        "value": "@.bucket.v",
+        "windowStart": "@.bucket.bucketStart",
+        "windowEnd": "@.bucket.bucketEnd",
+        "rowCount": "@.bucket.count",
+        "status": "@.bucket.status"
+      }
+    },
+    {
+      "targetDataSource": "event_markers",
+      "input": "single",
+      "fields": {
+        "event_id": "$.driftEvent.eventId",
+        "time": "$.driftEvent.eventEnd",
+        "event_type": "$.driftEvent.level",
+        "label": "$.driftEvent.level",
+        "score": "$.driftEvent.score"
+      }
+    },
+    {
+      "targetDataSource": "event_summary",
+      "input": "literalRows",
+      "rows": [
+        {
+          "label": "event",
+          "value": "{driftEvent.eventId}"
+        },
+        {
+          "label": "level",
+          "value": "{driftEvent.level}",
+          "decision": "{driftEvent.level}"
+        },
+        {
+          "label": "score",
+          "value": "{driftEvent.score}"
+        },
+        {
+          "label": "window",
+          "value": "{driftEvent.eventStart} - {driftEvent.eventEnd}"
+        },
+        {
+          "label": "method",
+          "value": "{assignment.runtimeMethodKey}"
+        }
+      ]
+    },
+    {
+      "targetDataSource": "analysis_note",
+      "input": "literalRows",
+      "rows": [
+        {
+          "title": "Analysis note",
+          "label": "Drift event",
+          "value": "{driftEvent.level}",
+          "decision": "{driftEvent.level}",
+          "text": "Metric buckets are interpreted on Drift Server logical time. Source event time remains audit metadata.",
+          "legend": [
+            {
+              "label": "Metric mean",
+              "description": "bucket-level metric mean"
+            },
+            {
+              "label": "Drift marker",
+              "description": "detected drift event end time"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dataContracts": [
+    {
+      "source": "metric_series",
+      "requiredFields": ["time", "value", "windowStart", "windowEnd", "rowCount"]
+    },
+    {
+      "source": "event_markers",
+      "requiredFields": ["event_id", "time", "event_type", "label", "score"]
+    },
+    {
+      "source": "event_summary",
+      "requiredFields": ["label", "value"]
+    },
+    {
+      "source": "analysis_note",
+      "requiredFields": ["title", "text"]
+    }
+  ]
+}

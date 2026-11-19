@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-GEN-001 - 임시 지표 상승으로 확인한 일반 드리프트 후보</title>
+  <link rel="stylesheet" href="./chart_gen_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-GEN-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>임계값 포함 지표 추세</h2>
+          <p>metric이 t=15에서 threshold 0.45를 넘고 최종 0.68까지 상승한다.</p>
+        </div>
+        <svg id="trendChart" role="img" aria-label="generic drift metric trend with threshold and alarm marker"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>기준/현재 분포</h2>
+            <p>reference peak는 0.33/38, current peak는 0.54/37로 오른쪽 이동한다.</p>
+          </div>
+          <svg id="distributionChart" role="img" aria-label="reference and current distribution overlay"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경보 근거 요약</h2>
+            <p>final metric 0.68, effect size 0.52, p-value score 0.91을 함께 본다.</p>
+          </div>
+          <svg id="summaryChart" role="img" aria-label="generic drift evidence summary"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Generic chart는 전용 family가 아직 없는 method를 위한 최소 공통 설명이다.
+          이 예시에서는 metric이 t=15 이후 threshold를 넘고 current distribution도 오른쪽으로 이동해 drift 후보로 해석한다.
+          전용 chart가 정의되면 해당 family chart로 대체해야 한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch metric"></i>drift metric</span>
+        <span><i class="swatch reference"></i>reference</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_gen_001.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>드리프트 지표 시계열 상태 동기화 테스트</title>
+  <link rel="stylesheet" href="./drift_metric_timeseries_harness.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">drift_metric_timeseries</p>
+        <h1>상태 영역 동기화 테스트</h1>
+      </div>
+      <p id="statusLine" class="status-line"></p>
+    </header>
+
+    <section class="controls" aria-label="테스트 조작">
+      <div class="control-group">
+        <h2>시간 범위</h2>
+        <button data-action="preset" data-value="24H">24시간</button>
+        <button data-action="preset" data-value="7D">7일</button>
+        <button data-action="preset" data-value="30D">30일</button>
+        <button data-action="preset" data-value="3M">3개월</button>
+        <button data-action="preset" data-value="1Y">1년</button>
+        <button data-action="preset" data-value="ALL">전체</button>
+      </div>
+      <div class="control-group">
+        <h2>스케일</h2>
+        <button data-action="scale" data-value="auto">자동</button>
+        <button data-action="scale" data-value="hour">시간</button>
+        <button data-action="scale" data-value="day">일</button>
+        <button data-action="scale" data-value="month">월</button>
+        <button data-action="scale" data-value="year">연</button>
+      </div>
+      <div class="control-group">
+        <h2>이동</h2>
+        <button data-action="pan" data-value="-1">이전 구간</button>
+        <button data-action="pan" data-value="1">다음 구간</button>
+      </div>
+      <div class="control-group">
+        <h2>Feature</h2>
+        <button data-action="add-feature" data-value="token_length">토큰 길이 추가</button>
+        <button data-action="add-feature" data-value="refusal_rate">거절률 추가</button>
+        <button data-action="add-feature" data-value="latency_ms">응답 지연 추가</button>
+        <button data-action="remove-last">마지막 비교 제거</button>
+      </div>
+      <div class="control-group">
+        <h2>데이터 상태</h2>
+        <button data-action="status" data-feature="refusal_rate" data-value="loading">거절률 loading</button>
+        <button data-action="status" data-feature="refusal_rate" data-value="loaded">거절률 loaded</button>
+        <button data-action="status" data-feature="refusal_rate" data-value="error">거절률 error</button>
+      </div>
+      <div class="control-group">
+        <h2>View</h2>
+        <button data-action="hover">중간 시점 hover</button>
+        <button data-action="clear-hover">hover 해제</button>
+        <button data-action="expanded">popup 토글</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1. Feature Registry</h2>
+        <pre id="registryView"></pre>
+      </article>
+      <article class="card">
+        <h2>2. Time State</h2>
+        <pre id="timeView"></pre>
+      </article>
+      <article class="card">
+        <h2>3. Feature Data Store</h2>
+        <pre id="dataStoreView"></pre>
+      </article>
+      <article class="card">
+        <h2>4. View / Render State</h2>
+        <pre id="viewStateView"></pre>
+      </article>
+      <article class="card wide">
+        <h2>5. Derived Render Model</h2>
+        <div id="renderModelView" class="panel-list"></div>
+      </article>
+      <article class="card wide">
+        <h2>6. Synchronization Log</h2>
+        <pre id="syncLogView"></pre>
+      </article>
+    </section>
+  </main>
+
+  <script src="./drift_metric_timeseries_test_data.js"></script>
+  <script src="./drift_metric_timeseries_harness.js"></script>
+</body>
+</html>

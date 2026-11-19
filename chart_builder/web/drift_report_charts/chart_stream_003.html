@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>페이지-힌클리 기반 스트림 평균 상승 경보</title>
+  <link rel="stylesheet" href="./chart_stream_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-STREAM-003">
+    <header class="header summary-only">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>스트림 값과 이동 평균</h2>
+          <p>t=20 이후 metric이 0.53에서 0.84까지 오르고, t=29에 alarm이 표시된다.</p>
+        </div>
+        <svg id="streamChart" role="img" aria-label="Page-Hinkley 경보가 표시된 원시 스트림 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>PH 통계량</h2>
+            <p>누적 통계량이 threshold 18.0을 넘어 25.5까지 증가한다.</p>
+          </div>
+          <svg id="phChart" role="img" aria-label="threshold가 표시된 Page-Hinkley 통계량"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경보 상태 흐름</h2>
+            <p>normal 이후 t=22 warning, t=29 drift로 전환된다.</p>
+          </div>
+          <svg id="timelineChart" role="img" aria-label="Page-Hinkley 경보 상태 전환 timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 stream metric이 초반 0.42~0.53 수준에서 t=20 이후 계속 상승하고,
+          PH statistic이 threshold 18.0을 넘어 최종 25.5까지 증가한다.
+          t=22 warning 이후 t=29 drift 상태로 바뀌므로 평균 상승 방향의 stream drift 후보로 읽는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch stream"></i>raw stream</span>
+        <span><i class="swatch mean"></i>running mean</span>
+        <span><i class="swatch alarm"></i>drift alarm</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_stream_003.js"></script>
+</body>
+</html>

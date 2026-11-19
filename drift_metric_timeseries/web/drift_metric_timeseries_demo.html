@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>드리프트 지표 시계열</title>
+  <link rel="stylesheet" href="./drift_metric_timeseries_demo.css?v=73">
+  <link rel="stylesheet" href="./drift_metric_timeseries_runtime_scoped.css?v=20260903">
+</head>
+<body>
+  <main class="page">
+    <section class="chart-shell" aria-label="드리프트 지표 시계열">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">drift_metric_timeseries</p>
+          <h1>드리프트 지표 시계열</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="openConfig" class="icon-button" type="button" title="설정">설정</button>
+        </div>
+      </header>
+
+      <section class="summary-strip">
+        <div id="stateSummary" class="state-summary"></div>
+        <div id="featureChips" class="feature-chips"></div>
+      </section>
+
+      <section class="legend" aria-label="범례">
+        <span><i class="legend-line observed"></i>관측</span>
+        <span><i class="legend-dot partial"></i>부분</span>
+        <span><i class="legend-dot imputed"></i>보간</span>
+        <span><i class="legend-band missing"></i>결측</span>
+        <span><i class="legend-band closed"></i>비운영</span>
+        <span><i class="legend-band warning"></i>warning</span>
+        <span><i class="legend-band drift"></i>drift</span>
+      </section>
+
+      <section class="chart-workspace">
+        <aside class="event-sidebar" aria-label="드리프트 이벤트">
+          <header class="event-sidebar-head">
+            <h2>이벤트</h2>
+          </header>
+          <div id="eventList" class="event-list"></div>
+        </aside>
+        <div class="chart-main">
+          <section id="panelStack" class="panel-stack"></section>
+          <section id="navigator" class="navigator"></section>
+          <section id="analysisPanel" class="analysis-panel" hidden>
+            <section class="analysis-dialog" role="dialog" aria-modal="true" aria-labelledby="analysisTitle">
+              <header class="analysis-head">
+                <div>
+                  <p class="eyebrow">event analysis</p>
+                  <h2 id="analysisTitle">Drift analysis</h2>
+                </div>
+                <button id="closeAnalysis" class="icon-button" type="button">닫기</button>
+              </header>
+              <div class="analysis-tools">
+                <div id="analysisStatus" class="analysis-status"></div>
+                <button id="analysisChartNote" class="open-link chart-note-link" type="button" hidden>전체 해석</button>
+              </div>
+              <div id="analysisChart" class="analysis-chart"></div>
+            </section>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+
+  <div id="configDialog" class="dialog-backdrop compact-backdrop" hidden>
+    <section class="config-dialog" role="dialog" aria-modal="true" aria-label="차트 설정">
+      <header class="dialog-head">
+        <div>
+          <p class="eyebrow">controls</p>
+          <h2>차트 설정</h2>
+        </div>
+        <button id="closeConfig" class="icon-button" type="button">닫기</button>
+      </header>
+
+      <section class="toolbar settings-toolbar" aria-label="차트 조작">
+        <div class="control feature-control">
+          <label for="primaryFeature">기준 feature</label>
+          <select id="primaryFeature"></select>
+        </div>
+
+        <div class="control compare-control">
+          <label for="comparisonFeature">비교 feature</label>
+          <div class="inline-control">
+            <select id="comparisonFeature"></select>
+            <button id="addComparison" type="button">추가</button>
+          </div>
+        </div>
+
+        <div class="control range-control">
+          <span class="control-label">빠른 범위</span>
+          <div class="date-row anchor-row">
+            <span class="anchor-label">시작일</span>
+            <input id="anchorDate" type="date">
+            <button id="latestAnchor" type="button">최신</button>
+          </div>
+          <div id="rangeButtons" class="segmented"></div>
+        </div>
+
+        <div class="control scale-control">
+          <span class="control-label">스케일</span>
+          <div id="scaleButtons" class="segmented"></div>
+        </div>
+
+        <div class="control date-control">
+          <span class="control-label">직접 선택</span>
+          <div class="date-row">
+            <input id="fromDate" type="date">
+            <input id="toDate" type="date">
+            <button id="applyDateRange" type="button">적용</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script src="./drift_metric_timeseries_test_data.js?v=67"></script>
+  <script src="../../chart_runtime/chart_runtime.js?v=67"></script>
+  <script src="./drift_metric_timeseries_demo.js?v=72"></script>
+</body>
+</html>

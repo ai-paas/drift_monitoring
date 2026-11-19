@@ -1,0 +1,101 @@
+{
+  "scenarioId": "TCASE-011-DDM",
+  "mode": "A",
+  "title": "CASE-011 prediction-log error-rate drift with DDM",
+  "source": {
+    "sourceId": "case-011-error-rate",
+    "title": "CASE-011 stream error rate and performance",
+    "description": "Prediction log stream with supervised error-rate drift for DDM",
+    "sourceType": "test_db",
+    "sourceUrl": "../테스트데이터/CASE-011_stream_error_rate_and_performance/data.csv.gz",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-011"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-011-error-rate",
+    "datasetCaseId": "CASE-011",
+    "csvPath": "../테스트데이터/CASE-011_stream_error_rate_and_performance/data.csv.gz",
+    "speedFactor": 60,
+    "startTime": "2026-08-31T22:00:00Z",
+    "maxRows": 360,
+    "replayWindow": {
+      "start": "2026-08-31T22:00:00Z",
+      "end": "2026-09-01T04:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-011-ddm",
+    "sourceId": "case-011-error-rate",
+    "adapterType": "test_db_prediction_log_stream",
+    "adapterTitle": "CASE-011 prediction log error-rate adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "trueLabelPath": "$.y_true",
+      "predLabelPath": "$.y_pred",
+      "errorPath": "$.error",
+      "confidencePath": "$.confidence"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case011-ddm",
+    "adapterId": "case-011-ddm",
+    "featureId": "error_rate",
+    "methodVariantId": 291,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "ddm_error_rate_stream",
+    "params": {
+      "variant_id": "DDM_STANDARD",
+      "error_col": "error",
+      "min_num_instances": 30,
+      "min_reference_size": 30,
+      "min_current_size": 30,
+      "errorRateShiftThreshold": 0.12,
+      "maxStatePoints": 720
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case011-ddm-err",
+    "chartId": "CHART-ERR-001",
+    "payloadAdapterKey": "auto__DDM_STANDARD__CHART-ERR-001",
+    "chartOptions": {
+      "title": "CASE-011 DDM error-rate analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 10,
+    "tickCount": 36,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 360,
+    "bucketCount": 36,
+    "methodRunCount": 36,
+    "adapterCursorTime": "2026-09-01T04:00:00Z",
+    "methodStateLastBucketEnd": "2026-09-01T04:00:00Z",
+    "bucketRowCount": 10,
+    "bucketErrorRateMinimum": 0.05,
+    "analysisPointCount": 36,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 60,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

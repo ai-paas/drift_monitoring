@@ -1,0 +1,32 @@
+{
+  "packId": "sprint48_probability_distance",
+  "title": "Sprint 48 probability and categorical distance executable scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V7-ROW-CASE004-CTV-C2",
+    "V7-ROW-CASE004-HIST-TV-C2",
+    "V7-ROW-CASE004-PV-TV-C2",
+    "V7-ROW-CASE004-C-LINF-C3",
+    "V7-ROW-CASE004-PV-LINF-C3",
+    "V7-ROW-CASE004-BN-LINF-C3",
+    "V7-ROW-CASE004-HINC-CAT-H1",
+    "V7-ROW-CASE004-HINC-HIST-H1",
+    "V7-ROW-CASE004-HINC-IMG-H1",
+    "V7-ROW-CASE004-KL-DISC-P1",
+    "V7-ROW-CASE004-KL-HIST-P1",
+    "V7-ROW-CASE004-KL-SMOOTH-P1",
+    "V7-ROW-CASE004-KL-SYM-P1",
+    "V7-ROW-CASE004-JS-DIV-P2",
+    "V7-ROW-CASE004-JS-DIST-P2",
+    "V7-ROW-CASE004-MC-JS-P2",
+    "V7-ROW-CASE004-TEXT-JS-P2",
+    "V7-ROW-CASE004-D-HELL-P2",
+    "V7-ROW-CASE004-H-HELL-P2",
+    "V7-ROW-CASE004-C-HELL-P2",
+    "V7-ROW-CASE004-D-BHAT-P3",
+    "V7-ROW-CASE004-G-BHAT-P3",
+    "V7-ROW-CASE004-H-BHAT-P3",
+    "V7-ROW-CASE004-CAT-PSI-P1",
+    "V7-ROW-CASE004-POP-PSI-P1"
+  ]
+}

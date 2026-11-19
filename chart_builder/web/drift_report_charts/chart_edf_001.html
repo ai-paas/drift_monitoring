@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KS 검정으로 확인하는 현재 분포의 오른쪽 이동</title>
+  <link rel="stylesheet" href="./chart_edf_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-EDF-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>경험 누적분포 비교</h2>
+          <p>x≈0.74에서 기준 CDF 0.804와 현재 CDF 0.587의 최대 차이 D=0.217이 나타나는지 본다.</p>
+        </div>
+        <svg id="ecdfChart" role="img" aria-label="기준 구간과 현재 구간의 경험 누적분포 비교"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>분포 비교</h2>
+          <p>현재 구간 평균이 -0.02에서 0.49 수준으로 올라가며 붉은 분포가 오른쪽으로 밀렸는지 확인한다.</p>
+        </div>
+        <svg id="histChart" role="img" aria-label="기준 구간과 현재 구간의 히스토그램 비교"></svg>
+      </article>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 KS 통계량이 0.217이고 p-value가 0.001보다 작다.
+          x≈0.74에서 기준 구간 누적비율은 0.804인데 현재 구간은 0.587에 머물러 현재 값들이 전반적으로 더 큰 쪽에 분포한다.
+          히스토그램에서도 현재 분포가 오른쪽으로 이동하므로 단변량 feature drift 후보로 해석하되, 성능 저하나 원인은 별도 분석으로 확인한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch gap"></i>최대 KS 차이</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_edf_001.js"></script>
+</body>
+</html>
+

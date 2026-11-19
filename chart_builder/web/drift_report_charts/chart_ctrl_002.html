@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EWMA 평활화로 확인하는 점진적 상방 평균 이동</title>
+  <link rel="stylesheet" href="./chart_ctrl_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CTRL-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>원시 지표와 평활 평균</h2>
+          <p>raw metric은 흔들리지만 EWMA가 t=16 이후 0.56에서 0.80까지 점진적으로 상승하는지 본다.</p>
+        </div>
+        <svg id="rawChart" role="img" aria-label="raw metric and EWMA smoothed average"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>EWMA 관리도</h2>
+            <p>EWMA가 UCL 0.72를 t=27 부근부터 넘고 final 0.80까지 올라가는지 확인한다.</p>
+          </div>
+          <svg id="controlChart" role="img" aria-label="EWMA control chart with UCL and LCL"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>경보 타임라인</h2>
+            <p>normal(t=1~20)에서 warning(t=21~26)을 거쳐 alarm(t=27 이후)으로 이어지는지 읽는다.</p>
+          </div>
+          <svg id="timelineChart" role="img" aria-label="EWMA alarm marker timeline"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          EWMA/GMA는 최근 값에 더 큰 가중치를 주어 noisy metric의 작은 평균 변화를 부드럽게 감지한다.
+          이 예시에서는 raw metric이 흔들리지만 EWMA가 꾸준히 상승해 t=27 부근에서 UCL 0.72를 넘고 final 0.80에 도달한다.
+          Timeline도 warning 이후 alarm으로 전환되므로 noisy metric의 점진적 상방 평균 이동 후보로 해석한다.
+          단, lambda 0.20과 control limit 산정 방식, baseline 조건을 확인하지 않고 원인이나 성능 저하를 단정하지 않는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch raw"></i>raw metric</span>
+        <span><i class="swatch smooth"></i>EWMA/GMA</span>
+        <span><i class="swatch alarm"></i>alarm</span>
+        <span><i class="swatch limit"></i>UCL/LCL</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_ctrl_002.js"></script>
+</body>
+</html>

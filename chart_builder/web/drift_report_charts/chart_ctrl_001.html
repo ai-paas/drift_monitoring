@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>누적 편차로 확인하는 상방 평균 이동 경보</title>
+  <link rel="stylesheet" href="./chart_ctrl_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-CTRL-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>원시 지표 추세</h2>
+          <p>target 0.53 주변에서 시작한 metric이 t=16 이후 0.60 이상으로 올라가고 t=25에서 alarm이 찍히는지 본다.</p>
+        </div>
+        <svg id="rawChart" role="img" aria-label="raw metric trend with CUSUM alarm"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>CUSUM 관리도</h2>
+            <p>C+가 control limit 25를 넘어 52.9까지 누적되고 C-는 0.1 수준에 머무는지 확인한다.</p>
+          </div>
+          <svg id="cusumChart" role="img" aria-label="positive and negative CUSUM control chart"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>방향 요약</h2>
+            <p>C+ 막대가 C-보다 압도적으로 커서 상방 평균 이동이 지배적인지 읽는다.</p>
+          </div>
+          <svg id="summaryChart" role="img" aria-label="CUSUM direction summary"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          CUSUM은 기준 평균에서 작게 반복되는 편차를 누적해 빠른 평균 shift를 감지한다.
+          이 예시에서는 raw metric이 target 0.53보다 계속 높아지고 C+가 control limit 25를 넘어 52.9까지 증가한다.
+          C-는 0.1 수준이라 하방 변화 신호는 약하므로, 상방 평균 이동에 의한 CUSUM drift 후보로 해석한다.
+          단, target mean과 CUSUM 설정값, seasonality를 확인하지 않고 원인이나 성능 저하를 단정하지 않는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch raw"></i>raw metric</span>
+        <span><i class="swatch pos"></i>C+ CUSUM</span>
+        <span><i class="swatch neg"></i>C- CUSUM</span>
+        <span><i class="swatch limit"></i>control limit</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_ctrl_001.js"></script>
+</body>
+</html>

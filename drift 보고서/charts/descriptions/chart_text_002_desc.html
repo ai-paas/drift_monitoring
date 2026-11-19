@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-TEXT-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-TEXT-002</p>
+    <h1>CHART-TEXT-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 text domain classifier가 baseline과 current text를 얼마나 잘 구분하는지로 text domain drift를 설명한다.</p> <p>Domain classifier는 두 기간 또는 두 domain의 text sample을 구분하도록 학습된다. 분류 성능이 높고 score distribution이 분리되면, text representation 또는 descriptor 구성에 의미 있는 차이가 있을 가능성이 있다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. domain classifier ROC AUC가 높은가?
+2. baseline/current classifier score distribution이 분리되는가?
+3. 어떤 text descriptor가 drift에 크게 기여하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - domain classifier ROC curve
+  - random baseline diagonal
+  - AUC 요약
+
+우측 상단
+  - baseline/current classifier score distribution
+  - score 분포 분리 여부
+
+우측 하단
+  - top text descriptor drift bar
+  - embedding projection scatter 요약</code></pre> <p>상단 요약 영역에는 ROC AUC, KS score, top descriptor를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 ROC curve에서 domain classifier가 baseline/current를 구분하는지 확인한다.</p> <pre><code>ROC가 diagonal에 가깝다
+  -&gt; domain 차이를 분류기가 거의 구분하지 못한다.
+
+ROC가 좌상단으로 휘고 AUC가 높다
+  -&gt; baseline/current text domain 차이가 크다.
+
+AUC가 높지만 descriptor가 설명되지 않는다
+  -&gt; leakage 또는 proxy feature 가능성을 확인한다.</code></pre> <p>그 다음 우측 상단 score distribution을 확인한다. Baseline score가 낮고 current score가 높게 분리되면 classifier drift 신호가 명확하다.</p> <p>마지막으로 descriptor drift bar와 embedding projection을 확인한다. 어떤 descriptor가 drift에 기여했는지와 embedding 분리가 같은 방향인지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Domain classifier ROC AUC가 높고, score distribution이 baseline/current로 분리되며, top descriptor drift와 embedding projection 분리가 함께 확인되면 text domain classifier drift 후보로 해석한다.</p> <p>단, classifier가 text 길이, formatting, logging artifact, template 변경 같은 비의미적 차이를 학습했을 수 있으므로 descriptor와 sample 검토가 필요하다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 ROC AUC가 <code>0.89</code>, KS score가 <code>0.47</code>, top descriptor가 <code>refund</code>로 표시되어 있다. 좌측 ROC curve는 random diagonal보다 크게 위에 있어 classifier가 baseline/current를 잘 구분한다.</p> <p>우측 상단 score distribution도 baseline은 낮은 score, current는 높은 score에 집중되어 분리된다. 우측 하단 descriptor bar에서는 <code>refund policy</code>가 가장 큰 drift descriptor로 나타나고, 작은 embedding projection에서도 baseline/current 분리가 보인다. 따라서 이 예시는 text domain classifier 기반 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>Text domain classifier 분석 결과 ROC AUC는 0.89, KS score는 0.47로 나타났다.
+Classifier score distribution은 baseline/current로 분리되었고,
+top descriptor는 refund policy였다.
+이는 text domain classifier 기반 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - classifier AUC만으로 사용자 의도 변화를 단정한다.
+
+금지 2
+  - text length, template, logging field 같은 leakage를 확인하지 않는다.
+
+금지 3
+  - descriptor drift bar만으로 업무 원인을 확정한다.
+
+금지 4
+  - classifier 학습/검증 split을 확인하지 않고 성능 수치를 신뢰한다.</code></pre> <p>Domain classifier drift는 두 text domain의 구분 가능성을 보여준다. 실제 의미 변화와 품질 영향은 sample review와 downstream metric으로 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>Text domain classifier drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>train/test split과 time leakage 여부</li> <li>text length, language, channel, template 변경</li> <li>top descriptor별 sample 예시</li> <li>embedding model 또는 tokenizer 변경 여부</li> <li>retrieval quality, answer quality, fallback rate 변화</li> <li>semantic distance, topic shift chart와의 합의 여부</li> <li>사람이 검토한 current query intent sample</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Text Domain Classifier Drift / TEXT_DOMAIN_CLASSIFIER_ROC_AUC</code></li> <li><code>Text Domain Classifier Drift / TEXT_DOMAIN_CLASSIFIER_STAT_TEST</code></li> <li><code>Text Domain Classifier Drift / TEXT_DESCRIPTOR_DRIFT</code></li> </ul>
+  </main>
+</body>
+</html>

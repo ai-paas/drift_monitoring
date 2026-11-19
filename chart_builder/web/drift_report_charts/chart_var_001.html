@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>현재 구간에서 커진 값의 변동성</title>
+  <link rel="stylesheet" href="./chart_var_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-VAR-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>분포 폭과 상자 비교</h2>
+          <p>기준 SD 6.5보다 현재 SD 10.6이 커지고, whisker도 31.0~77.5로 넓어진다.</p>
+        </div>
+        <svg id="spreadChart" role="img" aria-label="기준 구간과 현재 구간의 분산 및 분포 폭 비교"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>분산 비교</h2>
+            <p>분산 42.3에서 112.4로 2.66배 증가한다.</p>
+          </div>
+          <svg id="varianceChart" role="img" aria-label="기준 구간과 현재 구간의 분산 비교"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>절대편차 변화</h2>
+            <p>평균 절대편차가 5.1에서 8.7로 +3.6 커지고 p=0.012다.</p>
+          </div>
+          <svg id="deviationChart" role="img" aria-label="중심값 기준 절대편차 비교"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 중심값이 52.0에서 52.6으로 거의 유지되지만 분산은 42.3에서 112.4로 2.66배 커진다.
+          Levene p-value 0.012와 절대편차 +3.6이 함께 나타나므로 현재 구간의 값 퍼짐이 커진 분산 drift 후보로 읽는다.
+          평균 이동이나 일부 이상치만 만든 변화인지는 평균 chart와 tail/outlier 점검으로 분리 확인해야 한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch reference"></i>기준 구간</span>
+        <span><i class="swatch current"></i>현재 구간</span>
+        <span><i class="swatch spread"></i>분산/편차</span>
+        <span><i class="swatch threshold"></i>판단 기준</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_var_001.js"></script>
+</body>
+</html>

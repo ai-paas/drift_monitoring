@@ -1,0 +1,103 @@
+{
+  "scenarioId": "TCASE-011-HDDMW-RECENT-ERR005",
+  "mode": "A",
+  "title": "CASE-011 HDDM-W recent error weighting CHART-ERR-005 analysis",
+  "source": {
+    "sourceId": "case-011-hddmw-recent-err005",
+    "title": "CASE-011 stream error rate and performance",
+    "description": "Prediction log stream with supervised error-rate drift for HDDM_W_RECENT_ERROR_WEIGHTING",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case011_hddm_error_rate.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-011"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-011-hddmw-recent-err005",
+    "datasetCaseId": "CASE-011",
+    "csvPath": "testing/harness/data/case011_hddm_error_rate.csv",
+    "speedFactor": 60,
+    "startTime": "2026-08-31T22:00:00Z",
+    "maxRows": 360,
+    "replayWindow": {
+      "start": "2026-08-31T22:00:00Z",
+      "end": "2026-09-01T04:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-011-hddmw-recent",
+    "sourceId": "case-011-hddmw-recent-err005",
+    "adapterType": "test_db_prediction_log_stream",
+    "adapterTitle": "CASE-011 HDDM prediction log error-rate adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "trueLabelPath": "$.y_true",
+      "predLabelPath": "$.y_pred",
+      "errorPath": "$.error",
+      "confidencePath": "$.confidence"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case011-hddmw-recent",
+    "adapterId": "case-011-hddmw-recent",
+    "featureId": "error_rate",
+    "methodVariantId": 402,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "hddm_w_error_rate_stream",
+    "params": {
+      "variant_id": "HDDM_W_RECENT_ERROR_WEIGHTING",
+      "error_col": "error",
+      "min_instances": 30,
+      "min_reference_size": 30,
+      "min_current_size": 30,
+      "errorRateShiftThreshold": 0.12,
+      "maxStatePoints": 720,
+      "lambda": 0.3,
+      "two_sided": true
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case011-hddmw-recent-err005",
+    "chartId": "CHART-ERR-005",
+    "payloadAdapterKey": "auto__HDDM_W_RECENT_ERROR_WEIGHTING__CHART-ERR-005",
+    "chartOptions": {
+      "title": "CASE-011 HDDM-W recent error weighting CHART-ERR-005 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 10,
+    "tickCount": 36,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 360,
+    "bucketCount": 36,
+    "methodRunCount": 36,
+    "adapterCursorTime": "2026-09-01T04:00:00Z",
+    "methodStateLastBucketEnd": "2026-09-01T04:00:00Z",
+    "bucketRowCount": 10,
+    "bucketErrorRateMinimum": 0.05,
+    "analysisPointCount": 36,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 60,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false
+  }
+}

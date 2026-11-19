@@ -1,0 +1,159 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --ink: #17202a;
+  --muted: #5f6b7a;
+  --grid: #dfe4ea;
+  --expected: #246b9f;
+  --observed: #c64e4e;
+  --high: #2f7f6f;
+  --low: #d8a13a;
+  --axis: #2c3642;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow: hidden;
+}
+
+.page {
+  width: 1200px;
+  height: 820px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.chart-id {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1 { margin: 0; font-size: 30px; line-height: 1.2; }
+h2 { margin: 0; font-size: 17px; line-height: 1.25; }
+p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  min-width: 430px;
+}
+
+.metric {
+  background: var(--panel);
+  border: 1px solid #d7dde5;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.metric .label { color: var(--muted); font-size: 12px; }
+.metric .value { margin-top: 4px; font-size: 23px; font-weight: 750; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+}
+
+.side {
+  display: grid;
+  gap: 16px;
+}
+
+.panel, .notes {
+  background: var(--panel);
+  border: 1px solid #d7dde5;
+  border-radius: 8px;
+}
+
+.panel { padding: 16px; }
+.panel-large { min-height: 516px; }
+.panel-small { height: 250px; }
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.panel-head p {
+  max-width: 285px;
+  text-align: right;
+}
+
+.panel-head.compact p { max-width: 190px; }
+
+#barChart {
+  width: 630px;
+  height: 440px;
+  display: block;
+}
+
+#residualChart, #contributionChart {
+  width: 472px;
+  height: 185px;
+  display: block;
+}
+
+.notes {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 16px;
+  padding: 18px 20px;
+}
+
+.notes p { max-width: 790px; margin-top: 6px; }
+
+.legend {
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+  align-content: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+  border-radius: 3px;
+  vertical-align: -2px;
+}
+
+.expected { background: var(--expected); }
+.observed { background: var(--observed); }
+.high { background: var(--high); }
+.low { background: var(--low); }
+
+.grid-line { stroke: var(--grid); stroke-width: 1; }
+.axis-line { stroke: var(--axis); stroke-width: 1; }
+.zero-line { stroke: var(--axis); stroke-width: 1.4; }
+.tick-text, .axis-label { fill: var(--muted); font-size: 12px; }
+.expected-bar { fill: rgba(36, 107, 159, 0.62); }
+.observed-bar { fill: rgba(198, 78, 78, 0.58); }
+.res-high { fill: rgba(47, 127, 111, 0.80); }
+.res-low { fill: rgba(216, 161, 58, 0.82); }
+.res-neutral { fill: #e8edf2; }
+.contrib-bar { fill: rgba(47, 127, 111, 0.76); }
+.contrib-highlight { fill: rgba(198, 78, 78, 0.78); }
+.bar-label { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.callout { fill: var(--high); font-size: 12px; font-weight: 700; }

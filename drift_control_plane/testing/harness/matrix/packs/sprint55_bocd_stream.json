@@ -1,0 +1,10 @@
+{
+  "packId": "sprint55_bocd_stream",
+  "title": "Sprint 55 BOCD numeric stream scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V14-ROW-CASE012-BOCD-GAUSSIAN",
+    "V14-ROW-CASE012-BOCD-HAZARD",
+    "V14-ROW-CASE012-BOCD-PREDICTIVE"
+  ]
+}

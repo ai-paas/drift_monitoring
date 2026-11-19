@@ -1,0 +1,71 @@
+{
+  "scenarioId": "TCASE-001",
+  "mode": "A",
+  "title": "CASE-010 stream numeric mean shift with ADWIN",
+  "source": {
+    "sourceId": "case-010",
+    "title": "CASE-010 stream numeric mean shift",
+    "description": "Synthetic stream numeric mean shift dataset",
+    "sourceType": "test_db",
+    "sourceUrl": "테스트데이터/CASE-010_stream_numeric_mean_shift/data.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "테스트데이터/CASE-010_stream_numeric_mean_shift/data.csv",
+    "speedFactor": 60,
+    "startTime": "2026-01-01T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-010-adwin",
+    "sourceId": "case-010",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-adwin",
+    "adapterId": "case-010-adwin",
+    "featureId": "metric",
+    "methodVariantId": 123,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_mean_stream",
+    "params": {
+      "delta": 0.002
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-adwin-stream",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+    "chartOptions": {
+      "title": "CASE-010 ADWIN stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 1,
+    "tickCount": 20,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "uiSmokeRequired": true
+  }
+}

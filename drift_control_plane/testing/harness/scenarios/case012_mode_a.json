@@ -1,0 +1,90 @@
+{
+  "scenarioId": "TCASE-012",
+  "mode": "A",
+  "title": "CASE-012 source clock offset normal path",
+  "source": {
+    "sourceId": "case-012",
+    "title": "CASE-012 source clock offset normal path",
+    "description": "Synthetic stream with source clock two minutes behind logical time",
+    "sourceType": "test_db",
+    "sourceUrl": "테스트데이터/CASE-012_source_clock_offset_normal/data.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-012"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-012",
+    "datasetCaseId": "CASE-012",
+    "csvPath": "테스트데이터/CASE-012_source_clock_offset_normal/data.csv",
+    "sourceClockOffsetMs": 120000,
+    "speedFactor": 60,
+    "startTime": "2026-01-03T00:00:00Z"
+  },
+  "adapter": {
+    "adapterId": "case-012-adwin",
+    "sourceId": "case-012",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-012 numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric",
+      "sourceClockOffsetMs": 120000,
+      "maxSourceClockOffsetMs": 300000
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case012-adwin",
+    "adapterId": "case-012-adwin",
+    "featureId": "metric",
+    "methodVariantId": 123,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_mean_stream",
+    "params": {
+      "delta": 0.002
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case012-adwin-stream",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+    "chartOptions": {
+      "title": "CASE-012 ADWIN stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "startTime": "2026-01-03T00:00:00Z",
+    "endTime": "2026-01-03T00:20:00Z",
+    "intervalMinutes": 1,
+    "pollEveryTicks": 10
+  },
+  "expectations": {
+    "rawEventCount": 20,
+    "bucketCount": 2,
+    "methodRunCount": 2,
+    "adapterCursorTime": "2026-01-03T00:20:00Z",
+    "methodStateLastBucketEnd": "2026-01-03T00:20:00Z",
+    "bucketRowCount": 10,
+    "driftEventMinimum": 0,
+    "timePolicyValidationRequired": true,
+    "sourceEventTimeRequired": true,
+    "eventTimeNormalizedRequired": true,
+    "sourceClockOffsetMs": 120000,
+    "collectedAtMinimum": 20,
+    "adapterStatus": "ready",
+    "adapterDiagnosticsValidationRequired": true,
+    "pollOutcome": "processed",
+    "pollStatus": "ready"
+  }
+}

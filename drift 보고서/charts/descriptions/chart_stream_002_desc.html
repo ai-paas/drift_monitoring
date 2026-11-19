@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-STREAM-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-STREAM-002</p>
+    <h1>CHART-STREAM-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 KSWIN이 stream에서 과거 window와 최근 window의 분포 차이를 어떻게 감지하는지 설명한다.</p> <p>KSWIN은 sliding window 안에서 과거 sample과 최근 sample을 나누고, 두 sample의 경험 CDF 차이를 KS statistic으로 계산한다. 따라서 평균만 달라지는 변화뿐 아니라 분포 위치, scale, shape 변화가 stream에서 발생했는지 확인하는 데 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. stream에서 과거 window와 최근 window가 어느 구간을 비교하는가?
+2. 두 window sample의 ECDF가 얼마나 벌어지는가?
+3. KS statistic이 시간에 따라 threshold를 넘고 증가하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - stream metric line
+  - 과거 sliding window 영역
+  - 최근 sliding window 영역
+  - KSWIN alarm marker
+
+우측 상단
+  - 과거 window sample의 ECDF
+  - 최근 window sample의 ECDF
+  - 최대 CDF 차이 D
+
+우측 하단
+  - window 비교 시점별 KS statistic 추세
+  - alarm threshold</code></pre> <p>상단 요약 영역에는 KS statistic, p-value, alarm index를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 stream trend에서 과거 window와 최근 window가 비교하는 구간을 확인한다.</p> <pre><code>두 window가 같은 수준의 stream 구간을 덮는다
+  -&gt; 분포 차이 신호가 약할 수 있다.
+
+최근 window가 상승 또는 하락 이후 구간에 위치한다
+  -&gt; 위치 이동 기반 drift 후보를 확인한다.
+
+최근 window의 변동 폭이 커졌다
+  -&gt; scale 또는 tail 변화 가능성을 확인한다.</code></pre> <p>그 다음 우측 상단 ECDF 비교를 본다. 두 ECDF 사이의 최대 수직 차이가 KSWIN의 핵심 신호다. 특정 값 범위에서 ECDF가 크게 벌어지면 그 구간의 sample 비중이 달라졌다는 뜻이다.</p> <p>마지막으로 우측 하단 KS statistic 추세를 확인한다. statistic이 threshold를 한 번만 넘는지, 최근 비교 시점에서 계속 증가하는지 구분한다.</p> <h2>Drift 후보 판단 기준</h2> <p>KS statistic이 threshold를 넘고 증가 추세를 보이며, ECDF 비교에서 과거/최근 window 사이의 최대 차이가 명확하고, 좌측 stream에서 최근 window가 다른 수준 또는 다른 분포 폭을 보이면 KSWIN stream drift 후보로 해석한다.</p> <p>단, KSWIN은 window size, alpha, subsampling 방식에 민감하다. window가 너무 작으면 noise에 민감하고, 너무 크면 짧은 drift를 늦게 감지할 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 KS statistic이 <code>0.55</code>, p-value가 <code>0.011</code>, alarm index가 <code>28</code>로 표시되어 있다. 좌측 stream에서는 최근 window가 값이 상승한 구간을 포함하고, 과거 window는 상대적으로 낮은 값의 구간을 포함한다.</p> <p>우측 상단 ECDF 비교에서는 최근 window의 CDF가 과거 window보다 오른쪽으로 이동해 있으며 최대 차이 <code>D=0.55</code>가 나타난다. 우측 하단 KS statistic 추세에서도 최근 비교 시점에서 threshold <code>0.36</code>을 넘고 계속 상승한다. 따라서 이 예시는 stream 분포가 과거 window 대비 오른쪽으로 이동한 KSWIN drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>KSWIN으로 stream metric을 모니터링한 결과,
+alarm index 28에서 KS statistic은 0.55, p-value는 0.011로 나타났다.
+과거 window와 최근 window의 ECDF 비교에서는 최근 window 분포가 오른쪽으로 이동했으며,
+KS statistic 추세도 threshold 0.36을 초과했다.
+이는 stream의 최근 구간 분포가 과거 구간 대비 변화한 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - KS statistic 초과만으로 drift 원인을 특정 feature나 source로 단정한다.
+
+금지 2
+  - window size와 subsampling 설정을 확인하지 않고 민감도를 평가한다.
+
+금지 3
+  - stream ordering 오류나 batch 적재 영향 가능성을 배제한다.
+
+금지 4
+  - KSWIN alarm을 곧바로 모델 성능 저하로 해석한다.</code></pre> <p>KSWIN은 stream 분포 차이를 감지한다. 모델 영향은 label 확보 후 error rate, confidence, calibration 변화와 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>KSWIN drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>window size, stat size, alpha, subsampling 설정</li> <li>stream ordering, batch 적재, 지연 데이터 유입 여부</li> <li>alarm 전후 segment/source/time 구성 변화</li> <li>ADWIN, Page-Hinkley 등 다른 stream detector와의 합의 여부</li> <li>최근 window의 outlier 또는 tail sample 증가 여부</li> <li>label 확보 후 성능 지표, error rate, calibration 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>KSWIN / KSWIN_STANDARD</code></li> <li><code>KSWIN / KSWIN_WITH_SUBSAMPLING</code></li> <li><code>KSWIN / KSWIN_NUMERIC_STREAM</code></li> </ul>
+  </main>
+</body>
+</html>

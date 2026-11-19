@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-EXPL-001 - risk_score 중심으로 바뀐 SHAP 설명 구조</title>
+  <link rel="stylesheet" href="./chart_expl_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-EXPL-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>SHAP 요약 비교</h2>
+          <p>risk_score는 0.27에서 0.36으로 증가하고 amount는 0.31에서 0.18로 낮아진다.</p>
+        </div>
+        <svg id="summaryChart" role="img" aria-label="SHAP summary comparison and rank change"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>SHAP 값 분포</h2>
+            <p>risk_score SHAP peak가 -0.04에서 0.12로 양수 방향 이동한다.</p>
+          </div>
+          <svg id="distributionChart" role="img" aria-label="SHAP value distribution by feature"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>클래스별 SHAP 히트맵</h2>
+            <p>class C risk_score heat가 0.48로 가장 높다.</p>
+          </div>
+          <svg id="classHeatmap" role="img" aria-label="class-wise SHAP heatmap"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          SHAP drift는 feature contribution 자체의 분포와 중요도 순위가 baseline 대비 바뀌는지 확인한다.
+          이 예시에서는 risk_score 중요도와 SHAP value가 함께 증가하고 class C heat가 0.48로 높아
+          explanation-level drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch shift"></i>rank shift</span>
+        <span><i class="swatch heat"></i>class heat</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_expl_001.js"></script>
+</body>
+</html>

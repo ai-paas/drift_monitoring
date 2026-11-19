@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-PROB-003 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-PROB-003</p>
+    <h1>CHART-PROB-003 해석</h1>
+    <h2>차트 목적</h2> <p><code>CHART-PROB-003</code>은 기준 구간과 현재 구간의 확률분포가 얼마나 겹치는지, 그리고 그 overlap 감소가 얼마나 큰지를 확인하기 위한 차트다. Bhattacharyya Distance처럼 두 분포의 유사도 또는 겹침 감소를 중심으로 해석하는 방법에 적합하다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. 기준 분포와 현재 분포가 어느 정도 겹치는가?
+2. overlap 감소가 시간에 따라 커지고 있는가?
+3. 어느 bin에서 기준/현재 확률 차이가 가장 커졌는가?</code></pre> <h2>차트 구성</h2> <p>왼쪽 패널은 확률분포 overlay다.</p> <ul> <li>파란 막대는 기준 구간의 bin별 확률이다.</li> <li>붉은 막대는 현재 구간의 bin별 확률이다.</li> <li>초록 막대는 두 분포가 공통으로 갖는 overlap 영역이다.</li> <li>overlap 영역이 작아질수록 두 분포가 덜 겹친다.</li> </ul> <p>오른쪽 위 패널은 overlap 계수다.</p> <ul> <li>초록 영역은 겹치는 확률 질량 비율이다.</li> <li>노란 영역은 겹치지 않는 확률 질량 비율이다.</li> <li>Bhattacharyya coefficient는 두 확률분포의 유사도를 제곱근 확률 공간에서 요약한다.</li> </ul> <p>오른쪽 아래 패널은 거리 추세다.</p> <ul> <li>x축은 window 순서다.</li> <li>y축은 Bhattacharyya distance다.</li> <li>노란 선이 상승하면 분포 overlap이 줄어드는 방향의 drift 신호가 강화되는 것이다.</li> <li>초록 점선은 관리 기준 또는 운영 threshold 예시다.</li> </ul> <p>상단 요약 카드에는 다음 값이 표시된다.</p> <ul> <li><code>Bhattacharyya</code>: Bhattacharyya distance</li> <li><code>Overlap 계수</code>: bin별 <code>min(기준 확률, 현재 확률)</code>의 합</li> <li><code>BC 계수</code>: Bhattacharyya coefficient</li> </ul> <h2>해석 순서</h2> <p>먼저 overlap 계수를 본다.</p> <pre><code>overlap 계수가 1에 가깝다
+  -&gt; 두 확률분포가 많이 겹친다.
+
+overlap 계수가 낮아진다
+  -&gt; 두 확률분포의 공통 영역이 줄어든다.
+
+Bhattacharyya distance가 커진다
+  -&gt; 분포 유사도가 낮아지고 분리 신호가 커진다.</code></pre> <p>그 다음 왼쪽 overlay에서 overlap이 줄어든 위치를 확인한다. 기준 분포의 peak와 현재 분포의 peak가 서로 어긋나면 overlap이 줄고 distance가 커진다.</p> <p>마지막으로 거리 추세를 본다. 현재 distance가 작아도 최근 window에서 상승하고 있다면, 분포 분리가 진행 중인지 추가 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Bhattacharyya distance가 관리 기준을 넘거나 overlap 계수 감소가 지속되면 분포 분리 drift 후보로 해석한다. overlap 감소가 특정 bin에 집중되는지 함께 확인한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 Bhattacharyya distance가 <code>0.023</code>, overlap 계수가 <code>0.820</code>, BC 계수가 <code>0.977</code>로 표시되어 있다. 두 분포는 아직 상당 부분 겹치지만, 현재 분포가 기준 분포보다 오른쪽 bin 쪽으로 일부 이동하면서 overlap이 줄어든 모습이다.</p> <p>거리 추세 패널에서는 최근 window에서 Bhattacharyya distance가 관리 기준 근처까지 상승했다가 현재 window에서 소폭 낮아졌다. 따라서 이 예시는 분포 분리 신호가 관측되지만, 아직 강한 분리보다는 완만한 overlap 감소 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>기준 구간과 현재 구간의 확률분포를 Bhattacharyya 관점에서 비교한 결과,
+Bhattacharyya distance는 0.023, overlap 계수는 0.820으로 나타났다.
+현재 분포는 기준 분포보다 오른쪽 bin 쪽 확률이 증가하면서 overlap이 일부 감소했다.
+다만 두 분포의 겹침이 아직 82.0% 수준으로 남아 있으므로,
+완만한 분포 분리 후보로 해석한다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - overlap 감소가 곧바로 모델 성능 저하를 의미한다고 말한다.
+
+금지 2
+  - overlap 계수와 Bhattacharyya coefficient를 같은 값으로 해석한다.
+
+금지 3
+  - binning 또는 smoothing 영향을 확인하지 않고 분포 분리를 확정한다.
+
+금지 4
+  - 단일 feature의 overlap 감소로 전체 데이터 drift를 확정한다.</code></pre> <p>Bhattacharyya 계열은 overlap 감소를 직관적으로 보여주지만, binning 기준과 sample size, feature scale에 따라 값이 달라질 수 있다.</p> <h2>추가 확인 항목</h2> <p>Bhattacharyya distance가 커지면 다음을 추가 확인한다.</p> <ul> <li>binning 기준, smoothing, zero count 처리 방식</li> <li>overlap 감소가 큰 bin의 sample count와 segment 구성</li> <li>같은 feature의 Hellinger Distance, JS Distance, KL Divergence 결과</li> <li>window별 추세가 일시적 변화인지 지속적 분리인지</li> <li>기준/현재 peak 위치가 데이터 수집 정책 변경과 연결되는지</li> <li>label 확보 후 성능 지표, calibration, error rate 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Bhattacharyya Distance / DISCRETE_BHATTACHARYYA_DISTANCE</code></li> <li><code>Bhattacharyya Distance / GAUSSIAN_BHATTACHARYYA_DISTANCE</code></li> <li><code>Bhattacharyya Distance / HISTOGRAM_BHATTACHARYYA_DISTANCE</code></li> </ul>
+  </main>
+</body>
+</html>

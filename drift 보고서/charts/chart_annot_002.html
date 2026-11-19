@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ANNOT-002 - 근사 드리프트 점수의 오차와 안정성 점검</title>
+  <link rel="stylesheet" href="./chart_annot_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ANNOT-002">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Approximation Error Band</h2>
+          <p>Exact/reference score와 approx score가 threshold 0.42 근처에서도 tolerance 0.04 안에서 같이 움직이는지 확인한다.</p>
+        </div>
+        <svg id="errorChart" role="img" aria-label="approximation error band with exact and approximate drift metric lines"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Projection Stability</h2>
+            <p>Projection count가 16, 32일 때는 spread가 크지만 128 이상에서는 tolerance 0.04 아래로 안정화되는지 본다.</p>
+          </div>
+          <svg id="projectionChart" role="img" aria-label="projection count stability for sliced approximation"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Quantile Error Detail</h2>
+            <p>q25~q75 error는 target 0.03 안에 있지만 tail error 0.041은 초과하므로 tail 해석은 재검증한다.</p>
+          </div>
+          <svg id="quantileChart" role="img" aria-label="quantile approximation error detail"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          현재 상황은 계산량을 줄이기 위해 exact score 대신 approximate, sliced, quantile 계산을 쓰는 사례다.
+          평균 근사 오차는 0.03이고 projection 128개부터 score spread가 안정화되지만,
+          tail quantile error가 target을 넘기 때문에 tail-sensitive 결론은 exact 계산이나 projection 증가로 다시 확인해야 한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch exact"></i>exact/reference</span>
+        <span><i class="swatch approx"></i>approx/quantile</span>
+        <span><i class="swatch band"></i>error band</span>
+        <span><i class="swatch limit"></i>tolerance</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_annot_002.js"></script>
+</body>
+</html>

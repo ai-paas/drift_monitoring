@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ADAPT-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ADAPT-001</p>
+    <h1>CHART-ADAPT-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 Hoeffding Adaptive Tree가 stream drift를 감지하고 alternate tree를 성장시킨 뒤 replacement를 수행하는 흐름을 설명한다.</p> <p>HAT는 node별 drift detector로 성능 저하를 감시한다. Warning 상태가 나타나면 alternate tree를 만들고, alternate tree가 main tree보다 나은 성능을 보이면 해당 subtree를 교체한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. online accuracy가 하락하며 drift detector 상태가 바뀌는가?
+2. warning 이후 alternate tree가 성장하는가?
+3. replacement 이후 accuracy가 회복되고 tree size가 재구성되는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - online accuracy trend
+  - warning, alternate, replacement marker
+
+우측 상단
+  - detector state timeline
+  - normal/warning/alternate/replace 상태
+
+우측 하단
+  - main tree size trend
+  - alternate tree size trend
+  - replacement marker</code></pre> <p>상단 요약 영역에는 accuracy min, replacement 시점, alternate tree node 수를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 online accuracy trend에서 성능 하락과 replacement 이후 회복을 확인한다.</p> <pre><code>accuracy가 안정적이다
+  -&gt; adaptive replacement 증거가 약하다.
+
+accuracy가 하락하며 warning marker가 나타난다
+  -&gt; node detector가 drift 후보를 감지한 상태로 본다.
+
+replacement 이후 accuracy가 회복된다
+  -&gt; alternate tree 교체가 유효했는지 확인한다.</code></pre> <p>그 다음 우측 상단 detector state timeline에서 normal, warning, alternate, replace 상태가 순차적으로 나타나는지 확인한다.</p> <p>마지막으로 우측 하단 tree size trend에서 alternate tree가 성장하다 replacement 시점에 main tree로 반영되는지 확인한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Online accuracy가 하락하고 detector state가 warning에서 alternate로 전환되며, alternate tree size가 증가한 뒤 replacement marker가 나타나고 accuracy가 회복되면 HAT 기반 adaptive drift 대응 후보로 해석한다.</p> <p>단, replacement는 drift 원인을 설명하는 것이 아니라 모델 구조가 stream 변화에 적응했다는 신호다. 교체가 과도하게 잦으면 detector 민감도나 stream noise를 점검해야 한다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 accuracy min이 <code>0.72</code>, replacement 시점이 <code>t=23</code>, alternate tree node 수가 <code>64</code>로 표시되어 있다. 좌측 accuracy trend는 중간 구간에서 하락하다가 replacement 이후 회복된다.</p> <p>우측 상단 timeline에서는 normal, warning, alternate, replace 상태가 순차적으로 나타난다. 우측 하단 tree size trend에서는 alternate tree가 성장한 뒤 replacement 시점에 0으로 내려가고 main tree size가 재구성된다. 따라서 이 예시는 HAT가 alternate tree replacement로 drift에 대응한 사례로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>HAT 모니터링 결과 online accuracy는 최저 0.72까지 하락했고,
+t=23에서 alternate tree replacement가 수행되었다.
+Replacement 이전 alternate tree는 64 nodes까지 성장했으며,
+replacement 이후 accuracy는 회복되는 패턴을 보였다.
+이는 HAT 기반 adaptive drift 대응 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - replacement 발생만으로 drift 원인을 특정한다.
+
+금지 2
+  - accuracy 회복을 장기 성능 안정화로 단정한다.
+
+금지 3
+  - alternate tree가 자주 생기는 원인을 stream drift로만 해석한다.
+
+금지 4
+  - detector state와 tree size를 보지 않고 accuracy만으로 HAT 적응을 설명한다.</code></pre> <p>HAT replacement는 적응 동작의 결과다. 실제 drift 원인과 운영 영향은 feature drift, error rate, segment 분석과 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>HAT adaptive drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>node별 drift detector 설정과 confidence</li> <li>alternate tree 생성/교체/삭제 횟수</li> <li>replacement 전후 validation 또는 delayed label 성능</li> <li>tree size 증가로 인한 latency, memory 영향</li> <li>replacement가 집중된 feature split 또는 segment</li> <li>ADWIN, DDM 등 detector 신호와의 합의 여부</li> <li>배포, 정책, source 변화 이벤트</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>HAT / HAT_ADWIN_NODE_MONITORING</code></li> <li><code>HAT / HAT_ALTERNATE_TREE_REPLACEMENT</code></li> </ul>
+  </main>
+</body>
+</html>

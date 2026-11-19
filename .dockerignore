@@ -1,0 +1,23 @@
+.git
+.agents
+.codex
+.aws
+**/__pycache__
+**/.pytest_cache
+**/node_modules
+**/runtime
+**/interpretation_runs
+**/interpretation_tests
+**/test_results
+**/downloads
+**/testing/runs
+.env
+.env.*
+!.env.example
+*.sqlite*
+*.db
+*.log
+*.zip
+*.docx
+*.pdf
+drift 보고서/db/load_data.sql

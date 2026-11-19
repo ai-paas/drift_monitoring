@@ -1,0 +1,10 @@
+{
+  "packId": "sprint54_stepd_error_rate",
+  "title": "Sprint 54 STEPD error-rate scenarios",
+  "mode": "A",
+  "rowIds": [
+    "V13-ROW-CASE011-STEPD-ACCURACY-ERR006",
+    "V13-ROW-CASE011-STEPD-WARNING-ERR006",
+    "V13-ROW-CASE011-STEPD-SUPERVISED-ERR006"
+  ]
+}

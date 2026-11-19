@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오류 간격 축소로 나타난 점진적 성능 저하</title>
+  <link rel="stylesheet" href="./chart_err_003.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ERR-003">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>오류 간격 점수 하락</h2>
+          <p>score가 1.00에서 0.44까지 내려가며 t=11 warning, t=19 drift 기준을 지난다.</p>
+        </div>
+        <svg id="distanceTrend" role="img" aria-label="EDDM warning과 drift 기준선이 표시된 오류 간격 추세"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>상태 전환 구간</h2>
+            <p>t=1~10 normal 이후 t=11 warning, t=19부터 drift로 읽는다.</p>
+          </div>
+          <svg id="timelineChart" role="img" aria-label="EDDM warning과 drift 상태 전환 timeline"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>오류 이벤트 밀집</h2>
+            <p>t=20 이후 오류가 이어지고 t=27~32에서는 매 시점 발생한다.</p>
+          </div>
+          <svg id="eventRaster" role="img" aria-label="EDDM 오류 이벤트 raster"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          이 예시에서는 오류 간격 score가 1.00에서 0.44까지 계속 낮아진다.
+          t=11에 warning 기준 0.90 아래로 내려가고 t=19에 drift 기준 0.75를 통과하며,
+          t=27~32 구간의 오류 이벤트가 연속되어 점진적 error-rate drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch distance"></i>distance score</span>
+        <span><i class="swatch warning"></i>warning</span>
+        <span><i class="swatch drift"></i>drift</span>
+        <span><i class="swatch event"></i>error event</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_err_003.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ERR-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-ERR-002</p>
+    <h1>CHART-ERR-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 RDDM이 DDM의 warning/drift 판단을 확장해 warning 구간의 sample을 보존하고, drift 확정 시 reactive reset으로 새 window를 구성하는 방식을 설명한다.</p> <p>RDDM은 error rate 상승을 감지하는 점에서는 DDM과 유사하지만, warning 구간을 단순 대기 상태로 두지 않고 retained window로 관리한다. Drift가 확정되면 warning 구간의 정보를 활용해 reset 이후의 학습 또는 모니터링 window를 구성한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. error rate가 warning 구간을 거쳐 drift 상태로 전환되는가?
+2. warning 구간의 retained window size가 어떻게 유지되는가?
+3. DDM과 RDDM의 reset 대응이 어떻게 다른가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - error rate trend
+  - warning threshold
+  - drift threshold
+  - warning, drift, reactive reset marker
+
+우측 상단
+  - retained window size trend
+  - reactive reset 이후 window 축소
+
+우측 하단
+  - DDM/RDDM comparison timeline
+  - DDM reset과 RDDM retain/reactive reset 비교</code></pre> <p>상단 요약 영역에는 warning start, reactive reset, reset 직후 retained window 크기를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 error rate trend에서 warning과 drift marker가 순차적으로 나타나는지 확인한다.</p> <pre><code>warning 없이 drift marker만 나타난다
+  -&gt; 급격한 error spike 또는 threshold 민감도를 점검한다.
+
+warning 구간이 유지된 뒤 drift marker가 나타난다
+  -&gt; RDDM의 retained window 활용 조건을 만족한다.
+
+reactive reset 이후 error rate가 완화된다
+  -&gt; reset 이후 새 window에서 안정화 가능성을 확인한다.</code></pre> <p>그 다음 우측 상단 retained window size를 확인한다. Warning 구간에서 window가 보존되다가 reset 시점에 축소되는 패턴이 RDDM의 핵심이다.</p> <p>마지막으로 우측 하단 비교 timeline에서 DDM과 RDDM의 차이를 확인한다. DDM이 drift 후 reset으로 끝나는 반면, RDDM은 warning 구간의 데이터를 retain하고 reactive reset으로 전환한다.</p> <h2>Drift 후보 판단 기준</h2> <p>Error rate가 warning 구간을 거쳐 drift threshold를 넘고, retained window가 reset 시점에 축소되며, DDM/RDDM 비교에서 RDDM의 retain/reactive reset 흐름이 확인되면 RDDM 기반 drift 후보로 해석한다.</p> <p>단, RDDM은 warning 구간의 sample 품질에 민감하다. Warning buffer가 오염되었거나 label 지연이 크면 reset 후 window 구성이 실제 drift 이후 분포를 잘 대표하지 못할 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 warning start가 <code>t=20</code>, reactive reset이 <code>t=26</code>, reset 직후 retained window가 <code>44</code>로 표시되어 있다. 좌측 error trend는 warning threshold <code>0.28</code>을 넘은 뒤 drift threshold <code>0.38</code>을 초과하고, reset 이후 error rate가 완만하게 낮아진다.</p> <p>우측 상단 retained window size는 warning 구간에서 계속 증가하다가 reactive reset 시점에 급격히 축소된다. 우측 하단 비교 timeline에서는 RDDM이 DDM과 달리 warning 구간을 retain한 뒤 reactive reset으로 전환되는 구조를 보여준다. 따라서 이 예시는 RDDM이 warning buffer를 활용해 drift 이후 window를 재구성한 사례로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>RDDM 모니터링 결과 t=20에서 warning 상태가 시작되고,
+t=26에서 reactive reset이 수행되었다.
+Retained window size는 reset 직후 44로 축소되었으며,
+error rate는 drift threshold 초과 후 reset 이후 완화되는 패턴을 보였다.
+이는 RDDM 기준 error-rate drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - retained window 축소만으로 drift를 단정한다.
+
+금지 2
+  - warning buffer의 label 품질을 확인하지 않고 reset 효과를 평가한다.
+
+금지 3
+  - RDDM과 DDM의 차이를 단순 threshold 차이로만 설명한다.
+
+금지 4
+  - reset 이후 error rate 완화를 원인 해결로 단정한다.</code></pre> <p>RDDM은 warning 구간 보존과 reactive reset을 통해 error-rate drift에 대응한다. Drift 원인과 성능 회복 여부는 별도 분석이 필요하다.</p> <h2>추가 확인 항목</h2> <p>RDDM drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>retained window에 포함된 sample 수와 label 품질</li> <li>warning 구간의 class/source/time 구성</li> <li>reactive reset 조건과 reset 후 window 초기화 방식</li> <li>DDM 대비 false alarm 감소 또는 detection delay 변화</li> <li>label 지연이 reset 시점에 미치는 영향</li> <li>EDDM, ECDD-WT, HDDM 등 다른 error detector와의 합의 여부</li> <li>입력 feature drift와 모델 성능 지표 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>RDDM / RDDM_STANDARD</code></li> <li><code>RDDM / RDDM_REACTIVE_RESET</code></li> </ul>
+  </main>
+</body>
+</html>

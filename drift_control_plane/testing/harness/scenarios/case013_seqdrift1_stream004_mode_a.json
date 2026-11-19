@@ -1,0 +1,100 @@
+{
+  "scenarioId": "TC013-SEQDRIFT1-STREAM004",
+  "mode": "A",
+  "title": "CASE-013 SeqDrift1 CHART-STREAM-004 analysis",
+  "source": {
+    "sourceId": "case-013-seqdrift1-stream004",
+    "title": "CASE-013 SeqDrift numeric window shift",
+    "description": "Synthetic reference/current numeric shift dataset for SeqDrift1 runtime wrapper",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case013_seqdrift_numeric_window.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-013"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-013-seqdrift1-stream004",
+    "datasetCaseId": "CASE-013",
+    "csvPath": "testing/harness/data/case013_seqdrift_numeric_window.csv",
+    "speedFactor": 60,
+    "startTime": "2026-11-01T00:00:00Z",
+    "maxRows": 240,
+    "replayWindow": {
+      "start": "2026-11-01T00:00:00Z",
+      "end": "2026-11-01T04:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-013-seqdrift1-stream004",
+    "sourceId": "case-013-seqdrift1-stream004",
+    "adapterType": "test_db_numeric_distribution_window",
+    "adapterTitle": "CASE-013 SeqDrift1 numeric window adapter",
+    "collectionIntervalMinutes": 240,
+    "aggregateIntervalMinutes": 240,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "timestamp",
+      "valuePath": "$.metric",
+      "periodPath": "$.period"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case013-seqdrift1-stream004",
+    "adapterId": "case-013-seqdrift1-stream004",
+    "featureId": "score",
+    "methodVariantId": 656,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "seqdrift_numeric_window",
+    "params": {
+      "variant_id": "SEQDRIFT1",
+      "value_col": "value",
+      "delta": 0.01,
+      "block_size": 20,
+      "value_min": -1.0,
+      "value_max": 2.0,
+      "min_reference_size": 20,
+      "min_current_size": 20
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "240m",
+      "lookbackBuckets": 1
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case013-seqdrift1-stream004",
+    "chartId": "CHART-STREAM-004",
+    "payloadAdapterKey": "auto__SEQDRIFT1__CHART-STREAM-004",
+    "chartOptions": {
+      "title": "CASE-013 SeqDrift1 analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 240,
+    "tickCount": 1,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 240,
+    "bucketCount": 1,
+    "methodRunCount": 1,
+    "adapterCursorTime": "2026-11-01T04:00:00Z",
+    "methodStateLastBucketEnd": "2026-11-01T04:00:00Z",
+    "bucketRowCount": 240,
+    "analysisPointCount": 1,
+    "analysisMeanDifferenceMinimum": null,
+    "algorithmImplSuccessRequired": true,
+    "algorithmProcessedCountMinimum": 1,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "legacySeriesPayloadRequired": false,
+    "chartRuntimeGraphRequired": false
+  }
+}

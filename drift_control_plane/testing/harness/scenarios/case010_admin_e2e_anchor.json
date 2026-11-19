@@ -1,0 +1,90 @@
+{
+  "scenarioId": "case010_admin_e2e_anchor",
+  "mode": "A",
+  "title": "CASE-010 Admin-orchestrated E2E anchor around drift start",
+  "source": {
+    "sourceId": "case-010-anchor",
+    "title": "CASE-010 stream numeric mean shift anchor",
+    "description": "Sprint 32 Admin-orchestrated anchor scenario for the full drift monitoring connection",
+    "sourceType": "test_db",
+    "sourceUrl": "testing/harness/data/case010_anchor_drift_window.csv",
+    "sourceConfig": {
+      "datasetCaseId": "CASE-010"
+    }
+  },
+  "feeder": {
+    "sourceId": "case-010-anchor",
+    "datasetCaseId": "CASE-010",
+    "csvPath": "testing/harness/data/case010_anchor_drift_window.csv",
+    "speedFactor": 60,
+    "startTime": "2026-06-30T22:00:00Z",
+    "replayWindow": {
+      "start": "2026-06-30T22:00:00Z",
+      "end": "2026-07-01T02:00:00Z"
+    }
+  },
+  "adapter": {
+    "adapterId": "case-010-anchor-adwin",
+    "sourceId": "case-010-anchor",
+    "adapterType": "test_db_numeric_stream",
+    "adapterTitle": "CASE-010 anchor numeric stream adapter",
+    "collectionIntervalMinutes": 10,
+    "aggregateIntervalMinutes": 10,
+    "sourceConfig": {
+      "table": "test_source.raw_event",
+      "timeColumn": "event_time",
+      "valuePath": "$.metric"
+    }
+  },
+  "methodAssignment": {
+    "assignmentId": "assign-case010-anchor-adwin",
+    "adapterId": "case-010-anchor-adwin",
+    "featureId": "metric",
+    "methodVariantId": 123,
+    "algorithmImplementationId": 45,
+    "runtimeMethodKey": "adwin_mean_stream",
+    "params": {
+      "delta": 0.002,
+      "meanShiftThreshold": 0.05,
+      "useAlgorithmImpl": false
+    },
+    "threshold": {
+      "eventLevel": "drift"
+    },
+    "windowConfig": {
+      "bucketResolution": "10m",
+      "lookbackBuckets": 144
+    },
+    "enabled": true
+  },
+  "analysisChart": {
+    "analysisChartId": "analysis-case010-anchor-adwin-stream",
+    "chartId": "CHART-STREAM-001",
+    "payloadAdapterKey": "adwin_mean_stream_to_chart_stream_001",
+    "chartOptions": {
+      "title": "CASE-010 Admin anchor ADWIN stream analysis"
+    },
+    "payloadAdapterConfig": {}
+  },
+  "tick": {
+    "logicalMinutesPerTick": 10,
+    "tickCount": 24,
+    "pollEveryTicks": 1
+  },
+  "expectations": {
+    "rawEventCount": 240,
+    "bucketCount": 24,
+    "methodRunCount": 24,
+    "adapterCursorTime": "2026-07-01T02:00:00Z",
+    "methodStateLastBucketEnd": "2026-07-01T02:00:00Z",
+    "bucketRowCount": 10,
+    "analysisPointCount": 24,
+    "analysisMeanDifferenceMinimum": null,
+    "driftEventMinimum": 1,
+    "llmInterpretationRequired": true,
+    "chartRuntimePayloadRequired": true,
+    "llmComponentNotesRequired": true,
+    "chartRuntimeSmokeRequired": true,
+    "uiSmokeRequired": true
+  }
+}

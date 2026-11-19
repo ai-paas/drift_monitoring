@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-REP-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-REP-002</p>
+    <h1>CHART-REP-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 autoencoder 기반 representation drift에서 reconstruction error와 latent space 분리가 어떻게 함께 나타나는지 설명한다.</p> <p>Autoencoder는 baseline representation을 잘 복원하도록 학습된다. Current 데이터의 reconstruction error가 커지고 latent projection이 baseline과 분리되면, 모델이 학습한 representation manifold에서 current 데이터가 벗어났을 가능성이 있다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. current reconstruction error distribution이 baseline보다 오른쪽으로 이동했는가?
+2. error trend가 threshold를 지속적으로 초과하는가?
+3. latent projection에서 baseline/current cluster가 분리되는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - baseline/current reconstruction error distribution
+  - threshold line
+
+우측 상단
+  - reconstruction error trend
+  - threshold 초과 marker
+
+우측 하단
+  - latent projection scatter
+  - baseline/current cluster 분리</code></pre> <p>상단 요약 영역에는 p95 error, threshold, latent AUC를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 reconstruction error distribution을 확인한다.</p> <pre><code>baseline과 current 분포가 겹친다
+  -&gt; autoencoder reconstruction 기준 drift 증거가 약하다.
+
+current 분포가 threshold 오른쪽으로 이동한다
+  -&gt; reconstruction error 증가 후보로 본다.
+
+current tail만 threshold를 넘는다
+  -&gt; 일부 segment 또는 outlier 집중 가능성을 확인한다.</code></pre> <p>그 다음 우측 상단 trend에서 error가 일시적으로 튄 것인지, threshold 위에서 지속되는지 확인한다.</p> <p>마지막으로 우측 하단 latent projection에서 baseline/current cluster가 분리되는지 확인한다. Error 증가와 latent 분리가 함께 나타나면 representation drift 설명력이 높다.</p> <h2>Drift 후보 판단 기준</h2> <p>Current reconstruction error distribution이 baseline보다 높고 threshold 초과 비율이 커지며, error trend가 threshold 위로 지속되고, latent projection에서 baseline/current가 분리되면 autoencoder representation drift 후보로 해석한다.</p> <p>단, reconstruction error는 scaling, autoencoder 용량, threshold 산정 방식에 민감하다. 모델이 과소적합 또는 과적합이면 drift가 아닌 reconstruction 품질 문제로 보일 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 p95 error가 <code>0.51</code>, threshold가 <code>0.36</code>, latent AUC가 <code>0.84</code>로 표시되어 있다. 좌측 distribution에서 current reconstruction error는 baseline보다 오른쪽으로 이동하며 threshold를 넘는 구간이 커진다.</p> <p>우측 상단 trend에서는 reconstruction error가 23번째 index 부근부터 threshold를 넘고 이후 상승한다. 우측 하단 latent projection에서는 baseline과 current cluster가 분리되어 있다. 따라서 이 예시는 autoencoder가 학습한 baseline manifold에서 current representation이 벗어난 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>Autoencoder representation drift 분석 결과,
+current reconstruction error의 p95는 0.51로 threshold 0.36을 초과했다.
+Error trend도 threshold 위에서 지속되었고,
+latent projection에서는 baseline/current cluster 분리가 확인되었다.
+이는 autoencoder representation drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - reconstruction error 증가만으로 원인 feature를 특정한다.
+
+금지 2
+  - autoencoder threshold 산정 방식을 확인하지 않고 drift 강도를 비교한다.
+
+금지 3
+  - latent projection 분리만으로 성능 저하를 단정한다.
+
+금지 4
+  - autoencoder 재학습 여부와 preprocessing 변화를 확인하지 않는다.</code></pre> <p>Autoencoder representation drift는 baseline manifold와 current representation의 차이를 보여준다. 원인 feature와 모델 영향은 별도 검증이 필요하다.</p> <h2>추가 확인 항목</h2> <p>Autoencoder representation drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>reconstruction error threshold 산정 방식</li> <li>autoencoder 학습 기간과 baseline 대표성</li> <li>input scaling, normalization, preprocessing 변경</li> <li>latent projection의 차원 축소 방식과 seed 안정성</li> <li>error가 큰 sample의 source/time/segment 구성</li> <li>domain classifier AUC와 latent separation의 일관성</li> <li>downstream performance, calibration, error rate 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>Autoencoder Representation Drift / LATENT_SPACE_DRIFT</code></li> <li><code>Autoencoder Representation Drift / RECONSTRUCTION_ERROR_DRIFT</code></li> <li><code>Autoencoder Representation Drift / AUTOENCODER_DOMAIN_CLASSIFIER</code></li> </ul>
+  </main>
+</body>
+</html>

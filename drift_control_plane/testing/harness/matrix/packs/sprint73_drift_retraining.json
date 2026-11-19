@@ -1,0 +1,9 @@
+{
+  "packId": "sprint73_drift_retraining",
+  "description": "Sprint 73 CHART-ADAPT-002 DriftRetrainingClassifier executable rows.",
+  "rowIds": [
+    "V32-ROW-CASE019-RETRAINING-ADWIN-ADAPT002",
+    "V32-ROW-CASE019-RETRAINING-PAGE-HINKLEY-ADAPT002",
+    "V32-ROW-CASE019-RETRAINING-CHAMPION-ADAPT002"
+  ]
+}

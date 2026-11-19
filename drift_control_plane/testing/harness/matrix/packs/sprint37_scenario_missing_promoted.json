@@ -1,0 +1,11 @@
+{
+  "packId": "sprint37_scenario_missing_promoted",
+  "description": "Sprint 37 pack for five scenario_missing pairs promoted from Sprint36 compatibility matrix.",
+  "rowIds": [
+    "V3-ROW-CASE004-WASSERSTEIN-HIST-ANNOT002",
+    "V3-ROW-CASE004-WASSERSTEIN-WINDOW-TREND-DIST001",
+    "V3-ROW-CASE004-KSWIN-SUBSAMPLING-STREAM002",
+    "V3-ROW-CASE004-KSWIN-NUMERIC-STREAM002",
+    "V3-ROW-CASE010-PAGEHINKLEY-DECREASE-STREAM003"
+  ]
+}

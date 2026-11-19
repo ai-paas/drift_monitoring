@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drift Metric Timeseries UI Mockup</title>
+  <style>
+    :root {
+      --bg: #eef2f6;
+      --panel: #ffffff;
+      --ink: #17212b;
+      --muted: #657384;
+      --line: #d4dce5;
+      --grid: #e7ecf2;
+      --blue: #2f6f9f;
+      --blue-soft: rgba(47, 111, 159, .16);
+      --warning: #c88a23;
+      --warning-soft: rgba(200, 138, 35, .16);
+      --drift: #bf4d46;
+      --drift-soft: rgba(191, 77, 70, .18);
+      --ok: #3a8064;
+      --shadow: rgba(23, 33, 43, .16);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", "Malgun Gothic", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .mockup {
+      width: 1360px;
+      height: 860px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      border: 1px solid #c8d2dc;
+      background: #f7f9fb;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .title-block {
+      display: grid;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.25;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .segmented {
+      display: inline-flex;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .segmented button {
+      min-width: 48px;
+      padding: 0 11px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .segmented button:last-child { border-right: 0; }
+    .segmented .active { background: #e7f0f6; color: #155c84; }
+
+    .date-range {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 34px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .icon-button {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 286px;
+      gap: 14px;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .chart-panel,
+    .side-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      box-shadow: 0 8px 26px var(--shadow);
+    }
+
+    .chart-panel {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) 112px;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px 10px;
+      border-bottom: 1px solid #edf1f5;
+    }
+
+    .panel-title {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .panel-title h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .panel-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 26px;
+      padding: 0 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--muted);
+      background: #fff;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .badge.blue { border-color: #bad2e1; color: #155c84; background: #eef7fc; }
+
+    .plot-wrap {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      padding: 12px 18px 0;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    text { font-family: inherit; }
+    .axis { stroke: #aeb9c4; stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .grid { stroke: var(--grid); stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .axis-text { fill: #5f6f80; font-size: 11px; font-weight: 750; }
+    .axis-label { fill: #4d5e70; font-size: 12px; font-weight: 850; }
+    .metric-line { fill: none; stroke: var(--blue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .band { fill: var(--blue-soft); stroke: none; }
+    .warn-region { fill: var(--warning-soft); stroke: var(--warning); stroke-width: 1; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+    .drift-region { fill: var(--drift-soft); stroke: var(--drift); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+    .warn-dot { fill: var(--warning); stroke: #fff; stroke-width: 2; }
+    .drift-dot { fill: var(--drift); stroke: #fff; stroke-width: 2.5; }
+    .normal-dot { fill: var(--blue); stroke: #fff; stroke-width: 1.5; }
+
+    .tooltip {
+      position: absolute;
+      right: 78px;
+      top: 118px;
+      width: 218px;
+      border: 1px solid #c6d0db;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, .96);
+      padding: 10px 11px;
+      box-shadow: 0 14px 34px rgba(23, 33, 43, .18);
+    }
+
+    .tooltip strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .tooltip dl {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 5px 10px;
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .tooltip dt { color: var(--muted); }
+    .tooltip dd { margin: 0; font-weight: 800; }
+
+    .navigator {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 6px;
+      padding: 4px 18px 16px;
+    }
+
+    .navigator-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .side-panel {
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      padding: 16px;
+      gap: 14px;
+    }
+
+    .side-section {
+      display: grid;
+      gap: 9px;
+    }
+
+    .side-section h3 {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .metric-card {
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      min-height: 74px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .metric-card span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .metric-card strong {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .legend {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .legend-item {
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 10px;
+      border-radius: 5px;
+      background: var(--blue);
+    }
+
+    .swatch.band { background: var(--blue-soft); border: 1px solid rgba(47,111,159,.25); }
+    .swatch.warning { background: var(--warning-soft); border: 1px dashed var(--warning); }
+    .swatch.drift { background: var(--drift-soft); border: 1px solid var(--drift); }
+
+    .event-list {
+      display: grid;
+      gap: 8px;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .event {
+      display: grid;
+      gap: 3px;
+      border: 1px solid var(--line);
+      border-left-width: 4px;
+      border-radius: 7px;
+      padding: 9px 10px;
+      background: #fff;
+    }
+
+    .event.warning { border-left-color: var(--warning); }
+    .event.drift { border-left-color: var(--drift); }
+    .event strong { font-size: 12px; }
+    .event span { color: var(--muted); font-size: 11px; line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <main class="mockup" aria-label="드리프트 지표 시계열 UI 시안">
+    <header class="topbar">
+      <div class="title-block">
+        <p class="eyebrow">drift_metric_timeseries</p>
+        <h1>드리프트 지표 시계열</h1>
+      </div>
+      <div class="toolbar" aria-label="시간 범위 제어">
+        <div class="segmented" aria-label="range selector">
+          <button>1D</button>
+          <button>7D</button>
+          <button>1M</button>
+          <button>3M</button>
+          <button class="active">1Y</button>
+          <button>5Y</button>
+          <button>All</button>
+        </div>
+        <div class="date-range">2025-07-01 ~ 2026-06-24</div>
+        <button class="icon-button" aria-label="확대">⛶</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <section class="chart-panel" aria-label="드리프트 지표 시계열 차트">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h2>Embedding Drift Score</h2>
+            <p>서버 1시간 집계값을 화면 폭에 맞춰 일 단위 weighted mean으로 압축 표시</p>
+          </div>
+          <div class="badges">
+            <span class="badge blue">display bucket: 1d</span>
+            <span class="badge">source: 1h aggregate</span>
+            <span class="badge">tick: 3M</span>
+          </div>
+        </header>
+
+        <div class="plot-wrap">
+          <svg viewBox="0 0 980 485" role="img" aria-label="시간축 드리프트 지표 그래프">
+            <rect x="626" y="50" width="126" height="345" class="warn-region" rx="4"></rect>
+            <rect x="793" y="50" width="88" height="345" class="drift-region" rx="4"></rect>
+
+            <line x1="72" x2="940" y1="395" y2="395" class="axis"></line>
+            <line x1="72" x2="72" y1="50" y2="395" class="axis"></line>
+
+            <line x1="72" x2="940" y1="395" y2="395" class="grid"></line>
+            <line x1="72" x2="940" y1="309" y2="309" class="grid"></line>
+            <line x1="72" x2="940" y1="223" y2="223" class="grid"></line>
+            <line x1="72" x2="940" y1="136" y2="136" class="grid"></line>
+            <line x1="72" x2="940" y1="50" y2="50" class="grid"></line>
+
+            <line x1="72" x2="72" y1="50" y2="395" class="grid"></line>
+            <line x1="289" x2="289" y1="50" y2="395" class="grid"></line>
+            <line x1="506" x2="506" y1="50" y2="395" class="grid"></line>
+            <line x1="723" x2="723" y1="50" y2="395" class="grid"></line>
+            <line x1="940" x2="940" y1="50" y2="395" class="grid"></line>
+
+            <text x="60" y="399" text-anchor="end" class="axis-text">0.20</text>
+            <text x="60" y="313" text-anchor="end" class="axis-text">0.35</text>
+            <text x="60" y="227" text-anchor="end" class="axis-text">0.50</text>
+            <text x="60" y="140" text-anchor="end" class="axis-text">0.65</text>
+            <text x="60" y="54" text-anchor="end" class="axis-text">0.80</text>
+
+            <text x="72" y="425" text-anchor="middle" class="axis-text">2025-07</text>
+            <text x="289" y="425" text-anchor="middle" class="axis-text">2025-10</text>
+            <text x="506" y="425" text-anchor="middle" class="axis-text">2026-01</text>
+            <text x="723" y="425" text-anchor="middle" class="axis-text">2026-04</text>
+            <text x="940" y="425" text-anchor="middle" class="axis-text">2026-06</text>
+            <text x="506" y="463" text-anchor="middle" class="axis-label">시간 범위: 1년, tick interval: 3개월</text>
+            <text x="18" y="223" text-anchor="middle" class="axis-label" transform="rotate(-90 18 223)">drift score</text>
+
+            <path class="band" d="M72,326 L138,315 L205,301 L272,284 L339,296 L406,276 L473,260 L540,244 L607,223 L674,200 L741,166 L808,129 L875,112 L940,118 L940,172 L875,164 L808,180 L741,218 L674,252 L607,268 L540,284 L473,304 L406,322 L339,338 L272,328 L205,342 L138,354 L72,360 Z"></path>
+
+            <path class="metric-line" d="M72,344 C121,334 158,324 205,322 C250,318 284,300 339,316 C390,298 426,288 473,282 C520,272 559,259 607,246 C656,230 697,204 741,190 C785,166 811,146 842,140 C877,134 903,139 940,145"></path>
+
+            <circle cx="138" cy="334" r="5" class="normal-dot"></circle>
+            <circle cx="339" cy="316" r="5" class="normal-dot"></circle>
+            <circle cx="607" cy="246" r="5" class="normal-dot"></circle>
+            <circle cx="674" cy="221" r="7" class="warn-dot"></circle>
+            <circle cx="808" cy="146" r="8" class="drift-dot"></circle>
+            <circle cx="842" cy="140" r="8" class="drift-dot"></circle>
+
+            <text x="640" y="73" class="axis-text" fill="#9b6a16">warning window</text>
+            <text x="806" y="73" class="axis-text" fill="#9e3e38">confirmed drift</text>
+          </svg>
+
+          <aside class="tooltip" aria-label="hover tooltip">
+            <strong>2026-05-18 ~ 2026-05-19</strong>
+            <dl>
+              <dt>mean</dt><dd>0.71</dd>
+              <dt>p05~p95</dt><dd>0.62 ~ 0.78</dd>
+              <dt>count</dt><dd>24 hourly buckets</dd>
+              <dt>level</dt><dd style="color: var(--drift);">confirmed drift</dd>
+            </dl>
+          </aside>
+        </div>
+
+        <footer class="navigator">
+          <div class="navigator-head">
+            <span>Navigator: 전체 5년 중 최근 1년 선택</span>
+            <span>pan/zoom 시 tick과 bucket 자동 재계산</span>
+          </div>
+          <svg viewBox="0 0 980 72" role="img" aria-label="navigator preview">
+            <rect x="30" y="10" width="920" height="46" rx="5" fill="#f1f5f8" stroke="#d5dde6"></rect>
+            <path d="M42,45 C105,40 146,38 201,42 C260,46 299,34 352,36 C421,38 462,31 512,30 C570,29 616,24 672,25 C723,26 762,18 806,20 C858,23 891,26 938,18" fill="none" stroke="#8aaec5" stroke-width="2"></path>
+            <rect x="725" y="8" width="212" height="50" rx="5" fill="rgba(47,111,159,.12)" stroke="#2f6f9f"></rect>
+            <line x1="725" x2="725" y1="8" y2="58" stroke="#2f6f9f" stroke-width="2"></line>
+            <line x1="937" x2="937" y1="8" y2="58" stroke="#2f6f9f" stroke-width="2"></line>
+            <text x="30" y="70" class="axis-text">2021</text>
+            <text x="493" y="70" text-anchor="middle" class="axis-text">2024</text>
+            <text x="950" y="70" text-anchor="end" class="axis-text">2026</text>
+          </svg>
+        </footer>
+      </section>
+
+      <aside class="side-panel">
+        <section class="side-section">
+          <h3>현재 선택 구간</h3>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <span>최근 평균</span>
+              <strong>0.63</strong>
+            </div>
+            <div class="metric-card">
+              <span>최대 점수</span>
+              <strong style="color: var(--drift);">0.78</strong>
+            </div>
+            <div class="metric-card">
+              <span>warning</span>
+              <strong style="color: var(--warning);">3</strong>
+            </div>
+            <div class="metric-card">
+              <span>drift</span>
+              <strong style="color: var(--drift);">2</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="side-section">
+          <h3>표시 규칙</h3>
+          <div class="legend">
+            <div class="legend-item"><span class="swatch"></span><span>weighted mean line</span></div>
+            <div class="legend-item"><span class="swatch band"></span><span>p05~p95 변동 band</span></div>
+            <div class="legend-item"><span class="swatch warning"></span><span>warning: 약한 드리프트 신호</span></div>
+            <div class="legend-item"><span class="swatch drift"></span><span>drift: 확정 드리프트 구간</span></div>
+          </div>
+        </section>
+
+        <section class="side-section">
+          <h3>이벤트</h3>
+          <div class="event-list">
+            <article class="event warning">
+              <strong>2026-04-11 warning</strong>
+              <span>seasonal baseline 대비 embedding distance 상승</span>
+            </article>
+            <article class="event drift">
+              <strong>2026-05-18 confirmed drift</strong>
+              <span>p95 band와 drift score가 threshold를 연속 초과</span>
+            </article>
+            <article class="event drift">
+              <strong>2026-05-29 confirmed drift</strong>
+              <span>current cluster가 reference 영역에서 분리</span>
+            </article>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

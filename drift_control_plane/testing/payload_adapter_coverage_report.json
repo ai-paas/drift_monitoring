@@ -1,0 +1,2583 @@
+{
+  "source": {
+    "methodData": "C:\\Users\\jklee\\PycharmProjects\\drift_llm_intepretation\\drift 보고서\\charts\\method_data.js",
+    "runtimePayloads": "C:\\Users\\jklee\\PycharmProjects\\drift_llm_intepretation\\chart_runtime\\payloads\\runtime_chart_payloads.json"
+  },
+  "summary": {
+    "chartCountInMethodCatalog": 53,
+    "runtimeTemplateChartCount": 53,
+    "chartMethodPairCount": 188,
+    "registeredBindingCount": 188,
+    "passedBindingPairCount": 188,
+    "failedBindingPairCount": 0,
+    "missingBindingPairCount": 0,
+    "missingRuntimeTemplateCount": 0
+  },
+  "passedBindings": [
+    {
+      "chartId": "CHART-ADAPT-001",
+      "method": "HAT / HAT_ADWIN_NODE_MONITORING",
+      "methodVariantKey": "HAT_ADWIN_NODE_MONITORING",
+      "bindingKey": "auto__HAT_ADWIN_NODE_MONITORING__CHART-ADAPT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ADAPT-001.accuracy",
+        "chart.CHART-ADAPT-001.events",
+        "chart.CHART-ADAPT-001.notes",
+        "chart.CHART-ADAPT-001.states",
+        "chart.CHART-ADAPT-001.summary",
+        "chart.CHART-ADAPT-001.tree_size"
+      ]
+    },
+    {
+      "chartId": "CHART-ADAPT-001",
+      "method": "HAT / HAT_ALTERNATE_TREE_REPLACEMENT",
+      "methodVariantKey": "HAT_ALTERNATE_TREE_REPLACEMENT",
+      "bindingKey": "auto__HAT_ALTERNATE_TREE_REPLACEMENT__CHART-ADAPT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ADAPT-001.accuracy",
+        "chart.CHART-ADAPT-001.events",
+        "chart.CHART-ADAPT-001.notes",
+        "chart.CHART-ADAPT-001.states",
+        "chart.CHART-ADAPT-001.summary",
+        "chart.CHART-ADAPT-001.tree_size"
+      ]
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "method": "DriftRetrainingClassifier / DRIFT_RETRAINING_WITH_ADWIN",
+      "methodVariantKey": "DRIFT_RETRAINING_WITH_ADWIN",
+      "bindingKey": "auto__DRIFT_RETRAINING_WITH_ADWIN__CHART-ADAPT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ADAPT-002.comparison",
+        "chart.CHART-ADAPT-002.notes",
+        "chart.CHART-ADAPT-002.performance",
+        "chart.CHART-ADAPT-002.summary",
+        "chart.CHART-ADAPT-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "method": "DriftRetrainingClassifier / DRIFT_RETRAINING_WITH_PAGE_HINKLEY",
+      "methodVariantKey": "DRIFT_RETRAINING_WITH_PAGE_HINKLEY",
+      "bindingKey": "auto__DRIFT_RETRAINING_WITH_PAGE_HINKLEY__CHART-ADAPT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ADAPT-002.comparison",
+        "chart.CHART-ADAPT-002.notes",
+        "chart.CHART-ADAPT-002.performance",
+        "chart.CHART-ADAPT-002.summary",
+        "chart.CHART-ADAPT-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ADAPT-002",
+      "method": "DriftRetrainingClassifier / DRIFT_RETRAINING_CHAMPION_CHALLENGER",
+      "methodVariantKey": "DRIFT_RETRAINING_CHAMPION_CHALLENGER",
+      "bindingKey": "auto__DRIFT_RETRAINING_CHAMPION_CHALLENGER__CHART-ADAPT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ADAPT-002.comparison",
+        "chart.CHART-ADAPT-002.notes",
+        "chart.CHART-ADAPT-002.performance",
+        "chart.CHART-ADAPT-002.summary",
+        "chart.CHART-ADAPT-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "KS Test / TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "bindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_GREATER__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "KS Test / TWO_SAMPLE_KS_ONE_SIDED_LESS",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_LESS",
+      "bindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_LESS__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "Fisher's Exact Test / ONE_SIDED_FISHER_EXACT",
+      "methodVariantKey": "ONE_SIDED_FISHER_EXACT",
+      "bindingKey": "auto__ONE_SIDED_FISHER_EXACT__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_ONE_SIDED",
+      "methodVariantKey": "MANN_WHITNEY_ONE_SIDED",
+      "bindingKey": "auto__MANN_WHITNEY_ONE_SIDED__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "CUSUM / ONE_SIDED_UPPER_CUSUM",
+      "methodVariantKey": "ONE_SIDED_UPPER_CUSUM",
+      "bindingKey": "auto__ONE_SIDED_UPPER_CUSUM__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "CUSUM / ONE_SIDED_LOWER_CUSUM",
+      "methodVariantKey": "ONE_SIDED_LOWER_CUSUM",
+      "bindingKey": "auto__ONE_SIDED_LOWER_CUSUM__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "EWMA / EWMA_ONE_SIDED",
+      "methodVariantKey": "EWMA_ONE_SIDED",
+      "bindingKey": "auto__EWMA_ONE_SIDED__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-001",
+      "method": "Geometric Moving Average / GMA_ONE_SIDED",
+      "methodVariantKey": "GMA_ONE_SIDED",
+      "bindingKey": "auto__GMA_ONE_SIDED__CHART-ANNOT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-001.direction",
+        "chart.CHART-ANNOT-001.matrix",
+        "chart.CHART-ANNOT-001.notes",
+        "chart.CHART-ANNOT-001.summary",
+        "chart.CHART-ANNOT-001.tests"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-002",
+      "method": "KS Test / TWO_SAMPLE_KS_APPROX_QUANTILE",
+      "methodVariantKey": "TWO_SAMPLE_KS_APPROX_QUANTILE",
+      "bindingKey": "auto__TWO_SAMPLE_KS_APPROX_QUANTILE__CHART-ANNOT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-002.error",
+        "chart.CHART-ANNOT-002.notes",
+        "chart.CHART-ANNOT-002.projection",
+        "chart.CHART-ANNOT-002.quantile",
+        "chart.CHART-ANNOT-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-002",
+      "method": "Wasserstein Distance / SLICED_WASSERSTEIN_EMBEDDING",
+      "methodVariantKey": "SLICED_WASSERSTEIN_EMBEDDING",
+      "bindingKey": "auto__SLICED_WASSERSTEIN_EMBEDDING__CHART-ANNOT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-002.error",
+        "chart.CHART-ANNOT-002.notes",
+        "chart.CHART-ANNOT-002.projection",
+        "chart.CHART-ANNOT-002.quantile",
+        "chart.CHART-ANNOT-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ANNOT-002",
+      "method": "Wasserstein Distance / WASSERSTEIN_APPROX_HISTOGRAM",
+      "methodVariantKey": "WASSERSTEIN_APPROX_HISTOGRAM",
+      "bindingKey": "auto__WASSERSTEIN_APPROX_HISTOGRAM__CHART-ANNOT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANNOT-002.error",
+        "chart.CHART-ANNOT-002.notes",
+        "chart.CHART-ANNOT-002.projection",
+        "chart.CHART-ANNOT-002.quantile",
+        "chart.CHART-ANNOT-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "method": "OCDD / ONE_CLASS_SVM_DRIFT",
+      "methodVariantKey": "ONE_CLASS_SVM_DRIFT",
+      "bindingKey": "auto__ONE_CLASS_SVM_DRIFT__CHART-ANOM-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANOM-001.notes",
+        "chart.CHART-ANOM-001.projection",
+        "chart.CHART-ANOM-001.rate",
+        "chart.CHART-ANOM-001.score",
+        "chart.CHART-ANOM-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "method": "OCDD / ISOLATION_FOREST_DRIFT_SCORE",
+      "methodVariantKey": "ISOLATION_FOREST_DRIFT_SCORE",
+      "bindingKey": "auto__ISOLATION_FOREST_DRIFT_SCORE__CHART-ANOM-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANOM-001.notes",
+        "chart.CHART-ANOM-001.projection",
+        "chart.CHART-ANOM-001.rate",
+        "chart.CHART-ANOM-001.score",
+        "chart.CHART-ANOM-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ANOM-001",
+      "method": "OCDD / AUTOENCODER_RECONSTRUCTION_DRIFT",
+      "methodVariantKey": "AUTOENCODER_RECONSTRUCTION_DRIFT",
+      "bindingKey": "auto__AUTOENCODER_RECONSTRUCTION_DRIFT__CHART-ANOM-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ANOM-001.notes",
+        "chart.CHART-ANOM-001.projection",
+        "chart.CHART-ANOM-001.rate",
+        "chart.CHART-ANOM-001.score",
+        "chart.CHART-ANOM-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-BOCD-001",
+      "method": "BOCD / BAYESIAN_ONLINE_CHANGE_POINT_GAUSSIAN",
+      "methodVariantKey": "BAYESIAN_ONLINE_CHANGE_POINT_GAUSSIAN",
+      "bindingKey": "auto__BAYESIAN_ONLINE_CHANGE_POINT_GAUSSIAN__CHART-BOCD-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-BOCD-001.cp_heatmap",
+        "chart.CHART-BOCD-001.notes",
+        "chart.CHART-BOCD-001.run_length",
+        "chart.CHART-BOCD-001.stream",
+        "chart.CHART-BOCD-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-BOCD-001",
+      "method": "BOCD / BOCD_HAZARD_RATE_VARIANT",
+      "methodVariantKey": "BOCD_HAZARD_RATE_VARIANT",
+      "bindingKey": "auto__BOCD_HAZARD_RATE_VARIANT__CHART-BOCD-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-BOCD-001.cp_heatmap",
+        "chart.CHART-BOCD-001.notes",
+        "chart.CHART-BOCD-001.run_length",
+        "chart.CHART-BOCD-001.stream",
+        "chart.CHART-BOCD-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-BOCD-001",
+      "method": "BOCD / BOCD_PREDICTIVE_PROBABILITY",
+      "methodVariantKey": "BOCD_PREDICTIVE_PROBABILITY",
+      "bindingKey": "auto__BOCD_PREDICTIVE_PROBABILITY__CHART-BOCD-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-BOCD-001.cp_heatmap",
+        "chart.CHART-BOCD-001.notes",
+        "chart.CHART-BOCD-001.run_length",
+        "chart.CHART-BOCD-001.stream",
+        "chart.CHART-BOCD-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "method": "Chi-square Test / CHI_SQUARE_GOODNESS_OF_FIT",
+      "methodVariantKey": "CHI_SQUARE_GOODNESS_OF_FIT",
+      "bindingKey": "auto__CHI_SQUARE_GOODNESS_OF_FIT__CHART-CAT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-001.categories",
+        "chart.CHART-CAT-001.notes",
+        "chart.CHART-CAT-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "method": "Chi-square Test / CHI_SQUARE_HOMOGENEITY",
+      "methodVariantKey": "CHI_SQUARE_HOMOGENEITY",
+      "bindingKey": "auto__CHI_SQUARE_HOMOGENEITY__CHART-CAT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-001.categories",
+        "chart.CHART-CAT-001.notes",
+        "chart.CHART-CAT-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "method": "Chi-square Test / CHI_SQUARE_WITH_LOW_EXPECTED_COUNT_CAUTION",
+      "methodVariantKey": "CHI_SQUARE_WITH_LOW_EXPECTED_COUNT_CAUTION",
+      "bindingKey": "auto__CHI_SQUARE_WITH_LOW_EXPECTED_COUNT_CAUTION__CHART-CAT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-001.categories",
+        "chart.CHART-CAT-001.notes",
+        "chart.CHART-CAT-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "method": "G-test / LIKELIHOOD_RATIO_G_TEST_GOF",
+      "methodVariantKey": "LIKELIHOOD_RATIO_G_TEST_GOF",
+      "bindingKey": "auto__LIKELIHOOD_RATIO_G_TEST_GOF__CHART-CAT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-001.categories",
+        "chart.CHART-CAT-001.notes",
+        "chart.CHART-CAT-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "method": "G-test / LIKELIHOOD_RATIO_G_TEST_INDEPENDENCE",
+      "methodVariantKey": "LIKELIHOOD_RATIO_G_TEST_INDEPENDENCE",
+      "bindingKey": "auto__LIKELIHOOD_RATIO_G_TEST_INDEPENDENCE__CHART-CAT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-001.categories",
+        "chart.CHART-CAT-001.notes",
+        "chart.CHART-CAT-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-001",
+      "method": "G-test / G_TEST_WITH_SMALL_COUNT_CAUTION",
+      "methodVariantKey": "G_TEST_WITH_SMALL_COUNT_CAUTION",
+      "bindingKey": "auto__G_TEST_WITH_SMALL_COUNT_CAUTION__CHART-CAT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-001.categories",
+        "chart.CHART-CAT-001.notes",
+        "chart.CHART-CAT-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-002",
+      "method": "Total Variation Distance / CATEGORICAL_TOTAL_VARIATION",
+      "methodVariantKey": "CATEGORICAL_TOTAL_VARIATION",
+      "bindingKey": "auto__CATEGORICAL_TOTAL_VARIATION__CHART-CAT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-002.categories",
+        "chart.CHART-CAT-002.notes",
+        "chart.CHART-CAT-002.summary",
+        "chart.CHART-CAT-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-002",
+      "method": "Total Variation Distance / HISTOGRAM_TOTAL_VARIATION",
+      "methodVariantKey": "HISTOGRAM_TOTAL_VARIATION",
+      "bindingKey": "auto__HISTOGRAM_TOTAL_VARIATION__CHART-CAT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-002.categories",
+        "chart.CHART-CAT-002.notes",
+        "chart.CHART-CAT-002.summary",
+        "chart.CHART-CAT-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-002",
+      "method": "Total Variation Distance / PROBABILITY_VECTOR_TOTAL_VARIATION",
+      "methodVariantKey": "PROBABILITY_VECTOR_TOTAL_VARIATION",
+      "bindingKey": "auto__PROBABILITY_VECTOR_TOTAL_VARIATION__CHART-CAT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-002.categories",
+        "chart.CHART-CAT-002.notes",
+        "chart.CHART-CAT-002.summary",
+        "chart.CHART-CAT-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-003",
+      "method": "L-Infinity Distance / CATEGORICAL_L_INFINITY",
+      "methodVariantKey": "CATEGORICAL_L_INFINITY",
+      "bindingKey": "auto__CATEGORICAL_L_INFINITY__CHART-CAT-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-003.categories",
+        "chart.CHART-CAT-003.notes",
+        "chart.CHART-CAT-003.summary",
+        "chart.CHART-CAT-003.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-003",
+      "method": "L-Infinity Distance / PROBABILITY_VECTOR_L_INFINITY",
+      "methodVariantKey": "PROBABILITY_VECTOR_L_INFINITY",
+      "bindingKey": "auto__PROBABILITY_VECTOR_L_INFINITY__CHART-CAT-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-003.categories",
+        "chart.CHART-CAT-003.notes",
+        "chart.CHART-CAT-003.summary",
+        "chart.CHART-CAT-003.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-003",
+      "method": "L-Infinity Distance / BINNED_NUMERIC_L_INFINITY",
+      "methodVariantKey": "BINNED_NUMERIC_L_INFINITY",
+      "bindingKey": "auto__BINNED_NUMERIC_L_INFINITY__CHART-CAT-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-003.categories",
+        "chart.CHART-CAT-003.notes",
+        "chart.CHART-CAT-003.summary",
+        "chart.CHART-CAT-003.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-004",
+      "method": "Fisher's Exact Test / TWO_BY_TWO_FISHER_EXACT",
+      "methodVariantKey": "TWO_BY_TWO_FISHER_EXACT",
+      "bindingKey": "auto__TWO_BY_TWO_FISHER_EXACT__CHART-CAT-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-004.forest",
+        "chart.CHART-CAT-004.notes",
+        "chart.CHART-CAT-004.summary",
+        "chart.CHART-CAT-004.table"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-004",
+      "method": "Fisher's Exact Test / ONE_SIDED_FISHER_EXACT",
+      "methodVariantKey": "ONE_SIDED_FISHER_EXACT",
+      "bindingKey": "auto__ONE_SIDED_FISHER_EXACT__CHART-CAT-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-004.forest",
+        "chart.CHART-CAT-004.notes",
+        "chart.CHART-CAT-004.summary",
+        "chart.CHART-CAT-004.table"
+      ]
+    },
+    {
+      "chartId": "CHART-CAT-004",
+      "method": "Fisher's Exact Test / EXTENDED_CONTINGENCY_EXACT_TEST",
+      "methodVariantKey": "EXTENDED_CONTINGENCY_EXACT_TEST",
+      "bindingKey": "auto__EXTENDED_CONTINGENCY_EXACT_TEST__CHART-CAT-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CAT-004.forest",
+        "chart.CHART-CAT-004.notes",
+        "chart.CHART-CAT-004.summary",
+        "chart.CHART-CAT-004.table"
+      ]
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "method": "Classifier 기반 embedding drift detection / DOMAIN_CLASSIFIER_ROC_AUC",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_ROC_AUC",
+      "bindingKey": "auto__DOMAIN_CLASSIFIER_ROC_AUC__CHART-CLS-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CLS-001.importance_projection",
+        "chart.CHART-CLS-001.notes",
+        "chart.CHART-CLS-001.roc",
+        "chart.CHART-CLS-001.scores",
+        "chart.CHART-CLS-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "method": "Classifier 기반 embedding drift detection / DOMAIN_CLASSIFIER_PROBABILITY_DRIFT",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_PROBABILITY_DRIFT",
+      "bindingKey": "auto__DOMAIN_CLASSIFIER_PROBABILITY_DRIFT__CHART-CLS-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CLS-001.importance_projection",
+        "chart.CHART-CLS-001.notes",
+        "chart.CHART-CLS-001.roc",
+        "chart.CHART-CLS-001.scores",
+        "chart.CHART-CLS-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CLS-001",
+      "method": "Classifier 기반 embedding drift detection / CROSS_VALIDATED_DOMAIN_CLASSIFIER",
+      "methodVariantKey": "CROSS_VALIDATED_DOMAIN_CLASSIFIER",
+      "bindingKey": "auto__CROSS_VALIDATED_DOMAIN_CLASSIFIER__CHART-CLS-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CLS-001.importance_projection",
+        "chart.CHART-CLS-001.notes",
+        "chart.CHART-CLS-001.roc",
+        "chart.CHART-CLS-001.scores",
+        "chart.CHART-CLS-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "method": "CUSUM / ONE_SIDED_UPPER_CUSUM",
+      "methodVariantKey": "ONE_SIDED_UPPER_CUSUM",
+      "bindingKey": "auto__ONE_SIDED_UPPER_CUSUM__CHART-CTRL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-001.direction",
+        "chart.CHART-CTRL-001.notes",
+        "chart.CHART-CTRL-001.series",
+        "chart.CHART-CTRL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "method": "CUSUM / ONE_SIDED_LOWER_CUSUM",
+      "methodVariantKey": "ONE_SIDED_LOWER_CUSUM",
+      "bindingKey": "auto__ONE_SIDED_LOWER_CUSUM__CHART-CTRL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-001.direction",
+        "chart.CHART-CTRL-001.notes",
+        "chart.CHART-CTRL-001.series",
+        "chart.CHART-CTRL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "method": "CUSUM / TWO_SIDED_CUSUM",
+      "methodVariantKey": "TWO_SIDED_CUSUM",
+      "bindingKey": "auto__TWO_SIDED_CUSUM__CHART-CTRL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-001.direction",
+        "chart.CHART-CTRL-001.notes",
+        "chart.CHART-CTRL-001.series",
+        "chart.CHART-CTRL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-001",
+      "method": "CUSUM / CUSUM_ON_DISTANCE_STREAM",
+      "methodVariantKey": "CUSUM_ON_DISTANCE_STREAM",
+      "bindingKey": "auto__CUSUM_ON_DISTANCE_STREAM__CHART-CTRL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-001.direction",
+        "chart.CHART-CTRL-001.notes",
+        "chart.CHART-CTRL-001.series",
+        "chart.CHART-CTRL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "method": "EWMA / EWMA_UNIVARIATE_CONTROL_CHART",
+      "methodVariantKey": "EWMA_UNIVARIATE_CONTROL_CHART",
+      "bindingKey": "auto__EWMA_UNIVARIATE_CONTROL_CHART__CHART-CTRL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-002.notes",
+        "chart.CHART-CTRL-002.series",
+        "chart.CHART-CTRL-002.summary",
+        "chart.CHART-CTRL-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "method": "EWMA / EWMA_ONE_SIDED",
+      "methodVariantKey": "EWMA_ONE_SIDED",
+      "bindingKey": "auto__EWMA_ONE_SIDED__CHART-CTRL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-002.notes",
+        "chart.CHART-CTRL-002.series",
+        "chart.CHART-CTRL-002.summary",
+        "chart.CHART-CTRL-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "method": "EWMA / EWMA_BASELINE_REPLAY_THRESHOLD",
+      "methodVariantKey": "EWMA_BASELINE_REPLAY_THRESHOLD",
+      "bindingKey": "auto__EWMA_BASELINE_REPLAY_THRESHOLD__CHART-CTRL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-002.notes",
+        "chart.CHART-CTRL-002.series",
+        "chart.CHART-CTRL-002.summary",
+        "chart.CHART-CTRL-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "method": "Geometric Moving Average / GMA_CONTROL_CHART",
+      "methodVariantKey": "GMA_CONTROL_CHART",
+      "bindingKey": "auto__GMA_CONTROL_CHART__CHART-CTRL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-002.notes",
+        "chart.CHART-CTRL-002.series",
+        "chart.CHART-CTRL-002.summary",
+        "chart.CHART-CTRL-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "method": "Geometric Moving Average / GMA_ONE_SIDED",
+      "methodVariantKey": "GMA_ONE_SIDED",
+      "bindingKey": "auto__GMA_ONE_SIDED__CHART-CTRL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-002.notes",
+        "chart.CHART-CTRL-002.series",
+        "chart.CHART-CTRL-002.summary",
+        "chart.CHART-CTRL-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-002",
+      "method": "Geometric Moving Average / GMA_WITH_EMPIRICAL_LIMIT",
+      "methodVariantKey": "GMA_WITH_EMPIRICAL_LIMIT",
+      "bindingKey": "auto__GMA_WITH_EMPIRICAL_LIMIT__CHART-CTRL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-002.notes",
+        "chart.CHART-CTRL-002.series",
+        "chart.CHART-CTRL-002.summary",
+        "chart.CHART-CTRL-002.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-003",
+      "method": "MEWMA / MEWMA_STANDARD",
+      "methodVariantKey": "MEWMA_STANDARD",
+      "bindingKey": "auto__MEWMA_STANDARD__CHART-CTRL-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-003.contribution",
+        "chart.CHART-CTRL-003.notes",
+        "chart.CHART-CTRL-003.small",
+        "chart.CHART-CTRL-003.stat",
+        "chart.CHART-CTRL-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-CTRL-003",
+      "method": "MEWMA / MEWMA_WITH_MAHALANOBIS_D2",
+      "methodVariantKey": "MEWMA_WITH_MAHALANOBIS_D2",
+      "bindingKey": "auto__MEWMA_WITH_MAHALANOBIS_D2__CHART-CTRL-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-CTRL-003.contribution",
+        "chart.CHART-CTRL-003.notes",
+        "chart.CHART-CTRL-003.small",
+        "chart.CHART-CTRL-003.stat",
+        "chart.CHART-CTRL-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-DIST-001",
+      "method": "Wasserstein Distance / WASSERSTEIN_1D_EXACT",
+      "methodVariantKey": "WASSERSTEIN_1D_EXACT",
+      "bindingKey": "auto__WASSERSTEIN_1D_EXACT__CHART-DIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DIST-001.density",
+        "chart.CHART-DIST-001.notes",
+        "chart.CHART-DIST-001.ranking",
+        "chart.CHART-DIST-001.summary",
+        "chart.CHART-DIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-DIST-001",
+      "method": "Wasserstein Distance / WASSERSTEIN_WINDOW_TREND",
+      "methodVariantKey": "WASSERSTEIN_WINDOW_TREND",
+      "bindingKey": "auto__WASSERSTEIN_WINDOW_TREND__CHART-DIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DIST-001.density",
+        "chart.CHART-DIST-001.notes",
+        "chart.CHART-DIST-001.ranking",
+        "chart.CHART-DIST-001.summary",
+        "chart.CHART-DIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-DIST-001",
+      "method": "Wasserstein Distance / SLICED_WASSERSTEIN_EMBEDDING",
+      "methodVariantKey": "SLICED_WASSERSTEIN_EMBEDDING",
+      "bindingKey": "auto__SLICED_WASSERSTEIN_EMBEDDING__CHART-DIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DIST-001.density",
+        "chart.CHART-DIST-001.notes",
+        "chart.CHART-DIST-001.ranking",
+        "chart.CHART-DIST-001.summary",
+        "chart.CHART-DIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-DIST-001",
+      "method": "Wasserstein Distance / WASSERSTEIN_APPROX_HISTOGRAM",
+      "methodVariantKey": "WASSERSTEIN_APPROX_HISTOGRAM",
+      "bindingKey": "auto__WASSERSTEIN_APPROX_HISTOGRAM__CHART-DIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DIST-001.density",
+        "chart.CHART-DIST-001.notes",
+        "chart.CHART-DIST-001.ranking",
+        "chart.CHART-DIST-001.summary",
+        "chart.CHART-DIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-DISTSHAPE-001",
+      "method": "Epps-Singleton Test / TWO_SAMPLE_EPPS_SINGLETON",
+      "methodVariantKey": "TWO_SAMPLE_EPPS_SINGLETON",
+      "bindingKey": "auto__TWO_SAMPLE_EPPS_SINGLETON__CHART-DISTSHAPE-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DISTSHAPE-001.density",
+        "chart.CHART-DISTSHAPE-001.ecf",
+        "chart.CHART-DISTSHAPE-001.notes",
+        "chart.CHART-DISTSHAPE-001.stat",
+        "chart.CHART-DISTSHAPE-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-DISTSHAPE-001",
+      "method": "Epps-Singleton Test / DISCRETE_EPPS_SINGLETON",
+      "methodVariantKey": "DISCRETE_EPPS_SINGLETON",
+      "bindingKey": "auto__DISCRETE_EPPS_SINGLETON__CHART-DISTSHAPE-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DISTSHAPE-001.density",
+        "chart.CHART-DISTSHAPE-001.ecf",
+        "chart.CHART-DISTSHAPE-001.notes",
+        "chart.CHART-DISTSHAPE-001.stat",
+        "chart.CHART-DISTSHAPE-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-DISTSHAPE-001",
+      "method": "Epps-Singleton Test / ASYMPTOTIC_EPPS_SINGLETON",
+      "methodVariantKey": "ASYMPTOTIC_EPPS_SINGLETON",
+      "bindingKey": "auto__ASYMPTOTIC_EPPS_SINGLETON__CHART-DISTSHAPE-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-DISTSHAPE-001.density",
+        "chart.CHART-DISTSHAPE-001.ecf",
+        "chart.CHART-DISTSHAPE-001.notes",
+        "chart.CHART-DISTSHAPE-001.stat",
+        "chart.CHART-DISTSHAPE-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / ONE_SAMPLE_KS_KNOWN_CDF",
+      "methodVariantKey": "ONE_SAMPLE_KS_KNOWN_CDF",
+      "bindingKey": "auto__ONE_SAMPLE_KS_KNOWN_CDF__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / TWO_SAMPLE_KS_TWO_SIDED",
+      "methodVariantKey": "TWO_SAMPLE_KS_TWO_SIDED",
+      "bindingKey": "auto__TWO_SAMPLE_KS_TWO_SIDED__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_GREATER",
+      "bindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_GREATER__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / TWO_SAMPLE_KS_ONE_SIDED_LESS",
+      "methodVariantKey": "TWO_SAMPLE_KS_ONE_SIDED_LESS",
+      "bindingKey": "auto__TWO_SAMPLE_KS_ONE_SIDED_LESS__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / TWO_SAMPLE_KS_EXACT_PVALUE",
+      "methodVariantKey": "TWO_SAMPLE_KS_EXACT_PVALUE",
+      "bindingKey": "auto__TWO_SAMPLE_KS_EXACT_PVALUE__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / TWO_SAMPLE_KS_ASYMPTOTIC_PVALUE",
+      "methodVariantKey": "TWO_SAMPLE_KS_ASYMPTOTIC_PVALUE",
+      "bindingKey": "auto__TWO_SAMPLE_KS_ASYMPTOTIC_PVALUE__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / KS_WITH_TIES_OR_DISCRETE_CAUTION",
+      "methodVariantKey": "KS_WITH_TIES_OR_DISCRETE_CAUTION",
+      "bindingKey": "auto__KS_WITH_TIES_OR_DISCRETE_CAUTION__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / LILLIEFORS_RELATED_ONE_SAMPLE",
+      "methodVariantKey": "LILLIEFORS_RELATED_ONE_SAMPLE",
+      "bindingKey": "auto__LILLIEFORS_RELATED_ONE_SAMPLE__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / HIGHER_ORDER_KS",
+      "methodVariantKey": "HIGHER_ORDER_KS",
+      "bindingKey": "auto__HIGHER_ORDER_KS__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-001",
+      "method": "KS Test / TWO_SAMPLE_KS_APPROX_QUANTILE",
+      "methodVariantKey": "TWO_SAMPLE_KS_APPROX_QUANTILE",
+      "bindingKey": "auto__TWO_SAMPLE_KS_APPROX_QUANTILE__CHART-EDF-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-001.ecdf",
+        "chart.CHART-EDF-001.hist",
+        "chart.CHART-EDF-001.notes",
+        "chart.CHART-EDF-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "method": "Anderson-Darling Test / ONE_SAMPLE_ANDERSON_DARLING",
+      "methodVariantKey": "ONE_SAMPLE_ANDERSON_DARLING",
+      "bindingKey": "auto__ONE_SAMPLE_ANDERSON_DARLING__CHART-EDF-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-002.notes",
+        "chart.CHART-EDF-002.qq",
+        "chart.CHART-EDF-002.summary",
+        "chart.CHART-EDF-002.tail"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "method": "Anderson-Darling Test / TWO_SAMPLE_ANDERSON_DARLING",
+      "methodVariantKey": "TWO_SAMPLE_ANDERSON_DARLING",
+      "bindingKey": "auto__TWO_SAMPLE_ANDERSON_DARLING__CHART-EDF-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-002.notes",
+        "chart.CHART-EDF-002.qq",
+        "chart.CHART-EDF-002.summary",
+        "chart.CHART-EDF-002.tail"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "method": "Anderson-Darling Test / K_SAMPLE_ANDERSON_DARLING",
+      "methodVariantKey": "K_SAMPLE_ANDERSON_DARLING",
+      "bindingKey": "auto__K_SAMPLE_ANDERSON_DARLING__CHART-EDF-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-002.notes",
+        "chart.CHART-EDF-002.qq",
+        "chart.CHART-EDF-002.summary",
+        "chart.CHART-EDF-002.tail"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-002",
+      "method": "Anderson-Darling Test / TAIL_SENSITIVE_AD",
+      "methodVariantKey": "TAIL_SENSITIVE_AD",
+      "bindingKey": "auto__TAIL_SENSITIVE_AD__CHART-EDF-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-002.notes",
+        "chart.CHART-EDF-002.qq",
+        "chart.CHART-EDF-002.summary",
+        "chart.CHART-EDF-002.tail"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-003",
+      "method": "Cramer-von Mises Test / ONE_SAMPLE_CVM",
+      "methodVariantKey": "ONE_SAMPLE_CVM",
+      "bindingKey": "auto__ONE_SAMPLE_CVM__CHART-EDF-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-003.cdf",
+        "chart.CHART-EDF-003.cumulative",
+        "chart.CHART-EDF-003.notes",
+        "chart.CHART-EDF-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-003",
+      "method": "Cramer-von Mises Test / TWO_SAMPLE_CVM",
+      "methodVariantKey": "TWO_SAMPLE_CVM",
+      "bindingKey": "auto__TWO_SAMPLE_CVM__CHART-EDF-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-003.cdf",
+        "chart.CHART-EDF-003.cumulative",
+        "chart.CHART-EDF-003.notes",
+        "chart.CHART-EDF-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-003",
+      "method": "Cramer-von Mises Test / K_SAMPLE_CVM",
+      "methodVariantKey": "K_SAMPLE_CVM",
+      "bindingKey": "auto__K_SAMPLE_CVM__CHART-EDF-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-003.cdf",
+        "chart.CHART-EDF-003.cumulative",
+        "chart.CHART-EDF-003.notes",
+        "chart.CHART-EDF-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-004",
+      "method": "Kuiper's Test / KUIPER_TWO_SAMPLE",
+      "methodVariantKey": "KUIPER_TWO_SAMPLE",
+      "bindingKey": "auto__KUIPER_TWO_SAMPLE__CHART-EDF-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-004.circular",
+        "chart.CHART-EDF-004.deviation",
+        "chart.CHART-EDF-004.notes",
+        "chart.CHART-EDF-004.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-004",
+      "method": "Kuiper's Test / KUIPER_CIRCULAR_DATA",
+      "methodVariantKey": "KUIPER_CIRCULAR_DATA",
+      "bindingKey": "auto__KUIPER_CIRCULAR_DATA__CHART-EDF-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-004.circular",
+        "chart.CHART-EDF-004.deviation",
+        "chart.CHART-EDF-004.notes",
+        "chart.CHART-EDF-004.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EDF-004",
+      "method": "Kuiper's Test / KUIPER_ONE_SAMPLE",
+      "methodVariantKey": "KUIPER_ONE_SAMPLE",
+      "bindingKey": "auto__KUIPER_ONE_SAMPLE__CHART-EDF-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EDF-004.circular",
+        "chart.CHART-EDF-004.deviation",
+        "chart.CHART-EDF-004.notes",
+        "chart.CHART-EDF-004.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-001",
+      "method": "DDM / DDM_STANDARD",
+      "methodVariantKey": "DDM_STANDARD",
+      "bindingKey": "auto__DDM_STANDARD__CHART-ERR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-001.error",
+        "chart.CHART-ERR-001.notes",
+        "chart.CHART-ERR-001.summary",
+        "chart.CHART-ERR-001.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-001",
+      "method": "DDM / DDM_WARNING_BUFFER",
+      "methodVariantKey": "DDM_WARNING_BUFFER",
+      "bindingKey": "auto__DDM_WARNING_BUFFER__CHART-ERR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-001.error",
+        "chart.CHART-ERR-001.notes",
+        "chart.CHART-ERR-001.summary",
+        "chart.CHART-ERR-001.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-001",
+      "method": "DDM / DDM_CLASS_SPECIFIC",
+      "methodVariantKey": "DDM_CLASS_SPECIFIC",
+      "bindingKey": "auto__DDM_CLASS_SPECIFIC__CHART-ERR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-001.error",
+        "chart.CHART-ERR-001.notes",
+        "chart.CHART-ERR-001.summary",
+        "chart.CHART-ERR-001.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-002",
+      "method": "RDDM / RDDM_STANDARD",
+      "methodVariantKey": "RDDM_STANDARD",
+      "bindingKey": "auto__RDDM_STANDARD__CHART-ERR-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-002.comparison",
+        "chart.CHART-ERR-002.notes",
+        "chart.CHART-ERR-002.series",
+        "chart.CHART-ERR-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-002",
+      "method": "RDDM / RDDM_REACTIVE_RESET",
+      "methodVariantKey": "RDDM_REACTIVE_RESET",
+      "bindingKey": "auto__RDDM_REACTIVE_RESET__CHART-ERR-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-002.comparison",
+        "chart.CHART-ERR-002.notes",
+        "chart.CHART-ERR-002.series",
+        "chart.CHART-ERR-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-003",
+      "method": "EDDM / EDDM_DISTANCE_BETWEEN_ERRORS",
+      "methodVariantKey": "EDDM_DISTANCE_BETWEEN_ERRORS",
+      "bindingKey": "auto__EDDM_DISTANCE_BETWEEN_ERRORS__CHART-ERR-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-003.events",
+        "chart.CHART-ERR-003.notes",
+        "chart.CHART-ERR-003.score",
+        "chart.CHART-ERR-003.summary",
+        "chart.CHART-ERR-003.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-003",
+      "method": "EDDM / EDDM_WARNING_DRIFT",
+      "methodVariantKey": "EDDM_WARNING_DRIFT",
+      "bindingKey": "auto__EDDM_WARNING_DRIFT__CHART-ERR-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-003.events",
+        "chart.CHART-ERR-003.notes",
+        "chart.CHART-ERR-003.score",
+        "chart.CHART-ERR-003.summary",
+        "chart.CHART-ERR-003.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-003",
+      "method": "EDDM / EDDM_GRADUAL_DRIFT",
+      "methodVariantKey": "EDDM_GRADUAL_DRIFT",
+      "bindingKey": "auto__EDDM_GRADUAL_DRIFT__CHART-ERR-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-003.events",
+        "chart.CHART-ERR-003.notes",
+        "chart.CHART-ERR-003.score",
+        "chart.CHART-ERR-003.summary",
+        "chart.CHART-ERR-003.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-004",
+      "method": "ECDD-WT / ECDD_WT_STANDARD",
+      "methodVariantKey": "ECDD_WT_STANDARD",
+      "bindingKey": "auto__ECDD_WT_STANDARD__CHART-ERR-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-004.notes",
+        "chart.CHART-ERR-004.series",
+        "chart.CHART-ERR-004.summary",
+        "chart.CHART-ERR-004.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-004",
+      "method": "ECDD-WT / ECDD_WT_WARNING_DRIFT",
+      "methodVariantKey": "ECDD_WT_WARNING_DRIFT",
+      "bindingKey": "auto__ECDD_WT_WARNING_DRIFT__CHART-ERR-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-004.notes",
+        "chart.CHART-ERR-004.series",
+        "chart.CHART-ERR-004.summary",
+        "chart.CHART-ERR-004.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-004",
+      "method": "ECDD-WT / ECDD_WT_ERROR_STREAM",
+      "methodVariantKey": "ECDD_WT_ERROR_STREAM",
+      "bindingKey": "auto__ECDD_WT_ERROR_STREAM__CHART-ERR-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-004.notes",
+        "chart.CHART-ERR-004.series",
+        "chart.CHART-ERR-004.summary",
+        "chart.CHART-ERR-004.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "method": "HDDM-A / HDDM_A_HOEFFDING_BOUND",
+      "methodVariantKey": "HDDM_A_HOEFFDING_BOUND",
+      "bindingKey": "auto__HDDM_A_HOEFFDING_BOUND__CHART-ERR-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-005.notes",
+        "chart.CHART-ERR-005.series",
+        "chart.CHART-ERR-005.summary",
+        "chart.CHART-ERR-005.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "method": "HDDM-A / HDDM_A_WARNING_DRIFT",
+      "methodVariantKey": "HDDM_A_WARNING_DRIFT",
+      "bindingKey": "auto__HDDM_A_WARNING_DRIFT__CHART-ERR-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-005.notes",
+        "chart.CHART-ERR-005.series",
+        "chart.CHART-ERR-005.summary",
+        "chart.CHART-ERR-005.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "method": "HDDM-A / HDDM_A_TWO_SIDED",
+      "methodVariantKey": "HDDM_A_TWO_SIDED",
+      "bindingKey": "auto__HDDM_A_TWO_SIDED__CHART-ERR-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-005.notes",
+        "chart.CHART-ERR-005.series",
+        "chart.CHART-ERR-005.summary",
+        "chart.CHART-ERR-005.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "method": "HDDM-W / HDDM_W_WEIGHTED_AVERAGE",
+      "methodVariantKey": "HDDM_W_WEIGHTED_AVERAGE",
+      "bindingKey": "auto__HDDM_W_WEIGHTED_AVERAGE__CHART-ERR-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-005.notes",
+        "chart.CHART-ERR-005.series",
+        "chart.CHART-ERR-005.summary",
+        "chart.CHART-ERR-005.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "method": "HDDM-W / HDDM_W_WARNING_DRIFT",
+      "methodVariantKey": "HDDM_W_WARNING_DRIFT",
+      "bindingKey": "auto__HDDM_W_WARNING_DRIFT__CHART-ERR-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-005.notes",
+        "chart.CHART-ERR-005.series",
+        "chart.CHART-ERR-005.summary",
+        "chart.CHART-ERR-005.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-005",
+      "method": "HDDM-W / HDDM_W_RECENT_ERROR_WEIGHTING",
+      "methodVariantKey": "HDDM_W_RECENT_ERROR_WEIGHTING",
+      "bindingKey": "auto__HDDM_W_RECENT_ERROR_WEIGHTING__CHART-ERR-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-005.notes",
+        "chart.CHART-ERR-005.series",
+        "chart.CHART-ERR-005.summary",
+        "chart.CHART-ERR-005.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-006",
+      "method": "STEPD / STEPD_ACCURACY_WINDOW",
+      "methodVariantKey": "STEPD_ACCURACY_WINDOW",
+      "bindingKey": "auto__STEPD_ACCURACY_WINDOW__CHART-ERR-006",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-006.notes",
+        "chart.CHART-ERR-006.series",
+        "chart.CHART-ERR-006.summary",
+        "chart.CHART-ERR-006.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-006",
+      "method": "STEPD / STEPD_WARNING_DRIFT",
+      "methodVariantKey": "STEPD_WARNING_DRIFT",
+      "bindingKey": "auto__STEPD_WARNING_DRIFT__CHART-ERR-006",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-006.notes",
+        "chart.CHART-ERR-006.series",
+        "chart.CHART-ERR-006.summary",
+        "chart.CHART-ERR-006.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-ERR-006",
+      "method": "STEPD / STEPD_SUPERVISED_STREAM",
+      "methodVariantKey": "STEPD_SUPERVISED_STREAM",
+      "bindingKey": "auto__STEPD_SUPERVISED_STREAM__CHART-ERR-006",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-ERR-006.notes",
+        "chart.CHART-ERR-006.series",
+        "chart.CHART-ERR-006.summary",
+        "chart.CHART-ERR-006.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "method": "SHAP Drift / SHAP_VALUE_DISTRIBUTION_TEST",
+      "methodVariantKey": "SHAP_VALUE_DISTRIBUTION_TEST",
+      "bindingKey": "auto__SHAP_VALUE_DISTRIBUTION_TEST__CHART-EXPL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EXPL-001.distribution",
+        "chart.CHART-EXPL-001.features",
+        "chart.CHART-EXPL-001.heatmap",
+        "chart.CHART-EXPL-001.notes",
+        "chart.CHART-EXPL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "method": "SHAP Drift / GLOBAL_IMPORTANCE_RANK_SHIFT",
+      "methodVariantKey": "GLOBAL_IMPORTANCE_RANK_SHIFT",
+      "bindingKey": "auto__GLOBAL_IMPORTANCE_RANK_SHIFT__CHART-EXPL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EXPL-001.distribution",
+        "chart.CHART-EXPL-001.features",
+        "chart.CHART-EXPL-001.heatmap",
+        "chart.CHART-EXPL-001.notes",
+        "chart.CHART-EXPL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EXPL-001",
+      "method": "SHAP Drift / CLASS_CONDITIONAL_SHAP_DRIFT",
+      "methodVariantKey": "CLASS_CONDITIONAL_SHAP_DRIFT",
+      "bindingKey": "auto__CLASS_CONDITIONAL_SHAP_DRIFT__CHART-EXPL-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EXPL-001.distribution",
+        "chart.CHART-EXPL-001.features",
+        "chart.CHART-EXPL-001.heatmap",
+        "chart.CHART-EXPL-001.notes",
+        "chart.CHART-EXPL-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EXPL-002",
+      "method": "Tree Feature 기반 감지 / TIME_FEATURE_SPLIT_DETECTOR",
+      "methodVariantKey": "TIME_FEATURE_SPLIT_DETECTOR",
+      "bindingKey": "auto__TIME_FEATURE_SPLIT_DETECTOR__CHART-EXPL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EXPL-002.features",
+        "chart.CHART-EXPL-002.notes",
+        "chart.CHART-EXPL-002.path",
+        "chart.CHART-EXPL-002.segments",
+        "chart.CHART-EXPL-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-EXPL-002",
+      "method": "Tree Feature 기반 감지 / DOMAIN_CLASSIFIER_TREE",
+      "methodVariantKey": "DOMAIN_CLASSIFIER_TREE",
+      "bindingKey": "auto__DOMAIN_CLASSIFIER_TREE__CHART-EXPL-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-EXPL-002.features",
+        "chart.CHART-EXPL-002.notes",
+        "chart.CHART-EXPL-002.path",
+        "chart.CHART-EXPL-002.segments",
+        "chart.CHART-EXPL-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-GEN-001",
+      "method": "Generic / Fallback / GENERIC_METRIC_THRESHOLD_DRIFT",
+      "methodVariantKey": "GENERIC_METRIC_THRESHOLD_DRIFT",
+      "bindingKey": "auto__GENERIC_METRIC_THRESHOLD_DRIFT__CHART-GEN-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-GEN-001.distribution",
+        "chart.CHART-GEN-001.evidence",
+        "chart.CHART-GEN-001.metric",
+        "chart.CHART-GEN-001.notes",
+        "chart.CHART-GEN-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-HIST-001",
+      "method": "Histogram Intersection Normalized Complement / HINC_CATEGORICAL",
+      "methodVariantKey": "HINC_CATEGORICAL",
+      "bindingKey": "auto__HINC_CATEGORICAL__CHART-HIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-HIST-001.histogram",
+        "chart.CHART-HIST-001.intersection",
+        "chart.CHART-HIST-001.notes",
+        "chart.CHART-HIST-001.summary",
+        "chart.CHART-HIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-HIST-001",
+      "method": "Histogram Intersection Normalized Complement / HINC_HISTOGRAM_NUMERIC",
+      "methodVariantKey": "HINC_HISTOGRAM_NUMERIC",
+      "bindingKey": "auto__HINC_HISTOGRAM_NUMERIC__CHART-HIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-HIST-001.histogram",
+        "chart.CHART-HIST-001.intersection",
+        "chart.CHART-HIST-001.notes",
+        "chart.CHART-HIST-001.summary",
+        "chart.CHART-HIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-HIST-001",
+      "method": "Histogram Intersection Normalized Complement / HINC_IMAGE_FEATURE",
+      "methodVariantKey": "HINC_IMAGE_FEATURE",
+      "bindingKey": "auto__HINC_IMAGE_FEATURE__CHART-HIST-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-HIST-001.histogram",
+        "chart.CHART-HIST-001.intersection",
+        "chart.CHART-HIST-001.notes",
+        "chart.CHART-HIST-001.summary",
+        "chart.CHART-HIST-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "method": "t-test 계열 / ONE_SAMPLE_T_TEST",
+      "methodVariantKey": "ONE_SAMPLE_T_TEST",
+      "bindingKey": "auto__ONE_SAMPLE_T_TEST__CHART-MEAN-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MEAN-001.ci",
+        "chart.CHART-MEAN-001.distribution",
+        "chart.CHART-MEAN-001.effect",
+        "chart.CHART-MEAN-001.notes",
+        "chart.CHART-MEAN-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "method": "t-test 계열 / TWO_SAMPLE_STUDENT_T_TEST",
+      "methodVariantKey": "TWO_SAMPLE_STUDENT_T_TEST",
+      "bindingKey": "auto__TWO_SAMPLE_STUDENT_T_TEST__CHART-MEAN-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MEAN-001.ci",
+        "chart.CHART-MEAN-001.distribution",
+        "chart.CHART-MEAN-001.effect",
+        "chart.CHART-MEAN-001.notes",
+        "chart.CHART-MEAN-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "method": "t-test 계열 / WELCH_T_TEST",
+      "methodVariantKey": "WELCH_T_TEST",
+      "bindingKey": "auto__WELCH_T_TEST__CHART-MEAN-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MEAN-001.ci",
+        "chart.CHART-MEAN-001.distribution",
+        "chart.CHART-MEAN-001.effect",
+        "chart.CHART-MEAN-001.notes",
+        "chart.CHART-MEAN-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MEAN-001",
+      "method": "t-test 계열 / PAIRED_T_TEST",
+      "methodVariantKey": "PAIRED_T_TEST",
+      "bindingKey": "auto__PAIRED_T_TEST__CHART-MEAN-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MEAN-001.ci",
+        "chart.CHART-MEAN-001.distribution",
+        "chart.CHART-MEAN-001.effect",
+        "chart.CHART-MEAN-001.notes",
+        "chart.CHART-MEAN-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "method": "Energy Distance / UNIVARIATE_ENERGY_DISTANCE",
+      "methodVariantKey": "UNIVARIATE_ENERGY_DISTANCE",
+      "bindingKey": "auto__UNIVARIATE_ENERGY_DISTANCE__CHART-MV-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-001.notes",
+        "chart.CHART-MV-001.null",
+        "chart.CHART-MV-001.points",
+        "chart.CHART-MV-001.summary",
+        "chart.CHART-MV-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "method": "Energy Distance / MULTIVARIATE_ENERGY_DISTANCE",
+      "methodVariantKey": "MULTIVARIATE_ENERGY_DISTANCE",
+      "bindingKey": "auto__MULTIVARIATE_ENERGY_DISTANCE__CHART-MV-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-001.notes",
+        "chart.CHART-MV-001.null",
+        "chart.CHART-MV-001.points",
+        "chart.CHART-MV-001.summary",
+        "chart.CHART-MV-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-001",
+      "method": "Energy Distance / ENERGY_DISTANCE_PERMUTATION_TEST",
+      "methodVariantKey": "ENERGY_DISTANCE_PERMUTATION_TEST",
+      "bindingKey": "auto__ENERGY_DISTANCE_PERMUTATION_TEST__CHART-MV-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-001.notes",
+        "chart.CHART-MV-001.null",
+        "chart.CHART-MV-001.points",
+        "chart.CHART-MV-001.summary",
+        "chart.CHART-MV-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "method": "MMD / KERNEL_MMD_UNBIASED",
+      "methodVariantKey": "KERNEL_MMD_UNBIASED",
+      "bindingKey": "auto__KERNEL_MMD_UNBIASED__CHART-MV-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-002.embedding",
+        "chart.CHART-MV-002.mmd",
+        "chart.CHART-MV-002.notes",
+        "chart.CHART-MV-002.null",
+        "chart.CHART-MV-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "method": "MMD / KERNEL_MMD_BIASED",
+      "methodVariantKey": "KERNEL_MMD_BIASED",
+      "bindingKey": "auto__KERNEL_MMD_BIASED__CHART-MV-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-002.embedding",
+        "chart.CHART-MV-002.mmd",
+        "chart.CHART-MV-002.notes",
+        "chart.CHART-MV-002.null",
+        "chart.CHART-MV-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "method": "MMD / LINEAR_TIME_MMD",
+      "methodVariantKey": "LINEAR_TIME_MMD",
+      "bindingKey": "auto__LINEAR_TIME_MMD__CHART-MV-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-002.embedding",
+        "chart.CHART-MV-002.mmd",
+        "chart.CHART-MV-002.notes",
+        "chart.CHART-MV-002.null",
+        "chart.CHART-MV-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-002",
+      "method": "MMD / STREAMING_MMD",
+      "methodVariantKey": "STREAMING_MMD",
+      "bindingKey": "auto__STREAMING_MMD__CHART-MV-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-002.embedding",
+        "chart.CHART-MV-002.mmd",
+        "chart.CHART-MV-002.notes",
+        "chart.CHART-MV-002.null",
+        "chart.CHART-MV-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "method": "LSDD / LEAST_SQUARES_DENSITY_DIFFERENCE",
+      "methodVariantKey": "LEAST_SQUARES_DENSITY_DIFFERENCE",
+      "bindingKey": "auto__LEAST_SQUARES_DENSITY_DIFFERENCE__CHART-MV-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-003.heatmap",
+        "chart.CHART-MV-003.lsdd",
+        "chart.CHART-MV-003.notes",
+        "chart.CHART-MV-003.null",
+        "chart.CHART-MV-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "method": "LSDD / LSDD_WITH_PREPROCESSING",
+      "methodVariantKey": "LSDD_WITH_PREPROCESSING",
+      "bindingKey": "auto__LSDD_WITH_PREPROCESSING__CHART-MV-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-003.heatmap",
+        "chart.CHART-MV-003.lsdd",
+        "chart.CHART-MV-003.notes",
+        "chart.CHART-MV-003.null",
+        "chart.CHART-MV-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-003",
+      "method": "LSDD / PERMUTATION_LSDD",
+      "methodVariantKey": "PERMUTATION_LSDD",
+      "bindingKey": "auto__PERMUTATION_LSDD__CHART-MV-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-003.heatmap",
+        "chart.CHART-MV-003.lsdd",
+        "chart.CHART-MV-003.notes",
+        "chart.CHART-MV-003.null",
+        "chart.CHART-MV-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-004",
+      "method": "Hotelling T2 / HOTELLING_T2_ONE_SAMPLE_PHASE_II",
+      "methodVariantKey": "HOTELLING_T2_ONE_SAMPLE_PHASE_II",
+      "bindingKey": "auto__HOTELLING_T2_ONE_SAMPLE_PHASE_II__CHART-MV-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-004.contrib",
+        "chart.CHART-MV-004.notes",
+        "chart.CHART-MV-004.pca",
+        "chart.CHART-MV-004.summary",
+        "chart.CHART-MV-004.t2"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-004",
+      "method": "Hotelling T2 / HOTELLING_T2_TWO_SAMPLE",
+      "methodVariantKey": "HOTELLING_T2_TWO_SAMPLE",
+      "bindingKey": "auto__HOTELLING_T2_TWO_SAMPLE__CHART-MV-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-004.contrib",
+        "chart.CHART-MV-004.notes",
+        "chart.CHART-MV-004.pca",
+        "chart.CHART-MV-004.summary",
+        "chart.CHART-MV-004.t2"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-004",
+      "method": "Hotelling T2 / REGULARIZED_HOTELLING_T2",
+      "methodVariantKey": "REGULARIZED_HOTELLING_T2",
+      "bindingKey": "auto__REGULARIZED_HOTELLING_T2__CHART-MV-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-004.contrib",
+        "chart.CHART-MV-004.notes",
+        "chart.CHART-MV-004.pca",
+        "chart.CHART-MV-004.summary",
+        "chart.CHART-MV-004.t2"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-005",
+      "method": "Mahalanobis Distance / SAMPLE_MAHALANOBIS_OUTLIER",
+      "methodVariantKey": "SAMPLE_MAHALANOBIS_OUTLIER",
+      "bindingKey": "auto__SAMPLE_MAHALANOBIS_OUTLIER__CHART-MV-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-005.distance",
+        "chart.CHART-MV-005.hist",
+        "chart.CHART-MV-005.notes",
+        "chart.CHART-MV-005.pca",
+        "chart.CHART-MV-005.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-005",
+      "method": "Mahalanobis Distance / WINDOW_MEAN_MAHALANOBIS",
+      "methodVariantKey": "WINDOW_MEAN_MAHALANOBIS",
+      "bindingKey": "auto__WINDOW_MEAN_MAHALANOBIS__CHART-MV-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-005.distance",
+        "chart.CHART-MV-005.hist",
+        "chart.CHART-MV-005.notes",
+        "chart.CHART-MV-005.pca",
+        "chart.CHART-MV-005.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-MV-005",
+      "method": "Mahalanobis Distance / ROBUST_MAHALANOBIS",
+      "methodVariantKey": "ROBUST_MAHALANOBIS",
+      "bindingKey": "auto__ROBUST_MAHALANOBIS__CHART-MV-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-MV-005.distance",
+        "chart.CHART-MV-005.hist",
+        "chart.CHART-MV-005.notes",
+        "chart.CHART-MV-005.pca",
+        "chart.CHART-MV-005.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "method": "KL Divergence / DISCRETE_KL_DIVERGENCE",
+      "methodVariantKey": "DISCRETE_KL_DIVERGENCE",
+      "bindingKey": "auto__DISCRETE_KL_DIVERGENCE__CHART-PROB-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-001.contrib",
+        "chart.CHART-PROB-001.distribution",
+        "chart.CHART-PROB-001.kl",
+        "chart.CHART-PROB-001.notes",
+        "chart.CHART-PROB-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "method": "KL Divergence / HISTOGRAM_KL_DIVERGENCE",
+      "methodVariantKey": "HISTOGRAM_KL_DIVERGENCE",
+      "bindingKey": "auto__HISTOGRAM_KL_DIVERGENCE__CHART-PROB-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-001.contrib",
+        "chart.CHART-PROB-001.distribution",
+        "chart.CHART-PROB-001.kl",
+        "chart.CHART-PROB-001.notes",
+        "chart.CHART-PROB-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "method": "KL Divergence / SMOOTHED_KL_DIVERGENCE",
+      "methodVariantKey": "SMOOTHED_KL_DIVERGENCE",
+      "bindingKey": "auto__SMOOTHED_KL_DIVERGENCE__CHART-PROB-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-001.contrib",
+        "chart.CHART-PROB-001.distribution",
+        "chart.CHART-PROB-001.kl",
+        "chart.CHART-PROB-001.notes",
+        "chart.CHART-PROB-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-001",
+      "method": "KL Divergence / SYMMETRIZED_KL",
+      "methodVariantKey": "SYMMETRIZED_KL",
+      "bindingKey": "auto__SYMMETRIZED_KL__CHART-PROB-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-001.contrib",
+        "chart.CHART-PROB-001.distribution",
+        "chart.CHART-PROB-001.kl",
+        "chart.CHART-PROB-001.notes",
+        "chart.CHART-PROB-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Jensen-Shannon Distance / JENSEN_SHANNON_DIVERGENCE",
+      "methodVariantKey": "JENSEN_SHANNON_DIVERGENCE",
+      "bindingKey": "auto__JENSEN_SHANNON_DIVERGENCE__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Jensen-Shannon Distance / JENSEN_SHANNON_DISTANCE",
+      "methodVariantKey": "JENSEN_SHANNON_DISTANCE",
+      "bindingKey": "auto__JENSEN_SHANNON_DISTANCE__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Jensen-Shannon Distance / MULTICLASS_PROBABILITY_JS",
+      "methodVariantKey": "MULTICLASS_PROBABILITY_JS",
+      "bindingKey": "auto__MULTICLASS_PROBABILITY_JS__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Jensen-Shannon Distance / TEXT_TOPIC_JS",
+      "methodVariantKey": "TEXT_TOPIC_JS",
+      "bindingKey": "auto__TEXT_TOPIC_JS__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Hellinger Distance / DISCRETE_HELLINGER_DISTANCE",
+      "methodVariantKey": "DISCRETE_HELLINGER_DISTANCE",
+      "bindingKey": "auto__DISCRETE_HELLINGER_DISTANCE__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Hellinger Distance / HISTOGRAM_HELLINGER_DISTANCE",
+      "methodVariantKey": "HISTOGRAM_HELLINGER_DISTANCE",
+      "bindingKey": "auto__HISTOGRAM_HELLINGER_DISTANCE__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-002",
+      "method": "Hellinger Distance / CATEGORICAL_HELLINGER_DISTANCE",
+      "methodVariantKey": "CATEGORICAL_HELLINGER_DISTANCE",
+      "bindingKey": "auto__CATEGORICAL_HELLINGER_DISTANCE__CHART-PROB-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-002.delta",
+        "chart.CHART-PROB-002.distribution",
+        "chart.CHART-PROB-002.notes",
+        "chart.CHART-PROB-002.summary",
+        "chart.CHART-PROB-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-003",
+      "method": "Bhattacharyya Distance / DISCRETE_BHATTACHARYYA_DISTANCE",
+      "methodVariantKey": "DISCRETE_BHATTACHARYYA_DISTANCE",
+      "bindingKey": "auto__DISCRETE_BHATTACHARYYA_DISTANCE__CHART-PROB-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-003.distribution",
+        "chart.CHART-PROB-003.notes",
+        "chart.CHART-PROB-003.overlap",
+        "chart.CHART-PROB-003.summary",
+        "chart.CHART-PROB-003.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-003",
+      "method": "Bhattacharyya Distance / GAUSSIAN_BHATTACHARYYA_DISTANCE",
+      "methodVariantKey": "GAUSSIAN_BHATTACHARYYA_DISTANCE",
+      "bindingKey": "auto__GAUSSIAN_BHATTACHARYYA_DISTANCE__CHART-PROB-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-003.distribution",
+        "chart.CHART-PROB-003.notes",
+        "chart.CHART-PROB-003.overlap",
+        "chart.CHART-PROB-003.summary",
+        "chart.CHART-PROB-003.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PROB-003",
+      "method": "Bhattacharyya Distance / HISTOGRAM_BHATTACHARYYA_DISTANCE",
+      "methodVariantKey": "HISTOGRAM_BHATTACHARYYA_DISTANCE",
+      "bindingKey": "auto__HISTOGRAM_BHATTACHARYYA_DISTANCE__CHART-PROB-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PROB-003.distribution",
+        "chart.CHART-PROB-003.notes",
+        "chart.CHART-PROB-003.overlap",
+        "chart.CHART-PROB-003.summary",
+        "chart.CHART-PROB-003.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PSI-001",
+      "method": "PSI / NUMERIC_BINNED_PSI",
+      "methodVariantKey": "NUMERIC_BINNED_PSI",
+      "bindingKey": "auto__NUMERIC_BINNED_PSI__CHART-PSI-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PSI-001.bins",
+        "chart.CHART-PSI-001.contrib",
+        "chart.CHART-PSI-001.notes",
+        "chart.CHART-PSI-001.summary",
+        "chart.CHART-PSI-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PSI-001",
+      "method": "PSI / CATEGORICAL_PSI",
+      "methodVariantKey": "CATEGORICAL_PSI",
+      "bindingKey": "auto__CATEGORICAL_PSI__CHART-PSI-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PSI-001.bins",
+        "chart.CHART-PSI-001.contrib",
+        "chart.CHART-PSI-001.notes",
+        "chart.CHART-PSI-001.summary",
+        "chart.CHART-PSI-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PSI-001",
+      "method": "PSI / SCORE_BAND_PSI",
+      "methodVariantKey": "SCORE_BAND_PSI",
+      "bindingKey": "auto__SCORE_BAND_PSI__CHART-PSI-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PSI-001.bins",
+        "chart.CHART-PSI-001.contrib",
+        "chart.CHART-PSI-001.notes",
+        "chart.CHART-PSI-001.summary",
+        "chart.CHART-PSI-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-PSI-001",
+      "method": "PSI / POPULATION_WEIGHTED_PSI",
+      "methodVariantKey": "POPULATION_WEIGHTED_PSI",
+      "bindingKey": "auto__POPULATION_WEIGHTED_PSI__CHART-PSI-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-PSI-001.bins",
+        "chart.CHART-PSI-001.contrib",
+        "chart.CHART-PSI-001.notes",
+        "chart.CHART-PSI-001.summary",
+        "chart.CHART-PSI-001.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "method": "Baumgartner-Weiss-Schindler Test / BWS_TWO_SAMPLE",
+      "methodVariantKey": "BWS_TWO_SAMPLE",
+      "bindingKey": "auto__BWS_TWO_SAMPLE__CHART-RANK-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-RANK-001.distribution",
+        "chart.CHART-RANK-001.notes",
+        "chart.CHART-RANK-001.rank",
+        "chart.CHART-RANK-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "method": "Baumgartner-Weiss-Schindler Test / BWS_EXACT_OR_ASYMPTOTIC",
+      "methodVariantKey": "BWS_EXACT_OR_ASYMPTOTIC",
+      "bindingKey": "auto__BWS_EXACT_OR_ASYMPTOTIC__CHART-RANK-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-RANK-001.distribution",
+        "chart.CHART-RANK-001.notes",
+        "chart.CHART-RANK-001.rank",
+        "chart.CHART-RANK-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "method": "Baumgartner-Weiss-Schindler Test / BWS_RANK_BASED",
+      "methodVariantKey": "BWS_RANK_BASED",
+      "bindingKey": "auto__BWS_RANK_BASED__CHART-RANK-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-RANK-001.distribution",
+        "chart.CHART-RANK-001.notes",
+        "chart.CHART-RANK-001.rank",
+        "chart.CHART-RANK-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "method": "Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_TWO_SIDED",
+      "methodVariantKey": "MANN_WHITNEY_TWO_SIDED",
+      "bindingKey": "auto__MANN_WHITNEY_TWO_SIDED__CHART-RANK-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-RANK-001.distribution",
+        "chart.CHART-RANK-001.notes",
+        "chart.CHART-RANK-001.rank",
+        "chart.CHART-RANK-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "method": "Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_ONE_SIDED",
+      "methodVariantKey": "MANN_WHITNEY_ONE_SIDED",
+      "bindingKey": "auto__MANN_WHITNEY_ONE_SIDED__CHART-RANK-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-RANK-001.distribution",
+        "chart.CHART-RANK-001.notes",
+        "chart.CHART-RANK-001.rank",
+        "chart.CHART-RANK-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-RANK-001",
+      "method": "Mann-Whitney U / Wilcoxon Rank Sum Test / MANN_WHITNEY_EXACT",
+      "methodVariantKey": "MANN_WHITNEY_EXACT",
+      "bindingKey": "auto__MANN_WHITNEY_EXACT__CHART-RANK-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-RANK-001.distribution",
+        "chart.CHART-RANK-001.notes",
+        "chart.CHART-RANK-001.rank",
+        "chart.CHART-RANK-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "method": "Feature Map Drift / MODEL_FEATURE_MAP_KS",
+      "methodVariantKey": "MODEL_FEATURE_MAP_KS",
+      "bindingKey": "auto__MODEL_FEATURE_MAP_KS__CHART-REP-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-001.activation",
+        "chart.CHART-REP-001.heatmap",
+        "chart.CHART-REP-001.notes",
+        "chart.CHART-REP-001.projection",
+        "chart.CHART-REP-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "method": "Feature Map Drift / MODEL_FEATURE_MAP_MMD",
+      "methodVariantKey": "MODEL_FEATURE_MAP_MMD",
+      "bindingKey": "auto__MODEL_FEATURE_MAP_MMD__CHART-REP-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-001.activation",
+        "chart.CHART-REP-001.heatmap",
+        "chart.CHART-REP-001.notes",
+        "chart.CHART-REP-001.projection",
+        "chart.CHART-REP-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-001",
+      "method": "Feature Map Drift / LAYERWISE_FEATURE_MAP_DRIFT",
+      "methodVariantKey": "LAYERWISE_FEATURE_MAP_DRIFT",
+      "bindingKey": "auto__LAYERWISE_FEATURE_MAP_DRIFT__CHART-REP-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-001.activation",
+        "chart.CHART-REP-001.heatmap",
+        "chart.CHART-REP-001.notes",
+        "chart.CHART-REP-001.projection",
+        "chart.CHART-REP-001.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "method": "Autoencoder Representation Drift / LATENT_SPACE_DRIFT",
+      "methodVariantKey": "LATENT_SPACE_DRIFT",
+      "bindingKey": "auto__LATENT_SPACE_DRIFT__CHART-REP-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-002.distribution",
+        "chart.CHART-REP-002.latent",
+        "chart.CHART-REP-002.notes",
+        "chart.CHART-REP-002.summary",
+        "chart.CHART-REP-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "method": "Autoencoder Representation Drift / RECONSTRUCTION_ERROR_DRIFT",
+      "methodVariantKey": "RECONSTRUCTION_ERROR_DRIFT",
+      "bindingKey": "auto__RECONSTRUCTION_ERROR_DRIFT__CHART-REP-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-002.distribution",
+        "chart.CHART-REP-002.latent",
+        "chart.CHART-REP-002.notes",
+        "chart.CHART-REP-002.summary",
+        "chart.CHART-REP-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-002",
+      "method": "Autoencoder Representation Drift / AUTOENCODER_DOMAIN_CLASSIFIER",
+      "methodVariantKey": "AUTOENCODER_DOMAIN_CLASSIFIER",
+      "bindingKey": "auto__AUTOENCODER_DOMAIN_CLASSIFIER__CHART-REP-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-002.distribution",
+        "chart.CHART-REP-002.latent",
+        "chart.CHART-REP-002.notes",
+        "chart.CHART-REP-002.summary",
+        "chart.CHART-REP-002.trend"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "method": "Graph Embedding Drift / GRAPH_EMBEDDING_MMD",
+      "methodVariantKey": "GRAPH_EMBEDDING_MMD",
+      "bindingKey": "auto__GRAPH_EMBEDDING_MMD__CHART-REP-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-003.distance",
+        "chart.CHART-REP-003.heatmap",
+        "chart.CHART-REP-003.notes",
+        "chart.CHART-REP-003.projection",
+        "chart.CHART-REP-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "method": "Graph Embedding Drift / GRAPH_EMBEDDING_CENTROID_SHIFT",
+      "methodVariantKey": "GRAPH_EMBEDDING_CENTROID_SHIFT",
+      "bindingKey": "auto__GRAPH_EMBEDDING_CENTROID_SHIFT__CHART-REP-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-003.distance",
+        "chart.CHART-REP-003.heatmap",
+        "chart.CHART-REP-003.notes",
+        "chart.CHART-REP-003.projection",
+        "chart.CHART-REP-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-REP-003",
+      "method": "Graph Embedding Drift / NODE_REPRESENTATION_DRIFT",
+      "methodVariantKey": "NODE_REPRESENTATION_DRIFT",
+      "bindingKey": "auto__NODE_REPRESENTATION_DRIFT__CHART-REP-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-REP-003.distance",
+        "chart.CHART-REP-003.heatmap",
+        "chart.CHART-REP-003.notes",
+        "chart.CHART-REP-003.projection",
+        "chart.CHART-REP-003.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "method": "ADWIN / ADWIN_MEAN_STREAM",
+      "methodVariantKey": "ADWIN_MEAN_STREAM",
+      "bindingKey": "adwin_mean_stream_to_chart_stream_001",
+      "bindingType": "explicit",
+      "dataSources": [
+        "analysis_note",
+        "event_markers",
+        "event_summary",
+        "metric_series"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "method": "ADWIN / ADWIN_ERROR_RATE",
+      "methodVariantKey": "ADWIN_ERROR_RATE",
+      "bindingKey": "auto__ADWIN_ERROR_RATE__CHART-STREAM-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-001.mean",
+        "chart.CHART-STREAM-001.notes",
+        "chart.CHART-STREAM-001.stream",
+        "chart.CHART-STREAM-001.summary",
+        "chart.CHART-STREAM-001.window"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-001",
+      "method": "ADWIN / ADWIN_DISTANCE_STREAM",
+      "methodVariantKey": "ADWIN_DISTANCE_STREAM",
+      "bindingKey": "auto__ADWIN_DISTANCE_STREAM__CHART-STREAM-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-001.mean",
+        "chart.CHART-STREAM-001.notes",
+        "chart.CHART-STREAM-001.stream",
+        "chart.CHART-STREAM-001.summary",
+        "chart.CHART-STREAM-001.window"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-002",
+      "method": "KSWIN / KSWIN_STANDARD",
+      "methodVariantKey": "KSWIN_STANDARD",
+      "bindingKey": "auto__KSWIN_STANDARD__CHART-STREAM-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-002.ecdf",
+        "chart.CHART-STREAM-002.ks",
+        "chart.CHART-STREAM-002.notes",
+        "chart.CHART-STREAM-002.stream",
+        "chart.CHART-STREAM-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-002",
+      "method": "KSWIN / KSWIN_WITH_SUBSAMPLING",
+      "methodVariantKey": "KSWIN_WITH_SUBSAMPLING",
+      "bindingKey": "auto__KSWIN_WITH_SUBSAMPLING__CHART-STREAM-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-002.ecdf",
+        "chart.CHART-STREAM-002.ks",
+        "chart.CHART-STREAM-002.notes",
+        "chart.CHART-STREAM-002.stream",
+        "chart.CHART-STREAM-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-002",
+      "method": "KSWIN / KSWIN_NUMERIC_STREAM",
+      "methodVariantKey": "KSWIN_NUMERIC_STREAM",
+      "bindingKey": "auto__KSWIN_NUMERIC_STREAM__CHART-STREAM-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-002.ecdf",
+        "chart.CHART-STREAM-002.ks",
+        "chart.CHART-STREAM-002.notes",
+        "chart.CHART-STREAM-002.stream",
+        "chart.CHART-STREAM-002.summary"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-003",
+      "method": "Page-Hinkley Test / PAGE_HINKLEY_INCREASE",
+      "methodVariantKey": "PAGE_HINKLEY_INCREASE",
+      "bindingKey": "auto__PAGE_HINKLEY_INCREASE__CHART-STREAM-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-003.notes",
+        "chart.CHART-STREAM-003.ph",
+        "chart.CHART-STREAM-003.stream",
+        "chart.CHART-STREAM-003.summary",
+        "chart.CHART-STREAM-003.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-003",
+      "method": "Page-Hinkley Test / PAGE_HINKLEY_DECREASE",
+      "methodVariantKey": "PAGE_HINKLEY_DECREASE",
+      "bindingKey": "auto__PAGE_HINKLEY_DECREASE__CHART-STREAM-003",
+      "bindingType": "auto",
+      "dataSources": [
+        "chart.CHART-STREAM-003.notes",
+        "chart.CHART-STREAM-003.ph",
+        "chart.CHART-STREAM-003.stream",
+        "chart.CHART-STREAM-003.summary",
+        "chart.CHART-STREAM-003.timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-004",
+      "method": "SeqDrift / SEQDRIFT1",
+      "methodVariantKey": "SEQDRIFT1",
+      "bindingKey": "auto__SEQDRIFT1__CHART-STREAM-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "evidence",
+        "notes",
+        "stream",
+        "summary",
+        "timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-004",
+      "method": "SeqDrift / SEQDRIFT2",
+      "methodVariantKey": "SEQDRIFT2",
+      "bindingKey": "auto__SEQDRIFT2__CHART-STREAM-004",
+      "bindingType": "auto",
+      "dataSources": [
+        "evidence",
+        "notes",
+        "stream",
+        "summary",
+        "timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-005",
+      "method": "SPRT / SPRT_BERNOULLI_ERROR_RATE",
+      "methodVariantKey": "SPRT_BERNOULLI_ERROR_RATE",
+      "bindingKey": "auto__SPRT_BERNOULLI_ERROR_RATE__CHART-STREAM-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "error_rate",
+        "llr",
+        "notes",
+        "summary",
+        "timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-STREAM-005",
+      "method": "SPRT / SPRT_GAUSSIAN_MEAN_SHIFT",
+      "methodVariantKey": "SPRT_GAUSSIAN_MEAN_SHIFT",
+      "bindingKey": "auto__SPRT_GAUSSIAN_MEAN_SHIFT__CHART-STREAM-005",
+      "bindingType": "auto",
+      "dataSources": [
+        "error_rate",
+        "llr",
+        "notes",
+        "summary",
+        "timeline"
+      ]
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "method": "LLM Query / Semantic Distance 기반 감지 / QUERY_CENTROID_COSINE_SHIFT",
+      "methodVariantKey": "QUERY_CENTROID_COSINE_SHIFT",
+      "bindingKey": "auto__QUERY_CENTROID_COSINE_SHIFT__CHART-TEXT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "distance",
+        "notes",
+        "projection",
+        "roc_small",
+        "summary",
+        "topic_mix"
+      ]
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "method": "LLM Query / Semantic Distance 기반 감지 / TEXT_DOMAIN_CLASSIFIER_DRIFT",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_DRIFT",
+      "bindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_DRIFT__CHART-TEXT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "distance",
+        "notes",
+        "projection",
+        "roc_small",
+        "summary",
+        "topic_mix"
+      ]
+    },
+    {
+      "chartId": "CHART-TEXT-001",
+      "method": "LLM Query / Semantic Distance 기반 감지 / TOPIC_DISTRIBUTION_SHIFT",
+      "methodVariantKey": "TOPIC_DISTRIBUTION_SHIFT",
+      "bindingKey": "auto__TOPIC_DISTRIBUTION_SHIFT__CHART-TEXT-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "distance",
+        "notes",
+        "projection",
+        "roc_small",
+        "summary",
+        "topic_mix"
+      ]
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "method": "Text Domain Classifier Drift / TEXT_DOMAIN_CLASSIFIER_ROC_AUC",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_ROC_AUC",
+      "bindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_ROC_AUC__CHART-TEXT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "descriptor_projection",
+        "notes",
+        "roc",
+        "scores",
+        "summary"
+      ]
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "method": "Text Domain Classifier Drift / TEXT_DOMAIN_CLASSIFIER_STAT_TEST",
+      "methodVariantKey": "TEXT_DOMAIN_CLASSIFIER_STAT_TEST",
+      "bindingKey": "auto__TEXT_DOMAIN_CLASSIFIER_STAT_TEST__CHART-TEXT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "descriptor_projection",
+        "notes",
+        "roc",
+        "scores",
+        "summary"
+      ]
+    },
+    {
+      "chartId": "CHART-TEXT-002",
+      "method": "Text Domain Classifier Drift / TEXT_DESCRIPTOR_DRIFT",
+      "methodVariantKey": "TEXT_DESCRIPTOR_DRIFT",
+      "bindingKey": "auto__TEXT_DESCRIPTOR_DRIFT__CHART-TEXT-002",
+      "bindingType": "auto",
+      "dataSources": [
+        "descriptor_projection",
+        "notes",
+        "roc",
+        "scores",
+        "summary"
+      ]
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "method": "Model Uncertainty Drift / SOFTMAX_CONFIDENCE_DRIFT",
+      "methodVariantKey": "SOFTMAX_CONFIDENCE_DRIFT",
+      "bindingKey": "auto__SOFTMAX_CONFIDENCE_DRIFT__CHART-UNC-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "calibration",
+        "confidence",
+        "entropy",
+        "notes",
+        "summary"
+      ]
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "method": "Model Uncertainty Drift / ENTROPY_DRIFT",
+      "methodVariantKey": "ENTROPY_DRIFT",
+      "bindingKey": "auto__ENTROPY_DRIFT__CHART-UNC-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "calibration",
+        "confidence",
+        "entropy",
+        "notes",
+        "summary"
+      ]
+    },
+    {
+      "chartId": "CHART-UNC-001",
+      "method": "Model Uncertainty Drift / PREDICTIVE_VARIANCE_DRIFT",
+      "methodVariantKey": "PREDICTIVE_VARIANCE_DRIFT",
+      "bindingKey": "auto__PREDICTIVE_VARIANCE_DRIFT__CHART-UNC-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "calibration",
+        "confidence",
+        "entropy",
+        "notes",
+        "summary"
+      ]
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "method": "F-test / Variance Test 계열 / F_TEST_EQUAL_VARIANCE",
+      "methodVariantKey": "F_TEST_EQUAL_VARIANCE",
+      "bindingKey": "auto__F_TEST_EQUAL_VARIANCE__CHART-VAR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "deviation",
+        "notes",
+        "spread",
+        "summary",
+        "variance"
+      ]
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "method": "F-test / Variance Test 계열 / ANOVA_F_TEST_GROUP_MEAN",
+      "methodVariantKey": "ANOVA_F_TEST_GROUP_MEAN",
+      "bindingKey": "auto__ANOVA_F_TEST_GROUP_MEAN__CHART-VAR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "deviation",
+        "notes",
+        "spread",
+        "summary",
+        "variance"
+      ]
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "method": "F-test / Variance Test 계열 / MODEL_COMPARISON_F_TEST",
+      "methodVariantKey": "MODEL_COMPARISON_F_TEST",
+      "bindingKey": "auto__MODEL_COMPARISON_F_TEST__CHART-VAR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "deviation",
+        "notes",
+        "spread",
+        "summary",
+        "variance"
+      ]
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "method": "Levene's Test / LEVENE_MEAN_CENTER",
+      "methodVariantKey": "LEVENE_MEAN_CENTER",
+      "bindingKey": "auto__LEVENE_MEAN_CENTER__CHART-VAR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "deviation",
+        "notes",
+        "spread",
+        "summary",
+        "variance"
+      ]
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "method": "Levene's Test / BROWN_FORSYTHE_MEDIAN_CENTER",
+      "methodVariantKey": "BROWN_FORSYTHE_MEDIAN_CENTER",
+      "bindingKey": "auto__BROWN_FORSYTHE_MEDIAN_CENTER__CHART-VAR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "deviation",
+        "notes",
+        "spread",
+        "summary",
+        "variance"
+      ]
+    },
+    {
+      "chartId": "CHART-VAR-001",
+      "method": "Levene's Test / TRIMMED_MEAN_LEVENE",
+      "methodVariantKey": "TRIMMED_MEAN_LEVENE",
+      "bindingKey": "auto__TRIMMED_MEAN_LEVENE__CHART-VAR-001",
+      "bindingType": "auto",
+      "dataSources": [
+        "deviation",
+        "notes",
+        "spread",
+        "summary",
+        "variance"
+      ]
+    }
+  ],
+  "failedBindings": [],
+  "missingBindings": [],
+  "missingRuntimeTemplates": []
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-REP-001 - block3 활성 변화로 본 표현 드리프트</title>
+  <link rel="stylesheet" href="./chart_rep_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-REP-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>Layerwise Drift Heatmap</h2>
+          <p>block3 c6~c9가 0.81, 0.88, 0.92, 0.84로 높은지 확인한다.</p>
+        </div>
+        <svg id="heatmapChart" role="img" aria-label="layerwise feature map drift heatmap"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Activation Distribution</h2>
+            <p>baseline peak는 bin 5의 35, current peak는 bin 7의 34로 오른쪽 이동한다.</p>
+          </div>
+          <svg id="activationChart" role="img" aria-label="feature map activation distribution comparison"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Embedding Projection by Layer</h2>
+            <p>baseline cluster는 왼쪽, current cluster는 오른쪽으로 분리된다.</p>
+          </div>
+          <svg id="projectionChart" role="img" aria-label="embedding projection scatter by layer"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          Feature map drift는 모델 내부 layer activation의 분포 변화가 특정 layer와 channel에 집중되는지 확인한다.
+          이 예시에서는 block3 c8의 drift score가 0.92이고 activation peak와 embedding도 오른쪽으로 이동해
+          block3 representation-level drift 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch base"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch high"></i>high drift</span>
+        <span><i class="swatch layer"></i>selected layer</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_rep_001.js"></script>
+</body>
+</html>

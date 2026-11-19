@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-TEXT-001 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-TEXT-001</p>
+    <h1>CHART-TEXT-001 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 LLM query의 semantic drift를 embedding space, semantic distance, topic mix, domain classifier 관점에서 함께 설명한다.</p> <p>LLM query drift는 단어 빈도 변화만으로 판단하기 어렵다. Query embedding cluster가 이동하고 centroid distance가 커지며 topic 비중이 달라지는지 확인해야 한다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. baseline/current query embedding cluster가 분리되는가?
+2. semantic distance trend가 threshold를 넘는가?
+3. topic proportion과 domain classifier가 drift를 지지하는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - query embedding projection scatter
+  - baseline/current cluster
+  - centroid shift line
+
+우측 상단
+  - semantic distance trend
+  - threshold line
+
+우측 하단
+  - topic proportion stacked bar
+  - optional domain classifier ROC curve</code></pre> <p>상단 요약 영역에는 cosine distance, topic shift, domain AUC를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 embedding projection에서 baseline/current query cluster가 분리되는지 확인한다.</p> <pre><code>두 cluster가 대부분 겹친다
+  -&gt; semantic drift 증거가 약하다.
+
+current cluster가 한 방향으로 이동한다
+  -&gt; query 의미 공간의 중심 이동 후보로 본다.
+
+cluster가 여러 갈래로 분리된다
+  -&gt; topic별 segment drift를 추가 확인한다.</code></pre> <p>그 다음 semantic distance trend가 threshold를 넘는지 본다. 일시적 spike인지, 지속적으로 threshold 위에 있는지 구분해야 한다.</p> <p>마지막으로 topic proportion과 domain classifier ROC를 확인한다. Topic mix 변화와 높은 domain AUC가 함께 나타나면 semantic drift 설명력이 높다.</p> <h2>Drift 후보 판단 기준</h2> <p>Embedding projection에서 baseline/current cluster가 분리되고, centroid cosine distance가 threshold를 지속적으로 넘으며, topic mix와 domain classifier가 같은 방향의 변화를 지지하면 LLM query semantic drift 후보로 해석한다.</p> <p>단, embedding model 변경, prompt template 변경, tokenizer/preprocessing 변경이 있으면 semantic drift처럼 보일 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 cosine distance가 <code>0.58</code>, topic shift가 <code>+28pt</code>, domain AUC가 <code>0.82</code>로 표시되어 있다. 좌측 projection에서는 current query embedding cluster가 baseline보다 오른쪽으로 이동해 분리된다.</p> <p>우측 상단 semantic distance trend는 threshold <code>0.36</code>을 넘은 뒤 계속 상승한다. 우측 하단 topic bar에서는 current에서 세 번째 topic 비중이 증가하고, ROC curve는 domain classifier가 baseline/current를 구분할 수 있음을 보여준다. 따라서 이 예시는 LLM query semantic drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>LLM query embedding 분석 결과, baseline/current query cluster가 분리되었고
+centroid cosine distance는 0.58로 threshold를 초과했다.
+Topic proportion도 주요 topic에서 +28pt 이동했으며 domain classifier AUC는 0.82였다.
+이는 LLM query semantic drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - embedding projection 분리만으로 업무 원인을 단정한다.
+
+금지 2
+  - embedding model 또는 prompt template 변경 여부를 확인하지 않는다.
+
+금지 3
+  - topic label 품질을 확인하지 않고 topic shift를 원인으로 말한다.
+
+금지 4
+  - domain classifier AUC만으로 사용자 의도 변화를 확정한다.</code></pre> <p>Semantic drift는 query 의미 공간의 변화 신호다. 실제 사용자 의도, 품질 영향, retrieval 성능 변화는 별도 검증이 필요하다.</p> <h2>추가 확인 항목</h2> <p>LLM query semantic drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>embedding model, prompt template, preprocessing 변경</li> <li>query language, locale, channel, source 변화</li> <li>topic labeling 품질과 topic별 sample 예시</li> <li>retrieval hit rate, answer quality, fallback rate 변화</li> <li>domain classifier feature leakage 여부</li> <li>time segment별 semantic distance 안정성</li> <li>사람이 검토한 query intent sample</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>LLM Query / Semantic Distance 기반 감지 / QUERY_CENTROID_COSINE_SHIFT</code></li> <li><code>LLM Query / Semantic Distance 기반 감지 / TEXT_DOMAIN_CLASSIFIER_DRIFT</code></li> <li><code>LLM Query / Semantic Distance 기반 감지 / TOPIC_DISTRIBUTION_SHIFT</code></li> </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>최근 윈도 분포 이동과 KSWIN 경보</title>
+  <link rel="stylesheet" href="./chart_stream_002.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-STREAM-002">
+    <header class="header summary-only">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>슬라이딩 윈도 구간</h2>
+          <p>과거 window 10~20과 최근 window 24~34가 값 상승 전후를 나누어 비교된다.</p>
+        </div>
+        <svg id="streamChart" role="img" aria-label="KSWIN이 비교하는 과거와 최근 슬라이딩 윈도"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Window ECDF 비교</h2>
+            <p>x=0.51 부근에서 ECDF 최대 차이 D=0.55가 나타난다.</p>
+          </div>
+          <svg id="ecdfChart" role="img" aria-label="KSWIN window sample ECDF 비교"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>KS 통계량 추세</h2>
+            <p>최근 비교 구간의 KS statistic 0.55가 threshold 0.36을 넘는다.</p>
+          </div>
+          <svg id="ksChart" role="img" aria-label="시간에 따른 KS statistic 추세"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          KSWIN은 stream에서 과거 window와 최근 window의 sample 분포를 KS statistic으로 비교한다.
+          이 예시에서는 alarm index 28에서 KS statistic 0.55, p-value 0.011이 표시된다.
+          최근 window 24~34가 과거 window 10~20보다 높은 값 구간에 놓이고,
+          ECDF 최대 차이와 threshold 초과가 함께 보여 stream 분포 이동 후보로 해석한다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch stream"></i>stream metric</span>
+        <span><i class="swatch reference"></i>과거 window</span>
+        <span><i class="swatch current"></i>최근 window</span>
+        <span><i class="swatch threshold"></i>threshold</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_stream_002.js"></script>
+</body>
+</html>

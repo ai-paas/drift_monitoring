@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-ANNOT-001 - 단방향 검정의 증가·감소 방향 판단 기준</title>
+  <link rel="stylesheet" href="./chart_annot_001.css">
+</head>
+<body>
+  <main class="page" aria-label="CHART-ANNOT-001">
+    <header class="header">
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <section class="grid">
+      <article class="panel panel-large">
+        <div class="panel-head">
+          <h2>One-sided Direction Overlay</h2>
+          <p>이 예시는 direction이 upper이므로 index 12 부근의 D+ gap +0.11을 drift 증거로 읽고, 반대 lower gap -0.08은 참고 신호로만 본다.</p>
+        </div>
+        <svg id="directionChart" role="img" aria-label="one-sided directional annotation with upper and lower threshold markers"></svg>
+      </article>
+
+      <div class="side">
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Upper vs Lower Test</h2>
+            <p>Upper/greater는 p=0.018로 drift candidate지만, lower/less는 p=0.214라 이 검정의 drift 근거로 계산하지 않는다.</p>
+          </div>
+          <svg id="testChart" role="img" aria-label="upper and lower one-sided test decision cards"></svg>
+        </article>
+
+        <article class="panel panel-small">
+          <div class="panel-head compact">
+            <h2>Variant Usage Matrix</h2>
+            <p>KS, Fisher, MWU, CUSUM, EWMA/GMA처럼 upper 또는 lower를 선언한 one-sided 변종에 붙여 읽는다.</p>
+          </div>
+          <svg id="matrixChart" role="img" aria-label="method variant usage matrix for directional annotation"></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div>
+        <h2>해석</h2>
+        <p>
+          현재 상황은 one-sided 변종이 upper 방향을 선언한 상태에서 current 곡선이 baseline보다 커지는 구간을 drift 후보로 볼 수 있는지 판단하는 사례다.
+          D+ gap은 +0.11이고 one-sided p-value는 0.018이므로 증가 방향 후보는 성립하지만,
+          lower 방향 차이는 이 검정의 대립가설과 반대이므로 drift 증거로 계산하지 않는다.
+        </p>
+      </div>
+      <div class="legend" aria-label="범례">
+        <span><i class="swatch baseline"></i>baseline</span>
+        <span><i class="swatch current"></i>current</span>
+        <span><i class="swatch upper"></i>upper direction</span>
+        <span><i class="swatch lower"></i>lower direction</span>
+      </div>
+    </section>
+  </main>
+  <script src="./chart_annot_001.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHART-CTRL-002 설명</title>
+  <link rel="stylesheet" href="./description.css">
+</head>
+<body>
+  <main class="doc">
+    <p class="chart-id">CHART-CTRL-002</p>
+    <h1>CHART-CTRL-002 해석</h1>
+    <h2>차트 목적</h2> <p>이 chart는 EWMA 또는 Geometric Moving Average가 noisy metric에서 작은 평균 변화를 어떻게 부드럽게 감지하는지 설명한다.</p> <p>EWMA/GMA는 최근 관측값에 더 큰 가중치를 주고 과거 관측값의 영향은 점차 줄인다. 따라서 raw metric이 noisy하더라도 smoothed average가 지속적으로 UCL 또는 LCL 방향으로 이동하면 평균 drift 후보를 빠르게 파악할 수 있다.</p> <p>이 차트는 다음 질문에 답한다.</p> <pre><code>1. raw metric의 noise 속에서 smoothed average가 어느 방향으로 이동하는가?
+2. EWMA/GMA 값이 UCL 또는 LCL을 넘는가?
+3. warning 상태가 alarm 상태로 이어지는가?</code></pre> <h2>차트 구성</h2> <p>이 chart는 세 영역으로 구성된다.</p> <pre><code>좌측
+  - raw metric trend
+  - EWMA/GMA smoothed average
+  - center line
+  - alarm marker
+
+우측 상단
+  - EWMA/GMA control chart
+  - UCL, LCL, center line
+
+우측 하단
+  - normal/warning/alarm state timeline
+  - alarm marker</code></pre> <p>상단 요약 영역에는 EWMA final, lambda, shift를 표시한다.</p> <h2>해석 순서</h2> <p>먼저 좌측 raw metric과 smoothed average를 함께 본다.</p> <pre><code>raw metric만 튀고 EWMA가 안정적이다
+  -&gt; 일시적 noise 또는 outlier일 가능성이 높다.
+
+EWMA가 점진적으로 UCL 방향으로 이동한다
+  -&gt; 상방 평균 shift 후보로 본다.
+
+EWMA가 점진적으로 LCL 방향으로 이동한다
+  -&gt; 하방 평균 shift 후보로 본다.</code></pre> <p>그 다음 우측 상단 control chart에서 EWMA/GMA 값이 UCL 또는 LCL을 넘는지 확인한다. UCL 초과는 상방 drift 후보, LCL 미만은 하방 drift 후보로 해석한다.</p> <p>마지막으로 우측 하단 timeline에서 warning 상태가 alarm 상태로 이어지는지 확인한다. Alarm 직전 warning 구간이 있으면 점진적 변화 가능성이 높다.</p> <h2>Drift 후보 판단 기준</h2> <p>EWMA/GMA smoothed average가 UCL 또는 LCL을 넘고, raw metric도 같은 방향의 수준 변화를 보이며, timeline에서 warning 이후 alarm 상태가 나타나면 smoothing control chart 기반 drift 후보로 해석한다.</p> <p>단, EWMA/GMA는 lambda, control limit 산정 방식, baseline replay threshold 설정에 민감하다. lambda가 크면 raw metric에 민감하고, 작으면 변화 감지가 늦어질 수 있다.</p> <h2>이 예시 차트의 해석</h2> <p>이 예시에서는 EWMA final이 <code>0.80</code>, lambda가 <code>0.20</code>, shift가 <code>+0.30</code>으로 표시되어 있다. 좌측 패널에서 raw metric은 noisy하지만 전반적으로 상승하고, EWMA는 이를 부드럽게 따라가며 상방으로 이동한다.</p> <p>우측 상단 control chart에서는 EWMA가 UCL <code>0.72</code>를 넘는다. 우측 하단 timeline에서는 normal 상태가 warning을 거쳐 alarm 상태로 전환된다. 따라서 이 예시는 noisy metric의 상방 평균 shift를 EWMA가 감지한 drift 후보로 해석할 수 있다.</p> <p>보고서 문장 예시는 다음과 같다.</p> <pre><code>EWMA control chart로 raw metric을 모니터링한 결과,
+EWMA final 값은 0.80으로 UCL 0.72를 초과했다.
+Raw metric은 noisy하지만 전반적으로 상승했고,
+EWMA smoothing 결과도 같은 방향의 지속적 이동을 보였다.
+이는 noisy metric의 상방 평균 drift 후보로 해석할 수 있다.</code></pre> <h2>금지해야 할 해석</h2> <p>이 차트만으로 다음을 단정하지 않는다.</p> <pre><code>금지 1
+  - raw metric spike 하나만으로 EWMA drift를 단정한다.
+
+금지 2
+  - lambda와 control limit 산정 방식을 확인하지 않고 민감도를 평가한다.
+
+금지 3
+  - baseline 기간이 현재 운영 조건과 같은지 확인하지 않는다.
+
+금지 4
+  - EWMA alarm이 곧바로 모델 성능 저하를 의미한다고 말한다.</code></pre> <p>EWMA/GMA는 평균 수준 변화를 smoothing해서 감지한다. 분산 변화, tail 변화, population mix 변화는 별도 chart와 함께 확인해야 한다.</p> <h2>추가 확인 항목</h2> <p>EWMA/GMA drift 후보가 나타나면 다음을 추가 확인한다.</p> <ul> <li>lambda 또는 geometric decay 설정</li> <li>UCL/LCL 산정 방식과 baseline 기간</li> <li>one-sided 또는 two-sided control chart 설정</li> <li>seasonality, 주기성, batch 처리 변화</li> <li>CUSUM, Page-Hinkley, ADWIN 등 다른 detector와의 합의 여부</li> <li>label 확보 후 성능 지표, error rate, calibration 변화</li> </ul> <h2>적합한 사용 대상</h2> <p>이 chart는 다음 method variant에 적합하다.</p> <ul> <li><code>EWMA / EWMA_UNIVARIATE_CONTROL_CHART</code></li> <li><code>EWMA / EWMA_ONE_SIDED</code></li> <li><code>EWMA / EWMA_BASELINE_REPLAY_THRESHOLD</code></li> <li><code>Geometric Moving Average / GMA_CONTROL_CHART</code></li> <li><code>Geometric Moving Average / GMA_ONE_SIDED</code></li> <li><code>Geometric Moving Average / GMA_WITH_EMPIRICAL_LIMIT</code></li> </ul>
+  </main>
+</body>
+</html>
